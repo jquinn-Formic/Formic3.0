@@ -1,0 +1,238 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCustomerStories, getCustomersPage } from '../lib/sanity';
+
+let customerStories: any[] = [];
+let customersData: any = null;
+try {
+  [customerStories, customersData] = await Promise.all([
+    getCustomerStories(),
+    getCustomersPage()
+  ]);
+} catch(e) {}
+---
+
+<Layout title="Customer Stories — Formic" description="See how manufacturers like Land O'Frost, Mi Rancho, and Taffy Town automate with Formic.">
+  <style is:global slot="head">
+.customer-hero-grid{display:grid;grid-template-columns:3fr 2fr;grid-template-rows:65vh;gap:2px}
+.ch-cell{overflow:hidden;position:relative;background:var(--black)}
+.ch-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+.ch-cell:hover img{transform:scale(1.04)}
+.ch-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,21,23,.8) 0%,rgba(9,21,23,.15) 60%)}
+.ch-caption{position:absolute;bottom:32px;left:36px;right:36px}
+.ch-caption h2{font-family:var(--sans);font-size:clamp(28px,3.5vw,44px);font-weight:500;color:var(--white);letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+.ch-caption p{font-size:14px;font-weight:300;color:rgba(240,245,241,.6);line-height:1.6}
+.story-full{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--lgrey);margin-bottom:2px}
+.sf-text{padding:64px 56px;background:var(--white)}
+.sf-img{overflow:hidden;min-height:480px}
+.sf-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sf-logo{font-family:var(--sans);font-size:22px;font-weight:500;color:var(--black);letter-spacing:-.01em;margin-bottom:6px}
+.sf-industry{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:28px}
+.sf-stat-row{display:flex;gap:32px;margin:28px 0;padding:24px 0;border-top:1px solid var(--lgrey);border-bottom:1px solid var(--lgrey)}
+.sf-stat-num{font-family:var(--sans);font-size:36px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em;display:block;margin-bottom:4px}
+.sf-stat-label{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--mgrey)}
+.blockquote-lg{font-size:19px;font-style:italic;font-weight:300;color:var(--dgrey);line-height:1.65;margin:24px 0;padding-left:20px;border-left:2px solid var(--orange)}
+.outcome-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--lgrey);color:var(--dgrey);padding:5px 11px;margin:3px}
+.outcome-tag::before{content:'';width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0}
+.community-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lgrey)}
+.community-cell{background:var(--white);padding:40px 36px}
+.community-cell h3{font-family:var(--sans);font-size:18px;font-weight:500;color:var(--black);letter-spacing:-.01em;margin-bottom:8px}
+.community-cell p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.7;margin-bottom:20px}
+@media(max-width:900px){.customer-hero-grid{grid-template-columns:1fr;grid-template-rows:50vh 30vh}.story-full{grid-template-columns:1fr}.sf-text{padding:40px 24px}.sf-stat-row{flex-wrap:wrap;gap:20px}.community-grid{grid-template-columns:1fr}}
+  </style>
+
+<!-- HERO MOSAIC -->
+<div style="padding-top:64px">
+  <div class="customer-hero-grid">
+    <div class="ch-cell">
+      <img src="/MiMFG_Photos-24.jpg" alt="Formic industrial palletizer in CPG facility — customer deployment">
+      <div class="ch-overlay"></div>
+      <div class="ch-caption">
+        <h2>Proven on<br>real floors.</h2>
+        <p>From snack manufacturers to tortilla makers — Formic customers are transforming operations without the CapEx risk.</p>
+      </div>
+    </div>
+    <div class="ch-cell">
+      <img src="/R52_5359.jpg" alt="Formic FSE engineer commissioning a system at customer facility">
+      <div class="ch-overlay"></div>
+      <div class="ch-caption">
+        <h2>We don't leave until it runs.</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<section class="bg-white">
+  <div class="si rv">
+    <div style="max-width:840px;margin:0 auto;text-align:center">
+      <p style="font-family:var(--sans);font-size:clamp(20px,2.5vw,30px);font-weight:300;font-style:italic;color:var(--black);line-height:1.55;margin-bottom:20px">"Having a partner like Formic that handles installation, maintenance, and equipment swapping allows us to stay focused on what we do best: making great snacks."</p>
+      <p style="font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mgrey)">— Jaap Langenberg, CEO · Wyandot Snacks</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SPLIT 2: SD0UMnNYR1E — Mission / Story -->
+<section class="bg-black rv" style="padding:0">
+  <div class="video-split dark">
+    <div class="vs-text dark">
+      <div class="slabel" style="color:var(--orange)">The Mission</div>
+      <h2 class="wh">Automation for<br><em>every manufacturer</em></h2>
+      <p class="vs-body wh">We built Formic because world-class robotic automation shouldn't require a Fortune 500 budget. See the story behind why we do what we do — and what it means for American manufacturing.</p>
+      <a href="/company#mission" class="larr">Our full mission →</a>
+    </div>
+    <div class="yt-facade" data-ytid="SD0UMnNYR1E" onclick="loadYT(this)">
+      <img
+        src="https://i.ytimg.com/vi/SD0UMnNYR1E/maxresdefault.jpg"
+        alt="Formic — driving U.S. manufacturing forward"
+        loading="lazy"
+        onerror="this.src='/R52_8950-2.jpg'"
+      >
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span class="yt-label">Watch: The Formic Story</span>
+    </div>
+  </div>
+</section>
+
+<!-- LAND O'FROST -->
+<section class="bg-lgrey" style="padding:2px 0">
+  <div class="story-full rv">
+    <div class="sf-text">
+      <div class="sf-logo">Land O'Frost</div>
+      <div class="sf-industry">Deli meats · Merrillville, IN</div>
+      <div class="slabel">Challenge</div>
+      <p class="btext" style="font-size:15px;margin-bottom:20px">Manual palletizing of 128,000 lbs/day was slowing changeovers, straining workers, and driving up labor costs. Traditional CapEx automation was cost-prohibitive.</p>
+      <div class="slabel" style="margin-top:8px">Solution</div>
+      <p style="font-size:15px;font-weight:300;color:var(--mgrey);line-height:1.75;margin-bottom:20px">Formic deployed 5 gantry palletizers across 2 weekends — minimal production disruption, maximum immediate impact.</p>
+      <div class="sf-stat-row">
+        <div><span class="sf-stat-num">5</span><span class="sf-stat-label">Systems Deployed</span></div>
+        <div><span class="sf-stat-num">20%</span><span class="sf-stat-label">OpEx Reduction</span></div>
+        <div><span class="sf-stat-num">2</span><span class="sf-stat-label">Weekend Deploy</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:24px">
+        <span class="outcome-tag">Labor Savings</span>
+        <span class="outcome-tag">Reduced Downtime</span>
+        <span class="outcome-tag">Operator Upskilling</span>
+      </div>
+      <a href="/company#demo" class="larr">Get a similar result →</a>
+    </div>
+    <div class="sf-img">
+      <img src="/Focus-7603.jpg" alt="Formic industrial palletizer deployment at CPG facility" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- MI RANCHO -->
+<section class="bg-white" style="padding:2px 0">
+  <div class="story-full rv">
+    <div class="sf-img">
+      <img src="/Haviland_Products_-_Palletizing.gif" alt="Formic palletizer in continuous operation at Mi Rancho">
+    </div>
+    <div class="sf-text">
+      <div class="sf-logo">Mi Rancho</div>
+      <div class="sf-industry">Tortillas &amp; Mexican foods · Oakland, CA</div>
+      <div class="slabel">Challenge</div>
+      <p class="btext" style="font-size:15px;margin-bottom:20px">Rapid 40% annual growth strained operations with injuries, fatigue, and high turnover. Tight budgets and limited internal engineering expertise made traditional automation feel impossible.</p>
+      <div class="slabel" style="margin-top:8px">Solution</div>
+      <p style="font-size:15px;font-weight:300;color:var(--mgrey);line-height:1.75;margin-bottom:20px">Formic's Full Service model let Mi Rancho automate at scale without the capital risk — deploying 9 systems across multiple production lines.</p>
+      <div class="sf-stat-row">
+        <div><span class="sf-stat-num">9</span><span class="sf-stat-label">Systems Deployed</span></div>
+        <div><span class="sf-stat-num">0</span><span class="sf-stat-label">CapEx Required</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:24px">
+        <span class="outcome-tag">Eliminated Injuries</span>
+        <span class="outcome-tag">Cut Downtime</span>
+        <span class="outcome-tag">Labor Repurposed</span>
+        <span class="outcome-tag">OpEx Savings</span>
+      </div>
+      <a href="/company#demo" class="larr">Get a similar result →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARIANI + TAFFY TOWN — compact cards -->
+<section class="bg-lgrey">
+  <div class="si rv" style="padding-bottom:0">
+    <div class="slabel">More Customer Stories</div>
+    <h2 class="dtitle" style="margin-bottom:52px">More floors.<br><em>More results.</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--lgrey)" class="rv d1">
+    <div style="background:var(--white);padding:48px 44px">
+      <div class="sf-logo" style="margin-bottom:4px">Mariani Family</div>
+      <div class="sf-industry">Dried fruits · Vacaville, CA</div>
+      <p style="font-size:15px;font-weight:300;color:var(--mgrey);line-height:1.75;margin:20px 0">Labor gaps, ergonomic strain, and tight budgets limited line efficiency amid rising demand for their products.</p>
+      <div class="blockquote-lg" style="font-size:16px">Formic's Full Service Model boosted efficiency, reduced injuries, filled staffing gaps, and allowed flexible equipment swaps as production needs changed.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:20px">
+        <span class="outcome-tag">Efficiency Gains</span><span class="outcome-tag">Injury Reduction</span><span class="outcome-tag">Flexible Swaps</span>
+      </div>
+    </div>
+    <div style="background:var(--white);padding:48px 44px">
+      <div class="sf-logo" style="margin-bottom:4px">Taffy Town</div>
+      <div class="sf-industry">Confections · Salt Lake City, UT</div>
+      <p style="font-size:15px;font-weight:300;color:var(--mgrey);line-height:1.75;margin:20px 0">Manual box stacking caused fatigue, injuries, and retention risk. Traditional CapEx automation was off the table for their budget.</p>
+      <div class="blockquote-lg" style="font-size:16px">Formic's robotic palletizer eliminated lifting injuries, boosted line efficiency, and upskilled staff — all with zero capital at risk.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:20px">
+        <span class="outcome-tag">Zero CapEx</span><span class="outcome-tag">Injuries Eliminated</span><span class="outcome-tag">Productivity Up</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FULLBLEED IMAGE BREAK -->
+<div class="fullbleed-wrap rv">
+  <img src="/R52_8950-2.jpg" class="fullbleed" alt="Formic KUKA robot arm — American manufacturing" loading="lazy">
+  <div class="fullbleed-caption">American manufacturing, powered by Formic</div>
+</div>
+
+<!-- COMMUNITY -->
+<section class="bg-white" id="community">
+  <div class="si rv">
+    <div class="two-col" style="margin-bottom:52px;align-items:end">
+      <div>
+        <div class="slabel">Community &amp; Events</div>
+        <h2 class="dtitle">Join the<br><em>conversation</em></h2>
+      </div>
+      <p class="btext">Manufacturing is changing fast. Connect with peers, Formic engineers, and industry experts who are navigating automation together.</p>
+    </div>
+    <div class="community-grid rv d1">
+      <div class="community-cell">
+        <div class="slabel" style="margin-bottom:14px">Events</div>
+        <h3>Upcoming Demos &amp; Trade Shows</h3>
+        <p>See Formic systems running live. Meet our engineers. Ask every question you have about your specific application.</p>
+        <a href="/company#contact" class="larr">Get on the list →</a>
+      </div>
+      <div class="community-cell">
+        <div class="slabel" style="margin-bottom:14px">Webinars</div>
+        <h3>Monthly Customer Webinars</h3>
+        <p>Deep-dives on new features, customer case studies, and open Q&amp;A with the Formic engineering and customer success team.</p>
+        <a href="/company#contact" class="larr">Register →</a>
+      </div>
+      <div class="community-cell">
+        <div class="slabel" style="margin-bottom:14px">Network</div>
+        <h3>Peer Manufacturer Network</h3>
+        <p>Connect with other mid-market manufacturers who've made the automation leap. Real talk about what works, what doesn't, and what's next.</p>
+        <a href="/company#contact" class="larr">Join the network →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band rv">
+  <h2>Your floor could<br>be next.</h2>
+  <div class="cta-band-btns">
+    <a href="/company#demo" class="btn-dark">Get a Demo</a>
+    <a href="/results" class="btn-wh-border">See the Results</a>
+  </div>
+</div>
+
+  <script is:inline slot="scripts">
+function loadYT(el){
+  const id=el.dataset.ytid;
+  const w=document.createElement('div');
+  w.className='vs-embed fill';
+  w.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" title="Formic video"></iframe>`;
+  el.replaceWith(w);
+}
+  </script>
+</Layout>
