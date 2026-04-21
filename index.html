@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formic — Full Service Automation for Manufacturers</title>
+<meta name="description" content="Formic delivers Robotics as a Service to mid-market CPG manufacturers. No CapEx. No Risk. No Problems. Industrial palletizing, case packing, and more.">
+<meta property="og:title" content="Formic — Full Service Automation">
+<meta property="og:description" content="No CapEx. No Risk. No Problems. Robotics as a Service for mid-market manufacturers.">
+<link rel="canonical" href="https://formic.co">
+<link rel="stylesheet" href="formic.css">
+<style>
+/* HERO video */
+.video-hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:0 80px 96px}
+.video-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.video-hero .vid-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(9,21,23,.85) 0%,rgba(9,21,23,.25) 60%)}
+.video-hero .hero-content{position:relative;z-index:2;max-width:900px}
+.video-mute{position:absolute;bottom:36px;right:80px;z-index:3;background:rgba(9,21,23,.6);border:1px solid rgba(240,245,241,.18);color:rgba(240,245,241,.6);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;cursor:none;transition:color .2s,border-color .2s}
+.video-mute:hover{color:var(--white);border-color:rgba(240,245,241,.45)}
+
+/* MAGIC canvas section */
+#magic{background:var(--black);position:relative;overflow:hidden}
+#mc{position:absolute;inset:0;z-index:0}
+#magic .si{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:90vh;padding-top:120px}
+.mcards{display:flex;flex-direction:column;gap:2px}
+.mcard{background:rgba(240,245,241,.03);border:1px solid rgba(240,245,241,.06);border-left:2px solid var(--orange);padding:20px 24px;cursor:none;transition:background .3s}
+.mcard:hover{background:rgba(255,145,0,.05)}
+.mcard-lbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.mcard h3{font-family:var(--sans);font-size:16px;font-weight:500;color:var(--white);margin-bottom:4px;letter-spacing:-.01em}
+.mcard p{font-size:13px;font-weight:300;color:rgba(240,245,241,.35);line-height:1.6}
+.ttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
+.ttag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,145,0,.65);border:1px solid rgba(255,145,0,.18);padding:4px 10px}
+
+/* Full service grid */
+.fsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lgrey);margin-top:52px}
+.fscell{background:var(--white);padding:44px 36px;cursor:none;transition:background .25s}
+.fscell:hover{background:#e8ede9}
+.fsnum{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.15em;color:var(--lgrey);display:block;margin-bottom:18px}
+.fslbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.fscell h3{font-family:var(--sans);font-size:19px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:10px}
+.fscell p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.75;margin-bottom:22px}
+
+/* Solutions grid */
+.solgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey)}
+.stile{background:var(--white);padding:52px 48px;position:relative;overflow:hidden;cursor:none;transition:background .3s}
+.stile:hover{background:#e8ede9}
+.stile-n{font-family:var(--mono);font-size:96px;font-weight:400;color:var(--lgrey);position:absolute;top:-8px;right:20px;line-height:1;pointer-events:none;transition:color .3s}
+.stile:hover .stile-n{color:#c5cac9}
+.stile h3{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:10px;position:relative;z-index:1}
+.stile p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.75;max-width:380px;margin-bottom:18px;position:relative;z-index:1}
+.stags{display:flex;flex-wrap:wrap;gap:5px;position:relative;z-index:1;margin-bottom:22px}
+.stag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--mgrey);border:1px solid var(--lgrey);padding:3px 9px}
+.sol-cta{background:var(--dgrey);padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+.sol-cta h3{font-family:var(--sans);font-size:clamp(28px,2.8vw,42px);font-weight:500;letter-spacing:-.02em;color:var(--white);line-height:1.05;margin-bottom:12px}
+.sol-cta p{font-size:15px;font-weight:300;color:rgba(240,245,241,.42);line-height:1.7;margin-bottom:26px}
+
+/* Stats */
+.statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08);margin-top:52px;margin-bottom:1px}
+.stcell{background:var(--dgrey);padding:48px 28px;text-align:center}
+.stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
+.stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey)}
+.outrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08)}
+.ocell{background:var(--dgrey);padding:30px 26px;text-decoration:none;cursor:none;transition:background .25s;display:block}
+.ocell:hover{background:#3d4a47}
+.odot{width:5px;height:5px;background:var(--orange);border-radius:50%;margin-bottom:14px}
+.ocell h4{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:-.01em;color:var(--white);margin-bottom:8px}
+.ocell p{font-size:13px;color:var(--mgrey);line-height:1.65;margin-bottom:14px}
+.omore{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:block;transition:letter-spacing .2s}
+.ocell:hover .omore{letter-spacing:.14em}
+
+/* Stories */
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey);margin-top:52px}
+.scard{background:var(--white);padding:34px 38px;display:grid;grid-template-columns:64px 1fr;gap:24px;cursor:none;transition:background .25s;text-decoration:none}
+.scard:hover{background:#e8ede9}
+.sct{font-family:var(--sans);font-size:44px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
+.sctlbl{font-family:var(--mono);font-size:8px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey)}
+.scname{font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:6px}
+.scchallenge{font-size:13px;color:var(--mgrey);line-height:1.6;margin-bottom:6px}
+.scwin{font-size:13px;font-weight:400;color:var(--black);line-height:1.6}
+.scwin::before{content:'→ ';color:var(--orange)}
+
+/* Company dark section */
+.cogrid{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;margin-top:52px;align-items:start}
+.comission{font-size:18px;font-weight:300;color:rgba(240,245,241,.45);line-height:1.8;margin-bottom:24px}
+.comission strong{color:rgba(240,245,241,.8);font-weight:400}
+.cofounded{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,245,241,.2);margin-bottom:24px}
+.cofounded em{color:var(--orange);font-style:normal}
+.conav{display:flex;flex-direction:column}
+.colink{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(240,245,241,.06);text-decoration:none;cursor:none;transition:padding-left .2s}
+.colink:hover{padding-left:6px}
+.colink span{font-family:var(--sans);font-size:16px;font-weight:400;letter-spacing:-.01em;color:rgba(240,245,241,.55);transition:color .2s}
+.colink:hover span{color:var(--white)}
+.colink .ca{color:var(--orange);font-size:14px;transition:transform .2s}
+.colink:hover .ca{transform:translateX(5px)}
+
+/* CTA section */
+#cta{background:var(--orange)}
+.ctai{max-width:1280px;margin:0 auto;padding:100px 80px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cta-ey{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(9,21,23,.4);margin-bottom:18px}
+.cta-t{font-family:var(--sans);font-weight:500;font-size:clamp(48px,7vw,88px);line-height:1.0;letter-spacing:-.02em;color:var(--black);margin-bottom:24px}
+.cta-s{font-size:17px;font-weight:300;color:rgba(9,21,23,.55);max-width:420px;margin-bottom:36px;line-height:1.75}
+.cta-bs{display:flex;gap:12px}
+.btn-ctadark{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--black);padding:13px 28px;text-decoration:none;cursor:none;transition:opacity .2s}
+.btn-ctadark:hover{opacity:.8}
+.btn-ctawh{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(9,21,23,.7);border:1px solid rgba(9,21,23,.3);padding:13px 28px;text-decoration:none;cursor:none;transition:color .2s,border-color .2s}
+.btn-ctawh:hover{color:var(--black);border-color:var(--black)}
+.cta-c{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:rgba(9,21,23,.45);margin-top:24px}
+.cta-c a{color:rgba(9,21,23,.7);text-decoration:none}
+
+@media(max-width:900px){
+  .video-hero{padding:0 24px 64px}
+  #magic .si{grid-template-columns:1fr;min-height:auto;padding-top:96px}
+  .fsgrid,.solgrid,.statsrow,.outrow,.sgrid{grid-template-columns:1fr}
+  .cogrid{grid-template-columns:1fr}
+  .ctai{padding:64px 24px}
+  .cta-bs{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 721 132" fill="none" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M262.432 8.32959C237.096 8.32959 217.988 27.191 217.988 52.1925C217.988 64.4565 222.498 75.6369 230.684 83.6711C238.83 91.6571 250.105 96.0634 262.432 96.0634C287.769 96.0634 306.877 77.202 306.877 52.2005C306.877 27.1991 287.769 8.33762 262.432 8.33762V8.32959ZM288.876 52.1925C288.876 68.1886 277.753 79.8025 262.432 79.8025C247.112 79.8025 236.109 68.4455 236.109 52.1925C236.109 35.9395 247.176 24.5825 262.432 24.5825C277.689 24.5825 288.876 36.1964 288.876 52.1925Z" fill="#091517"/><path d="M605.194 11.1387H587.417V96.0714H605.194V11.1387Z" fill="#091517"/><path d="M702.951 67.6428C697.51 78.8233 684.837 79.6901 681.081 79.6901C666.844 79.6901 656.508 68.1244 656.508 52.1925C656.508 36.2606 666.844 24.7029 681.081 24.7029C695.319 24.7029 701.153 33.8768 702.75 36.694L703.039 37.1997H721L720.719 35.9717C719.299 29.7514 715.23 23.1699 709.837 18.3783C702.445 11.8049 692.502 8.32959 681.081 8.32959C656.676 8.32959 638.274 27.191 638.274 52.1925C638.274 77.194 656.676 96.0554 681.081 96.0554C707.75 96.0554 718.665 77.8922 720.719 68.2849L720.976 67.073H703.224L702.951 67.6348V67.6428Z" fill="#091517"/><path d="M120.255 96.0634H137.919V26.8137H192.451V11.1387H120.255V96.0634Z" fill="#091517"/><path d="M498.545 46.1162L467.848 10.6169L450.048 10.649V96.0624H466.5V34.2055L498.545 71.2699L550.886 10.6892H529.178L498.545 46.1162Z" fill="#091517"/><path d="M550.26 37.3598H532.484V96.0631H550.26V37.3598Z" fill="#091517"/><path d="M179.498 46.066H155.152L141.195 62.0896H179.498V46.066Z" fill="#091517"/><path fill-rule="evenodd" clip-rule="evenodd" d="M383.759 11.1307C402.699 11.1307 413.132 20.2805 413.132 36.8946H413.14C413.14 48.1714 407.507 56.2938 397.242 59.8976L416.985 96.0634H398.125L379.397 62.0896H357.492L371.449 46.066H386.067C392.084 45.2617 395.019 42.2386 395.019 36.8946C395.019 30.0804 391.151 27.0385 382.475 27.0385H354.041V96.0634H336.393V11.1307H383.759Z" fill="#091517"/><path d="M0 96.777V132.008L72.2047 48.2984H41.8183L0 96.777Z" fill="#091517"/><path d="M0 83.7097L72.2047 0.000183105H0V83.7097Z" fill="#091517"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="platform.html">Platform</a></li>
+    <li><a href="full-service.html">Full Service</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="customers.html">Customers</a></li>
+    <li><a href="company.html">Company</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="company.html#contact" class="btn-ghost">Talk to Sales</a>
+    <a href="company.html#demo" class="btn-orange">Get a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO — full screen video -->
+<section class="video-hero">
+  <video id="heroVid" autoplay muted loop playsinline>
+    <source src="ATLAS_EOAT.webm" type="video/webm">
+    <!-- fallback -->
+    <img src="Focus-7603.jpg" alt="Formic industrial automation">
+  </video>
+  <div class="vid-overlay"></div>
+  <div class="hero-content">
+    <div class="mono-label">Full Service Automation</div>
+    <h1 style="font-family:var(--sans);font-weight:500;font-size:clamp(60px,8.5vw,112px);line-height:1.0;letter-spacing:-.02em;color:var(--white);margin-bottom:24px">Automate<br><em style="color:var(--orange);font-style:normal">NOW</em><br>with Formic</h1>
+    <p style="font-size:18px;font-weight:300;color:rgba(240,245,241,.5);max-width:520px;margin-bottom:40px;line-height:1.75">The only robotics-as-a-service platform purpose-built for mid-market manufacturers. No CapEx. No Risk. No Problems.</p>
+    <div style="display:flex;gap:12px">
+      <a href="company.html#demo" class="btn-hero solid">Get a Demo</a>
+      <a href="platform.html" class="btn-hero outline">See How It Works</a>
+    </div>
+  </div>
+  <button id="muteBtn" class="video-mute" onclick="toggleMute()">Unmute</button>
+  <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
+</section>
+
+<!-- THE MAGIC — dark interactive canvas -->
+<section id="magic">
+  <canvas id="mc"></canvas>
+  <div class="si">
+    <div>
+      <div class="slabel rv" style="color:var(--orange)">The Magic</div>
+      <h2 class="dtitle wh rv d1" style="margin-bottom:18px">PLC Reliability.<br><em>Software</em><br>Intelligence.</h2>
+      <p class="btext wh rv d2" style="max-width:400px;margin-bottom:26px">Formic's hybrid architecture pairs battle-tested industrial controls with a modern software layer — your automation gets smarter over time, not obsolete.</p>
+      <div class="ttags rv d3">
+        <span class="ttag">Formic Core</span>
+        <span class="ttag">Colony Fleet Mgmt</span>
+        <span class="ttag">FPI Analytics</span>
+        <span class="ttag">FormicFAST</span>
+      </div>
+      <div style="margin-top:28px" class="rv d4">
+        <a href="platform.html" class="larr">Explore the platform →</a>
+      </div>
+    </div>
+    <div class="mcards rv d1">
+      <div class="mcard"><div class="mcard-lbl">Formic Core</div><h3>Industrial Control Layer</h3><p>Deterministic PLC motion — KUKA, ABB, FANUC, Doosan. Standardized and serviceable at every site.</p></div>
+      <div class="mcard"><div class="mcard-lbl">Formic Colony</div><h3>Remote Fleet Management</h3><p>Encrypted remote diagnostics and real-time visibility. Faster root-cause, less downtime.</p></div>
+      <div class="mcard"><div class="mcard-lbl">FPI — Production Intelligence</div><h3>Real-Time Line Data</h3><p>Your team sees the same live data our support engineers do. Continuous improvement built in.</p></div>
+      <div class="mcard"><div class="mcard-lbl">FormicFAST</div><h3>Rapid Specification &amp; Deploy</h3><p>Pre-engineered, pre-configured, pre-tested. From signed agreement to production in weeks.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL SERVICE — white -->
+<section id="fs" style="background:var(--white)">
+  <div class="si">
+    <div class="two-col rv" style="align-items:end">
+      <div>
+        <div class="slabel">Full Service Automation</div>
+        <h2 class="dtitle rv d1">Everything.<br><em>Included.</em></h2>
+      </div>
+      <p class="btext rv d2">One fixed monthly price covers equipment, service, and technology. No CapEx. No surprise costs. No internal resources needed.</p>
+    </div>
+    <div class="fsgrid rv d1">
+      <div class="fscell">
+        <span class="fsnum">01 —</span>
+        <div class="fslbl">Get the Job Done</div>
+        <h3>Systems &amp; Equipment</h3>
+        <p>Engineers scope, test, program, ship, and deploy. Modular architecture built for consistent, repeatable performance across sites.</p>
+        <a href="solutions.html" class="larr">View solutions →</a>
+      </div>
+      <div class="fscell">
+        <span class="fsnum">02 —</span>
+        <div class="fslbl">Keep It Running</div>
+        <h3>Service &amp; Support</h3>
+        <p>24/7 bilingual tech support, Field Service Engineers, and contracted performance SLAs. Maintenance 100% included.</p>
+        <a href="full-service.html" class="larr">Service details →</a>
+      </div>
+      <div class="fscell">
+        <span class="fsnum">03 —</span>
+        <div class="fslbl">Optimize Performance</div>
+        <h3>Technology &amp; Software</h3>
+        <p>Real-time production data, continuous feature rollouts, and remote diagnostics — better visibility than any legacy system.</p>
+        <a href="platform.html" class="larr">Explore technology →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SPLIT 1: Full Service in action — between FS and Solutions -->
+<section class="bg-white rv" style="padding:0">
+  <div class="video-split">
+    <div class="yt-facade" data-ytid="ZzWbNn-EU_0" onclick="loadYT(this)">
+      <img
+        src="https://i.ytimg.com/vi/ZzWbNn-EU_0/maxresdefault.jpg"
+        alt="Formic Full Service Automation — see it in action"
+        loading="lazy"
+        onerror="this.src='Focus-7603.jpg'"
+      >
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span class="yt-label">Watch: Full Service Automation</span>
+    </div>
+    <div class="vs-text light">
+      <div class="slabel">In Action</div>
+      <h2 class="dk">From inquiry<br>to <em>running production</em></h2>
+      <p class="vs-body dk">Watch how Formic scopes, deploys, and supports a complete automation system — from first conversation to running production in weeks.</p>
+      <a href="full-service.html" class="larr">How It Works →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FULLBLEED IMAGE BREAK -->
+<div class="fullbleed-wrap rv">
+  <img src="Focus-7603.jpg" class="fullbleed" alt="Formic industrial palletizer deployed at CPG facility" loading="lazy" style="height:65vh">
+  <div class="fullbleed-caption">Deployed &amp; running — CPG production floor</div>
+</div>
+
+<!-- SOLUTIONS — light grey -->
+<section id="sol" style="background:var(--lgrey)">
+  <div class="si">
+    <div class="two-col rv" style="margin-bottom:52px;align-items:end">
+      <div>
+        <div class="slabel">Solutions</div>
+        <h2 class="dtitle rv d1">Built for<br><em>Your Line</em></h2>
+      </div>
+      <p class="btext rv d2">Standardized, modular systems for the most demanding tasks on mid-market CPG floors — deployed in weeks, not months.</p>
+    </div>
+  </div>
+  <div class="solgrid rv d1">
+    <div class="stile">
+      <div class="stile-n">1</div>
+      <h3>End-of-Line Packing</h3>
+      <p>Palletizing, case packing, case erecting and sealing, AMRs — proven modular designs deployed at scale across CPG floors.</p>
+      <div class="stags"><span class="stag">Palletizing</span><span class="stag">Case Packing</span><span class="stag">Case Erector/Sealer</span><span class="stag">AMRs</span></div>
+      <a href="solutions.html" class="larr">Full details →</a>
+    </div>
+    <div class="stile">
+      <div class="stile-n">2</div>
+      <h3>Precision Part Manufacturing</h3>
+      <p>Mill/lathe tending and injection molding — removing the hardest, most repetitive tasks from your operators.</p>
+      <div class="stags"><span class="stag">Mill Tending</span><span class="stag">Lathe Tending</span><span class="stag">Injection Molding</span></div>
+      <a href="solutions.html#precision" class="larr">Full details →</a>
+    </div>
+    <div class="stile">
+      <div class="stile-n">3</div>
+      <h3>General Tasks</h3>
+      <p>Mobile bimanual manipulators and full humanoid platforms — the next frontier available on your floor now.</p>
+      <div class="stags"><span class="stag">Mobile Bimanual</span><span class="stag">Full Humanoids</span></div>
+      <a href="solutions.html#general" class="larr">Full details →</a>
+    </div>
+    <div class="sol-cta">
+      <h3>Not sure<br>where to start?</h3>
+      <p>We scope the right system for your line — no engineering resources required.</p>
+      <a href="company.html#demo" class="btn-orange" style="display:inline-block">Get a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS — dark grey -->
+<section id="res" style="background:var(--dgrey)">
+  <div class="si">
+    <div class="two-col rv" style="align-items:end">
+      <div>
+        <div class="slabel" style="color:var(--orange)">Results</div>
+        <h2 class="dtitle wh rv d1">Measurable<br><em>Impact</em></h2>
+      </div>
+      <p class="btext wh rv d2">Real outcomes from real production floors.</p>
+    </div>
+    <div class="statsrow rv d1">
+      <div class="stcell"><span class="stnum">20%</span><span class="stlbl">OpEx Reduction</span></div>
+      <div class="stcell"><span class="stnum">24/7</span><span class="stlbl">Tech Support</span></div>
+      <div class="stcell"><span class="stnum">$0</span><span class="stlbl">CapEx Required</span></div>
+      <div class="stcell"><span class="stnum">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
+    </div>
+    <div class="outrow rv d2">
+      <a href="results.html#labor" class="ocell"><div class="odot"></div><h4>Overcoming Labor Shortage</h4><p>Automate the hardest-to-fill positions without adding headcount risk.</p><span class="omore">Stories →</span></a>
+      <a href="results.html#injury" class="ocell"><div class="odot"></div><h4>Eliminating Ergonomic Injury</h4><p>Remove workers from high-repetition tasks — cut injury rates and improve retention.</p><span class="omore">Stories →</span></a>
+      <a href="results.html#productivity" class="ocell"><div class="odot"></div><h4>Productivity Gains</h4><p>Consistent throughput, faster changeovers, real-time data for continuous optimization.</p><span class="omore">Stories →</span></a>
+      <a href="results.html#cost" class="ocell"><div class="odot"></div><h4>Cost Savings</h4><p>One fixed monthly price. No capital at risk. OpEx model that scales with growth.</p><span class="omore">Stories →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES — white -->
+<section id="stories" style="background:var(--white)">
+  <div class="si">
+    <div class="two-col rv" style="margin-bottom:52px;align-items:end">
+      <div>
+        <div class="slabel">Customer Stories</div>
+        <h2 class="dtitle rv d1">Proven on<br><em>Real Floors</em></h2>
+      </div>
+      <div class="pull-quote rv d2">
+        <blockquote>"Having a partner like Formic that handles installation, maintenance, and equipment swapping allows us to stay focused on what we do best: making great snacks."</blockquote>
+        <cite>— Jaap Langenberg, CEO · Wyandot Snacks</cite>
+      </div>
+    </div>
+    <div class="sgrid rv d1">
+      <a href="customers.html" class="scard"><div><div class="sct">5</div><div class="sctlbl">Systems</div></div><div><div class="scname">Land O'Frost</div><p class="scchallenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p><p class="scwin">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p></div></a>
+      <a href="customers.html" class="scard"><div><div class="sct">9</div><div class="sctlbl">Systems</div></div><div><div class="scname">Mi Rancho</div><p class="scchallenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p><p class="scwin">9 robotic palletizers → eliminated injuries, cut downtime</p></div></a>
+      <a href="customers.html" class="scard"><div><div class="sct">1</div><div class="sctlbl">System</div></div><div><div class="scname">Mariani Family</div><p class="scchallenge">Labor gaps and ergonomic strain limited efficiency amid rising demand.</p><p class="scwin">Boosted efficiency, filled staffing gaps, flexible equipment swaps</p></div></a>
+      <a href="customers.html" class="scard"><div><div class="sct">1</div><div class="sctlbl">System</div></div><div><div class="scname">Taffy Town</div><p class="scchallenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p><p class="scwin">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p></div></a>
+    </div>
+    <div style="text-align:center;margin-top:36px" class="rv d2">
+      <a href="customers.html" class="larr">All customer stories →</a>
+    </div>
+  </div>
+</section>
+
+<!-- GIF BREAK -->
+<div class="gif-strip rv" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--black)">
+  <div style="overflow:hidden;position:relative">
+    <img src="Haviland_Products_-_Palletizing.gif" style="width:100%;height:340px;object-fit:cover;display:block" alt="Formic palletizer running at production speed">
+    <span style="position:absolute;bottom:16px;left:20px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.6)">Industrial palletizing</span>
+  </div>
+  <div style="overflow:hidden;position:relative">
+    <img src="CasepackerPromoVideo_NoText.gif" style="width:100%;height:340px;object-fit:cover;display:block" alt="Formic case packer in action">
+    <span style="position:absolute;bottom:16px;left:20px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.6)">Case packing</span>
+  </div>
+</div>
+
+<!-- VIDEO SPLIT 2: The Formic Story — between Stories and Company -->
+<section class="bg-black rv" style="padding:0">
+  <div class="video-split dark">
+    <div class="vs-text dark">
+      <div class="slabel" style="color:var(--orange)">The Mission</div>
+      <h2 class="wh">Driving U.S.<br><em>Manufacturing Forward</em></h2>
+      <p class="vs-body wh">Technology doesn't change the world until you make it accessible to those who need it most. See the story behind Formic — and what we're building for American manufacturing.</p>
+      <a href="company.html" class="larr" style="color:var(--orange)">Our mission →</a>
+    </div>
+    <div class="yt-facade" data-ytid="SD0UMnNYR1E" onclick="loadYT(this)">
+      <img
+        src="https://i.ytimg.com/vi/SD0UMnNYR1E/maxresdefault.jpg"
+        alt="The Formic Story"
+        loading="lazy"
+        onerror="this.src='R52_8950-2.jpg'"
+      >
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span class="yt-label">Watch: The Formic Story</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY — black -->
+<section id="co" style="background:var(--black)">
+  <div class="si">
+    <div class="slabel rv" style="color:var(--orange)">Company</div>
+    <h2 class="dtitle wh rv d1">Driving U.S.<br>Manufacturing<br><em>Forward</em></h2>
+    <div class="cogrid rv d2">
+      <div>
+        <p class="cofounded">Founded <em>2020</em> · Chicago, IL</p>
+        <p class="comission">Formic was founded to <strong>accelerate the accessibility and ease of automation</strong> across American manufacturing — delivering more capacity, consistency, and reliability while reducing cost, downtime, and worker safety issues.</p>
+        <p class="comission">We believe every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted — without capital risk or 18-month deployment timelines.</p>
+        <a href="company.html" class="larr">Our mission →</a>
+      </div>
+      <nav class="conav">
+        <a href="company.html#mission" class="colink"><span>Formic Mission</span><span class="ca">→</span></a>
+        <a href="company.html#news" class="colink"><span>News &amp; Press</span><span class="ca">→</span></a>
+        <a href="company.html#careers" class="colink"><span>Careers</span><span class="ca">→</span></a>
+        <a href="company.html" class="colink"><span>Downloads &amp; Resources</span><span class="ca">→</span></a>
+        <a href="company.html#investors" class="colink"><span>Investors</span><span class="ca">→</span></a>
+        <a href="customers.html#community" class="colink"><span>Community &amp; Events</span><span class="ca">→</span></a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — orange -->
+<section id="cta">
+  <div class="ctai">
+    <p class="cta-ey">Ready to automate?</p>
+    <h2 class="cta-t">No CapEx.<br>No Risk.<br>No Problems.</h2>
+    <p class="cta-s">Talk to a Formic engineer about your production line. We'll scope the right system — no internal resources needed.</p>
+    <div class="cta-bs">
+      <a href="company.html#demo" class="btn-ctadark">Get a Demo</a>
+      <a href="company.html#contact" class="btn-ctawh">Talk to Sales</a>
+    </div>
+    <p class="cta-c">Or reach us: <a href="mailto:sales@formic.co">sales@formic.co</a> · <a href="tel:7754367642">775-436-7642</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 721 132" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M262.432 8.32959C237.096 8.32959 217.988 27.191 217.988 52.1925C217.988 64.4565 222.498 75.6369 230.684 83.6711C238.83 91.6571 250.105 96.0634 262.432 96.0634C287.769 96.0634 306.877 77.202 306.877 52.2005C306.877 27.1991 287.769 8.33762 262.432 8.33762V8.32959ZM288.876 52.1925C288.876 68.1886 277.753 79.8025 262.432 79.8025C247.112 79.8025 236.109 68.4455 236.109 52.1925C236.109 35.9395 247.176 24.5825 262.432 24.5825C277.689 24.5825 288.876 36.1964 288.876 52.1925Z" fill="#F0F5F1"/><path d="M605.194 11.1387H587.417V96.0714H605.194V11.1387Z" fill="#F0F5F1"/><path d="M702.951 67.6428C697.51 78.8233 684.837 79.6901 681.081 79.6901C666.844 79.6901 656.508 68.1244 656.508 52.1925C656.508 36.2606 666.844 24.7029 681.081 24.7029C695.319 24.7029 701.153 33.8768 702.75 36.694L703.039 37.1997H721L720.719 35.9717C719.299 29.7514 715.23 23.1699 709.837 18.3783C702.445 11.8049 692.502 8.32959 681.081 8.32959C656.676 8.32959 638.274 27.191 638.274 52.1925C638.274 77.194 656.676 96.0554 681.081 96.0554C707.75 96.0554 718.665 77.8922 720.719 68.2849L720.976 67.073H703.224L702.951 67.6348V67.6428Z" fill="#F0F5F1"/><path d="M120.255 96.0634H137.919V26.8137H192.451V11.1387H120.255V96.0634Z" fill="#F0F5F1"/><path d="M498.545 46.1162L467.848 10.6169L450.048 10.649V96.0624H466.5V34.2055L498.545 71.2699L550.886 10.6892H529.178L498.545 46.1162Z" fill="#F0F5F1"/><path d="M550.26 37.3598H532.484V96.0631H550.26V37.3598Z" fill="#F0F5F1"/><path d="M179.498 46.066H155.152L141.195 62.0896H179.498V46.066Z" fill="#F0F5F1"/><path fill-rule="evenodd" clip-rule="evenodd" d="M383.759 11.1307C402.699 11.1307 413.132 20.2805 413.132 36.8946H413.14C413.14 48.1714 407.507 56.2938 397.242 59.8976L416.985 96.0634H398.125L379.397 62.0896H357.492L371.449 46.066H386.067C392.084 45.2617 395.019 42.2386 395.019 36.8946C395.019 30.0804 391.151 27.0385 382.475 27.0385H354.041V96.0634H336.393V11.1307H383.759Z" fill="#F0F5F1"/><path d="M0 96.777V132.008L72.2047 48.2984H41.8183L0 96.777Z" fill="#F0F5F1"/><path d="M0 83.7097L72.2047 0.000183105H0V83.7097Z" fill="#F0F5F1"/></svg>
+      </div>
+      <p class="footer-tagline">Full Service Automation for mid-market manufacturers. No CapEx. No Risk. No Problems.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="platform.html">Formic Core</a>
+      <a href="platform.html#colony">Colony Fleet Mgmt</a>
+      <a href="platform.html#fpi">FPI Analytics</a>
+      <a href="platform.html#fast">FormicFAST</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="solutions.html">End-of-Line Packing</a>
+      <a href="solutions.html#precision">Precision Mfg.</a>
+      <a href="solutions.html#general">General Tasks</a>
+      <a href="full-service.html">How It Works</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="company.html">Mission</a>
+      <a href="customers.html">Customer Stories</a>
+      <a href="company.html#careers">Careers</a>
+      <a href="company.html#news">News</a>
+      <a href="company.html#investors">Investors</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Formic Technologies, Inc. All rights reserved.</p>
+    <p>formic.co · sales@formic.co · 775-436-7642</p>
+  </div>
+</footer>
+<script src="formic.js"></script>
+
+<script>
+function toggleMute(){
+  const vid=document.getElementById('heroVid');
+  const btn=document.getElementById('muteBtn');
+  if(!vid||!btn)return;
+  vid.muted=!vid.muted;
+  btn.textContent=vid.muted?'Unmute':'Mute';
+}
+
+// Magic canvas
+(function(){
+  const c=document.getElementById('mc'),ctx=c.getContext('2d');
+  let W,H,nodes=[],mouse={x:-999,y:-999};
+  function resize(){const s=document.getElementById('magic');W=c.width=s.offsetWidth;H=c.height=s.offsetHeight;c.style.width=W+'px';c.style.height=H+'px';nodes=[];const cols=22,rows=14;for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)nodes.push({bx:(i/(cols-1))*W,by:(j/(rows-1))*H,x:(i/(cols-1))*W,y:(j/(rows-1))*H,r:Math.random()*1.5+.5});}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  function draw(){ctx.clearRect(0,0,W,H);nodes.forEach(n=>{const dx=n.bx-mouse.x,dy=n.by-mouse.y,dist=Math.sqrt(dx*dx+dy*dy),f=Math.max(0,200-dist)/200,ang=Math.atan2(dy,dx),push=f*f*50;n.x+=(n.bx+Math.cos(ang)*push-n.x)*.09;n.y+=(n.by+Math.sin(ang)*push-n.y)*.09;ctx.beginPath();ctx.arc(n.x,n.y,n.r+f*2.5,0,Math.PI*2);ctx.fillStyle='rgba(255,145,0,'+(0.05+f*.48)+')';ctx.fill();});for(let i=0;i<nodes.length;i+=2)for(let j=i+1;j<nodes.length;j+=2){const a=nodes[i],b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<72){const adx=a.bx-mouse.x,ady=a.by-mouse.y,af=Math.max(0,200-Math.sqrt(adx*adx+ady*ady))/200;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(255,145,0,'+(1-d/72)*(.022+af*.12)+')';ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(draw);}
+  draw();
+})();
+</script>
+<script>
+function loadYT(el){
+  const id=el.dataset.ytid;
+  const w=document.createElement('div');
+  w.className='vs-embed fill';
+  w.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" title="Formic video"></iframe>`;
+  el.replaceWith(w);
+}
+</script>
+</body>
+</html>

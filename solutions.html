@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions — Formic</title>
+<meta name="description" content="End-of-line packing, precision part manufacturing, and general tasks — standardized robotic automation for mid-market CPG manufacturers.">
+<link rel="canonical" href="https://formic.co/solutions">
+<link rel="stylesheet" href="formic.css">
+<style>
+.sol-hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:55vh 35vh;gap:2px}
+.sol-hero-cell{overflow:hidden;position:relative}
+.sol-hero-cell img,.sol-hero-cell video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.sol-hero-cell:hover img,.sol-hero-cell:hover video{transform:scale(1.03)}
+.sol-hero-cell.tall{grid-row:span 2}
+.sol-hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;background:linear-gradient(to top,rgba(9,21,23,.75),transparent)}
+.sol-hero-label{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.75)}
+.sol-section{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--lgrey);margin-bottom:2px}
+.sol-text{padding:72px 64px}
+.sol-img{overflow:hidden}
+.sol-img img,.sol-img video{width:100%;height:100%;object-fit:cover;display:block;min-height:480px}
+.sol-text h2{font-family:var(--sans);font-size:clamp(36px,3.5vw,52px);font-weight:500;letter-spacing:-.02em;color:var(--black);line-height:1.05;margin-bottom:16px}
+.sol-text .btext{margin-bottom:28px}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.spec-item{background:var(--lgrey);padding:14px 16px}
+.spec-item dt{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.spec-item dd{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--black)}
+.gif-fullbleed{width:100%;height:50vh;object-fit:cover;display:block}
+@media(max-width:900px){.sol-hero-grid{grid-template-columns:1fr;grid-template-rows:auto}.sol-hero-cell.tall{grid-row:span 1}.sol-section{grid-template-columns:1fr}.sol-text{padding:40px 24px}.spec-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="curR"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 721 132" fill="none" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M262.432 8.32959C237.096 8.32959 217.988 27.191 217.988 52.1925C217.988 64.4565 222.498 75.6369 230.684 83.6711C238.83 91.6571 250.105 96.0634 262.432 96.0634C287.769 96.0634 306.877 77.202 306.877 52.2005C306.877 27.1991 287.769 8.33762 262.432 8.33762V8.32959ZM288.876 52.1925C288.876 68.1886 277.753 79.8025 262.432 79.8025C247.112 79.8025 236.109 68.4455 236.109 52.1925C236.109 35.9395 247.176 24.5825 262.432 24.5825C277.689 24.5825 288.876 36.1964 288.876 52.1925Z" fill="#091517"/><path d="M605.194 11.1387H587.417V96.0714H605.194V11.1387Z" fill="#091517"/><path d="M702.951 67.6428C697.51 78.8233 684.837 79.6901 681.081 79.6901C666.844 79.6901 656.508 68.1244 656.508 52.1925C656.508 36.2606 666.844 24.7029 681.081 24.7029C695.319 24.7029 701.153 33.8768 702.75 36.694L703.039 37.1997H721L720.719 35.9717C719.299 29.7514 715.23 23.1699 709.837 18.3783C702.445 11.8049 692.502 8.32959 681.081 8.32959C656.676 8.32959 638.274 27.191 638.274 52.1925C638.274 77.194 656.676 96.0554 681.081 96.0554C707.75 96.0554 718.665 77.8922 720.719 68.2849L720.976 67.073H703.224L702.951 67.6348V67.6428Z" fill="#091517"/><path d="M120.255 96.0634H137.919V26.8137H192.451V11.1387H120.255V96.0634Z" fill="#091517"/><path d="M498.545 46.1162L467.848 10.6169L450.048 10.649V96.0624H466.5V34.2055L498.545 71.2699L550.886 10.6892H529.178L498.545 46.1162Z" fill="#091517"/><path d="M550.26 37.3598H532.484V96.0631H550.26V37.3598Z" fill="#091517"/><path d="M179.498 46.066H155.152L141.195 62.0896H179.498V46.066Z" fill="#091517"/><path fill-rule="evenodd" clip-rule="evenodd" d="M383.759 11.1307C402.699 11.1307 413.132 20.2805 413.132 36.8946H413.14C413.14 48.1714 407.507 56.2938 397.242 59.8976L416.985 96.0634H398.125L379.397 62.0896H357.492L371.449 46.066H386.067C392.084 45.2617 395.019 42.2386 395.019 36.8946C395.019 30.0804 391.151 27.0385 382.475 27.0385H354.041V96.0634H336.393V11.1307H383.759Z" fill="#091517"/><path d="M0 96.777V132.008L72.2047 48.2984H41.8183L0 96.777Z" fill="#091517"/><path d="M0 83.7097L72.2047 0.000183105H0V83.7097Z" fill="#091517"/></svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="platform.html">Platform</a></li>
+    <li><a href="full-service.html">Full Service</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="customers.html">Customers</a></li>
+    <li><a href="company.html">Company</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="company.html#contact" class="btn-ghost">Talk to Sales</a>
+    <a href="company.html#demo" class="btn-orange">Get a Demo</a>
+  </div>
+</nav>
+
+<!-- HERO: image mosaic -->
+<div style="padding-top:64px">
+  <div class="sol-hero-grid">
+    <div class="sol-hero-cell tall">
+      <img src="Focus-7603.jpg" alt="Formic industrial palletizer in CPG facility">
+      <div class="sol-hero-overlay"><span class="sol-hero-label">End-of-line packing</span></div>
+    </div>
+    <div class="sol-hero-cell">
+      <img src="Talos-0095.jpg" alt="Formic white cobot arm for precision manufacturing">
+      <div class="sol-hero-overlay"><span class="sol-hero-label">Precision manufacturing</span></div>
+    </div>
+    <div class="sol-hero-cell">
+      <img src="Talos-0143.jpg" alt="Formic robot in motion — general tasks">
+      <div class="sol-hero-overlay"><span class="sol-hero-label">General tasks</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="bg-white">
+  <div class="si">
+    <div class="two-col rv" style="align-items:end">
+      <div>
+        <div class="slabel">Solutions</div>
+        <h2 class="dtitle">Built for<br><em>your line</em></h2>
+      </div>
+      <p class="btext">Standardized, modular systems for the most demanding tasks on mid-market CPG floors. Pre-engineered designs deployed in weeks — not months of custom work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EOL PACKING -->
+<section id="eol" class="bg-white" style="padding-top:2px">
+  <div class="sol-section rv">
+    <div class="sol-text bg-white">
+      <div class="slabel">01 — End-of-Line Packing</div>
+      <h2>Palletizing,<br>packing, sealing.</h2>
+      <p class="btext">From individual case packing to full-pallet stacking — Formic's end-of-line systems handle the most physically demanding, repetitive tasks with consistent precision, 24 hours a day.</p>
+      <div class="spec-grid">
+        <div class="spec-item"><dt>Stack height</dt><dd>Up to 95" (industrial)</dd></div>
+        <div class="spec-item"><dt>Case dimensions</dt><dd>Up to 24" × 16" × 15"</dd></div>
+        <div class="spec-item"><dt>Throughput</dt><dd>Up to 10 cases/min</dd></div>
+        <div class="spec-item"><dt>Case weight</dt><dd>Up to 40 lbs</dd></div>
+        <div class="spec-item"><dt>Pack rates</dt><dd>Up to 120 units/min</dd></div>
+        <div class="spec-item"><dt>Footprint</dt><dd>As compact as 8'×8'×7'</dd></div>
+      </div>
+      <div class="stags" style="margin-bottom:28px">
+        <span class="stag">Industrial Palletizing</span>
+        <span class="stag">Cobot Palletizing</span>
+        <span class="stag">Case Packing</span>
+        <span class="stag">Case Erecting</span>
+        <span class="stag">Case Sealing</span>
+        <span class="stag">AMRs</span>
+        <span class="stag">Slip Sheet Placement</span>
+      </div>
+      <a href="company.html#demo" class="larr">Scope my application →</a>
+    </div>
+    <div class="sol-img">
+      <img src="R52_8950-2.jpg" alt="Formic KUKA industrial palletizer with EOAT" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- GIF break — palletizing in action -->
+<div class="rv">
+  <img src="Haviland_Products_-_Palletizing.gif" class="gif-fullbleed" alt="Formic palletizer running at production speed" style="height:45vh">
+</div>
+
+<!-- CASE PACKING in action -->
+<div class="rv" style="margin-top:2px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--lgrey)">
+    <div style="overflow:hidden">
+      <img src="CasepackerPromoVideo_NoText.gif" style="width:100%;height:380px;object-fit:cover;display:block" alt="Formic case packer processing product at speed">
+    </div>
+    <div style="background:var(--dgrey);padding:48px 44px;display:flex;flex-direction:column;justify-content:center">
+      <div class="slabel" style="color:var(--orange)">Industrial Case Packing</div>
+      <h3 style="font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:-.01em;color:var(--white);margin-bottom:14px">Jars. Cans. Canisters.<br>Bottles. Tubs. Bowls.</h3>
+      <p style="font-size:14px;font-weight:300;color:rgba(240,245,241,.45);line-height:1.7;margin-bottom:24px">Rigid packaging types handled with precision. Up to 120 units/minute in a compact 8'×8'×7' footprint designed for end-of-line integration.</p>
+      <a href="company.html#demo" class="larr">Get a quote →</a>
+    </div>
+  </div>
+</div>
+
+<!-- EOAT DETAIL -->
+<div class="rv" style="margin-top:2px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--lgrey)">
+    <div style="background:var(--white);padding:48px 44px;display:flex;flex-direction:column;justify-content:center">
+      <div class="slabel">End-of-Arm Tooling</div>
+      <h3 style="font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:14px">EOAT matched<br>to your product</h3>
+      <p style="font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.7;margin-bottom:24px">Vacuum, bottom-support, and clamp configurations — each selected and tested specifically for your product's shape, weight, and surface properties. No guess work.</p>
+      <div class="stags">
+        <span class="stag">Vacuum EOAT</span>
+        <span class="stag">Bottom Support</span>
+        <span class="stag">Clamp</span>
+        <span class="stag">Custom configs</span>
+      </div>
+    </div>
+    <div style="overflow:hidden">
+      <img src="R52_5904-2.jpg" style="width:100%;height:380px;object-fit:cover;display:block" alt="Formic KPA EOAT gripper close-up detail" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO SPLIT: ZzWbNn-EU_0 — Full Service in action -->
+<section class="bg-lgrey rv" style="padding:0;margin-top:48px">
+  <div class="video-split">
+    <div class="yt-facade" data-ytid="ZzWbNn-EU_0" onclick="loadYT(this)">
+      <img
+        src="https://i.ytimg.com/vi/ZzWbNn-EU_0/maxresdefault.jpg"
+        alt="Formic Full Service Automation in action"
+        loading="lazy"
+        onerror="this.src='Focus-7603.jpg'"
+      >
+      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span class="yt-label">Watch: Full Service Automation</span>
+    </div>
+    <div class="vs-text light" style="background:var(--white)">
+      <div class="slabel">See It Running</div>
+      <h2 class="dk">Your line.<br><em>Our system.</em></h2>
+      <p class="vs-body dk">Watch a live Formic deployment — from scoping to commissioning to full production. End-of-line automation, running the way it should.</p>
+      <a href="full-service.html" class="larr">How Full Service works →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRECISION MFG -->
+<section id="precision" class="bg-lgrey" style="margin-top:48px">
+  <div class="sol-section rv" style="background:var(--lgrey)">
+    <div class="sol-img" style="background:var(--white)">
+      <img src="Talos-0095.jpg" alt="Formic cobot arm for precision manufacturing tasks" loading="lazy" style="min-height:480px;width:100%;object-fit:cover">
+    </div>
+    <div class="sol-text" style="background:var(--white)">
+      <div class="slabel">02 — Precision Part Manufacturing</div>
+      <h2>Machine tending<br>without the risk.</h2>
+      <p class="btext">Replace the most repetitive, ergonomically damaging tasks in your precision manufacturing operation. Mill tending, lathe tending, and injection molding — handled with the same consistent precision every cycle.</p>
+      <div class="stags" style="margin-bottom:28px">
+        <span class="stag">Mill Machine Tending</span>
+        <span class="stag">Lathe Machine Tending</span>
+        <span class="stag">Injection Molding Tending</span>
+      </div>
+      <ul class="feat-list" style="list-style:none;margin-bottom:28px">
+        <li style="font-size:14px;font-weight:300;color:var(--dgrey);padding:10px 0;border-bottom:1px solid var(--lgrey);display:flex;align-items:baseline;gap:10px;line-height:1.5"><span style="width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;display:block;margin-top:6px"></span>Collaborative and industrial robot options depending on floor layout and throughput</li>
+        <li style="font-size:14px;font-weight:300;color:var(--dgrey);padding:10px 0;border-bottom:1px solid var(--lgrey);display:flex;align-items:baseline;gap:10px;line-height:1.5"><span style="width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;display:block;margin-top:6px"></span>Frees skilled machinists from loading/unloading to focus on quality and programming</li>
+        <li style="font-size:14px;font-weight:300;color:var(--dgrey);padding:10px 0;display:flex;align-items:baseline;gap:10px;line-height:1.5"><span style="width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;display:block;margin-top:6px"></span>Eliminates repetitive strain injuries associated with machine tending positions</li>
+      </ul>
+      <a href="company.html#demo" class="larr">Scope my application →</a>
+    </div>
+  </div>
+</section>
+
+<!-- GENERAL TASKS -->
+<section id="general" class="bg-black" style="padding:72px 0 0">
+  <div class="si rv" style="padding-bottom:52px">
+    <div class="slabel" style="color:var(--orange)">03 — General Tasks</div>
+    <h2 class="dtitle wh" style="margin-bottom:20px">The next frontier<br><em>available now</em></h2>
+    <p class="btext wh" style="max-width:560px">Mobile bimanual manipulators and full humanoid platforms bring flexible, general-purpose automation to tasks that were previously impossible to automate. Formic's Full Service model means you can deploy these systems today — without the capital risk of figuring it out yourself.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(240,245,241,.08)" class="rv d1">
+    <div style="background:var(--ink2,#1A1917);padding:48px 44px">
+      <div class="slabel" style="color:var(--orange)">Mobile Bimanual Manipulator</div>
+      <h3 style="font-family:var(--sans);font-size:24px;font-weight:500;color:var(--white);letter-spacing:-.01em;margin-bottom:12px">Two arms. Wheels. Purpose.</h3>
+      <p style="font-size:14px;font-weight:300;color:rgba(240,245,241,.4);line-height:1.7">Mobile platforms with dual-arm manipulation capability for tasks requiring dexterity and mobility across your facility — not just a fixed workstation.</p>
+    </div>
+    <div style="background:var(--ink2,#1A1917);padding:48px 44px">
+      <div class="slabel" style="color:var(--orange)">Full Humanoids</div>
+      <h3 style="font-family:var(--sans);font-size:24px;font-weight:500;color:var(--white);letter-spacing:-.01em;margin-bottom:12px">Human form. Machine endurance.</h3>
+      <p style="font-size:14px;font-weight:300;color:rgba(240,245,241,.4);line-height:1.7">Full bipedal humanoid platforms that can perform a wide range of general manufacturing tasks in environments designed for humans — no facility modifications needed.</p>
+    </div>
+  </div>
+  <div class="fullbleed-wrap" style="margin-top:2px">
+    <img src="Talos-0143.jpg" style="width:100%;height:50vh;object-fit:cover;display:block;filter:brightness(.7)" alt="Formic robot in motion — next generation automation">
+    <div class="fullbleed-caption">The future of manufacturing automation — available today</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band rv">
+  <h2>Not sure which<br>system fits your line?</h2>
+  <div class="cta-band-btns">
+    <a href="company.html#demo" class="btn-dark">Get a Demo</a>
+    <a href="full-service.html" class="btn-wh-border">How It Works</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <svg viewBox="0 0 721 132" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M262.432 8.32959C237.096 8.32959 217.988 27.191 217.988 52.1925C217.988 64.4565 222.498 75.6369 230.684 83.6711C238.83 91.6571 250.105 96.0634 262.432 96.0634C287.769 96.0634 306.877 77.202 306.877 52.2005C306.877 27.1991 287.769 8.33762 262.432 8.33762V8.32959ZM288.876 52.1925C288.876 68.1886 277.753 79.8025 262.432 79.8025C247.112 79.8025 236.109 68.4455 236.109 52.1925C236.109 35.9395 247.176 24.5825 262.432 24.5825C277.689 24.5825 288.876 36.1964 288.876 52.1925Z" fill="#F0F5F1"/><path d="M605.194 11.1387H587.417V96.0714H605.194V11.1387Z" fill="#F0F5F1"/><path d="M702.951 67.6428C697.51 78.8233 684.837 79.6901 681.081 79.6901C666.844 79.6901 656.508 68.1244 656.508 52.1925C656.508 36.2606 666.844 24.7029 681.081 24.7029C695.319 24.7029 701.153 33.8768 702.75 36.694L703.039 37.1997H721L720.719 35.9717C719.299 29.7514 715.23 23.1699 709.837 18.3783C702.445 11.8049 692.502 8.32959 681.081 8.32959C656.676 8.32959 638.274 27.191 638.274 52.1925C638.274 77.194 656.676 96.0554 681.081 96.0554C707.75 96.0554 718.665 77.8922 720.719 68.2849L720.976 67.073H703.224L702.951 67.6348V67.6428Z" fill="#F0F5F1"/><path d="M120.255 96.0634H137.919V26.8137H192.451V11.1387H120.255V96.0634Z" fill="#F0F5F1"/><path d="M498.545 46.1162L467.848 10.6169L450.048 10.649V96.0624H466.5V34.2055L498.545 71.2699L550.886 10.6892H529.178L498.545 46.1162Z" fill="#F0F5F1"/><path d="M550.26 37.3598H532.484V96.0631H550.26V37.3598Z" fill="#F0F5F1"/><path d="M179.498 46.066H155.152L141.195 62.0896H179.498V46.066Z" fill="#F0F5F1"/><path fill-rule="evenodd" clip-rule="evenodd" d="M383.759 11.1307C402.699 11.1307 413.132 20.2805 413.132 36.8946H413.14C413.14 48.1714 407.507 56.2938 397.242 59.8976L416.985 96.0634H398.125L379.397 62.0896H357.492L371.449 46.066H386.067C392.084 45.2617 395.019 42.2386 395.019 36.8946C395.019 30.0804 391.151 27.0385 382.475 27.0385H354.041V96.0634H336.393V11.1307H383.759Z" fill="#F0F5F1"/><path d="M0 96.777V132.008L72.2047 48.2984H41.8183L0 96.777Z" fill="#F0F5F1"/><path d="M0 83.7097L72.2047 0.000183105H0V83.7097Z" fill="#F0F5F1"/></svg>
+      </div>
+      <p class="footer-tagline">Full Service Automation for mid-market manufacturers. No CapEx. No Risk. No Problems.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="platform.html">Formic Core</a>
+      <a href="platform.html#colony">Colony Fleet Mgmt</a>
+      <a href="platform.html#fpi">FPI Analytics</a>
+      <a href="platform.html#fast">FormicFAST</a>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="solutions.html">End-of-Line Packing</a>
+      <a href="solutions.html#precision">Precision Mfg.</a>
+      <a href="solutions.html#general">General Tasks</a>
+      <a href="full-service.html">How It Works</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="company.html">Mission</a>
+      <a href="customers.html">Customer Stories</a>
+      <a href="company.html#careers">Careers</a>
+      <a href="company.html#news">News</a>
+      <a href="company.html#investors">Investors</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Formic Technologies, Inc. All rights reserved.</p>
+    <p>formic.co · sales@formic.co · 775-436-7642</p>
+  </div>
+</footer>
+<script src="formic.js"></script>
+<script>
+function loadYT(el){
+  const id=el.dataset.ytid;
+  const w=document.createElement('div');
+  w.className='vs-embed fill';
+  w.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" title="Formic video"></iframe>`;
+  el.replaceWith(w);
+}
+</script>
+</body>
+</html>
