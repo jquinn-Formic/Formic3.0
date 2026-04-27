@@ -59,18 +59,24 @@
 .video-mute{position:absolute;bottom:36px;right:80px;z-index:3;background:rgba(9,21,23,.6);border:1px solid rgba(240,245,241,.18);color:rgba(240,245,241,.6);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;cursor:none;transition:color .2s,border-color .2s}
 .video-mute:hover{color:var(--white);border-color:rgba(240,245,241,.45)}
 
-/* MAGIC canvas section */
-#magic{background:var(--black);position:relative;overflow:hidden}
-#mc{position:absolute;inset:0;z-index:0}
-#magic .si{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:90vh;padding-top:120px}
-.mcards{display:flex;flex-direction:column;gap:2px}
-.mcard{background:rgba(240,245,241,.03);border:1px solid rgba(240,245,241,.06);border-left:2px solid var(--orange);padding:20px 24px;cursor:none;transition:background .3s}
-.mcard:hover{background:rgba(255,145,0,.05)}
-.mcard-lbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
-.mcard h3{font-family:var(--sans);font-size:16px;font-weight:500;color:var(--white);margin-bottom:4px;letter-spacing:-.01em}
-.mcard p{font-size:13px;font-weight:300;color:rgba(240,245,241,.35);line-height:1.6}
-.ttags{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px}
-.ttag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,145,0,.65);border:1px solid rgba(255,145,0,.18);padding:4px 10px}
+/* SERVICES tiles section */
+#services{background:var(--black);position:relative;overflow:hidden}
+#services .si{padding-top:120px;padding-bottom:120px}
+#services .svc-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(240,245,241,.06)}
+.svc-tile{position:relative;height:480px;overflow:hidden;background:var(--black);cursor:none;text-decoration:none;display:block}
+.svc-tile-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease,filter .4s ease;filter:brightness(.42) saturate(.9)}
+.svc-tile:hover .svc-tile-img{transform:scale(1.06);filter:brightness(.6) saturate(1)}
+.svc-tile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,21,23,.92) 0%,rgba(9,21,23,.45) 50%,rgba(9,21,23,.15) 100%);transition:opacity .3s}
+.svc-tile-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:30px 26px;z-index:2}
+.svc-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;color:rgba(255,145,0,.85);margin-bottom:auto}
+.svc-tile h3{font-family:var(--sans);font-size:23px;font-weight:500;letter-spacing:-.01em;color:var(--white);margin-bottom:8px;line-height:1.1}
+.svc-tile p{font-size:13px;font-weight:300;color:rgba(240,245,241,.7);line-height:1.65;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .4s ease;margin-bottom:0}
+.svc-tile:hover p{max-height:160px;opacity:1;margin-bottom:14px}
+.svc-tile .svc-more{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease}
+.svc-tile:hover .svc-more{max-height:30px;opacity:1}
+.svc-tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:3}
+.svc-tile:hover::after{transform:scaleX(1)}
 
 /* Full service grid */
 .fsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lgrey);margin-top:52px}
@@ -91,9 +97,10 @@
 .stile p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.75;max-width:380px;margin-bottom:18px;position:relative;z-index:1}
 .stags{display:flex;flex-wrap:wrap;gap:5px;position:relative;z-index:1;margin-bottom:22px}
 .stag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--mgrey);border:1px solid var(--lgrey);padding:3px 9px}
-.sol-cta{background:var(--dgrey);padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
-.sol-cta h3{font-family:var(--sans);font-size:clamp(28px,2.8vw,42px);font-weight:500;letter-spacing:-.02em;color:var(--white);line-height:1.05;margin-bottom:12px}
-.sol-cta p{font-size:15px;font-weight:300;color:rgba(240,245,241,.42);line-height:1.7;margin-bottom:26px}
+.sol-cta{background:var(--orange);padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+.sol-cta h3{font-family:var(--sans);font-size:clamp(28px,2.8vw,42px);font-weight:500;letter-spacing:-.02em;color:var(--black);line-height:1.05;margin-bottom:12px}
+.sol-cta p{font-size:15px;font-weight:300;color:rgba(9,21,23,.7);line-height:1.7;margin-bottom:26px}
+.sol-cta .btn-orange{background:var(--black);color:var(--white)}
 
 /* Stats */
 .statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08);margin-top:52px;margin-bottom:1px}
@@ -134,13 +141,13 @@
 .colink .ca{color:var(--orange);font-size:14px;transition:transform .2s}
 .colink:hover .ca{transform:translateX(5px)}
 
-/* CTA section */
-#cta{background:var(--orange)}
-.ctai{max-width:1280px;margin:0 auto;padding:100px 80px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.cta-ey{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(9,21,23,.4);margin-bottom:18px}
-.cta-t{font-family:var(--sans);font-weight:500;font-size:clamp(48px,7vw,88px);line-height:1.0;letter-spacing:-.02em;color:var(--black);margin-bottom:24px}
-.cta-s{font-size:17px;font-weight:300;color:rgba(9,21,23,.55);max-width:420px;margin-bottom:36px;line-height:1.75}
-.cta-bs{display:flex;gap:12px}
+/* CTA section — full screen */
+#cta{background:var(--orange);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ctai{width:100%;max-width:1600px;margin:0 auto;padding:80px 60px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cta-ey{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(9,21,23,.5);margin-bottom:32px}
+.cta-t{font-family:var(--sans);font-weight:500;font-size:clamp(72px,13vw,220px);line-height:.92;letter-spacing:-.035em;color:var(--black);margin-bottom:40px}
+.cta-s{font-size:19px;font-weight:300;color:rgba(9,21,23,.62);max-width:520px;margin-bottom:48px;line-height:1.7}
+.cta-bs{display:flex;gap:14px}
 .btn-ctadark{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--black);padding:13px 28px;text-decoration:none;cursor:none;transition:opacity .2s}
 .btn-ctadark:hover{opacity:.8}
 .btn-ctawh{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(9,21,23,.7);border:1px solid rgba(9,21,23,.3);padding:13px 28px;text-decoration:none;cursor:none;transition:color .2s,border-color .2s}
@@ -148,13 +155,23 @@
 .cta-c{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:rgba(9,21,23,.45);margin-top:24px}
 .cta-c a{color:rgba(9,21,23,.7);text-decoration:none}
 
+@media(max-width:1100px){
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:900px){
   .video-hero{padding:0 24px 64px}
-  #magic .si{grid-template-columns:1fr;min-height:auto;padding-top:96px}
+  #services .si{padding-top:96px}
+  #services .svc-head{grid-template-columns:1fr;gap:24px;align-items:start}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-tile{height:340px}
   .fsgrid,.solgrid,.statsrow,.outrow,.sgrid{grid-template-columns:1fr}
   .cogrid{grid-template-columns:1fr}
   .ctai{padding:64px 24px}
+  .cta-t{font-size:clamp(54px,16vw,96px)}
   .cta-bs{flex-direction:column;align-items:center}
+}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -220,29 +237,67 @@
   <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
 </section>
 
-<!-- THE MAGIC — dark interactive canvas -->
-<section id="magic">
-  <canvas id="mc"></canvas>
+<!-- SERVICES — dark tile grid with rollovers -->
+<section id="services">
   <div class="si">
-    <div>
-      <div class="slabel rv" style="color:var(--orange)">The Magic</div>
-      <h2 class="dtitle wh rv d1" style="margin-bottom:18px">PLC Reliability.<br><em>Software</em><br>Intelligence.</h2>
-      <p class="btext wh rv d2" style="max-width:400px;margin-bottom:26px">Formic's hybrid architecture pairs battle-tested industrial controls with a modern software layer — your automation gets smarter over time, not obsolete.</p>
-      <div class="ttags rv d3">
-        <span class="ttag">Formic Core</span>
-        <span class="ttag">Colony Fleet Mgmt</span>
-        <span class="ttag">FPI Analytics</span>
-        <span class="ttag">FormicFAST</span>
+    <div class="svc-head rv">
+      <div>
+        <div class="slabel" style="color:var(--orange)">Services</div>
+        <h2 class="dtitle wh" style="margin-bottom:0">Every Job<br><em>Automated</em></h2>
       </div>
-      <div style="margin-top:28px" class="rv d4">
-        <a href="platform.html" class="larr">Explore the platform →</a>
-      </div>
+      <p class="btext wh" style="max-width:440px">From end-of-line palletizing to humanoid platforms — one operator, one fixed price, every task on your floor.</p>
     </div>
-    <div class="mcards rv d1">
-      <div class="mcard"><div class="mcard-lbl">Formic Core</div><h3>Industrial Control Layer</h3><p>Deterministic PLC motion — KUKA, ABB, FANUC, Doosan. Standardized and serviceable at every site.</p></div>
-      <div class="mcard"><div class="mcard-lbl">Formic Colony</div><h3>Remote Fleet Management</h3><p>Encrypted remote diagnostics and real-time visibility. Faster root-cause, less downtime.</p></div>
-      <div class="mcard"><div class="mcard-lbl">FPI — Production Intelligence</div><h3>Real-Time Line Data</h3><p>Your team sees the same live data our support engineers do. Continuous improvement built in.</p></div>
-      <div class="mcard"><div class="mcard-lbl">FormicFAST</div><h3>Rapid Specification &amp; Deploy</h3><p>Pre-engineered, pre-configured, pre-tested. From signed agreement to production in weeks.</p></div>
+    <div class="svc-grid rv d1">
+      <a href="solutions.html#palletizing" class="svc-tile">
+        <div class="svc-tile-img" style="background-image:url('Haviland_Products_-_Palletizing.gif')"></div>
+        <div class="svc-tile-overlay"></div>
+        <div class="svc-tile-content">
+          <div class="svc-num">01 —</div>
+          <h3>Palletizing</h3>
+          <p>Gantry and robotic palletizers built for sustained throughput. Stable stacks, clean changeovers.</p>
+          <span class="svc-more">Learn more →</span>
+        </div>
+      </a>
+      <a href="solutions.html#case-packing" class="svc-tile">
+        <div class="svc-tile-img" style="background-image:url('CasepackerPromoVideo_NoText.gif')"></div>
+        <div class="svc-tile-overlay"></div>
+        <div class="svc-tile-content">
+          <div class="svc-num">02 —</div>
+          <h3>Case Packing</h3>
+          <p>Top-load and side-load case packing across SKUs and formats. Consistent counts, fewer line stops.</p>
+          <span class="svc-more">Learn more →</span>
+        </div>
+      </a>
+      <a href="solutions.html#amr" class="svc-tile">
+        <div class="svc-tile-img" style="background-image:url('Talos-0143.jpg')"></div>
+        <div class="svc-tile-overlay"></div>
+        <div class="svc-tile-content">
+          <div class="svc-num">03 —</div>
+          <h3>Automated Pallet Movement</h3>
+          <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, no forklifts required.</p>
+          <span class="svc-more">Learn more →</span>
+        </div>
+      </a>
+      <a href="solutions.html#machine-tending" class="svc-tile">
+        <div class="svc-tile-img" style="background-image:url('Talos-9787.jpg')"></div>
+        <div class="svc-tile-overlay"></div>
+        <div class="svc-tile-content">
+          <div class="svc-num">04 —</div>
+          <h3>Machine Tending</h3>
+          <p>Mill, lathe, press and injection-mold tending — the hardest, most repetitive work removed from your floor.</p>
+          <span class="svc-more">Learn more →</span>
+        </div>
+      </a>
+      <a href="solutions.html#humanoid" class="svc-tile">
+        <div class="svc-tile-img" style="background-image:url('Talos-0095.jpg')"></div>
+        <div class="svc-tile-overlay"></div>
+        <div class="svc-tile-content">
+          <div class="svc-num">05 —</div>
+          <h3>Humanoid</h3>
+          <p>Bimanual and full-humanoid platforms for general-purpose tasks — the next frontier, deployable now.</p>
+          <span class="svc-more">Learn more →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -363,10 +418,10 @@
       <p class="btext wh rv d2">Real outcomes from real production floors.</p>
     </div>
     <div class="statsrow rv d1">
-      <div class="stcell"><span class="stnum">20%</span><span class="stlbl">OpEx Reduction</span></div>
-      <div class="stcell"><span class="stnum">24/7</span><span class="stlbl">Tech Support</span></div>
-      <div class="stcell"><span class="stnum">$0</span><span class="stlbl">CapEx Required</span></div>
-      <div class="stcell"><span class="stnum">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Tech Support</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
     </div>
     <div class="outrow rv d2">
       <a href="results.html#labor" class="ocell"><div class="odot"></div><h4>Overcoming Labor Shortage</h4><p>Automate the hardest-to-fill positions without adding headcount risk.</p><span class="omore">Stories →</span></a>
@@ -521,15 +576,41 @@ function toggleMute(){
   btn.textContent=vid.muted?'Unmute':'Mute';
 }
 
-// Magic canvas
+// Stat counter — animates [data-count-to] when in view
 (function(){
-  const c=document.getElementById('mc'),ctx=c.getContext('2d');
-  let W,H,nodes=[],mouse={x:-999,y:-999};
-  function resize(){const s=document.getElementById('magic');W=c.width=s.offsetWidth;H=c.height=s.offsetHeight;c.style.width=W+'px';c.style.height=H+'px';nodes=[];const cols=22,rows=14;for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)nodes.push({bx:(i/(cols-1))*W,by:(j/(rows-1))*H,x:(i/(cols-1))*W,y:(j/(rows-1))*H,r:Math.random()*1.5+.5});}
-  resize();window.addEventListener('resize',resize);
-  document.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
-  function draw(){ctx.clearRect(0,0,W,H);nodes.forEach(n=>{const dx=n.bx-mouse.x,dy=n.by-mouse.y,dist=Math.sqrt(dx*dx+dy*dy),f=Math.max(0,200-dist)/200,ang=Math.atan2(dy,dx),push=f*f*50;n.x+=(n.bx+Math.cos(ang)*push-n.x)*.09;n.y+=(n.by+Math.sin(ang)*push-n.y)*.09;ctx.beginPath();ctx.arc(n.x,n.y,n.r+f*2.5,0,Math.PI*2);ctx.fillStyle='rgba(255,145,0,'+(0.05+f*.48)+')';ctx.fill();});for(let i=0;i<nodes.length;i+=2)for(let j=i+1;j<nodes.length;j+=2){const a=nodes[i],b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<72){const adx=a.bx-mouse.x,ady=a.by-mouse.y,af=Math.max(0,200-Math.sqrt(adx*adx+ady*ady))/200;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(255,145,0,'+(1-d/72)*(.022+af*.12)+')';ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(draw);}
-  draw();
+  const els=document.querySelectorAll('.stnum[data-count-to]');
+  if(!els.length)return;
+  const ease=t=>1-Math.pow(1-t,3);
+  function run(el){
+    const target=parseFloat(el.dataset.countTo)||0;
+    const prefix=el.dataset.prefix||'';
+    const suffix=el.dataset.suffix||'';
+    const dur=1400,start=performance.now();
+    function step(now){
+      const t=Math.min(1,(now-start)/dur);
+      const v=Math.round(target*ease(t));
+      el.textContent=prefix+v+suffix;
+      if(t<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){run(e.target);obs.unobserve(e.target);}
+    });
+  },{threshold:.4});
+  els.forEach(el=>obs.observe(el));
+})();
+
+// Nav goes light at the bottom (when CTA / footer is in view)
+(function(){
+  const nav=document.getElementById('nav');
+  const trigger=document.getElementById('cta');
+  if(!nav||!trigger)return;
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>nav.classList.toggle('nav-bottom',e.isIntersecting));
+  },{threshold:.15});
+  obs.observe(trigger);
 })();
 </script>
 <script>

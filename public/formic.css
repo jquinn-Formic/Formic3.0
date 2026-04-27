@@ -33,6 +33,11 @@ nav.dark .nav-links a{color:rgba(240,245,241,.5)}
 nav.dark .nav-links a:hover{color:var(--white)}
 nav.dark .btn-ghost{color:rgba(240,245,241,.5);border-color:rgba(240,245,241,.15)}
 nav.dark .btn-ghost:hover{color:var(--white);border-color:rgba(240,245,241,.3)}
+nav.nav-bottom{background:rgba(255,255,255,.98);justify-content:center;gap:48px;transition:background .4s ease,gap .4s ease}
+nav.nav-bottom .nav-logo,nav.nav-bottom .nav-cta{display:none}
+nav.nav-bottom .nav-links{gap:48px}
+nav.nav-bottom .nav-links a{color:var(--black);font-size:12px}
+nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 .nav-logo{display:flex;align-items:center;text-decoration:none}
 .nav-logo svg{height:24px;width:auto}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}

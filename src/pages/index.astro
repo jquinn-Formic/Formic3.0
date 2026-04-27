@@ -1,0 +1,45 @@
+---
+import {getHomePage} from '../lib/sanity'
+
+const home = await getHomePage().catch(() => null)
+const staticFallback = !home
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{home?.title ?? 'Formic — Full Service Automation for Manufacturers'}</title>
+  <meta name="description" content={home?.description ?? 'Formic delivers Robotics as a Service to mid-market CPG manufacturers. No CapEx. No Risk. No Problems.'} />
+  <link rel="stylesheet" href="/formic.css" />
+</head>
+<body>
+  <main style="padding:80px 40px;font-family:system-ui,sans-serif;max-width:880px;margin:0 auto;">
+    <h1 style="font-size:48px;margin-bottom:12px;">Formic 3.0 — Astro scaffold</h1>
+    <p style="color:#556;margin-bottom:32px;line-height:1.6;">
+      Astro dev server is running. The original static site pages are still served at their original URLs
+      (they live in <code>public/</code> now).
+    </p>
+
+    {staticFallback ? (
+      <p style="padding:14px 18px;background:#fff4e5;border-left:3px solid #FF9100;margin-bottom:32px;">
+        <strong>No Sanity home page document yet.</strong> Open the Studio, populate the <em>Home Page</em>, and publish — this page will pick it up.
+      </p>
+    ) : (
+      <pre style="background:#0b1012;color:#8fa;padding:20px;overflow:auto;font-size:12px;">{JSON.stringify(home, null, 2)}</pre>
+    )}
+
+    <h2 style="margin-top:40px;font-size:20px;">Links</h2>
+    <ul>
+      <li><a href="/index-legacy.html">Original home page (static)</a></li>
+      <li><a href="/platform.html">Platform</a></li>
+      <li><a href="/solutions.html">Solutions</a></li>
+      <li><a href="/customers.html">Customers</a></li>
+      <li><a href="/results.html">Results</a></li>
+      <li><a href="/full-service.html">Full Service</a></li>
+      <li><a href="/company.html">Company</a></li>
+    </ul>
+  </main>
+</body>
+</html>
