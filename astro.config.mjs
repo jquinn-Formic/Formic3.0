@@ -1,6 +1,9 @@
-import {defineConfig} from 'astro/config'
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://formic.co',
-  server: {port: 4321},
-})
+  output: 'static',
+  server: { port: 4321 },
+  integrations: [sitemap()],
+});

@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPlatformPage } from '../lib/sanity';
+
+let platformData: any = null;
+try { platformData = await getPlatformPage(); } catch(e) {}
+---
+<Layout
+  title="Platform — Formic"
+  description="Formic's hybrid automation platform: PLC reliability meets modern software intelligence. Formic Core, Colony, FPI, and FormicFAST."
+>
+  <link rel="canonical" href="https://formic.co/platform" slot="head" />
+  <style is:global slot="head">
+#magic-canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+.platform-hero{position:relative;min-height:100vh;background:var(--black);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:0 80px 96px;overflow:hidden}
+.platform-hero .hero-overlay{background:linear-gradient(135deg,rgba(9,21,23,.95) 40%,rgba(9,21,23,.5) 100%)}
+.product-tabs{display:flex;gap:2px;background:var(--lgrey);margin-top:52px}
+.ptab{flex:1;background:var(--white);padding:28px 28px 24px;cursor:none;transition:background .25s;text-decoration:none;display:block;border-bottom:2px solid transparent}
+.ptab:hover,.ptab.active{background:var(--white);border-bottom-color:var(--orange)}
+.ptab.active .ptab-num{color:var(--orange)}
+.ptab-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;color:var(--lgrey);display:block;margin-bottom:8px;transition:color .2s}
+.ptab h3{font-family:var(--sans);font-size:17px;font-weight:500;color:var(--black);letter-spacing:-.01em;margin-bottom:4px}
+.ptab p{font-size:13px;color:var(--mgrey);line-height:1.5}
+.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--lgrey)}
+.pd-text{background:var(--white);padding:72px 64px}
+.pd-img{overflow:hidden}
+.pd-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
+.pd-text .slabel{margin-bottom:20px}
+.pd-text h2{font-family:var(--sans);font-size:clamp(36px,3.5vw,52px);font-weight:500;letter-spacing:-.02em;color:var(--black);line-height:1.05;margin-bottom:20px}
+.pd-text .btext{margin-bottom:32px}
+.feat-list{list-style:none;margin-bottom:36px}
+.feat-list li{font-size:14px;font-weight:300;color:var(--dgrey);padding:10px 0;border-bottom:1px solid var(--lgrey);display:flex;align-items:baseline;gap:10px;line-height:1.5}
+.feat-list li::before{content:'';width:5px;height:5px;background:var(--orange);border-radius:50%;flex-shrink:0;margin-top:6px}
+.arch-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey)}
+.arch-cell{background:var(--dgrey);padding:40px 36px}
+.arch-cell h3{font-family:var(--sans);font-size:18px;font-weight:500;color:var(--white);letter-spacing:-.01em;margin-bottom:10px}
+.arch-cell p{font-size:14px;font-weight:300;color:rgba(240,245,241,.45);line-height:1.7}
+.arch-tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);border:1px solid rgba(255,145,0,.2);padding:3px 8px;margin-bottom:12px}
+@media(max-width:900px){.platform-hero{padding:0 24px 64px}.product-tabs{flex-direction:column}.product-detail{grid-template-columns:1fr}.arch-row{grid-template-columns:1fr}.pd-text{padding:40px 24px}}
+  </style>
+
+<!-- HERO: interactive canvas -->
+<section class="platform-hero" id="magic-section">
+  <canvas id="magic-canvas"></canvas>
+  <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(9,21,23,.92) 40%,rgba(9,21,23,.4) 100%)"></div>
+  <div class="hero-content" style="position:relative;z-index:2;max-width:860px">
+    <div class="mono-label">The Platform</div>
+    <h1 class="dtitle lg wh" style="margin-bottom:20px">
+      {platformData?.heroHeadline ?? 'Production Ready Intelligence.'}
+    </h1>
+    <p class="btext wh" style="max-width:520px;margin-bottom:36px">Formic's hybrid architecture combines battle-tested industrial controls with a modern software layer — so your automation gets smarter over time, never obsolete.</p>
+    <div class="hero-btns">
+      <a href="/company#demo" class="btn-hero solid">Get a Demo</a>
+      <a href="/full-service" class="btn-hero outline">See Full Service →</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
+</section>
+
+<!-- PRODUCT TABS -->
+<section class="bg-white">
+  <div class="si" style="padding-bottom:0">
+    <div class="rv"><div class="slabel">Software Stack</div><h2 class="dtitle" style="margin-bottom:0">Four layers.<br><em>One system.</em></h2></div>
+  </div>
+  <div class="si" style="padding-top:40px">
+    <div class="product-tabs rv d1">
+      <a href="#core" class="ptab active"><span class="ptab-num">01 —</span><h3>Formic Core</h3><p>Industrial OS &amp; control layer</p></a>
+      <a href="#colony" class="ptab"><span class="ptab-num">02 —</span><h3>Colony</h3><p>Remote fleet management</p></a>
+      <a href="#fpi" class="ptab"><span class="ptab-num">03 —</span><h3>FPI Analytics</h3><p>Real-time production data</p></a>
+      <a href="#fast" class="ptab"><span class="ptab-num">04 —</span><h3>FormicFAST</h3><p>Rapid system specification</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CORE -->
+<section id="core" class="bg-white" style="padding-top:2px">
+  <div class="product-detail rv">
+    <div class="pd-text">
+      <div class="slabel">Formic Core</div>
+      <h2>The industrial<br>control layer</h2>
+      <p class="btext" style="margin-bottom:28px">Deterministic PLC motion control built on proven industrial hardware. KUKA, ABB, FANUC, and Doosan — the same robots trusted on plant floors for decades, now unified under one intelligent OS.</p>
+      <ul class="feat-list">
+        <li>Standardized "Lego-block" modular architecture — same building blocks across every deployment</li>
+        <li>Backward compatibility across all deployed systems — no fleet fragmentation</li>
+        <li>Continuous feature &amp; capability rollouts — leave obsolescence behind</li>
+        <li>Bilingual operator interfaces — English and Spanish out of the box</li>
+        <li>24/7 monitoring, diagnostics, and performance data logging</li>
+      </ul>
+      <a href="/company#demo" class="larr">Talk to an engineer →</a>
+    </div>
+    <div class="pd-img">
+      <img src="/Talos-0095.jpg" alt="Formic white cobot arm close-up showing precision engineering" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- COLONY -->
+<section id="colony" class="bg-lgrey" style="padding:2px 0 0">
+  <div class="product-detail rv">
+    <div class="pd-img">
+      <img src="/Talos-9787.jpg" alt="Formic engineer at laptop monitoring robot systems" loading="lazy" />
+    </div>
+    <div class="pd-text">
+      <div class="slabel">Formic Colony</div>
+      <h2>Remote fleet<br>management</h2>
+      <p class="btext" style="margin-bottom:28px">See everything happening across every system, at every site — in real time. Colony gives your operations team and our support engineers the same deep visibility, so issues get resolved before they become downtime.</p>
+      <ul class="feat-list">
+        <li>Encrypted remote diagnostics and troubleshooting — no on-site visit required for most issues</li>
+        <li>Deeper visibility into system behavior than any legacy PLC-only system</li>
+        <li>Faster root-cause identification and reduced mean-time-to-repair</li>
+        <li>Fleet-wide performance dashboards across production lines and facilities</li>
+        <li>Proactive alerts before issues become stoppages</li>
+      </ul>
+      <a href="/company#demo" class="larr">See a live demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FPI -->
+<section id="fpi" class="bg-white" style="padding:2px 0 0">
+  <div class="product-detail rv">
+    <div class="pd-text">
+      <div class="slabel">Formic Production Intelligence</div>
+      <h2>Real-time<br>line data</h2>
+      <p class="btext" style="margin-bottom:28px">Your operators, production managers, and technical teams see the same live performance data our support team does. No more guessing. No more end-of-shift surprises. Continuous optimization, built in from day one.</p>
+      <ul class="feat-list">
+        <li>Real-time OEE, throughput, and cycle time data from every deployed system</li>
+        <li>Shift reports and trend analysis automatically generated</li>
+        <li>Operator-friendly interface — no engineering degree required</li>
+        <li>Integration-ready for existing MES and ERP systems</li>
+        <li>Historical performance baselines to measure ROI against</li>
+      </ul>
+      <a href="/results" class="larr">See the results →</a>
+    </div>
+    <div class="pd-img">
+      <img src="R52_5359.jpg" alt="Formic field service engineer at laptop on production floor" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- FORMICFAST -->
+<section id="fast" class="bg-lgrey" style="padding:2px 0 0">
+  <div class="product-detail rv">
+    <div class="pd-img">
+      <img src="/Focus-7603.jpg" alt="Formic industrial palletizer installation on CPG production floor" loading="lazy" />
+    </div>
+    <div class="pd-text">
+      <div class="slabel">FormicFAST</div>
+      <h2>From spec to<br>running in weeks</h2>
+      <p class="btext" style="margin-bottom:28px">Pre-engineered, pre-configured, and pre-tested system designs compress deployment timelines from months to weeks — while reducing commissioning risk and delivering reliable performance from day one.</p>
+      <ul class="feat-list">
+        <li>Rapid application scoping — from inquiry to deployment plan in days</li>
+        <li>Pre-tested designs eliminate commissioning risk on your floor</li>
+        <li>Standardized spare parts and service procedures across the fleet</li>
+        <li>Proven designs deployed at scale — not custom one-offs</li>
+        <li>Flexible monthly agreements — swap systems as your needs evolve</li>
+      </ul>
+      <a href="/full-service" class="larr">How Full Service works →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="bg-black">
+  <div class="si">
+    <div class="two-col rv" style="margin-bottom:52px;align-items:end">
+      <div>
+        <div class="slabel" style="color:var(--orange)">Architecture</div>
+        <h2 class="dtitle wh">The hybrid<br><em>advantage</em></h2>
+      </div>
+      <p class="btext wh">Industrial PLC control for deterministic motion and safety. Modern software layers for configuration, diagnostics, and system visibility. Together, they deliver what neither can alone.</p>
+    </div>
+    <div class="arch-row rv d1">
+      <div class="arch-cell">
+        <div class="arch-tag">Industrial layer</div>
+        <h3>PLC Control Core</h3>
+        <p>Deterministic, hard-real-time motion control using Rockwell Automation and Siemens PLCs. The same reliability your maintenance team already knows — now with software visibility on top.</p>
+      </div>
+      <div class="arch-cell">
+        <div class="arch-tag">Software layer</div>
+        <h3>Modern Software Intelligence</h3>
+        <p>Configuration, diagnostics, fleet management, and performance analytics delivered through Formic's software stack. Systems evolve and improve over time through OTA updates.</p>
+      </div>
+      <div class="arch-cell">
+        <div class="arch-tag">Operator layer</div>
+        <h3>Intuitive Operator Interface</h3>
+        <p>An operator-friendly HMI that any floor worker can learn in minutes — bilingual, touchscreen, with clear status and simple fault recovery procedures built in.</p>
+      </div>
+      <div class="arch-cell">
+        <div class="arch-tag">Fleet layer</div>
+        <h3>Backward Compatibility</h3>
+        <p>Every feature rollout and software update maintains backward compatibility across all deployed systems. Your first installation benefits from everything we've learned on your hundredth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK -->
+<div class="fullbleed-wrap rv">
+  <img src="/Talos-0143.jpg" class="fullbleed" alt="Formic robot arm in motion under dramatic orange light" loading="lazy" style="height:65vh" />
+  <div class="fullbleed-caption">Formic KUKA system — continuous motion, 24/7</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band rv">
+  <h2>Ready to see<br>the platform live?</h2>
+  <div class="cta-band-btns">
+    <a href="/company#demo" class="btn-dark">Get a Demo</a>
+    <a href="/full-service" class="btn-wh-border">How It Works</a>
+  </div>
+</div>
+
+  <script is:inline slot="scripts">
+// Magic canvas
+(function(){
+  const c=document.getElementById('magic-canvas'),ctx=c.getContext('2d');
+  let W,H,nodes=[],mouse={x:-999,y:-999};
+  function resize(){const s=document.getElementById('magic-section');W=c.width=s.offsetWidth;H=c.height=s.offsetHeight;c.style.width=W+'px';c.style.height=H+'px';nodes=[];const cols=24,rows=16;for(let i=0;i<cols;i++)for(let j=0;j<rows;j++)nodes.push({bx:(i/(cols-1))*W,by:(j/(rows-1))*H,x:(i/(cols-1))*W,y:(j/(rows-1))*H,r:Math.random()*1.5+.5});}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  function draw(){ctx.clearRect(0,0,W,H);nodes.forEach(n=>{const dx=n.bx-mouse.x,dy=n.by-mouse.y,dist=Math.sqrt(dx*dx+dy*dy),f=Math.max(0,200-dist)/200,ang=Math.atan2(dy,dx),push=f*f*50;n.x+=(n.bx+Math.cos(ang)*push-n.x)*.09;n.y+=(n.by+Math.sin(ang)*push-n.y)*.09;ctx.beginPath();ctx.arc(n.x,n.y,n.r+f*2.5,0,Math.PI*2);ctx.fillStyle='rgba(255,145,0,'+(0.05+f*.48)+')';ctx.fill();});for(let i=0;i<nodes.length;i+=2)for(let j=i+1;j<nodes.length;j+=2){const a=nodes[i],b=nodes[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);if(d<72){const adx=a.bx-mouse.x,ady=a.by-mouse.y,af=Math.max(0,200-Math.sqrt(adx*adx+ady*ady))/200;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(255,145,0,'+(1-d/72)*(.022+af*.12)+')';ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(draw);}
+  draw();
+})();
+document.querySelectorAll('.ptab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.ptab').forEach(x=>x.classList.remove('active'));t.classList.add('active');});});
+  </script>
+</Layout>
