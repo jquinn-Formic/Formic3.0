@@ -15,7 +15,7 @@ try { platformData = await getPlatformPage(); } catch(e) {}
 .platform-hero{position:relative;min-height:100vh;background:var(--black);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:0 80px 96px;overflow:hidden}
 .platform-hero .hero-overlay{background:linear-gradient(135deg,rgba(9,21,23,.95) 40%,rgba(9,21,23,.5) 100%)}
 .product-tabs{display:flex;gap:2px;background:var(--lgrey);margin-top:52px}
-.ptab{flex:1;background:var(--white);padding:28px 28px 24px;cursor:none;transition:background .25s;text-decoration:none;display:block;border-bottom:2px solid transparent}
+.ptab{flex:1;background:var(--white);padding:28px 28px 24px;cursor:none;transition:background .25s;text-decoration:none;display:block;border:none;border-bottom:2px solid transparent;text-align:left;font:inherit;color:inherit;width:100%}
 .ptab:hover,.ptab.active{background:var(--white);border-bottom-color:var(--orange)}
 .ptab.active .ptab-num{color:var(--orange)}
 .ptab-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;color:var(--lgrey);display:block;margin-bottom:8px;transition:color .2s}
@@ -69,10 +69,10 @@ try { platformData = await getPlatformPage(); } catch(e) {}
   </div>
   <div class="si" style="padding-top:40px">
     <div class="product-tabs rv d1">
-      <a href="#core" class="ptab active"><span class="ptab-num">01 —</span><h3>Formic Core</h3><p>Industrial OS &amp; control layer</p></a>
-      <a href="#colony" class="ptab"><span class="ptab-num">02 —</span><h3>Colony</h3><p>Remote fleet management</p></a>
-      <a href="#fpi" class="ptab"><span class="ptab-num">03 —</span><h3>FPI Analytics</h3><p>Real-time production data</p></a>
-      <a href="#fast" class="ptab"><span class="ptab-num">04 —</span><h3>FormicFAST</h3><p>Rapid system specification</p></a>
+      <button type="button" class="ptab active" data-target="#core"><span class="ptab-num">01 —</span><h3>Formic Core</h3><p>Industrial OS &amp; control layer</p></button>
+      <button type="button" class="ptab" data-target="#colony"><span class="ptab-num">02 —</span><h3>Colony</h3><p>Remote fleet management</p></button>
+      <button type="button" class="ptab" data-target="#fpi"><span class="ptab-num">03 —</span><h3>FPI Analytics</h3><p>Real-time production data</p></button>
+      <button type="button" class="ptab" data-target="#fast"><span class="ptab-num">04 —</span><h3>FormicFAST</h3><p>Rapid system specification</p></button>
     </div>
   </div>
 </section>
@@ -237,7 +237,7 @@ function initPlatformStack(){
   const track=document.getElementById('stackTrack');
   const tabs=Array.from(document.querySelectorAll('.ptab'));
   if(!track||!tabs.length)return;
-  const panels=tabs.map(t=>document.querySelector(t.getAttribute('href'))).filter(Boolean);
+  const panels=tabs.map(t=>document.querySelector(t.dataset.target)).filter(Boolean);
   function setActive(panel){
     const i=panels.indexOf(panel);
     if(i<0)return;
@@ -254,29 +254,15 @@ function initPlatformStack(){
   tabs.forEach((t,i)=>{
     t.addEventListener('click',function(e){
       e.preventDefault();
-      e.stopPropagation();
       const panel=panels[i];
       scrollToPanel(panel);
       setActive(panel);
-      try{history.replaceState(null,'',t.getAttribute('href'));}catch(_){}
-      return false;
     });
   });
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)setActive(e.target);});
   },{root:track,threshold:.55});
   panels.forEach(p=>obs.observe(p));
-  if(location.hash){
-    const target=document.querySelector(location.hash);
-    if(target&&panels.includes(target)){
-      requestAnimationFrame(()=>{
-        const trackRect=track.getBoundingClientRect();
-        const panelRect=target.getBoundingClientRect();
-        track.scrollLeft=track.scrollLeft+(panelRect.left-trackRect.left);
-        setActive(target);
-      });
-    }
-  }
 }
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',initPlatformStack);
