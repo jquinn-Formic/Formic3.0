@@ -22,9 +22,9 @@ try { platformData = await getPlatformPage(); } catch(e) {}
 .ptab h3{font-family:var(--sans);font-size:17px;font-weight:500;color:var(--black);letter-spacing:-.01em;margin-bottom:4px}
 .ptab p{font-size:13px;color:var(--mgrey);line-height:1.5}
 /* Horizontal stack track — four product panels scroll-snap side-by-side */
-.platform-stack-track{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100%}
+.platform-stack-track{position:relative;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100vw;max-width:100%}
 .platform-stack-track::-webkit-scrollbar{display:none}
-.platform-stack-track > section{flex:0 0 100%;scroll-snap-align:start;padding:0 !important;min-width:100%}
+.platform-stack-track > section{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;padding:0 !important;margin:0 !important}
 .platform-stack-track .product-detail{margin:0}
 .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--lgrey)}
 .pd-text{background:var(--white);padding:72px 64px}
@@ -233,7 +233,7 @@ try { platformData = await getPlatformPage(); } catch(e) {}
   draw();
 })();
 // Horizontal stack — tabs scroll the track, observer keeps the active tab in sync
-(function(){
+function initPlatformStack(){
   const track=document.getElementById('stackTrack');
   const tabs=Array.from(document.querySelectorAll('.ptab'));
   if(!track||!tabs.length)return;
@@ -244,28 +244,44 @@ try { platformData = await getPlatformPage(); } catch(e) {}
     tabs.forEach(x=>x.classList.remove('active'));
     tabs[i].classList.add('active');
   }
+  function scrollToPanel(panel){
+    if(!panel)return;
+    const trackRect=track.getBoundingClientRect();
+    const panelRect=panel.getBoundingClientRect();
+    const left=track.scrollLeft+(panelRect.left-trackRect.left);
+    track.scrollTo({left,behavior:'smooth'});
+  }
   tabs.forEach((t,i)=>{
-    t.addEventListener('click',e=>{
+    t.addEventListener('click',function(e){
       e.preventDefault();
+      e.stopPropagation();
       const panel=panels[i];
-      if(!panel)return;
-      const left=panel.offsetLeft;
-      track.scrollTo({left,behavior:'smooth'});
+      scrollToPanel(panel);
       setActive(panel);
-      history.replaceState(null,'',t.getAttribute('href'));
+      try{history.replaceState(null,'',t.getAttribute('href'));}catch(_){}
+      return false;
     });
   });
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting)setActive(e.target);});
   },{root:track,threshold:.55});
   panels.forEach(p=>obs.observe(p));
-  // If URL has a matching hash on load, jump to that panel
   if(location.hash){
     const target=document.querySelector(location.hash);
     if(target&&panels.includes(target)){
-      requestAnimationFrame(()=>{track.scrollLeft=target.offsetLeft;setActive(target);});
+      requestAnimationFrame(()=>{
+        const trackRect=track.getBoundingClientRect();
+        const panelRect=target.getBoundingClientRect();
+        track.scrollLeft=track.scrollLeft+(panelRect.left-trackRect.left);
+        setActive(target);
+      });
     }
   }
-})();
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initPlatformStack);
+}else{
+  initPlatformStack();
+}
   </script>
 </Layout>
