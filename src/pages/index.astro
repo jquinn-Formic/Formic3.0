@@ -57,8 +57,11 @@ import Layout from '../layouts/Layout.astro';
 .hsection-head h2 em{color:var(--orange);font-style:normal}
 .hsection-head .blurb{font-size:17px;font-weight:300;line-height:1.7;max-width:580px;color:var(--mgrey)}
 .home-section.dark .hsection-head .blurb,.home-section.dgrey .hsection-head .blurb{color:rgba(240,245,241,.6)}
-.hsection-head .more-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);text-decoration:none;border-bottom:1px solid rgba(255,145,0,.3);padding-bottom:4px;transition:gap .2s,border-color .2s}
-.hsection-head .more-link:hover{gap:14px;border-color:var(--orange)}
+.hsection-head .more-link{display:inline-flex;align-items:center;gap:14px;margin-top:36px;font-family:var(--sans);font-size:clamp(20px,2vw,28px);font-weight:500;letter-spacing:-.01em;color:var(--orange);text-decoration:none;padding:18px 32px;border:2px solid var(--orange);border-radius:0;background:transparent;transition:background .25s,color .25s,gap .25s}
+.hsection-head .more-link::after{content:"→";font-family:var(--sans);font-size:1em;display:inline-block;transition:transform .25s}
+.hsection-head .more-link:hover{background:var(--orange);color:var(--black);gap:18px}
+.hsection-head .more-link:hover::after{transform:translateX(4px)}
+.home-section.dark .hsection-head .more-link:hover,.home-section.dgrey .hsection-head .more-link:hover{color:var(--white);background:var(--orange)}
 
 /* tab strip — visually distinct from content panels */
 .hsection-tabs{display:flex;gap:0;max-width:1280px;margin:0 auto;padding:8px 80px 40px;flex-wrap:wrap}
@@ -183,7 +186,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel">Full Service Automation</div>
     <h2>Everything.<br><em>Included.</em></h2>
     <p class="blurb">One fixed monthly price covers equipment, service, and technology. No CapEx. No surprise costs. No internal resources required.</p>
-    <a href="/full-service" class="more-link">Full Service detail →</a>
+    <a href="/full-service" class="more-link">Explore Full Service</a>
   </div>
   <div class="hsection-tabs" data-tabs-for="full-service">
     <button type="button" class="htab active" data-target="#fs-how"><span class="htab-num">01</span><h3>How It Works</h3><span class="htab-arrow">→</span></button>
@@ -204,7 +207,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Installation and commissioning by Formic engineers</li>
           <li>Ongoing performance monitoring and SLAs from day one</li>
         </ul>
-        <a href="#cta" class="larr">Talk to an engineer →</a>
+        <a href="/full-service" class="larr">Talk to an engineer →</a>
       </div>
     </article>
     <article id="fs-software" class="hpanel">
@@ -219,7 +222,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Real-time OEE, throughput, and cycle-time analytics</li>
           <li>Encrypted remote diagnostics and proactive alerting</li>
         </ul>
-        <a href="#magic" class="larr">Inside the platform →</a>
+        <a href="/full-service" class="larr">Inside the platform →</a>
       </div>
     </article>
     <article id="fs-equipment" class="hpanel">
@@ -234,7 +237,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Backward-compatible upgrades across every deployment</li>
           <li>Field-tested designs, not custom one-offs</li>
         </ul>
-        <a href="#packing" class="larr">See solutions →</a>
+        <a href="/full-service" class="larr">See solutions →</a>
       </div>
     </article>
     <article id="fs-service" class="hpanel">
@@ -249,7 +252,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Performance SLAs written into every agreement</li>
           <li>Spare parts inventory managed by Formic — no PO scramble</li>
         </ul>
-        <a href="#cta" class="larr">Get a demo →</a>
+        <a href="/full-service" class="larr">Get a demo →</a>
       </div>
     </article>
   </div>
@@ -261,7 +264,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel" style="color:var(--orange)">End-of-Line Packing</div>
     <h2>Built for <em>your line</em>.</h2>
     <p class="blurb">Standardized, modular palletizing, packing, and pallet-movement systems — proven across CPG floors, deployed in weeks.</p>
-    <a href="/packing" class="more-link">End-of-Line detail →</a>
+    <a href="/packing" class="more-link">Explore End-of-Line</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#pk-complete"><span class="htab-num">01</span><h3>Complete Solutions</h3><span class="htab-arrow">→</span></button>
@@ -277,7 +280,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Complete Solutions</div>
         <h3>The whole end-of-line, one partner.</h3>
         <p>Case erecting, packing, sealing, palletizing, and pallet movement — engineered as one system, deployed as one project, supported under one SLA.</p>
-        <a href="#cta" class="larr">Scope my line →</a>
+        <a href="/packing" class="larr">Scope my line →</a>
       </div>
     </article>
     <article id="pk-pal" class="hpanel">
@@ -291,7 +294,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Vision-guided pick and place</li>
           <li>Pallet-pattern flexibility programmed at deploy</li>
         </ul>
-        <a href="#cta" class="larr">Get a quote →</a>
+        <a href="/packing" class="larr">Get a quote →</a>
       </div>
     </article>
     <article id="pk-case" class="hpanel">
@@ -300,7 +303,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Case Packing</div>
         <h3>Counts that hit, every time.</h3>
         <p>Top-load and side-load case packing across SKUs, formats, and pack patterns. Consistent counts, predictable cycle times, fewer line stops.</p>
-        <a href="#cta" class="larr">See it run →</a>
+        <a href="/packing" class="larr">See it run →</a>
       </div>
     </article>
     <article id="pk-erector" class="hpanel">
@@ -309,7 +312,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Case Erector / Sealer</div>
         <h3>From flat blank to sealed case.</h3>
         <p>Automated case forming and sealing integrated with the upstream packer — one continuous flow, one set of operators, one SLA across the cell.</p>
-        <a href="#cta" class="larr">Talk to engineering →</a>
+        <a href="/packing" class="larr">Talk to engineering →</a>
       </div>
     </article>
     <article id="pk-amr" class="hpanel">
@@ -318,7 +321,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">05 — AMRs</div>
         <h3>Pallet movement without the forklifts.</h3>
         <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, finished goods to outbound — running alongside your team, not in place of it.</p>
-        <a href="#cta" class="larr">See AMR fleets →</a>
+        <a href="/packing" class="larr">See AMR fleets →</a>
       </div>
     </article>
   </div>
@@ -330,7 +333,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel">Precision Part Manufacturing</div>
     <h2>Removing the <em>hardest tasks</em>.</h2>
     <p class="blurb">Mill, lathe, and injection-mold tending — the most repetitive, dangerous, and hard-to-staff jobs on your floor, gone.</p>
-    <a href="/precision" class="more-link">Precision detail →</a>
+    <a href="/precision" class="more-link">Explore Precision</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#pr-mill"><span class="htab-num">01</span><h3>Mill / Lathe Machine Tending</h3><span class="htab-arrow">→</span></button>
@@ -343,7 +346,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Mill / Lathe Tending</div>
         <h3>Light-out machining, on your existing line.</h3>
         <p>Robotic part loading and unloading on mills and lathes. Higher spindle utilization, consistent cycle times, and operators redeployed to higher-value work.</p>
-        <a href="#cta" class="larr">Scope a cell →</a>
+        <a href="/precision" class="larr">Scope a cell →</a>
       </div>
     </article>
     <article id="pr-mold" class="hpanel">
@@ -352,7 +355,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Injection Molding Tending</div>
         <h3>Mold to packed, hands-off.</h3>
         <p>Part removal, sprue handling, post-processing, and downstream packaging integrated into one robotic cell. Consistent quality, faster cycles, fewer operator hours per part.</p>
-        <a href="#cta" class="larr">Talk to engineering →</a>
+        <a href="/precision" class="larr">Talk to engineering →</a>
       </div>
     </article>
   </div>
@@ -364,7 +367,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel" style="color:var(--orange)">General Tasks</div>
     <h2>The <em>next frontier</em>, on your floor now.</h2>
     <p class="blurb">Bimanual mobile platforms and full humanoid robots — Formic deploys, supports, and continuously upgrades them under the same Full Service model.</p>
-    <a href="/general" class="more-link">General Tasks detail →</a>
+    <a href="/general" class="more-link">Explore General Tasks</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#gt-bim"><span class="htab-num">01</span><h3>Mobile Bimanual Manipulator</h3><span class="htab-arrow">→</span></button>
@@ -377,7 +380,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Mobile Bimanual Manipulator</div>
         <h3>Two arms, one base, anywhere on the line.</h3>
         <p>Bimanual mobile robots that handle multi-step manipulation tasks — bin picking, machine tending, assist work — and re-locate themselves between cells without a fixed footprint.</p>
-        <a href="#cta" class="larr">See pilots →</a>
+        <a href="/general" class="larr">See pilots →</a>
       </div>
     </article>
     <article id="gt-hum" class="hpanel">
@@ -386,7 +389,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Full Humanoids</div>
         <h3>Generalist robots, deployed as a service.</h3>
         <p>Full humanoid platforms for general-purpose manufacturing tasks — covered by Formic Full Service, so you get the upside of frontier hardware with none of the integration risk.</p>
-        <a href="#cta" class="larr">Join the early program →</a>
+        <a href="/general" class="larr">Join the early program →</a>
       </div>
     </article>
   </div>
@@ -398,7 +401,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel" style="color:var(--orange)">The Magic</div>
     <h2>PLC reliability.<br><em>Software intelligence.</em></h2>
     <p class="blurb">Formic's hybrid architecture pairs deterministic industrial control with a modern software layer — your automation gets smarter over time, never obsolete.</p>
-    <a href="/magic" class="more-link">Inside the Magic →</a>
+    <a href="/magic" class="more-link">Inside the Magic</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#mg-cortex"><span class="htab-num">01</span><h3>Cortex</h3><span class="htab-arrow">→</span></button>
@@ -442,7 +445,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel" style="color:var(--orange)">Results</div>
     <h2>Measurable <em>impact</em>.</h2>
     <p class="blurb">Real outcomes from real production floors. The numbers Formic customers see, again and again.</p>
-    <a href="/results" class="more-link">All Results →</a>
+    <a href="/results" class="more-link">Explore Results</a>
   </div>
   <div class="statsrow" style="padding:0 80px 32px">
     <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
@@ -463,7 +466,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Labor Shortage</div>
         <h3>Automate the hardest-to-fill positions.</h3>
         <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
-        <a href="#stories" class="larr">Customer stories →</a>
+        <a href="/results" class="larr">Read more →</a>
       </div>
     </article>
     <article id="rs-injury" class="hpanel">
@@ -472,7 +475,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Ergonomic Injury</div>
         <h3>Cut injury rates. Improve retention.</h3>
         <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
-        <a href="#stories" class="larr">Customer stories →</a>
+        <a href="/results" class="larr">Read more →</a>
       </div>
     </article>
     <article id="rs-prod" class="hpanel">
@@ -481,7 +484,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Productivity Gains</div>
         <h3>Throughput you can plan around.</h3>
         <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
-        <a href="#stories" class="larr">Customer stories →</a>
+        <a href="/results" class="larr">Read more →</a>
       </div>
     </article>
     <article id="rs-cost" class="hpanel">
@@ -490,7 +493,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Cost Savings</div>
         <h3>One fixed monthly price. Zero capital risk.</h3>
         <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
-        <a href="#stories" class="larr">Customer stories →</a>
+        <a href="/results" class="larr">Read more →</a>
       </div>
     </article>
   </div>
@@ -502,7 +505,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel">Customer Stories</div>
     <h2>Proven on <em>real floors</em>.</h2>
     <p class="blurb">The CPG operators who run Formic systems every day — and the community we share around continuous improvement.</p>
-    <a href="/stories" class="more-link">All Customer Stories →</a>
+    <a href="/stories" class="more-link">All Customer Stories</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#st-community"><span class="htab-num">01</span><h3>Community</h3><span class="htab-arrow">→</span></button>
@@ -520,7 +523,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Shared best-practice library and benchmarking</li>
           <li>Direct line into the Formic engineering roadmap</li>
         </ul>
-        <a href="#cta" class="larr">Talk to a customer →</a>
+        <a href="/stories" class="larr">Talk to a customer →</a>
       </div>
     </article>
     <article id="st-events" class="hpanel">
@@ -529,7 +532,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Events</div>
         <h3>See systems run before you sign.</h3>
         <p>Customer summits, on-site tours of running deployments, Pack Expo and ProMat presence. The fastest way to see Formic at production scale is to see it on a customer floor.</p>
-        <a href="#cta" class="larr">Request a tour →</a>
+        <a href="/stories" class="larr">Request a tour →</a>
       </div>
     </article>
   </div>
@@ -541,7 +544,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="slabel" style="color:var(--orange)">Learn More</div>
     <h2>Driving U.S. manufacturing<br><em>forward</em>.</h2>
     <p class="blurb">News, downloads, mission, and careers — everything beyond the product, in one place.</p>
-    <a href="/learn-more" class="more-link">Visit Learn More →</a>
+    <a href="/learn-more" class="more-link">Visit Learn More</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#lm-news"><span class="htab-num">01</span><h3>News</h3><span class="htab-arrow">→</span></button>
@@ -556,7 +559,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — News</div>
         <h3>What we're shipping, who's writing about it.</h3>
         <p>Product launches, customer wins, fundraising milestones, and industry coverage. We post the things that matter — not press for press's sake.</p>
-        <a href="#cta" class="larr">Press contact →</a>
+        <a href="/learn-more" class="larr">Press contact →</a>
       </div>
     </article>
     <article id="lm-downloads" class="hpanel">
@@ -565,7 +568,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Downloads</div>
         <h3>Datasheets, case studies, and brochures.</h3>
         <p>The resources your team needs to scope a project, build a business case, or share Formic internally — all in one place.</p>
-        <a href="#cta" class="larr">Browse downloads →</a>
+        <a href="/learn-more" class="larr">Browse downloads →</a>
       </div>
     </article>
     <article id="lm-mission" class="hpanel">
@@ -574,7 +577,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Formic Mission</div>
         <h3>Accelerate the accessibility of automation.</h3>
         <p>Formic exists to deliver more capacity, consistency, and reliability to mid-market manufacturing — while reducing cost, downtime, and worker safety issues. Every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted.</p>
-        <a href="#cta" class="larr">Get in touch →</a>
+        <a href="/learn-more" class="larr">Get in touch →</a>
       </div>
     </article>
     <article id="lm-careers" class="hpanel">
@@ -583,7 +586,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Careers</div>
         <h3>Build the operating layer of physical industry.</h3>
         <p>We're hiring across engineering, field service, customer success, and operations. Roles based in Chicago and remote across the U.S.</p>
-        <a href="#cta" class="larr">Open roles →</a>
+        <a href="/learn-more" class="larr">Open roles →</a>
       </div>
     </article>
   </div>
