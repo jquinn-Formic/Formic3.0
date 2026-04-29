@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Talk with an Expert — Formic"
+  description="Tell us about your line. A Formic automation expert will follow up within one business day."
+  ogTitle="Talk with an Expert — Formic"
+  ogDescription="Get a tailored automation walk-through from a Formic expert."
+>
+  <link rel="canonical" href="https://formic.co/talk-with-an-expert" slot="head" />
+  <style is:global slot="head">
+.tx-page{background:var(--white);min-height:calc(100vh - 64px)}
+.tx-wrap{max-width:1080px;margin:0 auto;padding:140px 80px 96px;display:grid;grid-template-columns:minmax(320px,420px) 1fr;gap:88px;align-items:start}
+.tx-side .slabel{margin-bottom:18px}
+.tx-side h1{font-family:var(--sans);font-weight:500;font-size:clamp(40px,4.6vw,68px);line-height:1.0;letter-spacing:-.025em;color:var(--black);margin-bottom:24px}
+.tx-side h1 em{color:var(--orange);font-style:normal}
+.tx-side .lede{font-size:17px;font-weight:300;line-height:1.7;color:var(--mgrey);margin-bottom:36px}
+.tx-side .tx-bullets{list-style:none;padding:0;margin:0 0 36px;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--border-l);padding-top:28px}
+.tx-side .tx-bullets li{display:flex;align-items:flex-start;gap:14px;font-size:14px;font-weight:400;color:var(--dgrey);line-height:1.5}
+.tx-side .tx-bullets li::before{content:"";flex:0 0 6px;width:6px;height:6px;background:var(--orange);border-radius:50%;margin-top:7px}
+.tx-side .tx-meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mgrey);border-top:1px solid var(--border-l);padding-top:24px;display:flex;flex-direction:column;gap:8px}
+.tx-side .tx-meta a{color:var(--orange);text-decoration:none}
+.tx-side .tx-meta a:hover{text-decoration:underline}
+
+.tx-form{background:var(--white);border:1px solid var(--border-l);padding:48px 48px 44px;display:flex;flex-direction:column;gap:28px}
+.tx-form .fld{display:flex;flex-direction:column;gap:9px}
+.tx-form label.fld-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--mgrey)}
+.tx-form label.fld-lbl .req{color:var(--orange);margin-left:4px}
+.tx-form input[type="text"],
+.tx-form input[type="email"],
+.tx-form input[type="tel"],
+.tx-form textarea{font-family:var(--sans);font-size:16px;font-weight:400;color:var(--black);background:transparent;border:none;border-bottom:1px solid var(--lgrey);padding:10px 0;outline:none;transition:border-color .2s;width:100%;cursor:none;resize:vertical}
+.tx-form input::placeholder,.tx-form textarea::placeholder{color:rgba(118,125,121,.55);font-weight:300}
+.tx-form input:focus,.tx-form textarea:focus{border-color:var(--orange)}
+.tx-form textarea{min-height:96px;border:1px solid var(--lgrey);padding:14px;font-size:15px;line-height:1.55}
+.tx-form textarea:focus{border-color:var(--orange)}
+.tx-form .fld-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+.tx-form .chk-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:4px}
+.tx-form .chk{display:flex;align-items:center;gap:10px;cursor:none;padding:10px 14px;border:1px solid var(--border-l);background:rgba(240,245,241,.4);transition:border-color .2s,background .2s}
+.tx-form .chk:hover{border-color:var(--mgrey);background:var(--white)}
+.tx-form .chk input{appearance:none;width:14px;height:14px;border:1.5px solid var(--lgrey);background:var(--white);position:relative;flex-shrink:0;cursor:none;transition:border-color .15s,background .15s}
+.tx-form .chk input:checked{background:var(--orange);border-color:var(--orange)}
+.tx-form .chk input:checked::after{content:"";position:absolute;top:1px;left:4px;width:4px;height:8px;border:solid var(--black);border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.tx-form .chk:has(input:checked){border-color:var(--orange);background:rgba(255,145,0,.04)}
+.tx-form .chk span{font-size:14px;font-weight:400;color:var(--dgrey);line-height:1.3}
+.tx-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.tx-form .submit-row{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:8px;padding-top:24px;border-top:1px solid var(--border-l)}
+.tx-form .submit-note{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mgrey);max-width:260px;line-height:1.5}
+.tx-form button.btn-submit{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--orange);border:none;padding:16px 36px;cursor:none;transition:opacity .2s;display:inline-flex;align-items:center;gap:10px}
+.tx-form button.btn-submit:hover{opacity:.88}
+.tx-form button.btn-submit::after{content:"→";transition:transform .25s}
+.tx-form button.btn-submit:hover::after{transform:translateX(4px)}
+
+.tx-success{background:var(--white);border:1px solid var(--border-l);padding:64px 56px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.tx-success .ok-mark{width:56px;height:56px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:var(--black);font-size:28px;font-weight:600}
+.tx-success h2{font-family:var(--sans);font-weight:500;font-size:36px;letter-spacing:-.015em;color:var(--black)}
+.tx-success p{font-size:16px;font-weight:300;color:var(--mgrey);max-width:480px;line-height:1.7}
+.tx-success a{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:3px;margin-top:12px}
+
+.tx-success{display:none}
+[data-form-state="success"] .tx-form{display:none}
+[data-form-state="success"] .tx-success{display:flex}
+
+@media (max-width:880px){
+  .tx-wrap{grid-template-columns:1fr;padding:108px 24px 64px;gap:48px}
+  .tx-form{padding:32px 24px}
+  .tx-form .fld-row,.tx-form .chk-grid{grid-template-columns:1fr}
+  .tx-form .submit-row{flex-direction:column;align-items:flex-start;gap:14px}
+}
+  </style>
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span>Talk with an Expert
+</div>
+
+<section class="tx-page">
+  <div class="tx-wrap">
+    <aside class="tx-side">
+      <div class="slabel">Talk with an Expert</div>
+      <h1>Tell us about <em>your line</em>.</h1>
+      <p class="lede">A Formic automation expert will follow up within one business day. No pitch deck — we'll start with the task, the volume, and the constraints, and tell you whether we're a fit.</p>
+      <ul class="tx-bullets">
+        <li>Walk through your specific task and throughput targets</li>
+        <li>Share customer references on similar lines</li>
+        <li>Get a same-week ROI estimate, no obligation</li>
+        <li>Optional site visit or video walkthrough of a running deployment</li>
+      </ul>
+      <div class="tx-meta">
+        <span>Or reach us directly</span>
+        <a href="mailto:sales@formic.co">sales@formic.co</a>
+        <a href="tel:+17754367642">+1 (775) 436-7642</a>
+      </div>
+    </aside>
+
+    <div class="tx-success">
+      <div class="ok-mark">✓</div>
+      <h2>Thanks — we'll be in touch.</h2>
+      <p>Your message reached the Formic team. An automation expert will follow up within one business day, usually sooner. In the meantime, feel free to keep exploring.</p>
+      <a href="/">Back to home →</a>
+    </div>
+
+    <form
+      class="tx-form"
+      name="talk-with-an-expert"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      action="/talk-with-an-expert?success=1"
+    >
+        <input type="hidden" name="form-name" value="talk-with-an-expert" />
+        <p class="hp"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="fld-row">
+          <div class="fld">
+            <label class="fld-lbl" for="full-name">Full Name<span class="req">*</span></label>
+            <input id="full-name" type="text" name="full-name" required autocomplete="name" placeholder="Jane Smith" />
+          </div>
+          <div class="fld">
+            <label class="fld-lbl" for="company">Company<span class="req">*</span></label>
+            <input id="company" type="text" name="company" required autocomplete="organization" placeholder="Acme Foods" />
+          </div>
+        </div>
+
+        <div class="fld-row">
+          <div class="fld">
+            <label class="fld-lbl" for="email">Work Email<span class="req">*</span></label>
+            <input id="email" type="email" name="email" required autocomplete="email" placeholder="jane@acmefoods.com" />
+          </div>
+          <div class="fld">
+            <label class="fld-lbl" for="phone">Phone</label>
+            <input id="phone" type="tel" name="phone" autocomplete="tel" placeholder="(555) 123-4567" />
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="fld-lbl">I'm interested in</label>
+          <div class="chk-grid">
+            <label class="chk"><input type="checkbox" name="interest" value="End-of-Line Packing" /><span>End-of-Line Packing</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="Palletizing" /><span>Palletizing</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="Case Packing" /><span>Case Packing</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="Precision Manufacturing" /><span>Precision Manufacturing</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="General Task Automation" /><span>General Task Automation</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="Full Service deployment" /><span>Full Service deployment</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="ROI / Pricing consultation" /><span>ROI / Pricing consultation</span></label>
+            <label class="chk"><input type="checkbox" name="interest" value="Site visit or customer reference" /><span>Site visit or customer reference</span></label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="fld-lbl" for="details">Tell us what you're looking for</label>
+          <textarea id="details" name="details" placeholder="Task, current throughput, line constraints, timeline — whatever's most useful for us to know."></textarea>
+        </div>
+
+        <div class="submit-row">
+          <p class="submit-note">By submitting, you agree to be contacted by Formic about your inquiry.</p>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </div>
+      </form>
+  </div>
+</section>
+
+<script is:inline>
+  if (location.search.indexOf('success=1') !== -1) {
+    document.documentElement.setAttribute('data-form-state', 'success');
+    history.replaceState({}, '', location.pathname);
+  }
+</script>
+</Layout>
