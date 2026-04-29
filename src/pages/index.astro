@@ -1,17 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getResultsPage, getNewsItems } from '../lib/sanity';
-
-let resultsData: any = null;
-let newsItems: any[] = [];
-try {
-  [resultsData, newsItems] = await Promise.all([
-    getResultsPage(),
-    getNewsItems(3)
-  ]);
-} catch(e) {
-  // Sanity not configured yet — use hardcoded fallback content
-}
 ---
 <Layout
   title="Formic — Full Service Automation for Manufacturers"
@@ -27,17 +15,14 @@ try {
 .video-hero .vid-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(9,21,23,.95) 0%,rgba(9,21,23,.55) 45%,rgba(9,21,23,.4) 100%),radial-gradient(ellipse at center,rgba(9,21,23,0) 30%,rgba(9,21,23,.75) 100%)}
 .video-hero .hero-content{position:relative;z-index:2;max-width:900px}
 
-/* AI vision overlay — darkened/dramatic pass */
+/* AI vision overlay */
 .ai-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .ai-overlay::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.18) 0,rgba(0,0,0,.18) 1px,transparent 1px,transparent 3px);opacity:.55;pointer-events:none}
 .ai-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,145,0,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,145,0,.14) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.95) 30%,transparent 82%);mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.95) 30%,transparent 82%)}
 .ai-scan{position:absolute;left:0;right:0;top:0;height:220px;background:linear-gradient(to bottom,transparent 0%,rgba(255,145,0,.08) 30%,rgba(255,145,0,.45) 50%,rgba(255,145,0,.08) 70%,transparent 100%);box-shadow:0 0 40px rgba(255,145,0,.15);animation:ai-scan 7s linear infinite}
 @keyframes ai-scan{0%{transform:translateY(-220px)}100%{transform:translateY(100vh)}}
 .ai-corner{position:absolute;width:46px;height:46px;fill:none;stroke:rgba(255,145,0,.95);stroke-width:2;filter:drop-shadow(0 0 6px rgba(255,145,0,.35))}
-.ai-corner.tl{top:24px;left:24px}
-.ai-corner.tr{top:24px;right:24px}
-.ai-corner.bl{bottom:24px;left:24px}
-.ai-corner.br{bottom:24px;right:24px}
+.ai-corner.tl{top:24px;left:24px}.ai-corner.tr{top:24px;right:24px}.ai-corner.bl{bottom:24px;left:24px}.ai-corner.br{bottom:24px;right:24px}
 .ai-box{position:absolute;border:1.5px solid rgba(255,145,0,.9);background:rgba(255,145,0,.06);box-shadow:0 0 24px rgba(255,145,0,.18),inset 0 0 40px rgba(9,21,23,.35);animation:ai-pulse 3.2s ease-in-out infinite}
 .ai-box::before,.ai-box::after{content:"";position:absolute;width:12px;height:12px;border:2px solid rgba(255,145,0,1)}
 .ai-box::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
@@ -59,89 +44,61 @@ try {
 .video-mute{position:absolute;bottom:36px;right:80px;z-index:3;background:rgba(9,21,23,.6);border:1px solid rgba(240,245,241,.18);color:rgba(240,245,241,.6);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;cursor:none;transition:color .2s,border-color .2s}
 .video-mute:hover{color:var(--white);border-color:rgba(240,245,241,.45)}
 
-/* SERVICES tiles section (replaces the old Magic section) */
-#services{background:var(--black);position:relative;overflow:hidden}
-#services .si{padding-top:120px;padding-bottom:120px}
-#services .svc-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
-.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(240,245,241,.06)}
-.svc-tile{position:relative;height:480px;overflow:hidden;background:var(--black);cursor:none;text-decoration:none;display:block}
-.svc-tile-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s ease,filter .4s ease;filter:brightness(.42) saturate(.9)}
-.svc-tile:hover .svc-tile-img{transform:scale(1.06);filter:brightness(.6) saturate(1)}
-.svc-tile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,21,23,.92) 0%,rgba(9,21,23,.45) 50%,rgba(9,21,23,.15) 100%);transition:opacity .3s}
-.svc-tile-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:30px 26px;z-index:2}
-.svc-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;color:rgba(255,145,0,.85);margin-bottom:auto}
-.svc-tile h3{font-family:var(--sans);font-size:23px;font-weight:500;letter-spacing:-.01em;color:var(--white);margin-bottom:8px;line-height:1.1}
-.svc-tile p{font-size:13px;font-weight:300;color:rgba(240,245,241,.7);line-height:1.65;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .4s ease;margin-bottom:0}
-.svc-tile:hover p{max-height:160px;opacity:1;margin-bottom:14px}
-.svc-tile .svc-more{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease}
-.svc-tile:hover .svc-more{max-height:30px;opacity:1}
-.svc-tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:3}
-.svc-tile:hover::after{transform:scaleX(1)}
+/* HOME SECTION pattern: header + tab strip + horizontal scroll-snap track */
+.home-section{position:relative;overflow:hidden}
+.home-section.dark{background:var(--black);color:var(--white)}
+.home-section.dgrey{background:var(--dgrey);color:var(--white)}
+.home-section.lgrey{background:var(--lgrey)}
+.home-section.white{background:var(--white)}
+.hsection-head{padding:96px 80px 28px;max-width:1280px;margin:0 auto}
+.hsection-head .slabel{margin-bottom:16px}
+.hsection-head h2{font-family:var(--sans);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1.0;letter-spacing:-.02em;margin-bottom:18px}
+.home-section.dark .hsection-head h2,.home-section.dgrey .hsection-head h2{color:var(--white)}
+.hsection-head h2 em{color:var(--orange);font-style:normal}
+.hsection-head .blurb{font-size:17px;font-weight:300;line-height:1.7;max-width:580px;color:var(--mgrey)}
+.home-section.dark .hsection-head .blurb,.home-section.dgrey .hsection-head .blurb{color:rgba(240,245,241,.6)}
 
-/* Full service grid */
-.fsgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lgrey);margin-top:52px}
-.fscell{background:var(--white);padding:44px 36px;cursor:none;transition:background .25s}
-.fscell:hover{background:#e8ede9}
-.fsnum{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.15em;color:var(--lgrey);display:block;margin-bottom:18px}
-.fslbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.fscell h3{font-family:var(--sans);font-size:19px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:10px}
-.fscell p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.75;margin-bottom:22px}
+/* tab strip — visually distinct from content panels */
+.hsection-tabs{display:flex;gap:0;max-width:1280px;margin:0 auto;padding:8px 80px 40px;flex-wrap:wrap}
+.htab{flex:1 1 160px;background:transparent;padding:18px 20px;cursor:none;text-decoration:none;border:none;border-top:1px solid rgba(0,0,0,.1);border-bottom:2px solid transparent;text-align:left;font:inherit;color:inherit;transition:border-color .25s,background .25s;display:flex;flex-direction:column;gap:6px;position:relative}
+.home-section.dark .htab,.home-section.dgrey .htab{border-top-color:rgba(240,245,241,.1)}
+.htab:hover{background:rgba(255,145,0,.04);border-bottom-color:rgba(255,145,0,.45)}
+.htab.active{border-bottom-color:var(--orange);background:rgba(255,145,0,.06)}
+.htab .htab-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--mgrey);text-transform:uppercase;transition:color .2s}
+.home-section.dark .htab .htab-num,.home-section.dgrey .htab .htab-num{color:rgba(240,245,241,.4)}
+.htab.active .htab-num,.htab:hover .htab-num{color:var(--orange)}
+.htab h3{font-family:var(--sans);font-size:16px;font-weight:500;letter-spacing:-.01em;line-height:1.25;margin:0}
+.home-section.dark .htab h3,.home-section.dgrey .htab h3{color:var(--white)}
+.htab .htab-arrow{position:absolute;top:18px;right:20px;font-family:var(--mono);font-size:11px;color:var(--orange);opacity:0;transition:opacity .2s,transform .2s}
+.htab:hover .htab-arrow,.htab.active .htab-arrow{opacity:1;transform:translateX(2px)}
 
-/* Solutions grid */
-.solgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey)}
-.stile{background:var(--white);padding:52px 48px;position:relative;overflow:hidden;cursor:none;transition:background .3s}
-.stile:hover{background:#e8ede9}
-.stile-n{font-family:var(--mono);font-size:96px;font-weight:400;color:var(--lgrey);position:absolute;top:-8px;right:20px;line-height:1;pointer-events:none;transition:color .3s}
-.stile:hover .stile-n{color:#c5cac9}
-.stile h3{font-family:var(--sans);font-size:28px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:10px;position:relative;z-index:1}
-.stile p{font-size:14px;font-weight:300;color:var(--mgrey);line-height:1.75;max-width:380px;margin-bottom:18px;position:relative;z-index:1}
-.stags{display:flex;flex-wrap:wrap;gap:5px;position:relative;z-index:1;margin-bottom:22px}
-.stag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--mgrey);border:1px solid var(--lgrey);padding:3px 9px}
-.sol-cta{background:var(--orange);padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
-.sol-cta h3{font-family:var(--sans);font-size:clamp(28px,2.8vw,42px);font-weight:500;letter-spacing:-.02em;color:var(--black);line-height:1.05;margin-bottom:12px}
-.sol-cta p{font-size:15px;font-weight:300;color:rgba(9,21,23,.7);line-height:1.7;margin-bottom:26px}
-.sol-cta .btn-orange{background:var(--black);color:var(--white)}
+/* horizontal track */
+.hsection-track{position:relative;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100vw;max-width:100%}
+.hsection-track::-webkit-scrollbar{display:none}
+.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:inherit}
+.hpanel.text-only{grid-template-columns:1fr}
+.hpanel-img{position:relative;overflow:hidden;background:var(--black)}
+.hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
+.hpanel-img .img-cap{position:absolute;bottom:18px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.7)}
+.hpanel-text{padding:72px 64px 88px;display:flex;flex-direction:column;justify-content:center;max-width:760px}
+.home-section.dark .hpanel-text,.home-section.dgrey .hpanel-text{color:var(--white)}
+.hpanel-text .ptag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.hpanel-text h3{font-family:var(--sans);font-size:clamp(32px,3.4vw,52px);font-weight:500;letter-spacing:-.02em;line-height:1.05;margin-bottom:20px;color:var(--black)}
+.home-section.dark .hpanel-text h3,.home-section.dgrey .hpanel-text h3{color:var(--white)}
+.hpanel-text p{font-size:16px;font-weight:300;line-height:1.75;color:var(--mgrey);margin-bottom:22px}
+.home-section.dark .hpanel-text p,.home-section.dgrey .hpanel-text p{color:rgba(240,245,241,.6)}
+.hpanel-text .feat-list{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:10px}
+.hpanel-text .feat-list li{font-size:14px;font-weight:300;line-height:1.55;padding-left:14px;position:relative}
+.hpanel-text .feat-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
+.hpanel-text .larr{align-self:flex-start}
 
-/* Stats */
-.statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08);margin-top:52px;margin-bottom:1px}
+/* Stats row inside Results section */
+.statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.1);max-width:1280px;margin:0 auto 0;width:100%}
 .stcell{background:var(--dgrey);padding:48px 28px;text-align:center}
 .stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
-.stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey)}
-.outrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08)}
-.ocell{background:var(--dgrey);padding:30px 26px;text-decoration:none;cursor:none;transition:background .25s;display:block}
-.ocell:hover{background:#3d4a47}
-.odot{width:5px;height:5px;background:var(--orange);border-radius:50%;margin-bottom:14px}
-.ocell h4{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:-.01em;color:var(--white);margin-bottom:8px}
-.ocell p{font-size:13px;color:var(--mgrey);line-height:1.65;margin-bottom:14px}
-.omore{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);display:block;transition:letter-spacing .2s}
-.ocell:hover .omore{letter-spacing:.14em}
+.stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
-/* Stories */
-.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey);margin-top:52px}
-.scard{background:var(--white);padding:34px 38px;display:grid;grid-template-columns:64px 1fr;gap:24px;cursor:none;transition:background .25s;text-decoration:none}
-.scard:hover{background:#e8ede9}
-.sct{font-family:var(--sans);font-size:44px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
-.sctlbl{font-family:var(--mono);font-size:8px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey)}
-.scname{font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:6px}
-.scchallenge{font-size:13px;color:var(--mgrey);line-height:1.6;margin-bottom:6px}
-.scwin{font-size:13px;font-weight:400;color:var(--black);line-height:1.6}
-.scwin::before{content:'→ ';color:var(--orange)}
-
-/* Company dark section */
-.cogrid{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;margin-top:52px;align-items:start}
-.comission{font-size:18px;font-weight:300;color:rgba(240,245,241,.45);line-height:1.8;margin-bottom:24px}
-.comission strong{color:rgba(240,245,241,.8);font-weight:400}
-.cofounded{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,245,241,.2);margin-bottom:24px}
-.cofounded em{color:var(--orange);font-style:normal}
-.conav{display:flex;flex-direction:column}
-.colink{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(240,245,241,.06);text-decoration:none;cursor:none;transition:padding-left .2s}
-.colink:hover{padding-left:6px}
-.colink span{font-family:var(--sans);font-size:16px;font-weight:400;letter-spacing:-.01em;color:rgba(240,245,241,.55);transition:color .2s}
-.colink:hover span{color:var(--white)}
-.colink .ca{color:var(--orange);font-size:14px;transition:transform .2s}
-.colink:hover .ca{transform:translateX(5px)}
-
-/* CTA section — full screen */
+/* CTA full-screen */
 #cta{background:var(--orange);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .ctai{width:100%;max-width:1600px;margin:0 auto;padding:80px 60px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .cta-ey{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(9,21,23,.5);margin-bottom:32px}
@@ -155,40 +112,40 @@ try {
 .cta-c{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:rgba(9,21,23,.45);margin-top:24px}
 .cta-c a{color:rgba(9,21,23,.7);text-decoration:none}
 
-@media(max-width:1100px){
-  .svc-grid{grid-template-columns:repeat(3,1fr)}
-}
+/* Nav becomes white over the bottom CTA */
+nav.nav-bottom{background:rgba(255,255,255,.98);justify-content:center;gap:48px;transition:background .4s ease}
+nav.nav-bottom .nav-logo,nav.nav-bottom .nav-cta{display:none}
+nav.nav-bottom .nav-links{gap:48px}
+nav.nav-bottom .nav-links a{color:var(--black);font-size:12px}
+nav.nav-bottom .nav-links a:hover{color:var(--orange)}
+
+/* Mobile */
 @media(max-width:900px){
   .video-hero{padding:0 24px 64px}
   .ai-hud.tl-hud{top:68px;left:24px}
-  .ai-hud.tr-hud{top:68px;right:24px;display:none}
+  .ai-hud.tr-hud{display:none}
   .ai-corner{width:28px;height:28px}
   .ai-corner.tl,.ai-corner.tr{top:14px}
   .ai-corner.bl,.ai-corner.br{bottom:14px}
   .ai-corner.tl,.ai-corner.bl{left:14px}
   .ai-corner.tr,.ai-corner.br{right:14px}
-  .ai-box.b1{top:30%;left:10%;width:38%;height:24%}
-  .ai-box.b2{display:none}
-  #services .si{padding-top:96px}
-  #services .svc-head{grid-template-columns:1fr;gap:24px;align-items:start}
-  .svc-grid{grid-template-columns:repeat(2,1fr)}
-  .svc-tile{height:340px}
-  .fsgrid,.solgrid,.statsrow,.outrow,.sgrid{grid-template-columns:1fr}
-  .cogrid{grid-template-columns:1fr}
+  .hsection-head{padding:64px 24px 16px}
+  .hsection-tabs{padding:8px 24px 24px}
+  .htab{flex:1 1 100%;padding:14px 12px}
+  .hpanel{grid-template-columns:1fr;min-height:auto}
+  .hpanel-img img,.hpanel-img video{min-height:280px;height:280px}
+  .hpanel-text{padding:32px 24px 56px}
+  .statsrow{grid-template-columns:repeat(2,1fr)}
   .ctai{padding:64px 24px}
   .cta-t{font-size:clamp(54px,16vw,96px)}
   .cta-bs{flex-direction:column;align-items:center}
 }
-@media(max-width:560px){
-  .svc-grid{grid-template-columns:1fr}
-}
   </style>
 
-<!-- HERO — full screen video -->
+<!-- HERO — full-screen video with AI overlay -->
 <section class="video-hero">
   <video id="heroVid" autoplay muted loop playsinline>
     <source src="/ATLAS_EOAT.webm" type="video/webm" />
-    <!-- fallback -->
     <img src="/Focus-7603.jpg" alt="Formic industrial automation" />
   </video>
   <div class="vid-overlay"></div>
@@ -202,315 +159,435 @@ try {
     <div class="ai-box b1"><span class="ai-lbl">Track_01 · 98.2%</span></div>
     <div class="ai-box b2"><span class="ai-lbl">EOAT · Active</span></div>
     <div class="ai-crosshair"></div>
-    <div class="ai-hud tl-hud">
-      <span class="ai-dot"></span>
-      <span>Vision.Stream // Live</span>
-    </div>
-    <div class="ai-hud tr-hud">
-      <span>CV_Model v2.4</span>
-      <span>Cycle 0421 · 60fps</span>
-    </div>
+    <div class="ai-hud tl-hud"><span class="ai-dot"></span><span>Vision.Stream // Live</span></div>
+    <div class="ai-hud tr-hud"><span>CV_Model v2.4</span><span>Cycle 0421 · 60fps</span></div>
   </div>
   <div class="hero-content">
     <div class="mono-label">Full Service Automation</div>
     <h1 style="font-family:var(--sans);font-weight:500;font-size:clamp(60px,8.5vw,112px);line-height:1.0;letter-spacing:-.02em;color:var(--white);margin-bottom:24px">Automate<br><em style="color:var(--orange);font-style:normal">NOW</em><br>with Formic</h1>
     <p style="font-size:18px;font-weight:300;color:rgba(240,245,241,.5);max-width:520px;margin-bottom:40px;line-height:1.75">The only robotics-as-a-service platform purpose-built for mid-market manufacturers. No CapEx. No Risk. No Problems.</p>
     <div style="display:flex;gap:12px">
-      <a href="/company#demo" class="btn-hero solid">Get a Demo</a>
-      <a href="/platform" class="btn-hero outline">See How It Works</a>
+      <a href="#cta" class="btn-hero solid">Get a Demo</a>
+      <a href="#full-service" class="btn-hero outline">See How It Works</a>
     </div>
   </div>
   <button id="muteBtn" class="video-mute" onclick="toggleMute()">Unmute</button>
   <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
 </section>
 
-<!-- SERVICES — dark tile grid with rollovers (replaces The Magic) -->
-<section id="services">
-  <div class="si">
-    <div class="svc-head rv">
-      <div>
-        <div class="slabel" style="color:var(--orange)">Services</div>
-        <h2 class="dtitle wh" style="margin-bottom:0">Every Job<br><em>Automated</em></h2>
+<!-- 1 / FULL SERVICE AUTOMATION -->
+<section class="home-section white" id="full-service">
+  <div class="hsection-head">
+    <div class="slabel">Full Service Automation</div>
+    <h2>Everything.<br><em>Included.</em></h2>
+    <p class="blurb">One fixed monthly price covers equipment, service, and technology. No CapEx. No surprise costs. No internal resources required.</p>
+  </div>
+  <div class="hsection-tabs" data-tabs-for="full-service">
+    <button type="button" class="htab active" data-target="#fs-how"><span class="htab-num">01</span><h3>How It Works</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#fs-software"><span class="htab-num">02</span><h3>Software &amp; Technology</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#fs-equipment"><span class="htab-num">03</span><h3>Equipment &amp; Flex</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#fs-service"><span class="htab-num">04</span><h3>Service &amp; Parts</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track" data-track="full-service">
+    <article id="fs-how" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic team scoping a customer line" loading="lazy"/><span class="img-cap">Scope · Build · Run</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — How It Works</div>
+        <h3>From inquiry to running production in weeks.</h3>
+        <p>We scope your line, design the system, ship and install, and stay on the system for life. Your team never touches a robot integration project — we handle every step.</p>
+        <ul class="feat-list">
+          <li>Free application scoping and engineering review</li>
+          <li>Pre-engineered system designs deployed in days, not months</li>
+          <li>Installation and commissioning by Formic engineers</li>
+          <li>Ongoing performance monitoring and SLAs from day one</li>
+        </ul>
+        <a href="#cta" class="larr">Talk to an engineer →</a>
       </div>
-      <p class="btext wh" style="max-width:440px">From end-of-line palletizing to humanoid platforms — one operator, one fixed price, every task on your floor.</p>
-    </div>
-    <div class="svc-grid rv d1">
-      <a href="/solutions#palletizing" class="svc-tile">
-        <div class="svc-tile-img" style="background-image:url('/Haviland_Products_-_Palletizing.gif')"></div>
-        <div class="svc-tile-overlay"></div>
-        <div class="svc-tile-content">
-          <div class="svc-num">01 —</div>
-          <h3>Palletizing</h3>
-          <p>Gantry and robotic palletizers built for sustained throughput. Stable stacks, clean changeovers.</p>
-          <span class="svc-more">Learn more →</span>
-        </div>
-      </a>
-      <a href="/solutions#case-packing" class="svc-tile">
-        <div class="svc-tile-img" style="background-image:url('/CasepackerPromoVideo_NoText.gif')"></div>
-        <div class="svc-tile-overlay"></div>
-        <div class="svc-tile-content">
-          <div class="svc-num">02 —</div>
-          <h3>Case Packing</h3>
-          <p>Top-load and side-load case packing across SKUs and formats. Consistent counts, fewer line stops.</p>
-          <span class="svc-more">Learn more →</span>
-        </div>
-      </a>
-      <a href="/solutions#amr" class="svc-tile">
-        <div class="svc-tile-img" style="background-image:url('/Talos-0143.jpg')"></div>
-        <div class="svc-tile-overlay"></div>
-        <div class="svc-tile-content">
-          <div class="svc-num">03 —</div>
-          <h3>Automated Pallet Movement</h3>
-          <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, no forklifts required.</p>
-          <span class="svc-more">Learn more →</span>
-        </div>
-      </a>
-      <a href="/solutions#machine-tending" class="svc-tile">
-        <div class="svc-tile-img" style="background-image:url('/Talos-9787.jpg')"></div>
-        <div class="svc-tile-overlay"></div>
-        <div class="svc-tile-content">
-          <div class="svc-num">04 —</div>
-          <h3>Machine Tending</h3>
-          <p>Mill, lathe, press and injection-mold tending — the hardest, most repetitive work removed from your floor.</p>
-          <span class="svc-more">Learn more →</span>
-        </div>
-      </a>
-      <a href="/solutions#humanoid" class="svc-tile">
-        <div class="svc-tile-img" style="background-image:url('/Talos-0095.jpg')"></div>
-        <div class="svc-tile-overlay"></div>
-        <div class="svc-tile-content">
-          <div class="svc-num">05 —</div>
-          <h3>Humanoid</h3>
-          <p>Bimanual and full-humanoid platforms for general-purpose tasks — the next frontier, deployable now.</p>
-          <span class="svc-more">Learn more →</span>
-        </div>
-      </a>
-    </div>
+    </article>
+    <article id="fs-software" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic engineer monitoring fleet from laptop" loading="lazy"/><span class="img-cap">Cortex · Core · FPI</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Software &amp; Technology</div>
+        <h3>The intelligence layer behind every system.</h3>
+        <p>Real-time visibility, remote diagnostics, and continuous OTA updates — your operators and our support engineers see the same live data, everywhere.</p>
+        <ul class="feat-list">
+          <li>Cortex: software intelligence for fleet management and operator UX</li>
+          <li>Core: deterministic PLC control on proven industrial hardware</li>
+          <li>Real-time OEE, throughput, and cycle-time analytics</li>
+          <li>Encrypted remote diagnostics and proactive alerting</li>
+        </ul>
+        <a href="#magic" class="larr">Inside the platform →</a>
+      </div>
+    </article>
+    <article id="fs-equipment" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="White cobot arm — modular Formic equipment" loading="lazy"/><span class="img-cap">Modular · Flexible</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Equipment &amp; Flex</div>
+        <h3>Modular hardware that flexes with your line.</h3>
+        <p>Standardized, "Lego-block" architecture means every system shares the same core building blocks — easy to deploy, maintain, and swap as your needs evolve.</p>
+        <ul class="feat-list">
+          <li>KUKA, ABB, FANUC, Doosan robots — all under one OS</li>
+          <li>Swap or scale equipment without renegotiating contracts</li>
+          <li>Backward-compatible upgrades across every deployment</li>
+          <li>Field-tested designs, not custom one-offs</li>
+        </ul>
+        <a href="#packing" class="larr">See solutions →</a>
+      </div>
+    </article>
+    <article id="fs-service" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic field service engineer at customer site" loading="lazy"/><span class="img-cap">24/7 · Bilingual · SLA-backed</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Service &amp; Parts</div>
+        <h3>The system stays running — that's the whole job.</h3>
+        <p>24/7 bilingual tech support, regional Field Service Engineers, contracted SLAs, and 100%-included maintenance. Parts are stocked, swaps are scheduled, downtime is engineered out.</p>
+        <ul class="feat-list">
+          <li>24/7 tech support in English and Spanish</li>
+          <li>Regional FSE network for rapid on-site response</li>
+          <li>Performance SLAs written into every agreement</li>
+          <li>Spare parts inventory managed by Formic — no PO scramble</li>
+        </ul>
+        <a href="#cta" class="larr">Get a demo →</a>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- FULL SERVICE — white -->
-<section id="fs" style="background:var(--white)">
-  <div class="si">
-    <div class="two-col rv" style="align-items:end">
-      <div>
-        <div class="slabel">Full Service Automation</div>
-        <h2 class="dtitle rv d1">Everything.<br><em>Included.</em></h2>
+<!-- 2 / END-OF-LINE PACKING -->
+<section class="home-section dark" id="packing">
+  <div class="hsection-head">
+    <div class="slabel" style="color:var(--orange)">End-of-Line Packing</div>
+    <h2>Built for <em>your line</em>.</h2>
+    <p class="blurb">Standardized, modular palletizing, packing, and pallet-movement systems — proven across CPG floors, deployed in weeks.</p>
+  </div>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#pk-complete"><span class="htab-num">01</span><h3>Complete Solutions</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#pk-pal"><span class="htab-num">02</span><h3>Palletizing</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#pk-case"><span class="htab-num">03</span><h3>Case Packing</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#pk-erector"><span class="htab-num">04</span><h3>Case Erector / Sealer</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#pk-amr"><span class="htab-num">05</span><h3>AMRs</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="pk-complete" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Complete end-of-line cell deployed at CPG site" loading="lazy"/><span class="img-cap">Integrated end-of-line cell</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Complete Solutions</div>
+        <h3>The whole end-of-line, one partner.</h3>
+        <p>Case erecting, packing, sealing, palletizing, and pallet movement — engineered as one system, deployed as one project, supported under one SLA.</p>
+        <a href="#cta" class="larr">Scope my line →</a>
       </div>
-      <p class="btext rv d2">One fixed monthly price covers equipment, service, and technology. No CapEx. No surprise costs. No internal resources needed.</p>
-    </div>
-    <div class="fsgrid rv d1">
-      <div class="fscell">
-        <span class="fsnum">01 —</span>
-        <div class="fslbl">Get the Job Done</div>
-        <h3>Systems &amp; Equipment</h3>
-        <p>Engineers scope, test, program, ship, and deploy. Modular architecture built for consistent, repeatable performance across sites.</p>
-        <a href="/solutions" class="larr">View solutions →</a>
+    </article>
+    <article id="pk-pal" class="hpanel">
+      <div class="hpanel-img"><img src="/Haviland_Products_-_Palletizing.gif" alt="Formic palletizer running at production speed" loading="lazy"/><span class="img-cap">Robotic palletizing · 24/7</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Palletizing</div>
+        <h3>Stable stacks, every shift.</h3>
+        <p>Gantry and robotic palletizers built for sustained throughput. Clean changeovers between SKUs, consistent stack quality, no worker fatigue, no injuries.</p>
+        <ul class="feat-list">
+          <li>Mixed-SKU palletizing</li>
+          <li>Vision-guided pick and place</li>
+          <li>Pallet-pattern flexibility programmed at deploy</li>
+        </ul>
+        <a href="#cta" class="larr">Get a quote →</a>
       </div>
-      <div class="fscell">
-        <span class="fsnum">02 —</span>
-        <div class="fslbl">Keep It Running</div>
-        <h3>Service &amp; Support</h3>
-        <p>24/7 bilingual tech support, Field Service Engineers, and contracted performance SLAs. Maintenance 100% included.</p>
-        <a href="/full-service" class="larr">Service details →</a>
+    </article>
+    <article id="pk-case" class="hpanel">
+      <div class="hpanel-img"><img src="/CasepackerPromoVideo_NoText.gif" alt="Formic case packer in action" loading="lazy"/><span class="img-cap">Top-load · Side-load</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Case Packing</div>
+        <h3>Counts that hit, every time.</h3>
+        <p>Top-load and side-load case packing across SKUs, formats, and pack patterns. Consistent counts, predictable cycle times, fewer line stops.</p>
+        <a href="#cta" class="larr">See it run →</a>
       </div>
-      <div class="fscell">
-        <span class="fsnum">03 —</span>
-        <div class="fslbl">Optimize Performance</div>
-        <h3>Technology &amp; Software</h3>
-        <p>Real-time production data, continuous feature rollouts, and remote diagnostics — better visibility than any legacy system.</p>
-        <a href="/platform" class="larr">Explore technology →</a>
+    </article>
+    <article id="pk-erector" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Case erector and sealer cell" loading="lazy"/><span class="img-cap">Erect · Pack · Seal</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Case Erector / Sealer</div>
+        <h3>From flat blank to sealed case.</h3>
+        <p>Automated case forming and sealing integrated with the upstream packer — one continuous flow, one set of operators, one SLA across the cell.</p>
+        <a href="#cta" class="larr">Talk to engineering →</a>
       </div>
-    </div>
+    </article>
+    <article id="pk-amr" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Autonomous mobile robot moving a pallet" loading="lazy"/><span class="img-cap">Autonomous pallet movement</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">05 — AMRs</div>
+        <h3>Pallet movement without the forklifts.</h3>
+        <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, finished goods to outbound — running alongside your team, not in place of it.</p>
+        <a href="#cta" class="larr">See AMR fleets →</a>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- VIDEO SPLIT 1: Full Service in action — between FS and Solutions -->
-<section class="bg-white rv" style="padding:0">
-  <div class="video-split">
-    <div class="yt-facade" data-ytid="ZzWbNn-EU_0" onclick="loadYT(this)">
-      <img
-        src="https://i.ytimg.com/vi/ZzWbNn-EU_0/maxresdefault.jpg"
-        alt="Formic Full Service Automation — see it in action"
-        loading="lazy"
-        onerror="this.src='/Focus-7603.jpg'"
-      />
-      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <span class="yt-label">Watch: Full Service Automation</span>
-    </div>
-    <div class="vs-text light">
-      <div class="slabel">In Action</div>
-      <h2 class="dk">From inquiry<br>to <em>running production</em></h2>
-      <p class="vs-body dk">Watch how Formic scopes, deploys, and supports a complete automation system — from first conversation to running production in weeks.</p>
-      <a href="/full-service" class="larr">How It Works →</a>
-    </div>
+<!-- 3 / PRECISION PART MANUFACTURING -->
+<section class="home-section white" id="precision">
+  <div class="hsection-head">
+    <div class="slabel">Precision Part Manufacturing</div>
+    <h2>Removing the <em>hardest tasks</em>.</h2>
+    <p class="blurb">Mill, lathe, and injection-mold tending — the most repetitive, dangerous, and hard-to-staff jobs on your floor, gone.</p>
   </div>
-</section>
-
-<!-- FULLBLEED IMAGE BREAK -->
-<div class="fullbleed-wrap rv">
-  <img src="/Focus-7603.jpg" class="fullbleed" alt="Formic industrial palletizer deployed at CPG facility" loading="lazy" style="height:65vh" />
-  <div class="fullbleed-caption">Deployed &amp; running — CPG production floor</div>
-</div>
-
-<!-- SOLUTIONS — light grey -->
-<section id="sol" style="background:var(--lgrey)">
-  <div class="si">
-    <div class="two-col rv" style="margin-bottom:52px;align-items:end">
-      <div>
-        <div class="slabel">Solutions</div>
-        <h2 class="dtitle rv d1">Built for<br><em>Your Line</em></h2>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#pr-mill"><span class="htab-num">01</span><h3>Mill / Lathe Machine Tending</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#pr-mold"><span class="htab-num">02</span><h3>Injection Molding Tending</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="pr-mill" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot loading a CNC machine" loading="lazy"/><span class="img-cap">CNC tending · 24/7</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Mill / Lathe Tending</div>
+        <h3>Light-out machining, on your existing line.</h3>
+        <p>Robotic part loading and unloading on mills and lathes. Higher spindle utilization, consistent cycle times, and operators redeployed to higher-value work.</p>
+        <a href="#cta" class="larr">Scope a cell →</a>
       </div>
-      <p class="btext rv d2">Standardized, modular systems for the most demanding tasks on mid-market CPG floors — deployed in weeks, not months.</p>
-    </div>
-  </div>
-  <div class="solgrid rv d1">
-    <div class="stile">
-      <div class="stile-n">1</div>
-      <h3>End-of-Line Packing</h3>
-      <p>Palletizing, case packing, case erecting and sealing, AMRs — proven modular designs deployed at scale across CPG floors.</p>
-      <div class="stags"><span class="stag">Palletizing</span><span class="stag">Case Packing</span><span class="stag">Case Erector/Sealer</span><span class="stag">AMRs</span></div>
-      <a href="/solutions" class="larr">Full details →</a>
-    </div>
-    <div class="stile">
-      <div class="stile-n">2</div>
-      <h3>Precision Part Manufacturing</h3>
-      <p>Mill/lathe tending and injection molding — removing the hardest, most repetitive tasks from your operators.</p>
-      <div class="stags"><span class="stag">Mill Tending</span><span class="stag">Lathe Tending</span><span class="stag">Injection Molding</span></div>
-      <a href="/solutions#precision" class="larr">Full details →</a>
-    </div>
-    <div class="stile">
-      <div class="stile-n">3</div>
-      <h3>General Tasks</h3>
-      <p>Mobile bimanual manipulators and full humanoid platforms — the next frontier available on your floor now.</p>
-      <div class="stags"><span class="stag">Mobile Bimanual</span><span class="stag">Full Humanoids</span></div>
-      <a href="/solutions#general" class="larr">Full details →</a>
-    </div>
-    <div class="sol-cta">
-      <h3>Not sure<br>where to start?</h3>
-      <p>We scope the right system for your line — no engineering resources required.</p>
-      <a href="/company#demo" class="btn-orange" style="display:inline-block">Get a Demo</a>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS — dark grey, with animated counters -->
-<section id="res" style="background:var(--dgrey)">
-  <div class="si">
-    <div class="two-col rv" style="align-items:end">
-      <div>
-        <div class="slabel" style="color:var(--orange)">Results</div>
-        <h2 class="dtitle wh rv d1">Measurable<br><em>Impact</em></h2>
+    </article>
+    <article id="pr-mold" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Robotic injection mold tending cell" loading="lazy"/><span class="img-cap">Mold tending · Post-processing</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Injection Molding Tending</div>
+        <h3>Mold to packed, hands-off.</h3>
+        <p>Part removal, sprue handling, post-processing, and downstream packaging integrated into one robotic cell. Consistent quality, faster cycles, fewer operator hours per part.</p>
+        <a href="#cta" class="larr">Talk to engineering →</a>
       </div>
-      <p class="btext wh rv d2">Real outcomes from real production floors.</p>
-    </div>
-    <div class="statsrow rv d1">
-      <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
-      <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Tech Support</span></div>
-      <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
-      <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
-    </div>
-    <div class="outrow rv d2">
-      <a href="/results#labor" class="ocell"><div class="odot"></div><h4>Overcoming Labor Shortage</h4><p>Automate the hardest-to-fill positions without adding headcount risk.</p><span class="omore">Stories →</span></a>
-      <a href="/results#injury" class="ocell"><div class="odot"></div><h4>Eliminating Ergonomic Injury</h4><p>Remove workers from high-repetition tasks — cut injury rates and improve retention.</p><span class="omore">Stories →</span></a>
-      <a href="/results#productivity" class="ocell"><div class="odot"></div><h4>Productivity Gains</h4><p>Consistent throughput, faster changeovers, real-time data for continuous optimization.</p><span class="omore">Stories →</span></a>
-      <a href="/results#cost" class="ocell"><div class="odot"></div><h4>Cost Savings</h4><p>One fixed monthly price. No capital at risk. OpEx model that scales with growth.</p><span class="omore">Stories →</span></a>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- STORIES — white -->
-<section id="stories" style="background:var(--white)">
-  <div class="si">
-    <div class="two-col rv" style="margin-bottom:52px;align-items:end">
-      <div>
-        <div class="slabel">Customer Stories</div>
-        <h2 class="dtitle rv d1">Proven on<br><em>Real Floors</em></h2>
+<!-- 4 / GENERAL TASKS -->
+<section class="home-section dgrey" id="general">
+  <div class="hsection-head">
+    <div class="slabel" style="color:var(--orange)">General Tasks</div>
+    <h2>The <em>next frontier</em>, on your floor now.</h2>
+    <p class="blurb">Bimanual mobile platforms and full humanoid robots — Formic deploys, supports, and continuously upgrades them under the same Full Service model.</p>
+  </div>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#gt-bim"><span class="htab-num">01</span><h3>Mobile Bimanual Manipulator</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#gt-hum"><span class="htab-num">02</span><h3>Full Humanoids</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="gt-bim" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Mobile bimanual manipulator on production floor" loading="lazy"/><span class="img-cap">Mobile · Bimanual</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Mobile Bimanual Manipulator</div>
+        <h3>Two arms, one base, anywhere on the line.</h3>
+        <p>Bimanual mobile robots that handle multi-step manipulation tasks — bin picking, machine tending, assist work — and re-locate themselves between cells without a fixed footprint.</p>
+        <a href="#cta" class="larr">See pilots →</a>
       </div>
-      <div class="pull-quote rv d2">
-        <blockquote>"Having a partner like Formic that handles installation, maintenance, and equipment swapping allows us to stay focused on what we do best: making great snacks."</blockquote>
-        <cite>— Jaap Langenberg, CEO · Wyandot Snacks</cite>
+    </article>
+    <article id="gt-hum" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Humanoid robot on a manufacturing floor" loading="lazy"/><span class="img-cap">Humanoid platforms</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Full Humanoids</div>
+        <h3>Generalist robots, deployed as a service.</h3>
+        <p>Full humanoid platforms for general-purpose manufacturing tasks — covered by Formic Full Service, so you get the upside of frontier hardware with none of the integration risk.</p>
+        <a href="#cta" class="larr">Join the early program →</a>
       </div>
-    </div>
-    <div class="sgrid rv d1">
-      <a href="/customers" class="scard"><div><div class="sct">5</div><div class="sctlbl">Systems</div></div><div><div class="scname">Land O'Frost</div><p class="scchallenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p><p class="scwin">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p></div></a>
-      <a href="/customers" class="scard"><div><div class="sct">9</div><div class="sctlbl">Systems</div></div><div><div class="scname">Mi Rancho</div><p class="scchallenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p><p class="scwin">9 robotic palletizers → eliminated injuries, cut downtime</p></div></a>
-      <a href="/customers" class="scard"><div><div class="sct">1</div><div class="sctlbl">System</div></div><div><div class="scname">Mariani Family</div><p class="scchallenge">Labor gaps and ergonomic strain limited efficiency amid rising demand.</p><p class="scwin">Boosted efficiency, filled staffing gaps, flexible equipment swaps</p></div></a>
-      <a href="/customers" class="scard"><div><div class="sct">1</div><div class="sctlbl">System</div></div><div><div class="scname">Taffy Town</div><p class="scchallenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p><p class="scwin">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p></div></a>
-    </div>
-    <div style="text-align:center;margin-top:36px" class="rv d2">
-      <a href="/customers" class="larr">All customer stories →</a>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- GIF BREAK -->
-<div class="gif-strip rv" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--black)">
-  <div style="overflow:hidden;position:relative">
-    <img src="/Haviland_Products_-_Palletizing.gif" style="width:100%;height:340px;object-fit:cover;display:block" alt="Formic palletizer running at production speed" />
-    <span style="position:absolute;bottom:16px;left:20px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.6)">Industrial palletizing</span>
+<!-- 5 / THE MAGIC -->
+<section class="home-section dark" id="magic">
+  <div class="hsection-head">
+    <div class="slabel" style="color:var(--orange)">The Magic</div>
+    <h2>PLC reliability.<br><em>Software intelligence.</em></h2>
+    <p class="blurb">Formic's hybrid architecture pairs deterministic industrial control with a modern software layer — your automation gets smarter over time, never obsolete.</p>
   </div>
-  <div style="overflow:hidden;position:relative">
-    <img src="/CasepackerPromoVideo_NoText.gif" style="width:100%;height:340px;object-fit:cover;display:block" alt="Formic case packer in action" />
-    <span style="position:absolute;bottom:16px;left:20px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.6)">Case packing</span>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#mg-cortex"><span class="htab-num">01</span><h3>Cortex</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#mg-core"><span class="htab-num">02</span><h3>Core</h3><span class="htab-arrow">→</span></button>
   </div>
-</div>
-
-<!-- VIDEO SPLIT 2: The Formic Story — between Stories and Company -->
-<section class="bg-black rv" style="padding:0">
-  <div class="video-split dark">
-    <div class="vs-text dark">
-      <div class="slabel" style="color:var(--orange)">The Mission</div>
-      <h2 class="wh">Driving U.S.<br><em>Manufacturing Forward</em></h2>
-      <p class="vs-body wh">Technology doesn't change the world until you make it accessible to those who need it most. See the story behind Formic — and what we're building for American manufacturing.</p>
-      <a href="/company" class="larr" style="color:var(--orange)">Our mission →</a>
-    </div>
-    <div class="yt-facade" data-ytid="SD0UMnNYR1E" onclick="loadYT(this)">
-      <img
-        src="https://i.ytimg.com/vi/SD0UMnNYR1E/maxresdefault.jpg"
-        alt="The Formic Story"
-        loading="lazy"
-        onerror="this.src='R52_8950-2.jpg'"
-      />
-      <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <span class="yt-label">Watch: The Formic Story</span>
-    </div>
-  </div>
-</section>
-
-<!-- COMPANY — black -->
-<section id="co" style="background:var(--black)">
-  <div class="si">
-    <div class="slabel rv" style="color:var(--orange)">Company</div>
-    <h2 class="dtitle wh rv d1">Driving U.S.<br>Manufacturing<br><em>Forward</em></h2>
-    <div class="cogrid rv d2">
-      <div>
-        <p class="cofounded">Founded <em>2020</em> · Chicago, IL</p>
-        <p class="comission">Formic was founded to <strong>accelerate the accessibility and ease of automation</strong> across American manufacturing — delivering more capacity, consistency, and reliability while reducing cost, downtime, and worker safety issues.</p>
-        <p class="comission">We believe every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted — without capital risk or 18-month deployment timelines.</p>
-        <a href="/company" class="larr">Our mission →</a>
+  <div class="hsection-track">
+    <article id="mg-cortex" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic Cortex software dashboard concept" loading="lazy"/><span class="img-cap">Cortex · The intelligence layer</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Cortex</div>
+        <h3>The software brain across every Formic system.</h3>
+        <p>Cortex is the intelligence layer that ties every cell, line, and site together — fleet visibility, remote diagnostics, real-time analytics, and continuous OTA upgrades.</p>
+        <ul class="feat-list">
+          <li>Real-time OEE, throughput, and cycle-time analytics</li>
+          <li>Encrypted remote diagnostics and root-cause tools</li>
+          <li>Operator-friendly bilingual HMI on every machine</li>
+          <li>Continuous, backward-compatible feature releases</li>
+        </ul>
       </div>
-      <nav class="conav">
-        <a href="/company#mission" class="colink"><span>Formic Mission</span><span class="ca">→</span></a>
-        <a href="/company#news" class="colink"><span>News &amp; Press</span><span class="ca">→</span></a>
-        <a href="/company#careers" class="colink"><span>Careers</span><span class="ca">→</span></a>
-        <a href="/company" class="colink"><span>Downloads &amp; Resources</span><span class="ca">→</span></a>
-        <a href="/company#investors" class="colink"><span>Investors</span><span class="ca">→</span></a>
-        <a href="/customers#community" class="colink"><span>Community &amp; Events</span><span class="ca">→</span></a>
-      </nav>
-    </div>
+    </article>
+    <article id="mg-core" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic Core controlled robot in motion" loading="lazy"/><span class="img-cap">Core · The control layer</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Core</div>
+        <h3>Industrial-grade control, standardized.</h3>
+        <p>Core delivers deterministic, safety-rated PLC motion on proven industrial hardware. The same reliability your maintenance team already knows — now with software visibility on top.</p>
+        <ul class="feat-list">
+          <li>Hard-real-time PLC motion control (Rockwell, Siemens)</li>
+          <li>Standardized "Lego-block" modular architecture</li>
+          <li>KUKA, ABB, FANUC, Doosan — unified under one OS</li>
+          <li>Same building blocks across every deployment</li>
+        </ul>
+      </div>
+    </article>
   </div>
 </section>
 
-<!-- CTA — orange, full-screen -->
+<!-- 6 / RESULTS -->
+<section class="home-section dgrey" id="results">
+  <div class="hsection-head">
+    <div class="slabel" style="color:var(--orange)">Results</div>
+    <h2>Measurable <em>impact</em>.</h2>
+    <p class="blurb">Real outcomes from real production floors. The numbers Formic customers see, again and again.</p>
+  </div>
+  <div class="statsrow" style="padding:0 80px 32px">
+    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Tech Support</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
+  </div>
+  <div class="hsection-tabs" style="padding-top:32px">
+    <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-injury"><span class="htab-num">02</span><h3>Eliminating Ergonomic Injury</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-prod"><span class="htab-num">03</span><h3>Productivity Gains</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-cost"><span class="htab-num">04</span><h3>Cost Savings</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="rs-labor" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic system on a CPG floor reducing labor reliance" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Labor Shortage</div>
+        <h3>Automate the hardest-to-fill positions.</h3>
+        <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
+        <a href="#stories" class="larr">Customer stories →</a>
+      </div>
+    </article>
+    <article id="rs-injury" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Ergonomic Injury</div>
+        <h3>Cut injury rates. Improve retention.</h3>
+        <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
+        <a href="#stories" class="larr">Customer stories →</a>
+      </div>
+    </article>
+    <article id="rs-prod" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line driven by Formic" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Productivity Gains</div>
+        <h3>Throughput you can plan around.</h3>
+        <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
+        <a href="#stories" class="larr">Customer stories →</a>
+      </div>
+    </article>
+    <article id="rs-cost" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model — no CapEx required" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Cost Savings</div>
+        <h3>One fixed monthly price. Zero capital risk.</h3>
+        <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
+        <a href="#stories" class="larr">Customer stories →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 7 / CUSTOMER STORIES -->
+<section class="home-section white" id="stories">
+  <div class="hsection-head">
+    <div class="slabel">Customer Stories</div>
+    <h2>Proven on <em>real floors</em>.</h2>
+    <p class="blurb">The CPG operators who run Formic systems every day — and the community we share around continuous improvement.</p>
+  </div>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#st-community"><span class="htab-num">01</span><h3>Community</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#st-events"><span class="htab-num">02</span><h3>Events</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="st-community" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic customer community gathering" loading="lazy"/><span class="img-cap">Formic customer community</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Community</div>
+        <h3>Operators who share what's working.</h3>
+        <p>From Land O'Frost to Mi Rancho, Mariani Family to Taffy Town — Formic customers compare notes on uptime, throughput, and OpEx outcomes. Every customer benefits from every deployment.</p>
+        <ul class="feat-list">
+          <li>Quarterly customer roundtables (virtual and in-person)</li>
+          <li>Shared best-practice library and benchmarking</li>
+          <li>Direct line into the Formic engineering roadmap</li>
+        </ul>
+        <a href="#cta" class="larr">Talk to a customer →</a>
+      </div>
+    </article>
+    <article id="st-events" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic event with customers and partners" loading="lazy"/><span class="img-cap">Customer summits · Site tours</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Events</div>
+        <h3>See systems run before you sign.</h3>
+        <p>Customer summits, on-site tours of running deployments, Pack Expo and ProMat presence. The fastest way to see Formic at production scale is to see it on a customer floor.</p>
+        <a href="#cta" class="larr">Request a tour →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 8 / LEARN MORE -->
+<section class="home-section dark" id="learn-more">
+  <div class="hsection-head">
+    <div class="slabel" style="color:var(--orange)">Learn More</div>
+    <h2>Driving U.S. manufacturing<br><em>forward</em>.</h2>
+    <p class="blurb">News, downloads, mission, and careers — everything beyond the product, in one place.</p>
+  </div>
+  <div class="hsection-tabs">
+    <button type="button" class="htab active" data-target="#lm-news"><span class="htab-num">01</span><h3>News</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#lm-downloads"><span class="htab-num">02</span><h3>Downloads</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#lm-mission"><span class="htab-num">03</span><h3>Formic Mission</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#lm-careers"><span class="htab-num">04</span><h3>Careers</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="lm-news" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Formic in the news" loading="lazy"/><span class="img-cap">Press · Announcements</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — News</div>
+        <h3>What we're shipping, who's writing about it.</h3>
+        <p>Product launches, customer wins, fundraising milestones, and industry coverage. We post the things that matter — not press for press's sake.</p>
+        <a href="#cta" class="larr">Press contact →</a>
+      </div>
+    </article>
+    <article id="lm-downloads" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic downloadable resources" loading="lazy"/><span class="img-cap">Datasheets · Case studies</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Downloads</div>
+        <h3>Datasheets, case studies, and brochures.</h3>
+        <p>The resources your team needs to scope a project, build a business case, or share Formic internally — all in one place.</p>
+        <a href="#cta" class="larr">Browse downloads →</a>
+      </div>
+    </article>
+    <article id="lm-mission" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic mission — U.S. manufacturing" loading="lazy"/><span class="img-cap">Founded 2020 · Chicago, IL</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Formic Mission</div>
+        <h3>Accelerate the accessibility of automation.</h3>
+        <p>Formic exists to deliver more capacity, consistency, and reliability to mid-market manufacturing — while reducing cost, downtime, and worker safety issues. Every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted.</p>
+        <a href="#cta" class="larr">Get in touch →</a>
+      </div>
+    </article>
+    <article id="lm-careers" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic careers" loading="lazy"/><span class="img-cap">Hiring across engineering &amp; operations</span></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Careers</div>
+        <h3>Build the operating layer of physical industry.</h3>
+        <p>We're hiring across engineering, field service, customer success, and operations. Roles based in Chicago and remote across the U.S.</p>
+        <a href="#cta" class="larr">Open roles →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CTA — full screen -->
 <section id="cta">
   <div class="ctai">
     <p class="cta-ey">Ready to automate?</p>
     <h2 class="cta-t">No CapEx.<br>No Risk.<br>No Problems.</h2>
     <p class="cta-s">Talk to a Formic engineer about your production line. We'll scope the right system — no internal resources needed.</p>
     <div class="cta-bs">
-      <a href="/company#demo" class="btn-ctadark">Get a Demo</a>
-      <a href="/company#contact" class="btn-ctawh">Talk to Sales</a>
+      <a href="mailto:sales@formic.co" class="btn-ctadark">Get a Demo</a>
+      <a href="mailto:sales@formic.co" class="btn-ctawh">Talk to Sales</a>
     </div>
     <p class="cta-c">Or reach us: <a href="mailto:sales@formic.co">sales@formic.co</a> · <a href="tel:7754367642">775-436-7642</a></p>
   </div>
@@ -526,7 +603,7 @@ function toggleMute(){
 }
 
 // Stat counter — animates [data-count-to] when in view
-(function(){
+function initCounters(){
   const els=document.querySelectorAll('.stnum[data-count-to]');
   if(!els.length)return;
   const ease=t=>1-Math.pow(1-t,3);
@@ -544,15 +621,13 @@ function toggleMute(){
     requestAnimationFrame(step);
   }
   const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){run(e.target);obs.unobserve(e.target);}
-    });
+    entries.forEach(e=>{if(e.isIntersecting){run(e.target);obs.unobserve(e.target);}});
   },{threshold:.4});
   els.forEach(el=>obs.observe(el));
-})();
+}
 
-// Nav goes light at the bottom (when CTA section is in view)
-(function(){
+// Nav goes light when CTA section is in view
+function initNavBottom(){
   const nav=document.getElementById('nav');
   const trigger=document.getElementById('cta');
   if(!nav||!trigger)return;
@@ -560,15 +635,47 @@ function toggleMute(){
     entries.forEach(e=>nav.classList.toggle('nav-bottom',e.isIntersecting));
   },{threshold:.15});
   obs.observe(trigger);
-})();
-</script>
-<script is:inline slot="scripts">
-function loadYT(el){
-  const id=el.dataset.ytid;
-  const w=document.createElement('div');
-  w.className='vs-embed fill';
-  w.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" title="Formic video"></iframe>`;
-  el.replaceWith(w);
+}
+
+// Generic horizontal section: each .home-section with a tab strip + track
+function initHomeSections(){
+  document.querySelectorAll('.home-section').forEach(section=>{
+    const track=section.querySelector('.hsection-track');
+    const tabs=Array.from(section.querySelectorAll('.htab'));
+    if(!track||!tabs.length)return;
+    const panels=tabs.map(t=>section.querySelector(t.dataset.target)).filter(Boolean);
+    function setActive(panel){
+      const i=panels.indexOf(panel);
+      if(i<0)return;
+      tabs.forEach(x=>x.classList.remove('active'));
+      tabs[i].classList.add('active');
+    }
+    function scrollToPanel(panel){
+      if(!panel)return;
+      const trackRect=track.getBoundingClientRect();
+      const panelRect=panel.getBoundingClientRect();
+      const left=track.scrollLeft+(panelRect.left-trackRect.left);
+      track.scrollTo({left,behavior:'smooth'});
+    }
+    tabs.forEach((t,i)=>{
+      t.addEventListener('click',function(e){
+        e.preventDefault();
+        scrollToPanel(panels[i]);
+        setActive(panels[i]);
+      });
+    });
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)setActive(e.target);});
+    },{root:track,threshold:.55});
+    panels.forEach(p=>obs.observe(p));
+  });
+}
+
+function initAll(){initCounters();initNavBottom();initHomeSections();}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',initAll);
+}else{
+  initAll();
 }
 </script>
 </Layout>
