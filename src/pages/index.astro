@@ -90,6 +90,7 @@ import Layout from '../layouts/Layout.astro';
 
 /* Customer quote gallery panel */
 .hpanel.quotes-panel{display:flex;align-items:center;justify-content:center;padding:64px 80px;min-height:480px}
+.stories-quotes{padding:24px 80px 80px;max-width:1280px;margin:0 auto;display:flex;justify-content:center}
 .quote-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 64px;width:100%;max-width:1280px}
 .quote-item{display:flex;flex-direction:column;gap:18px;border-left:2px solid var(--orange);padding-left:28px;margin:0}
 .quote-text{font-family:var(--sans);font-size:clamp(22px,2.4vw,32px);font-weight:500;line-height:1.25;letter-spacing:-.01em;color:var(--black);margin:0}
@@ -98,6 +99,7 @@ import Layout from '../layouts/Layout.astro';
 .home-section.dark .quote-attr,.home-section.dgrey .quote-attr{color:rgba(240,245,241,.5)}
 @media(max-width:900px){
   .hpanel.quotes-panel{padding:40px 24px}
+  .stories-quotes{padding:16px 24px 56px}
   .quote-gallery{grid-template-columns:1fr;gap:32px}
   .quote-text{font-size:20px}
 }
@@ -466,52 +468,21 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </div>
   </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#st-quotes"><span class="htab-num">01</span><h3>Quotes</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#st-community"><span class="htab-num">02</span><h3>Community</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#st-events"><span class="htab-num">03</span><h3>Events</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="st-quotes" class="hpanel text-only quotes-panel">
-      <div class="quote-gallery">
-        <blockquote class="quote-item">
-          <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-          <cite class="quote-attr">— Plant Manager · CPG Snacks</cite>
-        </blockquote>
-        <blockquote class="quote-item">
-          <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
-          <cite class="quote-attr">— VP Operations · Frozen Foods</cite>
-        </blockquote>
-        <blockquote class="quote-item">
-          <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
-          <cite class="quote-attr">— CEO · Specialty Bakery</cite>
-        </blockquote>
-      </div>
-      <a href="/stories" class="hpanel-explore">Explore more</a>
-    </article>
-    <article id="st-community" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic customer community gathering" loading="lazy"/><span class="img-cap">Formic customer community</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Community</div>
-        <h3>Operators who share what's working.</h3>
-        <p>From Land O'Frost to Mi Rancho, Mariani Family to Taffy Town — Formic customers compare notes on uptime, throughput, and OpEx outcomes. Every customer benefits from every deployment.</p>
-        <ul class="feat-list">
-          <li>Quarterly customer roundtables (virtual and in-person)</li>
-          <li>Shared best-practice library and benchmarking</li>
-          <li>Direct line into the Formic engineering roadmap</li>
-        </ul>
-        <a href="/stories" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="st-events" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic event with customers and partners" loading="lazy"/><span class="img-cap">Customer summits · Site tours</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Events</div>
-        <h3>See systems run before you sign.</h3>
-        <p>Customer summits, on-site tours of running deployments, Pack Expo and ProMat presence. The fastest way to see Formic at production scale is to see it on a customer floor.</p>
-        <a href="/stories" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
+  <div class="stories-quotes">
+    <div class="quote-gallery">
+      <blockquote class="quote-item">
+        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+        <cite class="quote-attr">— Plant Manager · CPG Snacks</cite>
+      </blockquote>
+      <blockquote class="quote-item">
+        <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+        <cite class="quote-attr">— VP Operations · Frozen Foods</cite>
+      </blockquote>
+      <blockquote class="quote-item">
+        <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+        <cite class="quote-attr">— CEO · Specialty Bakery</cite>
+      </blockquote>
+    </div>
   </div>
 </section>
 
