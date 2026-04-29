@@ -80,10 +80,10 @@ import Layout from '../layouts/Layout.astro';
 /* horizontal track */
 .hsection-track{position:relative;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100vw;max-width:100%}
 .hsection-track::-webkit-scrollbar{display:none}
-.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:inherit;position:relative}
+.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:1fr 380px;align-items:center;min-height:440px;background:inherit;position:relative}
 .hpanel.text-only{grid-template-columns:1fr}
-.hpanel-img{position:relative;overflow:hidden;background:var(--black)}
-.hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;min-height:380px;max-height:480px}
+.hpanel-img{position:relative;overflow:hidden;background:var(--black);width:380px;height:380px;justify-self:end;margin-right:64px;aspect-ratio:1/1}
+.hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1}
 .hpanel-img .img-cap{position:absolute;bottom:18px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.7)}
 .hpanel-text{padding:64px 64px 96px;display:flex;flex-direction:column;justify-content:center;max-width:760px;position:relative}
 .hpanel-explore{position:absolute;bottom:28px;right:48px;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,145,0,.4);transition:gap .25s ease,border-color .25s ease;z-index:3}
@@ -156,7 +156,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   .hsection-tabs{padding:8px 24px 24px}
   .htab{flex:1 1 100%;padding:14px 12px}
   .hpanel{grid-template-columns:1fr;min-height:auto}
-  .hpanel-img img,.hpanel-img video{min-height:280px;height:280px}
+  .hpanel-img{width:100%;height:auto;aspect-ratio:1/1;justify-self:stretch !important;margin:0 !important}
+  .hpanel-img img,.hpanel-img video{height:auto;aspect-ratio:1/1}
   .hpanel-text{padding:32px 24px 56px}
   .statsrow{grid-template-columns:repeat(2,1fr)}
   .ctai{padding:64px 24px}
