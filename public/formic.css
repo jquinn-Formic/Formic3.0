@@ -371,6 +371,12 @@ footer{background:var(--black);padding:56px 80px 36px;border-top:1px solid rgba(
 .detail-cta h2{font-family:var(--sans);font-weight:500;font-size:clamp(48px,7vw,88px);line-height:1;letter-spacing:-.025em;color:var(--black);margin-bottom:32px}
 .detail-cta .btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
+/* Shared CTA button styles (used on home CTA, detail-cta, magic CTA, etc.) */
+.btn-ctadark{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--black);padding:14px 30px;text-decoration:none;cursor:none;transition:opacity .2s;display:inline-block}
+.btn-ctadark:hover{opacity:.8}
+.btn-ctawh{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(9,21,23,.7);border:1px solid rgba(9,21,23,.3);padding:13px 29px;text-decoration:none;cursor:none;transition:color .2s,border-color .2s;display:inline-block}
+.btn-ctawh:hover{color:var(--black);border-color:var(--black)}
+
 @media(max-width:900px){
   .detail-bc{padding:80px 24px 0}
   .detail-hero{padding:24px 24px 64px}
