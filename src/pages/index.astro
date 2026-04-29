@@ -132,17 +132,32 @@ import Layout from '../layouts/Layout.astro';
 
 /* Solutions tile grid (Anduril-style) */
 .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,245,241,.06)}
+.sol-grid-4{grid-template-columns:repeat(4,1fr)}
 .sol-tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;text-decoration:none;color:var(--white);background:var(--dgrey)}
+.sol-grid-4 .sol-tile{aspect-ratio:1/1.05}
 .sol-tile-feat{grid-column:span 2;aspect-ratio:2/1}
+.sol-tile-wide{grid-column:span 2;aspect-ratio:auto}
 .sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.6) saturate(.85)}
 .sol-tile:hover img{transform:scale(1.05);filter:brightness(.95) saturate(1)}
 .sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(9,21,23,.85) 100%);z-index:1;pointer-events:none}
-.sol-content{position:absolute;left:32px;bottom:28px;right:32px;z-index:2}
-.sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
+.sol-content{position:absolute;left:28px;bottom:24px;right:28px;z-index:2}
+.sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
 .sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
 .sol-fpo{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:4px 9px;border:1px solid rgba(255,255,255,.18)}
-@media (max-width:1024px){.sol-grid{grid-template-columns:repeat(2,1fr)}.sol-tile-feat{grid-column:span 2;aspect-ratio:2.2/1}}
-@media (max-width:640px){.sol-grid{grid-template-columns:1fr}.sol-tile,.sol-tile-feat{grid-column:auto;aspect-ratio:16/10}}
+/* Coming Soon tile — orange-tinted, no image, CTA-style */
+.sol-tile-soon{background:linear-gradient(135deg,rgba(255,145,0,.14) 0%,rgba(255,145,0,.04) 60%,rgba(9,21,23,.85) 100%);display:flex;align-items:flex-end;padding:32px 36px;cursor:none;overflow:hidden}
+.sol-tile-soon::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,145,0,.2) 0%,transparent 55%);opacity:.7;pointer-events:none}
+.sol-tile-soon::after{content:"+";position:absolute;top:20px;right:24px;font-family:var(--sans);font-weight:300;font-size:64px;line-height:1;color:rgba(255,145,0,.5);transition:transform .35s ease,color .35s ease}
+.sol-tile-soon:hover::after{transform:rotate(45deg);color:var(--orange)}
+.sol-soon-content{position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;max-width:560px}
+.sol-soon-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+.sol-soon-name{font-family:var(--sans);font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:-.02em;line-height:1;color:var(--white)}
+.sol-soon-desc{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:rgba(240,245,241,.72)}
+.sol-soon-cta{margin-top:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);border-bottom:1px solid var(--orange);padding-bottom:3px;align-self:flex-start;transition:gap .2s,opacity .2s}
+.sol-tile-soon:hover .sol-soon-cta{opacity:.85}
+@media (max-width:1180px){.sol-grid-4{grid-template-columns:repeat(3,1fr)}.sol-grid-4 .sol-tile{aspect-ratio:1/1}}
+@media (max-width:1024px){.sol-grid{grid-template-columns:repeat(2,1fr)}.sol-tile-feat,.sol-tile-wide{grid-column:span 2;aspect-ratio:2.2/1}.sol-grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.sol-grid{grid-template-columns:1fr}.sol-tile,.sol-tile-feat,.sol-tile-wide{grid-column:auto;aspect-ratio:16/10}.sol-grid-4{grid-template-columns:1fr}.sol-grid-4 .sol-tile{aspect-ratio:16/10}.sol-tile-soon{padding:28px 24px}}
 
 /* Logo marquee — used inside Results section */
 .logo-rows{display:flex;flex-direction:column;gap:18px;padding:0 0 28px}
@@ -201,56 +216,37 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 }
   </style>
 
-<!-- HERO — full-screen video with AI overlay -->
+<!-- HERO — full-screen video with subtle grid + mission overlay -->
 <section class="video-hero">
-  <video id="heroVid" autoplay muted loop playsinline>
-    <source src="/ATLAS_EOAT.webm" type="video/webm" />
+  <video id="heroVid" autoplay muted loop playsinline poster="/Focus-7603.jpg">
+    <source src="/RFA_header.mp4" type="video/mp4" />
     <img src="/Focus-7603.jpg" alt="Formic industrial automation" />
   </video>
   <div class="vid-overlay"></div>
   <div class="ai-overlay" aria-hidden="true">
     <div class="ai-grid"></div>
-    <div class="ai-scan"></div>
-    <svg class="ai-corner tl" viewBox="0 0 42 42"><path d="M2 16 L2 2 L16 2"/></svg>
-    <svg class="ai-corner tr" viewBox="0 0 42 42"><path d="M26 2 L40 2 L40 16"/></svg>
-    <svg class="ai-corner bl" viewBox="0 0 42 42"><path d="M2 26 L2 40 L16 40"/></svg>
-    <svg class="ai-corner br" viewBox="0 0 42 42"><path d="M26 40 L40 40 L40 26"/></svg>
-    <div class="ai-box b1"><span class="ai-lbl">Track_01 · 98.2%</span></div>
-    <div class="ai-box b2"><span class="ai-lbl">EOAT · Active</span></div>
-    <div class="ai-crosshair"></div>
-    <div class="ai-hud tl-hud"><span class="ai-dot"></span><span>Vision.Stream // Live</span></div>
-    <div class="ai-hud tr-hud"><span>CV_Model v2.4</span><span>Cycle 0421 · 60fps</span></div>
   </div>
   <div class="hero-content">
-    <div class="mono-label">Full Service Automation</div>
-    <h1 style="font-family:var(--sans);font-weight:500;font-size:clamp(60px,8.5vw,112px);line-height:1.0;letter-spacing:-.02em;color:var(--white);margin-bottom:24px">Automate<br><em style="color:var(--orange);font-style:normal">NOW</em><br>with Formic</h1>
-    <p style="font-size:18px;font-weight:300;color:rgba(240,245,241,.5);max-width:520px;margin-bottom:40px;line-height:1.75">The only robotics-as-a-service platform purpose-built for mid-market manufacturers. No CapEx. No Risk. No Problems.</p>
+    <div class="mono-label">Mission</div>
+    <h1 style="font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,92px);line-height:1.02;letter-spacing:-.025em;color:var(--white);margin-bottom:28px;max-width:960px">Powering American<br>manufacturing for the<br><em style="color:var(--orange);font-style:normal">next 100 years</em>.</h1>
+    <p style="font-size:18px;font-weight:300;color:rgba(240,245,241,.7);max-width:600px;margin-bottom:40px;line-height:1.65">Formic exists so every U.S. manufacturer has access to the automation they need. CPG and metal fab today. Humanoids tomorrow.</p>
     <div style="display:flex;gap:12px">
       <a href="#cta" class="btn-hero solid">Get Started</a>
-      <a href="#full-service" class="btn-hero outline">See How It Works</a>
+      <a href="#solutions" class="btn-hero outline">See Solutions</a>
     </div>
   </div>
   <button id="muteBtn" class="video-mute" onclick="toggleMute()">Unmute</button>
   <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
 </section>
 
-<!-- 1 / SOLUTIONS — Anduril-style tile grid -->
+<!-- 1 / SOLUTIONS — Anduril-style 4-col tile grid -->
 <section class="home-section dark" id="solutions">
   <div class="hsection-head" style="padding-bottom:36px">
     <div class="slabel" style="color:var(--orange)">Solutions</div>
-    <h2>Built for <em>your line</em>.</h2>
-    <p class="blurb">Five solution lines. One Full Service model. Pick the line, click in, see the system.</p>
+    <h2>Every line. <em>One platform.</em></h2>
+    <p class="blurb">From end-of-line packing to humanoids — the automation American manufacturing actually needs, deployed under one Formic SLA.</p>
   </div>
-  <div class="sol-grid">
-    <a class="sol-tile sol-tile-feat" href="/full-service">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
-      <span class="sol-overlay"></span>
-      <div class="sol-content">
-        <div class="sol-name">Complete Solutions</div>
-        <div class="sol-tag">Full-line systems under one Formic SLA</div>
-      </div>
-    </a>
+  <div class="sol-grid sol-grid-4">
     <a class="sol-tile" href="/packing">
       <span class="sol-fpo">FPO</span>
       <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
@@ -269,13 +265,31 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="sol-tag">Counts that hit, every time</div>
       </div>
     </a>
-    <a class="sol-tile" href="/packing">
+    <a class="sol-tile" href="/precision">
       <span class="sol-fpo">FPO</span>
       <img src="/Talos-9787.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
-        <div class="sol-name">Case Erector / Sealer</div>
-        <div class="sol-tag">Flat blank to sealed case</div>
+        <div class="sol-name">Machine Tending</div>
+        <div class="sol-tag">Mill, lathe, mold — hands-off</div>
+      </div>
+    </a>
+    <a class="sol-tile" href="/packing">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Pallet Wrapping</div>
+        <div class="sol-tag">Tight wraps, dock-ready</div>
+      </div>
+    </a>
+    <a class="sol-tile" href="/general">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Humanoids</div>
+        <div class="sol-tag">Generalist robots, deployed as a service</div>
       </div>
     </a>
     <a class="sol-tile" href="/general">
@@ -285,6 +299,14 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       <div class="sol-content">
         <div class="sol-name">AMRs</div>
         <div class="sol-tag">Pallet movement without forklifts</div>
+      </div>
+    </a>
+    <a class="sol-tile sol-tile-soon sol-tile-wide" href="/talk-with-an-expert">
+      <div class="sol-soon-content">
+        <div class="sol-soon-tag">2026 — 2027</div>
+        <div class="sol-soon-name">Coming Soon</div>
+        <div class="sol-soon-desc">More verticals, more capability — expanded metal fab, autonomous QA, and humanoids in production lines. Talk with us if you want early access.</div>
+        <span class="sol-soon-cta">Talk with an Expert →</span>
       </div>
     </a>
   </div>
