@@ -20,10 +20,13 @@ import Layout from '../layouts/Layout.astro';
 .mg-bc a:hover{color:var(--orange)}
 .mg-bc .sep{margin:0 10px;color:rgba(240,245,241,.2)}
 
-/* HERO — bold typographic, investor-grade */
-.mg-hero{position:relative;background:var(--black);color:var(--white);padding:48px 80px 120px;overflow:hidden}
-.mg-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,145,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,145,0,.06) 1px,transparent 1px);background-size:80px 80px;-webkit-mask-image:radial-gradient(ellipse at 30% 60%,rgba(0,0,0,.95) 20%,transparent 70%);mask-image:radial-gradient(ellipse at 30% 60%,rgba(0,0,0,.95) 20%,transparent 70%);pointer-events:none;z-index:0}
-.mg-hero .mg-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto}
+/* HERO — bold typographic, investor-grade, cursor-interactive */
+.mg-hero{position:relative;background:var(--black);color:var(--white);padding:48px 80px 120px;overflow:hidden;min-height:88vh}
+#mg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.mg-hero .mg-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto}
+
+/* Cursor-following spotlight across entire Magic page */
+.mg-spot{position:fixed;top:0;left:0;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(255,145,0,.10) 0%,rgba(255,145,0,.04) 35%,transparent 70%);transform:translate3d(var(--mx,50vw),var(--my,50vh),0) translate(-50%,-50%);pointer-events:none;z-index:1;mix-blend-mode:screen;transition:opacity .3s}
 .mg-mono{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:28px;display:flex;align-items:center;gap:14px}
 .mg-mono::before{content:"";width:36px;height:1px;background:var(--orange)}
 .mg-h1{font-family:var(--sans);font-weight:500;font-size:clamp(64px,9vw,156px);line-height:.92;letter-spacing:-.035em;color:var(--white);margin-bottom:48px}
@@ -119,8 +122,11 @@ import Layout from '../layouts/Layout.astro';
   <a href="/">Home</a><span class="sep">/</span>The Magic
 </div>
 
+<div class="mg-spot" aria-hidden="true"></div>
+
 <!-- HERO -->
 <section class="mg-hero">
+  <canvas id="mg-canvas" aria-hidden="true"></canvas>
   <div class="mg-inner">
     <div class="mg-mono">00 / Formic Platform</div>
     <h1 class="mg-h1">PLC Reliability.<span class="em">Software Intelligence.</span></h1>
@@ -269,6 +275,83 @@ import Layout from '../layouts/Layout.astro';
   <script is:inline slot="scripts">
 // Magic page interactives
 (function(){
+  // Cursor-following spotlight across the page
+  document.addEventListener('mousemove',e=>{
+    document.documentElement.style.setProperty('--mx',e.clientX+'px');
+    document.documentElement.style.setProperty('--my',e.clientY+'px');
+  });
+
+  // Hero particle field — orange nodes that bend toward the cursor
+  const c=document.getElementById('mg-canvas');
+  if(c){
+    const ctx=c.getContext('2d');
+    let W=0,H=0,nodes=[],mouse={x:-9999,y:-9999};
+    function resize(){
+      const r=c.getBoundingClientRect();
+      W=c.width=r.width;H=c.height=r.height;
+      c.style.width=W+'px';c.style.height=H+'px';
+      nodes=[];
+      const cols=Math.max(14,Math.round(W/90));
+      const rows=Math.max(8,Math.round(H/90));
+      for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){
+        const x=(i/(cols-1))*W,y=(j/(rows-1))*H;
+        nodes.push({bx:x,by:y,x:x,y:y,r:Math.random()*1.4+.5});
+      }
+    }
+    resize();window.addEventListener('resize',resize);
+    c.addEventListener('mousemove',()=>{},{passive:true});
+    document.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect();
+      mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
+    },{passive:true});
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      const RADIUS=240;
+      nodes.forEach(n=>{
+        const dx=n.bx-mouse.x,dy=n.by-mouse.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        const f=Math.max(0,RADIUS-d)/RADIUS;
+        const ang=Math.atan2(dy,dx);
+        const push=f*f*60;
+        n.x+=(n.bx+Math.cos(ang)*push-n.x)*.1;
+        n.y+=(n.by+Math.sin(ang)*push-n.y)*.1;
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,n.r+f*2.6,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,145,0,'+(0.06+f*.55)+')';
+        ctx.fill();
+      });
+      // Connect nearby nodes
+      for(let i=0;i<nodes.length;i+=2){
+        for(let j=i+1;j<nodes.length;j+=2){
+          const a=nodes[i],b=nodes[j];
+          const dx=a.x-b.x,dy=a.y-b.y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          if(d<82){
+            const adx=a.bx-mouse.x,ady=a.by-mouse.y;
+            const af=Math.max(0,RADIUS-Math.sqrt(adx*adx+ady*ady))/RADIUS;
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle='rgba(255,145,0,'+(1-d/82)*(.025+af*.15)+')';
+            ctx.lineWidth=.6;ctx.stroke();
+          }
+        }
+      }
+      // Lines from cursor to nearest nodes
+      nodes.forEach(n=>{
+        const dx=n.x-mouse.x,dy=n.y-mouse.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<140){
+          ctx.beginPath();
+          ctx.moveTo(mouse.x,mouse.y);ctx.lineTo(n.x,n.y);
+          ctx.strokeStyle='rgba(255,145,0,'+(1-d/140)*.45+')';
+          ctx.lineWidth=.8;ctx.stroke();
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
   // Stat counters — count up on hover
   const stats=document.querySelectorAll('.mg-stat-num[data-count-to]');
   const ease=t=>1-Math.pow(1-t,3);
