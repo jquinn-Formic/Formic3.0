@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Results — Formic"
+  description="Real outcomes from real production floors. 20% OpEx reduction, 24/7 support, $0 CapEx, 2-week deployments."
+  ogTitle="Results — Formic"
+  ogDescription="Measurable impact from Formic Full Service Automation."
+>
+  <link rel="canonical" href="https://formic.co/results" slot="head" />
+
+  <style is:global slot="head">
+.res-statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.1);max-width:1280px;margin:36px auto 0}
+.res-statsrow .stcell{background:var(--dgrey);padding:48px 28px;text-align:center}
+.res-statsrow .stnum{font-family:var(--sans);font-size:64px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:8px;letter-spacing:-.02em}
+.res-statsrow .stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
+@media(max-width:900px){.res-statsrow{grid-template-columns:repeat(2,1fr)}}
+  </style>
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span>Results
+</div>
+
+<section class="detail-hero">
+  <div class="si">
+    <div class="slabel" style="color:var(--orange)">Results</div>
+    <h1>Measurable <em>impact</em>.</h1>
+    <p class="lede">Real outcomes from real production floors. The numbers Formic customers see, again and again — and the four reasons mid-market CPG operators sign up.</p>
+    <div class="res-statsrow">
+      <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Tech Support</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
+      <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="db-grid">
+    <div class="db-text">
+      <div class="db-tag">01 — Overcoming Labor Shortage</div>
+      <h2>Automate the <em>hardest-to-fill</em> positions.</h2>
+      <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk and without eliminating the operators you actually want to keep.</p>
+      <ul class="feats">
+        <li>Targets the highest-turnover positions on the floor</li>
+        <li>Frees experienced operators for higher-value work</li>
+        <li>Reduces dependence on temporary and seasonal labor</li>
+      </ul>
+      <a href="/stories" class="larr">See customer stories →</a>
+    </div>
+    <div class="db-img"><img src="/Focus-7603.jpg" alt="Formic system reducing labor reliance" loading="lazy"/></div>
+  </div>
+</section>
+
+<section class="detail-block lgrey">
+  <div class="db-grid flip">
+    <div class="db-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
+    <div class="db-text">
+      <div class="db-tag">02 — Eliminating Ergonomic Injury</div>
+      <h2>Cut injury rates. <em>Improve retention.</em></h2>
+      <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure. The ROI shows up in workers' comp before it shows up in throughput.</p>
+      <ul class="feats">
+        <li>Targets repetitive lifting, twisting, and overhead-reach tasks</li>
+        <li>Documented reductions in workers' comp claims at customer sites</li>
+        <li>Improves operator retention on adjacent, less-strenuous roles</li>
+      </ul>
+      <a href="/stories" class="larr">See customer stories →</a>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="db-grid">
+    <div class="db-text">
+      <div class="db-tag">03 — Productivity Gains</div>
+      <h2>Throughput you can <em>plan around</em>.</h2>
+      <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting variance and start tuning the system. OEE goes up, scrap goes down, planning gets predictable.</p>
+      <ul class="feats">
+        <li>Sustained cycle-time consistency vs. operator-bound variance</li>
+        <li>Faster changeovers between SKUs and formats</li>
+        <li>Real-time data feeds into your MES and ERP</li>
+      </ul>
+      <a href="/stories" class="larr">See customer stories →</a>
+    </div>
+    <div class="db-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line" loading="lazy"/></div>
+  </div>
+</section>
+
+<section class="detail-block dgrey">
+  <div class="db-grid flip">
+    <div class="db-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model" loading="lazy"/></div>
+    <div class="db-text">
+      <div class="db-tag">04 — Cost Savings</div>
+      <h2>One fixed monthly price. <em>Zero capital risk.</em></h2>
+      <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs. Formic customers consistently report 20%+ OpEx reduction on automated lines vs. their pre-Formic baseline.</p>
+      <ul class="feats">
+        <li>Predictable monthly cost, written into the contract</li>
+        <li>No CapEx required — frees capital for higher-leverage uses</li>
+        <li>Equipment swaps and upgrades included in the agreement</li>
+      </ul>
+      <a href="/stories" class="larr">See customer stories →</a>
+    </div>
+  </div>
+</section>
+
+<section class="detail-cta">
+  <h2>Numbers your CFO<br><em>will actually like</em>.</h2>
+  <div class="btn-row">
+    <a href="mailto:sales@formic.co" class="btn-ctadark">Get a Demo</a>
+    <a href="/" class="btn-ctawh">Back to Home</a>
+  </div>
+</section>
+
+  <script is:inline slot="scripts">
+(function(){
+  const els=document.querySelectorAll('.stnum[data-count-to]');
+  if(!els.length)return;
+  const ease=t=>1-Math.pow(1-t,3);
+  function run(el){
+    const target=parseFloat(el.dataset.countTo)||0;
+    const prefix=el.dataset.prefix||'';
+    const suffix=el.dataset.suffix||'';
+    const dur=1400,start=performance.now();
+    function step(now){
+      const t=Math.min(1,(now-start)/dur);
+      const v=Math.round(target*ease(t));
+      el.textContent=prefix+v+suffix;
+      if(t<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){run(e.target);obs.unobserve(e.target);}});
+  },{threshold:.4});
+  els.forEach(el=>obs.observe(el));
+})();
+  </script>
+</Layout>

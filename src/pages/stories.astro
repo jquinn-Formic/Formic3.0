@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Customer Stories — Formic"
+  description="Mid-market CPG operators running Formic systems every day. Land O'Frost, Mi Rancho, Mariani Family, Taffy Town, and more."
+  ogTitle="Customer Stories"
+  ogDescription="Proven on real production floors."
+>
+  <link rel="canonical" href="https://formic.co/stories" slot="head" />
+
+  <style is:global slot="head">
+.stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey);max-width:1280px;margin:0 auto}
+.story-card{background:var(--white);padding:48px 44px;display:grid;grid-template-columns:80px 1fr;gap:28px;text-decoration:none;cursor:none;transition:background .25s}
+.story-card:hover{background:#e8ede9}
+.story-ct{font-family:var(--sans);font-size:54px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
+.story-ctlbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey);margin-top:6px}
+.story-name{font-family:var(--sans);font-size:18px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:8px}
+.story-challenge{font-size:14px;color:var(--mgrey);line-height:1.65;margin-bottom:8px}
+.story-win{font-size:14px;font-weight:400;color:var(--black);line-height:1.65}
+.story-win::before{content:"→ ";color:var(--orange)}
+@media(max-width:900px){.stories-grid{grid-template-columns:1fr}.story-card{padding:32px 24px;grid-template-columns:60px 1fr;gap:18px}.story-ct{font-size:40px}}
+  </style>
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span>Customer Stories
+</div>
+
+<section class="detail-hero">
+  <div class="si">
+    <div class="slabel" style="color:var(--orange)">Customer Stories</div>
+    <h1>Proven on <em>real floors</em>.</h1>
+    <p class="lede">CPG operators who run Formic systems every day. Names you know — and the outcomes they actually saw on the floor, written down so you can compare.</p>
+  </div>
+</section>
+
+<section class="detail-block white" style="padding:96px 80px">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:0">
+    <div class="db-tag">Featured deployments</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin:8px 0 32px">Four operators. <em style="color:var(--orange);font-style:normal">Sixteen systems.</em></h2>
+    <div class="stories-grid">
+      <a href="#" class="story-card"><div><div class="story-ct">5</div><div class="story-ctlbl">Systems</div></div><div><div class="story-name">Land O'Frost</div><p class="story-challenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p><p class="story-win">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p></div></a>
+      <a href="#" class="story-card"><div><div class="story-ct">9</div><div class="story-ctlbl">Systems</div></div><div><div class="story-name">Mi Rancho</div><p class="story-challenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p><p class="story-win">9 robotic palletizers → eliminated injuries, cut downtime</p></div></a>
+      <a href="#" class="story-card"><div><div class="story-ct">1</div><div class="story-ctlbl">System</div></div><div><div class="story-name">Mariani Family</div><p class="story-challenge">Labor gaps and ergonomic strain limited efficiency amid rising demand.</p><p class="story-win">Boosted efficiency, filled staffing gaps, flexible equipment swaps</p></div></a>
+      <a href="#" class="story-card"><div><div class="story-ct">1</div><div class="story-ctlbl">System</div></div><div><div class="story-name">Taffy Town</div><p class="story-challenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p><p class="story-win">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block lgrey">
+  <div class="db-grid flip">
+    <div class="db-img"><img src="/Focus-7603.jpg" alt="Formic customer community gathering" loading="lazy"/><span class="img-cap">Operators sharing what works</span></div>
+    <div class="db-text">
+      <div class="db-tag">Community</div>
+      <h2>Operators who share <em>what's working</em>.</h2>
+      <p>Formic customers compare notes on uptime, throughput, and OpEx outcomes. Every customer benefits from every deployment — best practices spread quickly across the network, and feedback flows directly into the engineering roadmap.</p>
+      <ul class="feats">
+        <li>Quarterly customer roundtables — virtual and in-person</li>
+        <li>Shared best-practice library and benchmarking</li>
+        <li>Direct line into the Formic engineering roadmap</li>
+        <li>Peer-to-peer introductions for prospective customers</li>
+      </ul>
+      <a href="/#cta" class="larr">Talk to a customer →</a>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="db-grid">
+    <div class="db-text">
+      <div class="db-tag">Events</div>
+      <h2>See systems run <em>before you sign</em>.</h2>
+      <p>Customer summits, on-site tours of running deployments, Pack Expo and ProMat presence. The fastest way to see Formic at production scale is to see it on a customer floor — we'll arrange a tour at the closest match for your application.</p>
+      <ul class="feats">
+        <li>On-site customer tours arranged by Formic</li>
+        <li>Annual customer summit in Chicago</li>
+        <li>Pack Expo, ProMat, and IMTS booth presence</li>
+        <li>Regional dinners and roundtables throughout the year</li>
+      </ul>
+      <a href="/#cta" class="larr">Request a tour →</a>
+    </div>
+    <div class="db-img"><img src="/Talos-0143.jpg" alt="Formic customer event" loading="lazy"/><span class="img-cap">Customer summits · Site tours</span></div>
+  </div>
+</section>
+
+<section class="detail-cta">
+  <h2>Don't take our word for it.<br><em>Take theirs.</em></h2>
+  <div class="btn-row">
+    <a href="mailto:sales@formic.co" class="btn-ctadark">Get a Demo</a>
+    <a href="/" class="btn-ctawh">Back to Home</a>
+  </div>
+</section>
+</Layout>
