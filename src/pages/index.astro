@@ -50,7 +50,7 @@ import Layout from '../layouts/Layout.astro';
 .home-section.dgrey{background:var(--dgrey);color:var(--white)}
 .home-section.lgrey{background:var(--lgrey)}
 .home-section.white{background:var(--white)}
-.hsection-head{padding:96px 80px 28px;max-width:1280px;margin:0 auto}
+.hsection-head{padding:72px 80px 24px;max-width:1280px;margin:0 auto}
 .hsection-head .slabel{margin-bottom:16px}
 .hsection-head h2{font-family:var(--sans);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1.0;letter-spacing:-.02em;margin-bottom:18px}
 .home-section.dark .hsection-head h2,.home-section.dgrey .hsection-head h2{color:var(--white)}
@@ -64,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
 .home-section.dark .hsection-head .more-link:hover,.home-section.dgrey .hsection-head .more-link:hover{color:var(--white);background:var(--orange)}
 
 /* tab strip — visually distinct from content panels */
-.hsection-tabs{display:flex;gap:0;max-width:1280px;margin:0 auto;padding:8px 80px 40px;flex-wrap:wrap}
+.hsection-tabs{display:flex;gap:0;max-width:1280px;margin:0 auto;padding:8px 80px 28px;flex-wrap:wrap}
 .htab{flex:1 1 160px;background:transparent;padding:18px 20px;cursor:none;text-decoration:none;border:none;border-top:1px solid rgba(0,0,0,.1);border-bottom:2px solid transparent;text-align:left;font:inherit;color:inherit;transition:border-color .25s,background .25s;display:flex;flex-direction:column;gap:6px;position:relative}
 .home-section.dark .htab,.home-section.dgrey .htab{border-top-color:rgba(240,245,241,.1)}
 .htab:hover{background:rgba(255,145,0,.04);border-bottom-color:rgba(255,145,0,.45)}
@@ -80,7 +80,7 @@ import Layout from '../layouts/Layout.astro';
 /* horizontal track */
 .hsection-track{position:relative;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100vw;max-width:100%}
 .hsection-track::-webkit-scrollbar{display:none}
-.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:380px 1fr;column-gap:64px;align-items:center;min-height:440px;background:inherit;position:relative;padding:40px 80px;max-width:1280px;margin:0 auto}
+.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:380px 1fr;column-gap:56px;align-items:center;min-height:380px;background:inherit;position:relative;padding:32px 80px;max-width:1280px;margin:0 auto}
 .hpanel.text-only{grid-template-columns:1fr;padding:40px 80px}
 .hpanel-img{position:relative;overflow:hidden;background:var(--black);width:380px;height:380px;aspect-ratio:1/1;flex-shrink:0}
 .hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1}
@@ -90,7 +90,7 @@ import Layout from '../layouts/Layout.astro';
 
 /* Customer quote gallery panel */
 .hpanel.quotes-panel{display:flex;align-items:center;justify-content:center;padding:64px 80px;min-height:480px}
-.quote-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 80px;width:100%;max-width:1280px}
+.quote-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 64px;width:100%;max-width:1280px}
 .quote-item{display:flex;flex-direction:column;gap:18px;border-left:2px solid var(--orange);padding-left:28px;margin:0}
 .quote-text{font-family:var(--sans);font-size:clamp(22px,2.4vw,32px);font-weight:500;line-height:1.25;letter-spacing:-.01em;color:var(--black);margin:0}
 .home-section.dark .quote-text,.home-section.dgrey .quote-text{color:var(--white)}
@@ -121,17 +121,29 @@ import Layout from '../layouts/Layout.astro';
 .stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
 .stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
-/* Customer logo band — two-row marquee */
-.logo-band{padding:72px 0;border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);background:var(--white)}
-.logo-band-label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mgrey);text-align:center;margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:14px}
-.logo-band-label::before,.logo-band-label::after{content:'';width:48px;height:1px;background:var(--lgrey)}
-.logo-rows{display:flex;flex-direction:column;gap:28px}
-.logo-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);padding:6px 0}
-.logo-track{display:flex;align-items:center;gap:80px;width:max-content;will-change:transform;padding:0 40px}
-.lg{flex-shrink:0;height:60px;width:auto;max-width:220px;object-fit:contain;opacity:.6;filter:grayscale(.55);mix-blend-mode:multiply;transition:opacity .35s ease,filter .35s ease,transform .35s ease;cursor:none;transform-origin:center center}
-.lg:hover{opacity:1;filter:grayscale(0);transform:scale(1.15)}
-@media (prefers-reduced-motion:reduce){.logo-track{flex-wrap:wrap;justify-content:center;gap:32px 56px;width:100%;padding:0 80px;transform:none!important}}
-@media (max-width:768px){.logo-band{padding:48px 0}.logo-band-label{margin-bottom:32px}.logo-rows{gap:20px}.logo-track{gap:48px;padding:0 24px}.lg{height:42px;max-width:160px}}
+/* Solutions tile grid (Anduril-style) */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,245,241,.06)}
+.sol-tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;text-decoration:none;color:var(--white);background:var(--dgrey)}
+.sol-tile-feat{grid-column:span 2;aspect-ratio:2/1}
+.sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.6) saturate(.85)}
+.sol-tile:hover img{transform:scale(1.05);filter:brightness(.95) saturate(1)}
+.sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(9,21,23,.85) 100%);z-index:1;pointer-events:none}
+.sol-content{position:absolute;left:32px;bottom:28px;right:32px;z-index:2}
+.sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
+.sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
+.sol-fpo{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:4px 9px;border:1px solid rgba(255,255,255,.18)}
+@media (max-width:1024px){.sol-grid{grid-template-columns:repeat(2,1fr)}.sol-tile-feat{grid-column:span 2;aspect-ratio:2.2/1}}
+@media (max-width:640px){.sol-grid{grid-template-columns:1fr}.sol-tile,.sol-tile-feat{grid-column:auto;aspect-ratio:16/10}}
+
+/* Logo marquee — used inside Results section */
+.logo-rows{display:flex;flex-direction:column;gap:18px;padding:0 0 28px}
+.logo-rows-inset{padding:8px 0 36px}
+.logo-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);padding:4px 0}
+.logo-track{display:flex;align-items:center;gap:64px;width:max-content;will-change:transform;padding:0 40px}
+.lg{flex-shrink:0;height:48px;width:auto;max-width:180px;object-fit:contain;opacity:.55;filter:grayscale(1) brightness(0) invert(1);transition:opacity .35s ease,filter .35s ease,transform .35s ease;cursor:none;transform-origin:center center}
+.lg:hover{opacity:1;filter:grayscale(0) brightness(1) invert(0);transform:scale(1.15)}
+@media (prefers-reduced-motion:reduce){.logo-track{flex-wrap:wrap;justify-content:center;gap:24px 48px;width:100%;padding:0 80px;transform:none!important}}
+@media (max-width:768px){.logo-rows{gap:14px;padding:0 0 20px}.logo-track{gap:40px;padding:0 24px}.lg{height:34px;max-width:140px}}
 
 /* CTA full-screen */
 #cta{background:var(--orange);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -211,222 +223,63 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
 </section>
 
-<!-- 1 / FULL SERVICE AUTOMATION -->
-<section class="home-section dark" id="full-service">
-  <div class="hsection-head">
-    <div class="slabel">Full Service Automation</div>
-    <h2>Everything.<br><em>Included.</em></h2>
-    <p class="blurb">One fixed monthly price covers equipment, service, and technology. No CapEx. No surprise costs. No internal resources required.</p>
-    <a href="/full-service" class="more-link">Explore Full Service</a>
-  </div>
-  <div class="hsection-tabs" data-tabs-for="full-service">
-    <button type="button" class="htab active" data-target="#fs-how"><span class="htab-num">01</span><h3>How It Works</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#fs-software"><span class="htab-num">02</span><h3>Software &amp; Technology</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#fs-equipment"><span class="htab-num">03</span><h3>Equipment &amp; Flex</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#fs-service"><span class="htab-num">04</span><h3>Service &amp; Parts</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track" data-track="full-service">
-    <article id="fs-how" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic team scoping a customer line" loading="lazy"/><span class="img-cap">Scope · Build · Run</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — How It Works</div>
-        <h3>From inquiry to running production in weeks.</h3>
-        <p>We scope your line, design the system, ship and install, and stay on the system for life. Your team never touches a robot integration project — we handle every step.</p>
-        <ul class="feat-list">
-          <li>Free application scoping and engineering review</li>
-          <li>Pre-engineered system designs deployed in days, not months</li>
-          <li>Installation and commissioning by Formic engineers</li>
-          <li>Ongoing performance monitoring and SLAs from day one</li>
-        </ul>
-        <a href="/full-service" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="fs-software" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic engineer monitoring fleet from laptop" loading="lazy"/><span class="img-cap">Cortex · Core · FPI</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Software &amp; Technology</div>
-        <h3>The intelligence layer behind every system.</h3>
-        <p>Real-time visibility, remote diagnostics, and continuous OTA updates — your operators and our support engineers see the same live data, everywhere.</p>
-        <ul class="feat-list">
-          <li>Cortex: software intelligence for fleet management and operator UX</li>
-          <li>Core: deterministic PLC control on proven industrial hardware</li>
-          <li>Real-time OEE, throughput, and cycle-time analytics</li>
-          <li>Encrypted remote diagnostics and proactive alerting</li>
-        </ul>
-        <a href="/full-service" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="fs-equipment" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="White cobot arm — modular Formic equipment" loading="lazy"/><span class="img-cap">Modular · Flexible</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">03 — Equipment &amp; Flex</div>
-        <h3>Modular hardware that flexes with your line.</h3>
-        <p>Standardized, "Lego-block" architecture means every system shares the same core building blocks — easy to deploy, maintain, and swap as your needs evolve.</p>
-        <ul class="feat-list">
-          <li>KUKA, ABB, FANUC, Doosan robots — all under one OS</li>
-          <li>Swap or scale equipment without renegotiating contracts</li>
-          <li>Backward-compatible upgrades across every deployment</li>
-          <li>Field-tested designs, not custom one-offs</li>
-        </ul>
-        <a href="/full-service" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="fs-service" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic field service engineer at customer site" loading="lazy"/><span class="img-cap">24/7 · Bilingual · SLA-backed</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">04 — Service &amp; Parts</div>
-        <h3>The system stays running — that's the whole job.</h3>
-        <p>24/7 bilingual tech support, regional Field Service Engineers, contracted SLAs, and 100%-included maintenance. Parts are stocked, swaps are scheduled, downtime is engineered out.</p>
-        <ul class="feat-list">
-          <li>24/7 tech support in English and Spanish</li>
-          <li>Regional FSE network for rapid on-site response</li>
-          <li>Performance SLAs written into every agreement</li>
-          <li>Spare parts inventory managed by Formic — no PO scramble</li>
-        </ul>
-        <a href="/full-service" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 2 / END-OF-LINE PACKING -->
-<section class="home-section dark" id="packing">
-  <div class="hsection-head">
-    <div class="slabel" style="color:var(--orange)">End-of-Line Packing</div>
+<!-- 1 / SOLUTIONS — Anduril-style tile grid -->
+<section class="home-section dark" id="solutions">
+  <div class="hsection-head" style="padding-bottom:36px">
+    <div class="slabel" style="color:var(--orange)">Solutions</div>
     <h2>Built for <em>your line</em>.</h2>
-    <p class="blurb">Standardized, modular palletizing, packing, and pallet-movement systems — proven across CPG floors, deployed in weeks.</p>
-    <a href="/packing" class="more-link">Explore End-of-Line</a>
+    <p class="blurb">Five solution lines. One Full Service model. Pick the line, click in, see the system.</p>
   </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#pk-complete"><span class="htab-num">01</span><h3>Complete Solutions</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#pk-pal"><span class="htab-num">02</span><h3>Palletizing</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#pk-case"><span class="htab-num">03</span><h3>Case Packing</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#pk-erector"><span class="htab-num">04</span><h3>Case Erector / Sealer</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#pk-amr"><span class="htab-num">05</span><h3>AMRs</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="pk-complete" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Complete end-of-line cell deployed at CPG site" loading="lazy"/><span class="img-cap">Integrated end-of-line cell</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Complete Solutions</div>
-        <h3>The whole end-of-line, one partner.</h3>
-        <p>Case erecting, packing, sealing, palletizing, and pallet movement — engineered as one system, deployed as one project, supported under one SLA.</p>
-        <a href="/packing" class="hpanel-explore">Explore more</a>
+  <div class="sol-grid">
+    <a class="sol-tile sol-tile-feat" href="/full-service">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Complete Solutions</div>
+        <div class="sol-tag">Full-line systems under one Formic SLA</div>
       </div>
-    </article>
-    <article id="pk-pal" class="hpanel">
-      <div class="hpanel-img"><img src="/Haviland_Products_-_Palletizing.gif" alt="Formic palletizer running at production speed" loading="lazy"/><span class="img-cap">Robotic palletizing · 24/7</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Palletizing</div>
-        <h3>Stable stacks, every shift.</h3>
-        <p>Gantry and robotic palletizers built for sustained throughput. Clean changeovers between SKUs, consistent stack quality, no worker fatigue, no injuries.</p>
-        <ul class="feat-list">
-          <li>Mixed-SKU palletizing</li>
-          <li>Vision-guided pick and place</li>
-          <li>Pallet-pattern flexibility programmed at deploy</li>
-        </ul>
-        <a href="/packing" class="hpanel-explore">Explore more</a>
+    </a>
+    <a class="sol-tile" href="/packing">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Palletizing</div>
+        <div class="sol-tag">Stable stacks, every shift</div>
       </div>
-    </article>
-    <article id="pk-case" class="hpanel">
-      <div class="hpanel-img"><img src="/CasepackerPromoVideo_NoText.gif" alt="Formic case packer in action" loading="lazy"/><span class="img-cap">Top-load · Side-load</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">03 — Case Packing</div>
-        <h3>Counts that hit, every time.</h3>
-        <p>Top-load and side-load case packing across SKUs, formats, and pack patterns. Consistent counts, predictable cycle times, fewer line stops.</p>
-        <a href="/packing" class="hpanel-explore">Explore more</a>
+    </a>
+    <a class="sol-tile" href="/packing">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Case Packing</div>
+        <div class="sol-tag">Counts that hit, every time</div>
       </div>
-    </article>
-    <article id="pk-erector" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Case erector and sealer cell" loading="lazy"/><span class="img-cap">Erect · Pack · Seal</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">04 — Case Erector / Sealer</div>
-        <h3>From flat blank to sealed case.</h3>
-        <p>Automated case forming and sealing integrated with the upstream packer — one continuous flow, one set of operators, one SLA across the cell.</p>
-        <a href="/packing" class="hpanel-explore">Explore more</a>
+    </a>
+    <a class="sol-tile" href="/packing">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-9787.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">Case Erector / Sealer</div>
+        <div class="sol-tag">Flat blank to sealed case</div>
       </div>
-    </article>
-    <article id="pk-amr" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Autonomous mobile robot moving a pallet" loading="lazy"/><span class="img-cap">Autonomous pallet movement</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">05 — AMRs</div>
-        <h3>Pallet movement without the forklifts.</h3>
-        <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, finished goods to outbound — running alongside your team, not in place of it.</p>
-        <a href="/packing" class="hpanel-explore">Explore more</a>
+    </a>
+    <a class="sol-tile" href="/general">
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
+      <span class="sol-overlay"></span>
+      <div class="sol-content">
+        <div class="sol-name">AMRs</div>
+        <div class="sol-tag">Pallet movement without forklifts</div>
       </div>
-    </article>
+    </a>
   </div>
 </section>
 
-<!-- 3 / PRECISION PART MANUFACTURING -->
-<section class="home-section white" id="precision">
-  <div class="hsection-head">
-    <div class="slabel">Precision Part Manufacturing</div>
-    <h2>Removing the <em>hardest tasks</em>.</h2>
-    <p class="blurb">Mill, lathe, and injection-mold tending — the most repetitive, dangerous, and hard-to-staff jobs on your floor, gone.</p>
-    <a href="/precision" class="more-link">Explore Precision</a>
-  </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#pr-mill"><span class="htab-num">01</span><h3>Mill / Lathe Machine Tending</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#pr-mold"><span class="htab-num">02</span><h3>Injection Molding Tending</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="pr-mill" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot loading a CNC machine" loading="lazy"/><span class="img-cap">CNC tending · 24/7</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Mill / Lathe Tending</div>
-        <h3>Light-out machining, on your existing line.</h3>
-        <p>Robotic part loading and unloading on mills and lathes. Higher spindle utilization, consistent cycle times, and operators redeployed to higher-value work.</p>
-        <a href="/precision" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="pr-mold" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Robotic injection mold tending cell" loading="lazy"/><span class="img-cap">Mold tending · Post-processing</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Injection Molding Tending</div>
-        <h3>Mold to packed, hands-off.</h3>
-        <p>Part removal, sprue handling, post-processing, and downstream packaging integrated into one robotic cell. Consistent quality, faster cycles, fewer operator hours per part.</p>
-        <a href="/precision" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 4 / GENERAL TASKS -->
-<section class="home-section dgrey" id="general">
-  <div class="hsection-head">
-    <div class="slabel" style="color:var(--orange)">General Tasks</div>
-    <h2>The <em>next frontier</em>, on your floor now.</h2>
-    <p class="blurb">Bimanual mobile platforms and full humanoid robots — Formic deploys, supports, and continuously upgrades them under the same Full Service model.</p>
-    <a href="/general" class="more-link">Explore General Tasks</a>
-  </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#gt-bim"><span class="htab-num">01</span><h3>Mobile Bimanual Manipulator</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#gt-hum"><span class="htab-num">02</span><h3>Full Humanoids</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="gt-bim" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Mobile bimanual manipulator on production floor" loading="lazy"/><span class="img-cap">Mobile · Bimanual</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Mobile Bimanual Manipulator</div>
-        <h3>Two arms, one base, anywhere on the line.</h3>
-        <p>Bimanual mobile robots that handle multi-step manipulation tasks — bin picking, machine tending, assist work — and re-locate themselves between cells without a fixed footprint.</p>
-        <a href="/general" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="gt-hum" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Humanoid robot on a manufacturing floor" loading="lazy"/><span class="img-cap">Humanoid platforms</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Full Humanoids</div>
-        <h3>Generalist robots, deployed as a service.</h3>
-        <p>Full humanoid platforms for general-purpose manufacturing tasks — covered by Formic Full Service, so you get the upside of frontier hardware with none of the integration risk.</p>
-        <a href="/general" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 5 / THE MAGIC -->
+<!-- 2 / THE MAGIC -->
 <section class="home-section dark" id="magic">
   <div class="hsection-head">
     <div class="slabel" style="color:var(--orange)">The Magic</div>
@@ -478,62 +331,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <p class="blurb">Real outcomes from real production floors. The numbers Formic customers see, again and again.</p>
     <a href="/results" class="more-link">Explore Results</a>
   </div>
-  <div class="statsrow" style="padding:0 80px 32px">
-    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
-  </div>
-  <div class="hsection-tabs" style="padding-top:32px">
-    <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-injury"><span class="htab-num">02</span><h3>Eliminating Ergonomic Injury</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-prod"><span class="htab-num">03</span><h3>Productivity Gains</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-cost"><span class="htab-num">04</span><h3>Cost Savings</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="rs-labor" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic system on a CPG floor reducing labor reliance" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Labor Shortage</div>
-        <h3>Automate the hardest-to-fill positions.</h3>
-        <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-injury" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Ergonomic Injury</div>
-        <h3>Cut injury rates. Improve retention.</h3>
-        <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-prod" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line driven by Formic" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">03 — Productivity Gains</div>
-        <h3>Throughput you can plan around.</h3>
-        <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-cost" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model — no CapEx required" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">04 — Cost Savings</div>
-        <h3>One fixed monthly price. Zero capital risk.</h3>
-        <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 6.5 / CUSTOMER LOGO BAND (two-row marquee) -->
-<section class="home-section white logo-band" aria-label="Customers using Formic">
-  <div class="logo-band-label"><span>Operating on the floor at</span></div>
-  <div class="logo-rows">
+  <div class="logo-rows logo-rows-inset">
     <div class="logo-marquee">
       <div class="logo-track" data-direction="left">
         <img class="lg" src="/logos/abimar.png" alt="Abimar" loading="lazy"/>
@@ -595,9 +393,59 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </div>
   </div>
+  <div class="statsrow" style="padding:0 80px 32px">
+    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
+  </div>
+  <div class="hsection-tabs" style="padding-top:32px">
+    <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-injury"><span class="htab-num">02</span><h3>Eliminating Ergonomic Injury</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-prod"><span class="htab-num">03</span><h3>Productivity Gains</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-cost"><span class="htab-num">04</span><h3>Cost Savings</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="rs-labor" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic system on a CPG floor reducing labor reliance" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Labor Shortage</div>
+        <h3>Automate the hardest-to-fill positions.</h3>
+        <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-injury" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Ergonomic Injury</div>
+        <h3>Cut injury rates. Improve retention.</h3>
+        <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-prod" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line driven by Formic" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Productivity Gains</div>
+        <h3>Throughput you can plan around.</h3>
+        <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-cost" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model — no CapEx required" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Cost Savings</div>
+        <h3>One fixed monthly price. Zero capital risk.</h3>
+        <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+  </div>
 </section>
 
-<!-- 7 / CUSTOMER STORIES -->
+<!-- 4 / CUSTOMER STORIES -->
 <section class="home-section white" id="stories">
   <div class="hsection-head">
     <div class="slabel">Customer Stories</div>
@@ -624,10 +472,6 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <blockquote class="quote-item">
           <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
           <cite class="quote-attr">— CEO · Specialty Bakery</cite>
-        </blockquote>
-        <blockquote class="quote-item">
-          <p class="quote-text">"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          <cite class="quote-attr">— Director of Manufacturing · Confectionery</cite>
         </blockquote>
       </div>
       <a href="/stories" class="hpanel-explore">Explore more</a>
