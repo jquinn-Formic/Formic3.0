@@ -121,6 +121,13 @@ import Layout from '../layouts/Layout.astro';
 .stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
 .stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
+/* Magic section — cursor-interactive canvas + spotlight (scoped) */
+.home-magic{position:relative;overflow:hidden}
+.home-magic #home-mg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.home-magic .home-mg-spot{position:absolute;top:0;left:0;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(255,145,0,.10) 0%,rgba(255,145,0,.04) 35%,transparent 70%);transform:translate3d(var(--home-mx,50%),var(--home-my,50%),0) translate(-50%,-50%);pointer-events:none;z-index:1;mix-blend-mode:screen;opacity:0;transition:opacity .35s ease}
+.home-magic.is-cursor-in .home-mg-spot{opacity:1}
+.home-magic-inner{position:relative;z-index:2}
+
 /* Solutions tile grid (Anduril-style) */
 .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,245,241,.06)}
 .sol-tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;text-decoration:none;color:var(--white);background:var(--dgrey)}
@@ -140,8 +147,10 @@ import Layout from '../layouts/Layout.astro';
 .logo-rows-inset{padding:8px 0 36px}
 .logo-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);padding:4px 0}
 .logo-track{display:flex;align-items:center;gap:64px;width:max-content;will-change:transform;padding:0 40px}
-.lg{flex-shrink:0;height:48px;width:auto;max-width:180px;object-fit:contain;opacity:.55;filter:grayscale(1) brightness(0) invert(1);transition:opacity .35s ease,filter .35s ease,transform .35s ease;cursor:none;transform-origin:center center}
-.lg:hover{opacity:1;filter:grayscale(0) brightness(1) invert(0);transform:scale(1.15)}
+.lg{flex-shrink:0;height:48px;width:auto;max-width:180px;object-fit:contain;opacity:.6;filter:grayscale(.55);mix-blend-mode:multiply;transition:opacity .35s ease,filter .35s ease,transform .35s ease;cursor:none;transform-origin:center center}
+.lg:hover{opacity:1;filter:grayscale(0);transform:scale(1.15)}
+.home-section.dark .lg,.home-section.dgrey .lg{mix-blend-mode:normal;filter:grayscale(1) brightness(0) invert(1)}
+.home-section.dark .lg:hover,.home-section.dgrey .lg:hover{filter:grayscale(0) brightness(1) invert(0)}
 @media (prefers-reduced-motion:reduce){.logo-track{flex-wrap:wrap;justify-content:center;gap:24px 48px;width:100%;padding:0 80px;transform:none!important}}
 @media (max-width:768px){.logo-rows{gap:14px;padding:0 0 20px}.logo-track{gap:40px;padding:0 24px}.lg{height:34px;max-width:140px}}
 
@@ -279,47 +288,51 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </div>
 </section>
 
-<!-- 2 / THE MAGIC -->
-<section class="home-section dark" id="magic">
-  <div class="hsection-head">
-    <div class="slabel" style="color:var(--orange)">The Magic</div>
-    <h2>PLC reliability.<br><em>Software intelligence.</em></h2>
-    <p class="blurb">Formic's hybrid architecture pairs deterministic industrial control with a modern software layer — your automation gets smarter over time, never obsolete.</p>
-    <a href="/magic" class="more-link">Inside the Magic</a>
-  </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#mg-cortex"><span class="htab-num">01</span><h3>Cortex</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#mg-core"><span class="htab-num">02</span><h3>Core</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="mg-cortex" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic Cortex software dashboard concept" loading="lazy"/><span class="img-cap">Cortex · The intelligence layer</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Cortex</div>
-        <h3>The software brain across every Formic system.</h3>
-        <p>Cortex is the intelligence layer that ties every cell, line, and site together — fleet visibility, remote diagnostics, real-time analytics, and continuous OTA upgrades.</p>
-        <ul class="feat-list">
-          <li>Real-time OEE, throughput, and cycle-time analytics</li>
-          <li>Encrypted remote diagnostics and root-cause tools</li>
-          <li>Operator-friendly bilingual HMI on every machine</li>
-          <li>Continuous, backward-compatible feature releases</li>
-        </ul>
-      </div>
-    </article>
-    <article id="mg-core" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic Core controlled robot in motion" loading="lazy"/><span class="img-cap">Core · The control layer</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Core</div>
-        <h3>Industrial-grade control, standardized.</h3>
-        <p>Core delivers deterministic, safety-rated PLC motion on proven industrial hardware. The same reliability your maintenance team already knows — now with software visibility on top.</p>
-        <ul class="feat-list">
-          <li>Hard-real-time PLC motion control (Rockwell, Siemens)</li>
-          <li>Standardized "Lego-block" modular architecture</li>
-          <li>KUKA, ABB, FANUC, Doosan — unified under one OS</li>
-          <li>Same building blocks across every deployment</li>
-        </ul>
-      </div>
-    </article>
+<!-- 2 / THE MAGIC — AI-first framing with cursor-interactive canvas -->
+<section class="home-section dark home-magic" id="magic">
+  <canvas id="home-mg-canvas" aria-hidden="true"></canvas>
+  <div class="home-mg-spot" aria-hidden="true"></div>
+  <div class="home-magic-inner">
+    <div class="hsection-head">
+      <div class="slabel" style="color:var(--orange)">The Magic</div>
+      <h2>AI on the floor.<br><em>Production-grade.</em></h2>
+      <p class="blurb">Industrial AI built for shop-floor reality. Vision systems, learned policies, and continuous improvement — running safely on every Formic line, getting smarter with every cycle.</p>
+      <a href="/magic" class="more-link">Inside the Magic</a>
+    </div>
+    <div class="hsection-tabs">
+      <button type="button" class="htab active" data-target="#mg-cortex"><span class="htab-num">01</span><h3>Cortex</h3><span class="htab-arrow">→</span></button>
+      <button type="button" class="htab" data-target="#mg-core"><span class="htab-num">02</span><h3>Core</h3><span class="htab-arrow">→</span></button>
+    </div>
+    <div class="hsection-track">
+      <article id="mg-cortex" class="hpanel">
+        <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic Cortex AI layer concept" loading="lazy"/><span class="img-cap">Cortex · The AI layer</span></div>
+        <div class="hpanel-text">
+          <div class="ptag">01 — Cortex</div>
+          <h3>The AI brain across every Formic system.</h3>
+          <p>Cortex runs perception, decision-making, and continuous learning across every cell. Fleet-wide vision models, anomaly detection, and policy improvements roll out as OTA updates — your systems get smarter every week.</p>
+          <ul class="feat-list">
+            <li>Vision models trained on millions of in-line cycles</li>
+            <li>Anomaly and drift detection across the fleet</li>
+            <li>Closed-loop learning — every cycle improves the model</li>
+            <li>Continuous OTA upgrades — new capability, no downtime</li>
+          </ul>
+        </div>
+      </article>
+      <article id="mg-core" class="hpanel">
+        <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic Core executing safe motion at industrial speed" loading="lazy"/><span class="img-cap">Core · Safe execution</span></div>
+        <div class="hpanel-text">
+          <div class="ptag">02 — Core</div>
+          <h3>Safe execution. At industrial speed.</h3>
+          <p>Core is the execution layer that runs Cortex's decisions in deterministic, safety-rated motion — the layer that keeps AI honest on the floor. Hard-real-time control, certified safety paths, no surprises on the line.</p>
+          <ul class="feat-list">
+            <li>Hard-real-time motion, deterministic to the millisecond</li>
+            <li>Safety-rated stop and intervention paths</li>
+            <li>Hardware-agnostic — KUKA, ABB, FANUC, Doosan</li>
+            <li>The trusted handoff between AI policy and physical motion</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -330,6 +343,66 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <h2>Measurable <em>impact</em>.</h2>
     <p class="blurb">Real outcomes from real production floors. The numbers Formic customers see, again and again.</p>
     <a href="/results" class="more-link">Explore Results</a>
+  </div>
+  <div class="statsrow" style="padding:0 80px 32px">
+    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
+  </div>
+  <div class="hsection-tabs" style="padding-top:32px">
+    <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-injury"><span class="htab-num">02</span><h3>Eliminating Ergonomic Injury</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-prod"><span class="htab-num">03</span><h3>Productivity Gains</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#rs-cost"><span class="htab-num">04</span><h3>Cost Savings</h3><span class="htab-arrow">→</span></button>
+  </div>
+  <div class="hsection-track">
+    <article id="rs-labor" class="hpanel">
+      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic system on a CPG floor reducing labor reliance" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">01 — Labor Shortage</div>
+        <h3>Automate the hardest-to-fill positions.</h3>
+        <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-injury" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">02 — Ergonomic Injury</div>
+        <h3>Cut injury rates. Improve retention.</h3>
+        <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-prod" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line driven by Formic" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">03 — Productivity Gains</div>
+        <h3>Throughput you can plan around.</h3>
+        <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+    <article id="rs-cost" class="hpanel">
+      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model — no CapEx required" loading="lazy"/></div>
+      <div class="hpanel-text">
+        <div class="ptag">04 — Cost Savings</div>
+        <h3>One fixed monthly price. Zero capital risk.</h3>
+        <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
+        <a href="/results" class="hpanel-explore">Explore more</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 4 / CUSTOMER STORIES -->
+<section class="home-section white" id="stories">
+  <div class="hsection-head">
+    <div class="slabel">Customer Stories</div>
+    <h2>Proven on <em>real floors</em>.</h2>
+    <p class="blurb">The CPG operators who run Formic systems every day — and the community we share around continuous improvement.</p>
+    <a href="/stories" class="more-link">All Customer Stories</a>
   </div>
   <div class="logo-rows logo-rows-inset">
     <div class="logo-marquee">
@@ -392,66 +465,6 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <img class="lg" src="/logos/vertech-labs.png" alt="" aria-hidden="true" loading="lazy"/>
       </div>
     </div>
-  </div>
-  <div class="statsrow" style="padding:0 80px 32px">
-    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
-  </div>
-  <div class="hsection-tabs" style="padding-top:32px">
-    <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-injury"><span class="htab-num">02</span><h3>Eliminating Ergonomic Injury</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-prod"><span class="htab-num">03</span><h3>Productivity Gains</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#rs-cost"><span class="htab-num">04</span><h3>Cost Savings</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="rs-labor" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic system on a CPG floor reducing labor reliance" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — Labor Shortage</div>
-        <h3>Automate the hardest-to-fill positions.</h3>
-        <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-injury" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Robot eliminating an ergonomic risk task" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Ergonomic Injury</div>
-        <h3>Cut injury rates. Improve retention.</h3>
-        <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-prod" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Consistent throughput line driven by Formic" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">03 — Productivity Gains</div>
-        <h3>Throughput you can plan around.</h3>
-        <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="rs-cost" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic OpEx model — no CapEx required" loading="lazy"/></div>
-      <div class="hpanel-text">
-        <div class="ptag">04 — Cost Savings</div>
-        <h3>One fixed monthly price. Zero capital risk.</h3>
-        <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
-        <a href="/results" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- 4 / CUSTOMER STORIES -->
-<section class="home-section white" id="stories">
-  <div class="hsection-head">
-    <div class="slabel">Customer Stories</div>
-    <h2>Proven on <em>real floors</em>.</h2>
-    <p class="blurb">The CPG operators who run Formic systems every day — and the community we share around continuous improvement.</p>
-    <a href="/stories" class="more-link">All Customer Stories</a>
   </div>
   <div class="hsection-tabs">
     <button type="button" class="htab active" data-target="#st-quotes"><span class="htab-num">01</span><h3>Quotes</h3><span class="htab-arrow">→</span></button>
@@ -650,6 +663,90 @@ function initHomeSections(){
   });
 }
 
+// Magic section — cursor-following spotlight + particle field, scoped to the section
+function initHomeMagic(){
+  const section=document.getElementById('magic');
+  const canvas=document.getElementById('home-mg-canvas');
+  if(!section)return;
+  // Spotlight: only active when section is in view; mx/my set on this section, not :root
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>section.classList.toggle('is-cursor-in',e.isIntersecting));
+  },{threshold:0});
+  observer.observe(section);
+  section.addEventListener('mousemove',e=>{
+    const r=section.getBoundingClientRect();
+    section.style.setProperty('--home-mx',(e.clientX-r.left)+'px');
+    section.style.setProperty('--home-my',(e.clientY-r.top)+'px');
+  });
+  // Particle field
+  if(!canvas)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const ctx=canvas.getContext('2d');
+  let W=0,H=0,nodes=[],mouse={x:-9999,y:-9999};
+  function resize(){
+    const r=canvas.getBoundingClientRect();
+    W=canvas.width=r.width;H=canvas.height=r.height;
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    nodes=[];
+    const cols=Math.max(12,Math.round(W/100));
+    const rows=Math.max(6,Math.round(H/100));
+    for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){
+      const x=(i/(cols-1))*W,y=(j/(rows-1))*H;
+      nodes.push({bx:x,by:y,x:x,y:y,r:Math.random()*1.2+.4});
+    }
+  }
+  resize();window.addEventListener('resize',resize);
+  section.addEventListener('mousemove',e=>{
+    const r=canvas.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
+  },{passive:true});
+  section.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const RADIUS=220;
+    nodes.forEach(n=>{
+      const dx=n.bx-mouse.x,dy=n.by-mouse.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      const f=Math.max(0,RADIUS-d)/RADIUS;
+      const ang=Math.atan2(dy,dx);
+      const push=f*f*54;
+      n.x+=(n.bx+Math.cos(ang)*push-n.x)*.1;
+      n.y+=(n.by+Math.sin(ang)*push-n.y)*.1;
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r+f*2.4,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,145,0,'+(0.05+f*.5)+')';
+      ctx.fill();
+    });
+    for(let i=0;i<nodes.length;i+=2){
+      for(let j=i+1;j<nodes.length;j+=2){
+        const a=nodes[i],b=nodes[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<78){
+          const adx=a.bx-mouse.x,ady=a.by-mouse.y;
+          const af=Math.max(0,RADIUS-Math.sqrt(adx*adx+ady*ady))/RADIUS;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle='rgba(255,145,0,'+(1-d/78)*(.022+af*.13)+')';
+          ctx.lineWidth=.55;ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(n=>{
+      const dx=n.x-mouse.x,dy=n.y-mouse.y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<130){
+        ctx.beginPath();
+        ctx.moveTo(mouse.x,mouse.y);ctx.lineTo(n.x,n.y);
+        ctx.strokeStyle='rgba(255,145,0,'+(1-d/130)*.4+')';
+        ctx.lineWidth=.7;ctx.stroke();
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
 // Logo marquee — two rows scrolling opposite directions; slow on hover via Web Animations API
 function initLogoMarquees(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -667,7 +764,7 @@ function initLogoMarquees(){
   });
 }
 
-function initAll(){initCounters();initNavBottom();initHomeSections();initLogoMarquees();}
+function initAll(){initCounters();initNavBottom();initHomeSections();initLogoMarquees();initHomeMagic();}
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',initAll);
 }else{
