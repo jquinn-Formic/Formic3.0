@@ -80,12 +80,30 @@ import Layout from '../layouts/Layout.astro';
 /* horizontal track */
 .hsection-track{position:relative;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;width:100vw;max-width:100%}
 .hsection-track::-webkit-scrollbar{display:none}
-.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:inherit}
+.hpanel{flex:0 0 100vw;width:100vw;min-width:100vw;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:inherit;position:relative}
 .hpanel.text-only{grid-template-columns:1fr}
 .hpanel-img{position:relative;overflow:hidden;background:var(--black)}
-.hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;min-height:520px}
+.hpanel-img img,.hpanel-img video{width:100%;height:100%;object-fit:cover;display:block;min-height:380px;max-height:480px}
 .hpanel-img .img-cap{position:absolute;bottom:18px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.7)}
-.hpanel-text{padding:72px 64px 88px;display:flex;flex-direction:column;justify-content:center;max-width:760px}
+.hpanel-text{padding:64px 64px 96px;display:flex;flex-direction:column;justify-content:center;max-width:760px;position:relative}
+.hpanel-explore{position:absolute;bottom:28px;right:48px;font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,145,0,.4);transition:gap .25s ease,border-color .25s ease;z-index:3}
+
+/* Customer quote gallery panel */
+.hpanel.quotes-panel{display:flex;align-items:center;justify-content:center;padding:64px 80px;min-height:480px}
+.quote-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 80px;width:100%;max-width:1280px}
+.quote-item{display:flex;flex-direction:column;gap:18px;border-left:2px solid var(--orange);padding-left:28px;margin:0}
+.quote-text{font-family:var(--sans);font-size:clamp(22px,2.4vw,32px);font-weight:500;line-height:1.25;letter-spacing:-.01em;color:var(--black);margin:0}
+.home-section.dark .quote-text,.home-section.dgrey .quote-text{color:var(--white)}
+.quote-attr{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);font-style:normal}
+.home-section.dark .quote-attr,.home-section.dgrey .quote-attr{color:rgba(240,245,241,.5)}
+@media(max-width:900px){
+  .hpanel.quotes-panel{padding:40px 24px}
+  .quote-gallery{grid-template-columns:1fr;gap:32px}
+  .quote-text{font-size:20px}
+}
+.hpanel-explore::after{content:"→";font-family:var(--sans);font-weight:500;font-size:1em;display:inline-block;transition:transform .25s ease}
+.hpanel-explore:hover{gap:16px;border-color:var(--orange)}
+.hpanel-explore:hover::after{transform:translateX(4px)}
 .home-section.dark .hpanel-text,.home-section.dgrey .hpanel-text{color:var(--white)}
 .hpanel-text .ptag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
 .hpanel-text h3{font-family:var(--sans);font-size:clamp(32px,3.4vw,52px);font-weight:500;letter-spacing:-.02em;line-height:1.05;margin-bottom:20px;color:var(--black)}
@@ -181,7 +199,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 1 / FULL SERVICE AUTOMATION -->
-<section class="home-section white" id="full-service">
+<section class="home-section dark" id="full-service">
   <div class="hsection-head">
     <div class="slabel">Full Service Automation</div>
     <h2>Everything.<br><em>Included.</em></h2>
@@ -207,7 +225,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Installation and commissioning by Formic engineers</li>
           <li>Ongoing performance monitoring and SLAs from day one</li>
         </ul>
-        <a href="/full-service" class="larr">Talk to an engineer →</a>
+        <a href="/full-service" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="fs-software" class="hpanel">
@@ -222,7 +240,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Real-time OEE, throughput, and cycle-time analytics</li>
           <li>Encrypted remote diagnostics and proactive alerting</li>
         </ul>
-        <a href="/full-service" class="larr">Inside the platform →</a>
+        <a href="/full-service" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="fs-equipment" class="hpanel">
@@ -237,7 +255,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Backward-compatible upgrades across every deployment</li>
           <li>Field-tested designs, not custom one-offs</li>
         </ul>
-        <a href="/full-service" class="larr">See solutions →</a>
+        <a href="/full-service" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="fs-service" class="hpanel">
@@ -252,7 +270,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Performance SLAs written into every agreement</li>
           <li>Spare parts inventory managed by Formic — no PO scramble</li>
         </ul>
-        <a href="/full-service" class="larr">Get a demo →</a>
+        <a href="/full-service" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -280,7 +298,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Complete Solutions</div>
         <h3>The whole end-of-line, one partner.</h3>
         <p>Case erecting, packing, sealing, palletizing, and pallet movement — engineered as one system, deployed as one project, supported under one SLA.</p>
-        <a href="/packing" class="larr">Scope my line →</a>
+        <a href="/packing" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="pk-pal" class="hpanel">
@@ -294,7 +312,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Vision-guided pick and place</li>
           <li>Pallet-pattern flexibility programmed at deploy</li>
         </ul>
-        <a href="/packing" class="larr">Get a quote →</a>
+        <a href="/packing" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="pk-case" class="hpanel">
@@ -303,7 +321,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Case Packing</div>
         <h3>Counts that hit, every time.</h3>
         <p>Top-load and side-load case packing across SKUs, formats, and pack patterns. Consistent counts, predictable cycle times, fewer line stops.</p>
-        <a href="/packing" class="larr">See it run →</a>
+        <a href="/packing" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="pk-erector" class="hpanel">
@@ -312,7 +330,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Case Erector / Sealer</div>
         <h3>From flat blank to sealed case.</h3>
         <p>Automated case forming and sealing integrated with the upstream packer — one continuous flow, one set of operators, one SLA across the cell.</p>
-        <a href="/packing" class="larr">Talk to engineering →</a>
+        <a href="/packing" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="pk-amr" class="hpanel">
@@ -321,7 +339,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">05 — AMRs</div>
         <h3>Pallet movement without the forklifts.</h3>
         <p>AMR-driven pallet handling between zones — dock to staging, line to wrap, finished goods to outbound — running alongside your team, not in place of it.</p>
-        <a href="/packing" class="larr">See AMR fleets →</a>
+        <a href="/packing" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -346,7 +364,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Mill / Lathe Tending</div>
         <h3>Light-out machining, on your existing line.</h3>
         <p>Robotic part loading and unloading on mills and lathes. Higher spindle utilization, consistent cycle times, and operators redeployed to higher-value work.</p>
-        <a href="/precision" class="larr">Scope a cell →</a>
+        <a href="/precision" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="pr-mold" class="hpanel">
@@ -355,7 +373,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Injection Molding Tending</div>
         <h3>Mold to packed, hands-off.</h3>
         <p>Part removal, sprue handling, post-processing, and downstream packaging integrated into one robotic cell. Consistent quality, faster cycles, fewer operator hours per part.</p>
-        <a href="/precision" class="larr">Talk to engineering →</a>
+        <a href="/precision" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -380,7 +398,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Mobile Bimanual Manipulator</div>
         <h3>Two arms, one base, anywhere on the line.</h3>
         <p>Bimanual mobile robots that handle multi-step manipulation tasks — bin picking, machine tending, assist work — and re-locate themselves between cells without a fixed footprint.</p>
-        <a href="/general" class="larr">See pilots →</a>
+        <a href="/general" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="gt-hum" class="hpanel">
@@ -389,7 +407,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Full Humanoids</div>
         <h3>Generalist robots, deployed as a service.</h3>
         <p>Full humanoid platforms for general-purpose manufacturing tasks — covered by Formic Full Service, so you get the upside of frontier hardware with none of the integration risk.</p>
-        <a href="/general" class="larr">Join the early program →</a>
+        <a href="/general" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -448,10 +466,10 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <a href="/results" class="more-link">Explore Results</a>
   </div>
   <div class="statsrow" style="padding:0 80px 32px">
-    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">0%</span><span class="stlbl">OpEx Reduction</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Tech Support</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
     <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
   </div>
   <div class="hsection-tabs" style="padding-top:32px">
     <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
@@ -466,7 +484,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — Labor Shortage</div>
         <h3>Automate the hardest-to-fill positions.</h3>
         <p>Mid-market CPG operators are losing 25–40% of their workforce annually on the worst-positioned tasks. Formic automates exactly those roles — without adding headcount risk.</p>
-        <a href="/results" class="larr">Read more →</a>
+        <a href="/results" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="rs-injury" class="hpanel">
@@ -475,7 +493,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Ergonomic Injury</div>
         <h3>Cut injury rates. Improve retention.</h3>
         <p>Removing workers from high-repetition, high-strain tasks reduces injury frequency, keeps experienced operators on the line longer, and lowers your insurance exposure.</p>
-        <a href="/results" class="larr">Read more →</a>
+        <a href="/results" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="rs-prod" class="hpanel">
@@ -484,7 +502,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Productivity Gains</div>
         <h3>Throughput you can plan around.</h3>
         <p>Consistent cycle times, faster changeovers, and real-time data for continuous optimization. Operations teams stop fire-fighting and start tuning the system.</p>
-        <a href="/results" class="larr">Read more →</a>
+        <a href="/results" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="rs-cost" class="hpanel">
@@ -493,7 +511,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Cost Savings</div>
         <h3>One fixed monthly price. Zero capital risk.</h3>
         <p>An OpEx model that scales with growth — and with usage. No depreciation surprises, no obsolete equipment, no integrator hand-offs.</p>
-        <a href="/results" class="larr">Read more →</a>
+        <a href="/results" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -508,10 +526,32 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <a href="/stories" class="more-link">All Customer Stories</a>
   </div>
   <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#st-community"><span class="htab-num">01</span><h3>Community</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#st-events"><span class="htab-num">02</span><h3>Events</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab active" data-target="#st-quotes"><span class="htab-num">01</span><h3>Quotes</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#st-community"><span class="htab-num">02</span><h3>Community</h3><span class="htab-arrow">→</span></button>
+    <button type="button" class="htab" data-target="#st-events"><span class="htab-num">03</span><h3>Events</h3><span class="htab-arrow">→</span></button>
   </div>
   <div class="hsection-track">
+    <article id="st-quotes" class="hpanel text-only quotes-panel">
+      <div class="quote-gallery">
+        <blockquote class="quote-item">
+          <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+          <cite class="quote-attr">— Plant Manager · CPG Snacks</cite>
+        </blockquote>
+        <blockquote class="quote-item">
+          <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+          <cite class="quote-attr">— VP Operations · Frozen Foods</cite>
+        </blockquote>
+        <blockquote class="quote-item">
+          <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+          <cite class="quote-attr">— CEO · Specialty Bakery</cite>
+        </blockquote>
+        <blockquote class="quote-item">
+          <p class="quote-text">"Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+          <cite class="quote-attr">— Director of Manufacturing · Confectionery</cite>
+        </blockquote>
+      </div>
+      <a href="/stories" class="hpanel-explore">Explore more</a>
+    </article>
     <article id="st-community" class="hpanel">
       <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic customer community gathering" loading="lazy"/><span class="img-cap">Formic customer community</span></div>
       <div class="hpanel-text">
@@ -523,7 +563,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <li>Shared best-practice library and benchmarking</li>
           <li>Direct line into the Formic engineering roadmap</li>
         </ul>
-        <a href="/stories" class="larr">Talk to a customer →</a>
+        <a href="/stories" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="st-events" class="hpanel">
@@ -532,7 +572,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Events</div>
         <h3>See systems run before you sign.</h3>
         <p>Customer summits, on-site tours of running deployments, Pack Expo and ProMat presence. The fastest way to see Formic at production scale is to see it on a customer floor.</p>
-        <a href="/stories" class="larr">Request a tour →</a>
+        <a href="/stories" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -559,7 +599,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">01 — News</div>
         <h3>What we're shipping, who's writing about it.</h3>
         <p>Product launches, customer wins, fundraising milestones, and industry coverage. We post the things that matter — not press for press's sake.</p>
-        <a href="/learn-more" class="larr">Press contact →</a>
+        <a href="/learn-more" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="lm-downloads" class="hpanel">
@@ -568,7 +608,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">02 — Downloads</div>
         <h3>Datasheets, case studies, and brochures.</h3>
         <p>The resources your team needs to scope a project, build a business case, or share Formic internally — all in one place.</p>
-        <a href="/learn-more" class="larr">Browse downloads →</a>
+        <a href="/learn-more" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="lm-mission" class="hpanel">
@@ -577,7 +617,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">03 — Formic Mission</div>
         <h3>Accelerate the accessibility of automation.</h3>
         <p>Formic exists to deliver more capacity, consistency, and reliability to mid-market manufacturing — while reducing cost, downtime, and worker safety issues. Every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted.</p>
-        <a href="/learn-more" class="larr">Get in touch →</a>
+        <a href="/learn-more" class="hpanel-explore">Explore more</a>
       </div>
     </article>
     <article id="lm-careers" class="hpanel">
@@ -586,7 +626,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
         <div class="ptag">04 — Careers</div>
         <h3>Build the operating layer of physical industry.</h3>
         <p>We're hiring across engineering, field service, customer success, and operations. Roles based in Chicago and remote across the U.S.</p>
-        <a href="/learn-more" class="larr">Open roles →</a>
+        <a href="/learn-more" class="hpanel-explore">Explore more</a>
       </div>
     </article>
   </div>
@@ -615,7 +655,7 @@ function toggleMute(){
   btn.textContent=vid.muted?'Unmute':'Mute';
 }
 
-// Stat counter — animates [data-count-to] when in view
+// Stat counter — counts up from 0 on hover
 function initCounters(){
   const els=document.querySelectorAll('.stnum[data-count-to]');
   if(!els.length)return;
@@ -624,19 +664,21 @@ function initCounters(){
     const target=parseFloat(el.dataset.countTo)||0;
     const prefix=el.dataset.prefix||'';
     const suffix=el.dataset.suffix||'';
-    const dur=1400,start=performance.now();
+    const dur=1200,start=performance.now();
+    if(el._raf)cancelAnimationFrame(el._raf);
     function step(now){
       const t=Math.min(1,(now-start)/dur);
       const v=Math.round(target*ease(t));
       el.textContent=prefix+v+suffix;
-      if(t<1)requestAnimationFrame(step);
+      if(t<1)el._raf=requestAnimationFrame(step);
     }
-    requestAnimationFrame(step);
+    el._raf=requestAnimationFrame(step);
   }
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){run(e.target);obs.unobserve(e.target);}});
-  },{threshold:.4});
-  els.forEach(el=>obs.observe(el));
+  els.forEach(el=>{
+    const cell=el.closest('.stcell')||el;
+    cell.style.cursor='none';
+    cell.addEventListener('mouseenter',()=>run(el));
+  });
 }
 
 // Nav goes light when CTA section is in view
