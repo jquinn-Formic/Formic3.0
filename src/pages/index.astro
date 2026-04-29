@@ -121,27 +121,17 @@ import Layout from '../layouts/Layout.astro';
 .stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
 .stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
-/* Customer logo band — placeholder marquee */
-.logo-band{padding:72px 0;border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l)}
-.logo-band-label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mgrey);text-align:center;margin-bottom:44px;display:flex;align-items:center;justify-content:center;gap:14px}
+/* Customer logo band — two-row marquee */
+.logo-band{padding:72px 0;border-top:1px solid var(--border-l);border-bottom:1px solid var(--border-l);background:var(--white)}
+.logo-band-label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--mgrey);text-align:center;margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:14px}
 .logo-band-label::before,.logo-band-label::after{content:'';width:48px;height:1px;background:var(--lgrey)}
-.logo-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 10%,#000 90%,transparent 100%)}
-.logo-track{display:flex;align-items:center;gap:56px;width:max-content;animation:logo-marquee 50s linear infinite;will-change:transform}
-.logo-marquee:hover .logo-track{animation-play-state:paused}
-.lg{flex-shrink:0;color:var(--dgrey);opacity:.45;white-space:nowrap;transition:opacity .3s ease,color .3s ease,transform .3s ease;display:inline-flex;align-items:center;height:48px;line-height:1;letter-spacing:-.005em}
-.lg:hover{opacity:1;color:var(--black);transform:translateY(-1px)}
-.lg-sep{flex:0 0 4px;width:4px;height:4px;background:var(--orange);opacity:.35;border-radius:50%;align-self:center}
-.lg-northwind{font-family:var(--sans);font-weight:600;font-size:24px;letter-spacing:.04em}
-.lg-meridian{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-style:italic;font-size:30px;letter-spacing:-.01em}
-.lg-cascadia{font-family:var(--mono);font-weight:500;font-size:18px;letter-spacing:.18em;text-transform:uppercase}
-.lg-kettle{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:26px;letter-spacing:.005em}
-.lg-harveston{font-family:var(--sans);font-weight:300;font-size:28px;letter-spacing:.02em;text-transform:lowercase}
-.lg-alpine{font-family:var(--sans);font-weight:700;font-size:18px;letter-spacing:.18em;text-transform:uppercase}
-.lg-summit{font-family:var(--mono);font-weight:400;font-size:22px;letter-spacing:0;text-transform:lowercase}
-.lg-atlas{font-family:var(--sans);font-weight:600;font-size:22px;letter-spacing:.22em;text-transform:uppercase}
-@keyframes logo-marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-@media (prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center;gap:36px 56px;width:100%;padding:0 80px}}
-@media (max-width:768px){.logo-band{padding:48px 0}.logo-band-label{margin-bottom:32px}.logo-track{gap:36px}.lg{height:36px}.lg-northwind,.lg-meridian,.lg-kettle,.lg-harveston,.lg-summit,.lg-atlas{font-size:18px}.lg-meridian,.lg-harveston{font-size:22px}}
+.logo-rows{display:flex;flex-direction:column;gap:28px}
+.logo-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);padding:6px 0}
+.logo-track{display:flex;align-items:center;gap:80px;width:max-content;will-change:transform;padding:0 40px}
+.lg{flex-shrink:0;height:60px;width:auto;max-width:220px;object-fit:contain;opacity:.6;filter:grayscale(.55);mix-blend-mode:multiply;transition:opacity .35s ease,filter .35s ease,transform .35s ease;cursor:none;transform-origin:center center}
+.lg:hover{opacity:1;filter:grayscale(0);transform:scale(1.15)}
+@media (prefers-reduced-motion:reduce){.logo-track{flex-wrap:wrap;justify-content:center;gap:32px 56px;width:100%;padding:0 80px;transform:none!important}}
+@media (max-width:768px){.logo-band{padding:48px 0}.logo-band-label{margin-bottom:32px}.logo-rows{gap:20px}.logo-track{gap:48px;padding:0 24px}.lg{height:42px;max-width:160px}}
 
 /* CTA full-screen */
 #cta{background:var(--orange);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -540,43 +530,69 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </div>
 </section>
 
-<!-- 6.5 / CUSTOMER LOGO BAND (placeholder) -->
+<!-- 6.5 / CUSTOMER LOGO BAND (two-row marquee) -->
 <section class="home-section white logo-band" aria-label="Customers using Formic">
   <div class="logo-band-label"><span>Operating on the floor at</span></div>
-  <div class="logo-marquee">
-    <div class="logo-track">
-      <div class="lg lg-northwind">◆&nbsp;NORTHWIND</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-meridian">Meridian Foods</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-cascadia">CASCADIA&nbsp;▲&nbsp;CO</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-kettle">Kettle &amp; Grain</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-harveston">○ harveston</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-alpine">ALPINE&nbsp;✦&nbsp;FOODS</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-summit">summit/pack</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-atlas">▮▮ ATLAS</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-northwind" aria-hidden="true">◆&nbsp;NORTHWIND</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-meridian" aria-hidden="true">Meridian Foods</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-cascadia" aria-hidden="true">CASCADIA&nbsp;▲&nbsp;CO</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-kettle" aria-hidden="true">Kettle &amp; Grain</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-harveston" aria-hidden="true">○ harveston</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-alpine" aria-hidden="true">ALPINE&nbsp;✦&nbsp;FOODS</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-summit" aria-hidden="true">summit/pack</div>
-      <span class="lg-sep" aria-hidden="true"></span>
-      <div class="lg lg-atlas" aria-hidden="true">▮▮ ATLAS</div>
-      <span class="lg-sep" aria-hidden="true"></span>
+  <div class="logo-rows">
+    <div class="logo-marquee">
+      <div class="logo-track" data-direction="left">
+        <img class="lg" src="/logos/abimar.png" alt="Abimar" loading="lazy"/>
+        <img class="lg" src="/logos/angels-envy.jpg" alt="Angel's Envy" loading="lazy"/>
+        <img class="lg" src="/logos/bacardi.png" alt="Bacardi" loading="lazy"/>
+        <img class="lg" src="/logos/bondedpac.png" alt="BondedPac" loading="lazy"/>
+        <img class="lg" src="/logos/cafe-valley.png" alt="Cafe Valley" loading="lazy"/>
+        <img class="lg" src="/logos/camerons.svg" alt="Camerons Coffee" loading="lazy"/>
+        <img class="lg" src="/logos/clorox.png" alt="Clorox" loading="lazy"/>
+        <img class="lg" src="/logos/connies.png" alt="Connie's" loading="lazy"/>
+        <img class="lg" src="/logos/ecos.png" alt="ECOS" loading="lazy"/>
+        <img class="lg" src="/logos/fastenal.png" alt="Fastenal" loading="lazy"/>
+        <img class="lg" src="/logos/georgias-nut.svg" alt="Georgia's Nut" loading="lazy"/>
+        <img class="lg" src="/logos/harvest-food-group.png" alt="Harvest Food Group" loading="lazy"/>
+        <img class="lg" src="/logos/la-morenita.png" alt="La Morenita" loading="lazy"/>
+        <img class="lg" src="/logos/abimar.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/angels-envy.jpg" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/bacardi.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/bondedpac.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/cafe-valley.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/camerons.svg" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/clorox.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/connies.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/ecos.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/fastenal.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/georgias-nut.svg" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/harvest-food-group.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/la-morenita.png" alt="" aria-hidden="true" loading="lazy"/>
+      </div>
+    </div>
+    <div class="logo-marquee">
+      <div class="logo-track" data-direction="right">
+        <img class="lg" src="/logos/land-o-frost.png" alt="Land O' Frost" loading="lazy"/>
+        <img class="lg" src="/logos/love-beets.png" alt="Love Beets" loading="lazy"/>
+        <img class="lg" src="/logos/mariani.jpg" alt="Mariani" loading="lazy"/>
+        <img class="lg" src="/logos/mi-rancho.png" alt="Mi Rancho" loading="lazy"/>
+        <img class="lg" src="/logos/midcontinent.png" alt="Midcontinent" loading="lazy"/>
+        <img class="lg" src="/logos/once-again.png" alt="Once Again" loading="lazy"/>
+        <img class="lg" src="/logos/polysciences.png" alt="PolySciences" loading="lazy"/>
+        <img class="lg" src="/logos/rumiano.png" alt="Rumiano" loading="lazy"/>
+        <img class="lg" src="/logos/taffy-town.jpeg" alt="Taffy Town" loading="lazy"/>
+        <img class="lg" src="/logos/thompson-plastics.png" alt="Thompson Plastics" loading="lazy"/>
+        <img class="lg" src="/logos/trident-seafoods.png" alt="Trident Seafoods" loading="lazy"/>
+        <img class="lg" src="/logos/valentine.png" alt="Valentine" loading="lazy"/>
+        <img class="lg" src="/logos/vertech-labs.png" alt="VerTech Labs" loading="lazy"/>
+        <img class="lg" src="/logos/land-o-frost.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/love-beets.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/mariani.jpg" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/mi-rancho.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/midcontinent.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/once-again.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/polysciences.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/rumiano.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/taffy-town.jpeg" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/thompson-plastics.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/trident-seafoods.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/valentine.png" alt="" aria-hidden="true" loading="lazy"/>
+        <img class="lg" src="/logos/vertech-labs.png" alt="" aria-hidden="true" loading="lazy"/>
+      </div>
     </div>
   </div>
 </section>
@@ -790,7 +806,24 @@ function initHomeSections(){
   });
 }
 
-function initAll(){initCounters();initNavBottom();initHomeSections();}
+// Logo marquee — two rows scrolling opposite directions; slow on hover via Web Animations API
+function initLogoMarquees(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  document.querySelectorAll('.logo-track').forEach(track=>{
+    const dir=track.dataset.direction==='right'?'right':'left';
+    const from=dir==='left'?'0%':'-50%';
+    const to=dir==='left'?'-50%':'0%';
+    const anim=track.animate(
+      [{transform:`translate3d(${from},0,0)`},{transform:`translate3d(${to},0,0)`}],
+      {duration:60000,iterations:Infinity,easing:'linear'}
+    );
+    const marquee=track.parentElement;
+    marquee.addEventListener('mouseenter',()=>{anim.updatePlaybackRate?anim.updatePlaybackRate(0.25):anim.playbackRate=0.25;});
+    marquee.addEventListener('mouseleave',()=>{anim.updatePlaybackRate?anim.updatePlaybackRate(1):anim.playbackRate=1;});
+  });
+}
+
+function initAll(){initCounters();initNavBottom();initHomeSections();initLogoMarquees();}
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',initAll);
 }else{
