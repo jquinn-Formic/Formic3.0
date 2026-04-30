@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-mt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1517"/>
+      <stop offset="1" stop-color="#14272b"/>
+    </linearGradient>
+    <pattern id="grid-mt" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,145,0,.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg-mt)"/>
+  <rect width="600" height="600" fill="url(#grid-mt)"/>
+  <g stroke="rgba(255,145,0,.55)" stroke-width="1.5" fill="none">
+    <path d="M24 44 V24 H44"/>
+    <path d="M576 44 V24 H556"/>
+    <path d="M24 556 V576 H44"/>
+    <path d="M576 556 V576 H556"/>
+  </g>
+  <text x="48" y="56" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(255,145,0,.85)" letter-spacing="2">FPO · 03</text>
+  <text x="552" y="56" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(240,245,241,.5)" letter-spacing="2">MACHINE TENDING</text>
+  <!-- CNC machine on right -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none">
+    <rect x="400" y="200" width="160" height="280"/>
+    <line x1="400" y1="240" x2="560" y2="240"/>
+    <!-- spindle -->
+    <line x1="480" y1="240" x2="480" y2="350"/>
+    <rect x="468" y="350" width="24" height="40"/>
+    <!-- motion arrows -->
+    <path d="M495 290 L505 280 M495 310 L505 320"/>
+    <line x1="500" y1="290" x2="500" y2="310"/>
+  </g>
+  <!-- workpiece on platform -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none">
+    <rect x="448" y="400" width="64" height="20"/>
+    <rect x="408" y="420" width="144" height="60"/>
+  </g>
+  <!-- robot arm reaching from left -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- base -->
+    <rect x="60" y="420" width="80" height="60"/>
+    <circle cx="100" cy="420" r="10"/>
+    <!-- segment 1 -->
+    <line x1="100" y1="420" x2="200" y2="320"/>
+    <circle cx="200" cy="320" r="9"/>
+    <!-- segment 2 -->
+    <line x1="200" y1="320" x2="320" y2="380"/>
+    <circle cx="320" cy="380" r="9"/>
+    <!-- end effector / gripper -->
+    <line x1="320" y1="380" x2="385" y2="420"/>
+    <path d="M380 414 L390 410 M385 422 L395 422"/>
+  </g>
+  <!-- target lock indicator on workpiece -->
+  <g stroke="rgba(255,145,0,.6)" stroke-width="1.4" fill="none" stroke-dasharray="3 3">
+    <circle cx="480" cy="440" r="22"/>
+  </g>
+  <text x="48" y="556" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="rgba(240,245,241,.4)" letter-spacing="2">MILL · LATHE · INJECTION MOLD</text>
+</svg>

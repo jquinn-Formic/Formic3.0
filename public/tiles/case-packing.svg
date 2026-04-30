@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-cp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1517"/>
+      <stop offset="1" stop-color="#14272b"/>
+    </linearGradient>
+    <pattern id="grid-cp" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,145,0,.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg-cp)"/>
+  <rect width="600" height="600" fill="url(#grid-cp)"/>
+  <g stroke="rgba(255,145,0,.55)" stroke-width="1.5" fill="none">
+    <path d="M24 44 V24 H44"/>
+    <path d="M576 44 V24 H556"/>
+    <path d="M24 556 V576 H44"/>
+    <path d="M576 556 V576 H556"/>
+  </g>
+  <text x="48" y="56" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(255,145,0,.85)" letter-spacing="2">FPO · 02</text>
+  <text x="552" y="56" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(240,245,241,.5)" letter-spacing="2">CASE PACKING</text>
+  <!-- isometric open case -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none" stroke-linejoin="miter">
+    <!-- case walls (isometric) -->
+    <path d="M150 460 L300 530 L450 460 L300 390 Z"/>
+    <path d="M150 460 L150 320 L300 250 L300 390"/>
+    <path d="M450 460 L450 320 L300 250"/>
+    <path d="M150 320 L300 390 L450 320"/>
+    <!-- flap (open lid) -->
+    <path d="M150 320 L120 280 L260 220 L300 250"/>
+    <path d="M450 320 L480 280 L340 220 L300 250"/>
+  </g>
+  <!-- items inside (3x2 grid) -->
+  <g stroke="rgba(255,145,0,.7)" stroke-width="1.8" fill="none">
+    <rect x="195" y="345" width="32" height="40"/>
+    <rect x="240" y="370" width="32" height="40"/>
+    <rect x="285" y="395" width="32" height="40"/>
+    <rect x="330" y="370" width="32" height="40"/>
+    <rect x="375" y="345" width="32" height="40"/>
+  </g>
+  <!-- item descending -->
+  <g stroke="rgba(255,145,0,.6)" stroke-width="1.6" fill="none" stroke-dasharray="3 3">
+    <line x1="300" y1="120" x2="300" y2="220"/>
+  </g>
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2" fill="none">
+    <rect x="284" y="100" width="32" height="40"/>
+    <path d="M292 230 L300 245 L308 230"/>
+  </g>
+  <text x="48" y="556" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="rgba(240,245,241,.4)" letter-spacing="2">TOP-LOAD · SIDE-LOAD · COUNT-VERIFIED</text>
+</svg>

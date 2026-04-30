@@ -138,9 +138,9 @@ import Layout from '../layouts/Layout.astro';
 .sol-tile-feat{grid-column:span 2;aspect-ratio:2/1}
 .sol-tile-wide{grid-column:span 2}
 .sol-grid-4 .sol-tile-wide{aspect-ratio:2/1.05}
-.sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.6) saturate(.85)}
-.sol-tile:hover img{transform:scale(1.05);filter:brightness(.95) saturate(1)}
-.sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(9,21,23,.85) 100%);z-index:1;pointer-events:none}
+.sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.95) saturate(1)}
+.sol-tile:hover img{transform:scale(1.04);filter:brightness(1.1) saturate(1.05)}
+.sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,21,23,.78) 100%);z-index:1;pointer-events:none}
 .sol-content{position:absolute;left:28px;bottom:24px;right:28px;z-index:2}
 .sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
 .sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
@@ -243,14 +243,13 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 <!-- 1 / SOLUTIONS — Anduril-style 4-col tile grid -->
 <section class="home-section dark" id="solutions">
   <div class="hsection-head" style="padding-bottom:36px">
-    <div class="slabel" style="color:var(--orange)">Solutions</div>
+    <div class="slabel" style="color:var(--orange)"><span class="slabel-num">01</span>Solutions</div>
     <h2>Every line. <em>One platform.</em></h2>
     <p class="blurb">From end-of-line packing to humanoids — the automation American manufacturing actually needs, deployed under one Formic SLA.</p>
   </div>
   <div class="sol-grid sol-grid-4">
     <a class="sol-tile" href="/packing">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/palletizing.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Palletizing</div>
@@ -258,8 +257,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/packing">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/case-packing.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Case Packing</div>
@@ -267,8 +265,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/precision">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Talos-9787.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/machine-tending.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Machine Tending</div>
@@ -276,8 +273,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/packing">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/pallet-wrapping.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Pallet Wrapping</div>
@@ -285,17 +281,15 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/general">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/humanoids.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Humanoids</div>
-        <div class="sol-tag">Generalist robots, deployed as a service</div>
+        <div class="sol-tag">Generalist robots, as a service</div>
       </div>
     </a>
     <a class="sol-tile" href="/general">
-      <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
+      <img src="/tiles/amrs.svg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">AMRs</div>
@@ -319,7 +313,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   <div class="home-mg-spot" aria-hidden="true"></div>
   <div class="home-magic-inner">
     <div class="hsection-head">
-      <div class="slabel" style="color:var(--orange)">The Magic</div>
+      <div class="slabel" style="color:var(--orange)"><span class="slabel-num">02</span>The Magic</div>
       <h2>AI on the floor.<br><em>Production-grade.</em></h2>
       <p class="blurb">Industrial AI built for shop-floor reality. Vision systems, learned policies, and continuous improvement — running safely on every Formic line, getting smarter with every cycle.</p>
       <a href="/magic" class="more-link">Inside the Magic</a>
@@ -364,7 +358,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 <!-- 6 / RESULTS -->
 <section class="home-section dgrey" id="results">
   <div class="hsection-head">
-    <div class="slabel" style="color:var(--orange)">Results</div>
+    <div class="slabel" style="color:var(--orange)"><span class="slabel-num">03</span>Results</div>
     <h2>Measurable <em>impact</em>.</h2>
     <p class="blurb">Real outcomes from real production floors. The numbers Formic customers see, again and again.</p>
     <a href="/results" class="more-link">Explore Results</a>
@@ -424,7 +418,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 <!-- 4 / CUSTOMER STORIES -->
 <section class="home-section white" id="stories">
   <div class="hsection-head">
-    <div class="slabel">Customer Stories</div>
+    <div class="slabel"><span class="slabel-num">04</span>Customer Stories</div>
     <h2>Proven on <em>real floors</em>.</h2>
     <p class="blurb">The CPG operators who run Formic systems every day — and the community we share around continuous improvement.</p>
     <a href="/stories" class="more-link">All Customer Stories</a>
@@ -494,16 +488,16 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   <div class="stories-quotes">
     <div class="quote-gallery">
       <blockquote class="quote-item">
-        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-        <cite class="quote-attr">— Plant Manager · CPG Snacks</cite>
+        <p class="quote-text">"Formic's system is a silent workhorse in our facility. It's always working."</p>
+        <cite class="quote-attr">— Derek Glade, CMO · Taffy Town</cite>
       </blockquote>
       <blockquote class="quote-item">
-        <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
-        <cite class="quote-attr">— VP Operations · Frozen Foods</cite>
+        <p class="quote-text">"Formic has some skin in the game, because they're only getting incentivized when the machine is running, not when it's down."</p>
+        <cite class="quote-attr">— Matt Neuman, Distribution &amp; Packaging Manager · Georgia Nut</cite>
       </blockquote>
       <blockquote class="quote-item">
-        <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
-        <cite class="quote-attr">— CEO · Specialty Bakery</cite>
+        <p class="quote-text">"Formic likes to partner with people; it's not just a business transaction."</p>
+        <cite class="quote-attr">— Patrick Henson, VP of Operations · Rumiano Cheese</cite>
       </blockquote>
     </div>
   </div>
@@ -512,7 +506,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 <!-- 8 / LEARN MORE -->
 <section class="home-section dark" id="learn-more">
   <div class="hsection-head">
-    <div class="slabel" style="color:var(--orange)">Learn More</div>
+    <div class="slabel" style="color:var(--orange)"><span class="slabel-num">05</span>Learn More</div>
     <h2>Driving U.S. manufacturing<br><em>forward</em>.</h2>
     <p class="blurb">News, downloads, mission, and careers — everything beyond the product, in one place.</p>
     <a href="/learn-more" class="more-link">Visit Learn More</a>

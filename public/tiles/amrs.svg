@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-amr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1517"/>
+      <stop offset="1" stop-color="#14272b"/>
+    </linearGradient>
+    <pattern id="grid-amr" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,145,0,.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg-amr)"/>
+  <rect width="600" height="600" fill="url(#grid-amr)"/>
+  <g stroke="rgba(255,145,0,.55)" stroke-width="1.5" fill="none">
+    <path d="M24 44 V24 H44"/>
+    <path d="M576 44 V24 H556"/>
+    <path d="M24 556 V576 H44"/>
+    <path d="M576 556 V576 H556"/>
+  </g>
+  <text x="48" y="56" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(255,145,0,.85)" letter-spacing="2">FPO · 06</text>
+  <text x="552" y="56" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(240,245,241,.5)" letter-spacing="2">AMRs</text>
+  <!-- waypoint path -->
+  <g stroke="rgba(255,145,0,.45)" stroke-width="1.6" fill="none" stroke-dasharray="4 4">
+    <path d="M80 200 L240 200 L240 380 L520 380"/>
+  </g>
+  <g fill="rgba(255,145,0,.85)">
+    <circle cx="80" cy="200" r="4"/>
+    <circle cx="240" cy="200" r="4"/>
+    <circle cx="240" cy="380" r="4"/>
+    <circle cx="520" cy="380" r="4"/>
+  </g>
+  <!-- AMR body (with pallet on top) -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none">
+    <!-- pallet on top -->
+    <rect x="240" y="280" width="200" height="14"/>
+    <line x1="270" y1="294" x2="270" y2="310"/>
+    <line x1="340" y1="294" x2="340" y2="310"/>
+    <line x1="410" y1="294" x2="410" y2="310"/>
+    <line x1="240" y1="310" x2="440" y2="310"/>
+    <!-- box on pallet -->
+    <rect x="290" y="225" width="100" height="55"/>
+    <!-- AMR chassis -->
+    <rect x="220" y="320" width="240" height="80" rx="8"/>
+    <!-- LIDAR sensor on top corner -->
+    <circle cx="450" cy="320" r="10"/>
+    <circle cx="450" cy="320" r="5"/>
+    <!-- LIDAR sweep arc -->
+    <path d="M460 320 A14 14 0 0 1 450 334" stroke-dasharray="2 2"/>
+    <!-- wheels -->
+    <circle cx="260" cy="410" r="18"/>
+    <circle cx="420" cy="410" r="18"/>
+    <circle cx="260" cy="410" r="6"/>
+    <circle cx="420" cy="410" r="6"/>
+  </g>
+  <!-- forward arrow -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2" fill="none">
+    <line x1="490" y1="360" x2="540" y2="360"/>
+    <path d="M530 352 L540 360 L530 368"/>
+  </g>
+  <!-- mono labels for waypoints -->
+  <text x="78" y="190" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="rgba(255,145,0,.65)" letter-spacing="1">WP_01</text>
+  <text x="246" y="190" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="rgba(255,145,0,.65)" letter-spacing="1">WP_02</text>
+  <text x="246" y="372" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="rgba(255,145,0,.65)" letter-spacing="1">WP_03</text>
+  <text x="526" y="372" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="rgba(255,145,0,.65)" letter-spacing="1">WP_04</text>
+  <text x="48" y="556" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="rgba(240,245,241,.4)" letter-spacing="2">AUTONOMOUS · ZONE-TO-ZONE · NO FORKLIFT</text>
+</svg>

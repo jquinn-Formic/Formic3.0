@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-pal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1517"/>
+      <stop offset="1" stop-color="#14272b"/>
+    </linearGradient>
+    <pattern id="grid-pal" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="rgba(255,145,0,.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg-pal)"/>
+  <rect width="600" height="600" fill="url(#grid-pal)"/>
+  <!-- corner brackets -->
+  <g stroke="rgba(255,145,0,.55)" stroke-width="1.5" fill="none">
+    <path d="M24 44 V24 H44"/>
+    <path d="M576 44 V24 H556"/>
+    <path d="M24 556 V576 H44"/>
+    <path d="M576 556 V576 H556"/>
+  </g>
+  <!-- mono labels -->
+  <text x="48" y="56" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(255,145,0,.85)" letter-spacing="2">FPO · 01</text>
+  <text x="552" y="56" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="11" fill="rgba(240,245,241,.5)" letter-spacing="2">PALLETIZING</text>
+  <!-- subject: stacked pallet -->
+  <g stroke="rgba(255,145,0,.85)" stroke-width="2.4" fill="none" stroke-linecap="square">
+    <!-- pallet base -->
+    <rect x="160" y="450" width="280" height="22"/>
+    <line x1="200" y1="472" x2="200" y2="492"/>
+    <line x1="300" y1="472" x2="300" y2="492"/>
+    <line x1="400" y1="472" x2="400" y2="492"/>
+    <line x1="160" y1="492" x2="440" y2="492"/>
+    <!-- box layer 3 (bottom) -->
+    <rect x="180" y="380" width="120" height="62"/>
+    <rect x="304" y="380" width="120" height="62"/>
+    <!-- box layer 2 -->
+    <rect x="170" y="310" width="130" height="62"/>
+    <rect x="304" y="310" width="130" height="62"/>
+    <!-- box layer 1 (top, slightly offset) -->
+    <rect x="195" y="240" width="120" height="62"/>
+    <rect x="319" y="240" width="120" height="62"/>
+  </g>
+  <!-- robot path / motion arrow -->
+  <g stroke="rgba(255,145,0,.45)" stroke-width="1.4" fill="none" stroke-dasharray="4 4">
+    <path d="M120 130 Q200 200 200 240"/>
+  </g>
+  <g fill="rgba(255,145,0,.85)">
+    <circle cx="120" cy="130" r="4"/>
+  </g>
+  <!-- bottom mono note -->
+  <text x="48" y="556" font-family="ui-monospace, Menlo, monospace" font-size="10" fill="rgba(240,245,241,.4)" letter-spacing="2">CYCLES · MIXED-SKU · 24/7</text>
+</svg>
