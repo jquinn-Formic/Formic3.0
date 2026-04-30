@@ -52,7 +52,7 @@ import Layout from '../layouts/Layout.astro';
 .home-section.white{background:var(--white)}
 .hsection-head{padding:72px 80px 24px;max-width:1280px;margin:0 auto}
 .hsection-head .slabel{margin-bottom:16px}
-.hsection-head h2{font-family:var(--sans);font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1.0;letter-spacing:-.02em;margin-bottom:18px}
+.hsection-head h2{font-family:var(--sans);font-weight:600;font-size:clamp(44px,5.4vw,80px);line-height:.96;letter-spacing:-.025em;margin-bottom:20px}
 .home-section.dark .hsection-head h2,.home-section.dgrey .hsection-head h2{color:var(--white)}
 .hsection-head h2 em{color:var(--orange);font-style:normal}
 .hsection-head .blurb{font-size:17px;font-weight:300;line-height:1.7;max-width:580px;color:var(--mgrey)}
@@ -119,9 +119,10 @@ import Layout from '../layouts/Layout.astro';
 
 /* Stats row inside Results section */
 .statsrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.1);max-width:1280px;margin:0 auto 0;width:100%}
-.stcell{background:var(--dgrey);padding:48px 28px;text-align:center}
-.stnum{font-family:var(--sans);font-size:58px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:6px;letter-spacing:-.02em}
-.stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
+.stcell{background:var(--dgrey);padding:64px 28px 56px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transition:background .25s ease}
+.stcell:hover{background:#3d4946}
+.stnum{font-family:var(--sans);font-size:clamp(60px,5.4vw,86px);font-weight:500;color:var(--white);line-height:.92;display:block;letter-spacing:-.03em}
+.stlbl{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
 /* Magic section — cursor-interactive canvas + spotlight (scoped) */
 .home-magic{position:relative;overflow:hidden}
@@ -133,14 +134,15 @@ import Layout from '../layouts/Layout.astro';
 /* Solutions tile grid (Anduril-style) */
 .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,245,241,.06)}
 .sol-grid-4{grid-template-columns:repeat(4,1fr)}
-.sol-tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;text-decoration:none;color:var(--white);background:var(--dgrey)}
+.sol-tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block;text-decoration:none;color:var(--white);background:var(--dgrey);transition:transform .35s cubic-bezier(.2,.6,.2,1)}
+.sol-tile:hover{transform:translateY(-4px)}
 .sol-grid-4 .sol-tile{aspect-ratio:1/1.05}
 .sol-tile-feat{grid-column:span 2;aspect-ratio:2/1}
 .sol-tile-wide{grid-column:span 2}
 .sol-grid-4 .sol-tile-wide{aspect-ratio:2/1.05}
-.sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.95) saturate(1)}
-.sol-tile:hover img{transform:scale(1.04);filter:brightness(1.1) saturate(1.05)}
-.sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,21,23,.78) 100%);z-index:1;pointer-events:none}
+.sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.62) saturate(.88)}
+.sol-tile:hover img{transform:scale(1.06);filter:brightness(.92) saturate(1)}
+.sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(9,21,23,.92) 100%);z-index:1;pointer-events:none}
 .sol-content{position:absolute;left:28px;bottom:24px;right:28px;z-index:2}
 .sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
 .sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
@@ -249,7 +251,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </div>
   <div class="sol-grid sol-grid-4">
     <a class="sol-tile" href="/packing">
-      <img src="/tiles/palletizing.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/Haviland_Products_-_Palletizing.gif" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Palletizing</div>
@@ -257,7 +260,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/packing">
-      <img src="/tiles/case-packing.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/CasepackerPromoVideo_NoText.gif" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Case Packing</div>
@@ -265,7 +269,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/precision">
-      <img src="/tiles/machine-tending.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-9787.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Machine Tending</div>
@@ -273,7 +278,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/packing">
-      <img src="/tiles/pallet-wrapping.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Pallet Wrapping</div>
@@ -281,7 +287,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/general">
-      <img src="/tiles/humanoids.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Humanoids</div>
@@ -289,7 +296,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
       </div>
     </a>
     <a class="sol-tile" href="/general">
-      <img src="/tiles/amrs.svg" alt="" loading="lazy"/>
+      <span class="sol-fpo">FPO</span>
+      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">AMRs</div>
@@ -331,7 +339,6 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <p>Cortex runs perception, decision-making, and continuous learning across every cell. Fleet-wide vision models, anomaly detection, and policy improvements roll out as OTA updates — your systems get smarter every week.</p>
           <ul class="feat-list">
             <li>Vision models trained on millions of in-line cycles</li>
-            <li>Anomaly and drift detection across the fleet</li>
             <li>Closed-loop learning — every cycle improves the model</li>
             <li>Continuous OTA upgrades — new capability, no downtime</li>
           </ul>
@@ -346,7 +353,6 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
           <ul class="feat-list">
             <li>Hard-real-time motion, deterministic to the millisecond</li>
             <li>Safety-rated stop and intervention paths</li>
-            <li>Hardware-agnostic — KUKA, ABB, FANUC, Doosan</li>
             <li>The trusted handoff between AI policy and physical motion</li>
           </ul>
         </div>
