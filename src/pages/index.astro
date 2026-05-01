@@ -68,7 +68,10 @@ import Layout from '../layouts/Layout.astro';
 .htab{flex:1 1 160px;background:transparent;padding:18px 20px;cursor:none;text-decoration:none;border:none;border-top:1px solid rgba(0,0,0,.1);border-bottom:2px solid transparent;text-align:left;font:inherit;color:inherit;transition:border-color .25s,background .25s;display:flex;flex-direction:column;gap:6px;position:relative}
 .home-section.dark .htab,.home-section.dgrey .htab{border-top-color:rgba(240,245,241,.1)}
 .htab:hover{background:rgba(255,145,0,.04);border-bottom-color:rgba(255,145,0,.45)}
-.htab.active{border-bottom-color:var(--orange);background:rgba(255,145,0,.06)}
+.htab.active{border-bottom-color:rgba(255,145,0,.28);background:rgba(255,145,0,.06)}
+/* auto-rotate progress bar — fills the active tab over the cycle, pauses on hover */
+.htab::after{content:"";position:absolute;left:0;right:auto;bottom:-2px;height:2px;width:var(--htab-progress,0%);background:var(--orange);box-shadow:0 0 8px rgba(255,145,0,.5);pointer-events:none;opacity:0;transition:opacity .2s ease}
+.htab.active::after{opacity:1}
 .htab .htab-num{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--mgrey);text-transform:uppercase;transition:color .2s}
 .home-section.dark .htab .htab-num,.home-section.dgrey .htab .htab-num{color:rgba(240,245,241,.4)}
 .htab.active .htab-num,.htab:hover .htab-num{color:var(--orange)}
@@ -124,6 +127,18 @@ import Layout from '../layouts/Layout.astro';
 .stnum{font-family:var(--sans);font-size:clamp(60px,5.4vw,86px);font-weight:500;color:var(--white);line-height:.92;display:block;letter-spacing:-.03em}
 .stlbl{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 
+/* Learn More — 4-card row */
+.lm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.06);max-width:100%}
+.lm-card{position:relative;background:#0d181a;padding:48px 32px 36px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--white);transition:background .3s ease,padding-left .3s ease;cursor:none;min-height:340px}
+.lm-card:hover{background:#14272b}
+.lm-card-num{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,145,0,.85)}
+.lm-card h3{font-family:var(--sans);font-weight:600;font-size:clamp(22px,1.8vw,28px);letter-spacing:-.015em;line-height:1.1;color:var(--white);margin:0}
+.lm-card p{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.6;color:rgba(240,245,241,.55);margin:0}
+.lm-card-arrow{font-family:var(--sans);font-size:24px;color:var(--orange);margin-top:auto;display:inline-block;transition:transform .3s ease}
+.lm-card:hover .lm-card-arrow{transform:translateX(6px)}
+@media (max-width:1180px){.lm-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.lm-grid{grid-template-columns:1fr}.lm-card{min-height:260px;padding:32px 24px 28px}}
+
 /* Magic section — cursor-interactive canvas + spotlight (scoped) */
 .home-magic{position:relative;overflow:hidden}
 .home-magic #home-mg-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
@@ -142,6 +157,11 @@ import Layout from '../layouts/Layout.astro';
 .sol-grid-4 .sol-tile-wide{aspect-ratio:2/1.05}
 .sol-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.62) saturate(.88)}
 .sol-tile:hover img{transform:scale(1.06);filter:brightness(.92) saturate(1)}
+/* Static-poster + animated-GIF swap: static visible by default, GIF fades in on hover */
+.sol-tile .sol-anim{opacity:0;transition:opacity .25s ease,transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease}
+.sol-tile:hover .sol-anim{opacity:1}
+.sol-tile:hover .sol-static{opacity:0}
+.sol-tile .sol-static{transition:opacity .25s ease,transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease}
 .sol-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(9,21,23,.92) 100%);z-index:1;pointer-events:none}
 .sol-content{position:absolute;left:28px;bottom:24px;right:28px;z-index:2}
 .sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
@@ -252,7 +272,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   <div class="sol-grid sol-grid-4">
     <a class="sol-tile" href="/packing">
       <span class="sol-fpo">FPO</span>
-      <img src="/Haviland_Products_-_Palletizing.gif" alt="" loading="lazy"/>
+      <img class="sol-static" src="/Haviland_Products_-_Palletizing_poster.jpg" alt="" loading="lazy"/>
+      <img class="sol-anim" src="/Haviland_Products_-_Palletizing.gif" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Palletizing</div>
@@ -261,7 +282,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     </a>
     <a class="sol-tile" href="/packing">
       <span class="sol-fpo">FPO</span>
-      <img src="/CasepackerPromoVideo_NoText.gif" alt="" loading="lazy"/>
+      <img class="sol-static" src="/CasepackerPromoVideo_NoText_poster.jpg" alt="" loading="lazy"/>
+      <img class="sol-anim" src="/CasepackerPromoVideo_NoText.gif" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Case Packing</div>
@@ -279,7 +301,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     </a>
     <a class="sol-tile" href="/packing">
       <span class="sol-fpo">FPO</span>
-      <img src="/Focus-7603.jpg" alt="" loading="lazy"/>
+      <img src="/PalletWrapping-Robopac.webp" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Pallet Wrapping</div>
@@ -288,7 +310,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     </a>
     <a class="sol-tile" href="/general">
       <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0095.jpg" alt="" loading="lazy"/>
+      <img src="/Humanoid-factory.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Humanoids</div>
@@ -297,7 +319,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     </a>
     <a class="sol-tile" href="/general">
       <span class="sol-fpo">FPO</span>
-      <img src="/Talos-0143.jpg" alt="" loading="lazy"/>
+      <img src="/AMR-warehouse.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">AMRs</div>
@@ -373,7 +395,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
     <div class="stcell"><span class="stnum" data-count-to="20" data-suffix="%">20%</span><span class="stlbl">OpEx Reduction</span></div>
     <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">24/7</span><span class="stlbl">Tech Support</span></div>
     <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
-    <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">2 wks</span><span class="stlbl">Avg. Deployment</span></div>
+    <div class="stcell"><span class="stnum" data-count-to="12" data-suffix=" wks">12 wks</span><span class="stlbl">Avg. Deployment</span></div>
   </div>
   <div class="hsection-tabs" style="padding-top:32px">
     <button type="button" class="htab active" data-target="#rs-labor"><span class="htab-num">01</span><h3>Overcoming Labor Shortage</h3><span class="htab-arrow">→</span></button>
@@ -509,57 +531,38 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </div>
 </section>
 
-<!-- 8 / LEARN MORE -->
+<!-- 5 / LEARN MORE — 4-card row (Anduril-style) -->
 <section class="home-section dark" id="learn-more">
-  <div class="hsection-head">
+  <div class="hsection-head" style="padding-bottom:32px">
     <div class="slabel" style="color:var(--orange)"><span class="slabel-num">05</span>Learn More</div>
-    <h2>Driving U.S. manufacturing<br><em>forward</em>.</h2>
-    <p class="blurb">News, downloads, mission, and careers — everything beyond the product, in one place.</p>
-    <a href="/learn-more" class="more-link">Visit Learn More</a>
+    <h2>Beyond the product.</h2>
+    <p class="blurb">News, downloads, mission, and careers — everything Formic, beyond the system.</p>
   </div>
-  <div class="hsection-tabs">
-    <button type="button" class="htab active" data-target="#lm-news"><span class="htab-num">01</span><h3>News</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#lm-downloads"><span class="htab-num">02</span><h3>Downloads</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#lm-mission"><span class="htab-num">03</span><h3>Formic Mission</h3><span class="htab-arrow">→</span></button>
-    <button type="button" class="htab" data-target="#lm-careers"><span class="htab-num">04</span><h3>Careers</h3><span class="htab-arrow">→</span></button>
-  </div>
-  <div class="hsection-track">
-    <article id="lm-news" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0095.jpg" alt="Formic in the news" loading="lazy"/><span class="img-cap">Press · Announcements</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">01 — News</div>
-        <h3>What we're shipping, who's writing about it.</h3>
-        <p>Product launches, customer wins, fundraising milestones, and industry coverage. We post the things that matter — not press for press's sake.</p>
-        <a href="/learn-more" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="lm-downloads" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-9787.jpg" alt="Formic downloadable resources" loading="lazy"/><span class="img-cap">Datasheets · Case studies</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">02 — Downloads</div>
-        <h3>Datasheets, case studies, and brochures.</h3>
-        <p>The resources your team needs to scope a project, build a business case, or share Formic internally — all in one place.</p>
-        <a href="/learn-more" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="lm-mission" class="hpanel">
-      <div class="hpanel-img"><img src="/Focus-7603.jpg" alt="Formic mission — U.S. manufacturing" loading="lazy"/><span class="img-cap">Founded 2020 · Chicago, IL</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">03 — Formic Mission</div>
-        <h3>Accelerate the accessibility of automation.</h3>
-        <p>Formic exists to deliver more capacity, consistency, and reliability to mid-market manufacturing — while reducing cost, downtime, and worker safety issues. Every mid-market manufacturer deserves access to the same robotic automation Fortune 500 companies take for granted.</p>
-        <a href="/learn-more" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
-    <article id="lm-careers" class="hpanel">
-      <div class="hpanel-img"><img src="/Talos-0143.jpg" alt="Formic careers" loading="lazy"/><span class="img-cap">Hiring across engineering &amp; operations</span></div>
-      <div class="hpanel-text">
-        <div class="ptag">04 — Careers</div>
-        <h3>Build the operating layer of physical industry.</h3>
-        <p>We're hiring across engineering, field service, customer success, and operations. Roles based in Chicago and remote across the U.S.</p>
-        <a href="/learn-more" class="hpanel-explore">Explore more</a>
-      </div>
-    </article>
+  <div class="lm-grid">
+    <a class="lm-card" href="/learn-more">
+      <div class="lm-card-num">01 / News</div>
+      <h3>What we're shipping, who's writing about it.</h3>
+      <p>Product launches, customer wins, fundraising milestones, industry coverage.</p>
+      <span class="lm-card-arrow">→</span>
+    </a>
+    <a class="lm-card" href="/learn-more">
+      <div class="lm-card-num">02 / Downloads</div>
+      <h3>Datasheets, case studies, brochures.</h3>
+      <p>The resources your team needs to scope a project, build a business case, or share Formic internally.</p>
+      <span class="lm-card-arrow">→</span>
+    </a>
+    <a class="lm-card" href="/learn-more">
+      <div class="lm-card-num">03 / Mission</div>
+      <h3>Accelerate the accessibility of automation.</h3>
+      <p>Every mid-market manufacturer deserves access to the same robotic automation Fortune 500s take for granted.</p>
+      <span class="lm-card-arrow">→</span>
+    </a>
+    <a class="lm-card" href="/learn-more">
+      <div class="lm-card-num">04 / Careers</div>
+      <h3>Build the operating layer of physical industry.</h3>
+      <p>Hiring across engineering, field service, customer success, and operations. Chicago + remote U.S.</p>
+      <span class="lm-card-arrow">→</span>
+    </a>
   </div>
 </section>
 
@@ -624,17 +627,35 @@ function initNavBottom(){
 }
 
 // Generic horizontal section: each .home-section with a tab strip + track
+// Auto-rotates through tabs every ROTATE_MS, pauses on hover/touch over tabs or panel area,
+// pauses while section is offscreen, and respects prefers-reduced-motion.
 function initHomeSections(){
   document.querySelectorAll('.home-section').forEach(section=>{
     const track=section.querySelector('.hsection-track');
     const tabs=Array.from(section.querySelectorAll('.htab'));
     if(!track||!tabs.length)return;
     const panels=tabs.map(t=>section.querySelector(t.dataset.target)).filter(Boolean);
-    function setActive(panel){
-      const i=panels.indexOf(panel);
-      if(i<0)return;
+    const tabsContainer=section.querySelector('.hsection-tabs');
+    const ROTATE_MS=6000;
+    const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIdx=0;
+    let cycleStart=0;
+    let pausedElapsed=0;
+    let paused=false;
+    let inView=false;
+    let timer=null;
+    let raf=null;
+
+    function setActiveByIdx(i,resetProgress){
+      if(i<0||i>=tabs.length)return;
+      activeIdx=i;
       tabs.forEach(x=>x.classList.remove('active'));
       tabs[i].classList.add('active');
+      if(resetProgress!==false){
+        tabs.forEach(x=>x.style.setProperty('--htab-progress','0%'));
+        cycleStart=performance.now();
+        pausedElapsed=0;
+      }
     }
     function scrollToPanel(panel){
       if(!panel)return;
@@ -643,17 +664,80 @@ function initHomeSections(){
       const left=track.scrollLeft+(panelRect.left-trackRect.left);
       track.scrollTo({left,behavior:'smooth'});
     }
+    function clearTimer(){if(timer){clearTimeout(timer);timer=null;}}
+    function schedule(remaining){
+      clearTimer();
+      if(reduced||paused||!inView||tabs.length<2)return;
+      timer=setTimeout(()=>{
+        const next=(activeIdx+1)%tabs.length;
+        setActiveByIdx(next,true);
+        scrollToPanel(panels[next]);
+        schedule();
+      },remaining==null?ROTATE_MS:remaining);
+    }
+    function tick(){
+      raf=requestAnimationFrame(tick);
+      if(reduced||!inView)return;
+      const now=performance.now();
+      const elapsed=paused?pausedElapsed:(now-cycleStart);
+      const pct=Math.max(0,Math.min(100,(elapsed/ROTATE_MS)*100));
+      tabs[activeIdx].style.setProperty('--htab-progress',pct+'%');
+    }
+    function pause(){
+      if(paused)return;
+      paused=true;
+      pausedElapsed=performance.now()-cycleStart;
+      clearTimer();
+    }
+    function resume(){
+      if(!paused)return;
+      paused=false;
+      cycleStart=performance.now()-pausedElapsed;
+      schedule(Math.max(0,ROTATE_MS-pausedElapsed));
+    }
+
     tabs.forEach((t,i)=>{
       t.addEventListener('click',function(e){
         e.preventDefault();
+        setActiveByIdx(i,true);
         scrollToPanel(panels[i]);
-        setActive(panels[i]);
+        schedule();
       });
     });
+
+    // Pause-on-hover over either the tab strip or the panel area
+    [tabsContainer,track].filter(Boolean).forEach(el=>{
+      el.addEventListener('mouseenter',pause);
+      el.addEventListener('mouseleave',resume);
+      el.addEventListener('touchstart',pause,{passive:true});
+      el.addEventListener('touchend',resume,{passive:true});
+    });
+
+    // Existing IO: when a panel scrolls into the track viewport, mark its tab active
     const obs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting)setActive(e.target);});
+      entries.forEach(e=>{
+        if(!e.isIntersecting)return;
+        const i=panels.indexOf(e.target);
+        if(i>=0&&i!==activeIdx)setActiveByIdx(i,true);
+      });
     },{root:track,threshold:.55});
     panels.forEach(p=>obs.observe(p));
+
+    // Only rotate while the section itself is in the viewport
+    const sectionObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        inView=e.isIntersecting;
+        if(inView){
+          if(!raf)raf=requestAnimationFrame(tick);
+          if(!paused){cycleStart=performance.now()-pausedElapsed;schedule(Math.max(0,ROTATE_MS-pausedElapsed));}
+        }else{
+          clearTimer();
+        }
+      });
+    },{threshold:.25});
+    sectionObs.observe(section);
+
+    setActiveByIdx(0,true);
   });
 }
 
