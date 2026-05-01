@@ -14,6 +14,16 @@
   --border-d:rgba(240,245,241,.08);
   --sans:'DM Sans',sans-serif;
   --mono:'DM Mono',monospace;
+  /* Restrained neutral-dark palette (Anduril-leaning) — used by sections opting into the new theme.
+     Slightly warm near-black surfaces, near-white text, hairline borders. Orange reserved for the rarest accent. */
+  --ink:#0a0908;
+  --ink-2:#131110;
+  --ink-3:#1c1a18;
+  --hairline:rgba(255,255,255,.05);
+  --hairline-2:rgba(255,255,255,.11);
+  --bone:#fafaf8;
+  --bone-2:rgba(250,250,248,.6);
+  --bone-3:rgba(250,250,248,.38);
 }
 
 html{scroll-behavior:smooth}
@@ -189,6 +199,42 @@ footer{background:var(--black);padding:0;border-top:1px solid rgba(240,245,241,.
 .footer-col a:hover{color:var(--orange);padding-left:6px}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:24px 80px 32px;max-width:1700px;margin:0 auto}
 .footer-bottom p{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.3)}
+
+/* RESTRAINED-THEME global overrides — opt-in via body.restrained.
+   Strips orange from shared chrome (nav, footer) and converts the page background.
+   Preserved orange: #cur/#curR cursor, .htab::after status bar, .home-magic spotlight + canvas. */
+body.restrained{background:var(--ink);color:var(--bone)}
+body.restrained nav#nav{background:rgba(10,9,8,.72);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--hairline)}
+body.restrained nav#nav .nav-logo svg path{fill:var(--bone)}
+body.restrained .nav-links a{color:var(--bone-3)}
+body.restrained .nav-links a:hover{color:var(--bone)}
+body.restrained .nav-links a.active{color:var(--bone)}
+body.restrained .btn-ghost{color:var(--bone-2);border-color:var(--hairline-2)}
+body.restrained .btn-ghost:hover{color:var(--bone);border-color:var(--bone-3)}
+/* Nav primary CTA — bone solid (was solid orange .btn-orange) */
+body.restrained .btn-orange{background:var(--bone);color:var(--ink);border:1px solid var(--bone);transition:background .2s,color .2s}
+body.restrained .btn-orange:hover{background:transparent;color:var(--bone);opacity:1}
+body.restrained nav.nav-bottom{background:rgba(250,250,248,.96)}
+body.restrained nav.nav-bottom .nav-links a{color:var(--ink)}
+body.restrained nav.nav-bottom .nav-links a:hover{color:var(--ink);opacity:.6}
+
+/* Footer — preserve dark surface, demote orange accents */
+body.restrained footer{background:var(--ink);border-top-color:var(--hairline)}
+body.restrained .footer-statement{border-bottom-color:var(--hairline)}
+body.restrained .footer-statement p{color:var(--bone)}
+body.restrained .footer-statement em{color:var(--bone-2);font-style:italic;font-weight:500}
+body.restrained .footer-grid{border-bottom-color:var(--hairline)}
+body.restrained .footer-logo svg path{fill:var(--bone)}
+body.restrained .footer-tagline{color:var(--bone-2)}
+body.restrained .footer-cta{color:var(--bone-2);border-bottom-color:var(--hairline-2)}
+body.restrained .footer-cta:hover{color:var(--bone);border-bottom-color:var(--bone-3);opacity:1}
+body.restrained .footer-col h4{color:var(--bone-3)}
+body.restrained .footer-col h4::after{background:var(--hairline-2)}
+body.restrained .footer-col a{color:var(--bone-2)}
+body.restrained .footer-col a:hover{color:var(--bone);padding-left:6px}
+body.restrained .footer-bottom p{color:var(--bone-3)}
+
+/* Scroll-hint line — keep faint orange as a subtle status indicator (matches the "status bar" exception) */
 
 /* SCROLL REVEAL */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}

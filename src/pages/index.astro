@@ -218,6 +218,93 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 /* Mobile */
 @media(max-width:900px){
   .video-hero{padding:0 24px 64px}
+}
+
+/* RESTRAINED-THEME POC — opt-in via .restrained on a section. Anduril-leaning: neutral surfaces, monochrome typography, orange used only on the smallest accent indicators (mono eyebrow numbering). */
+.video-hero.restrained .vid-overlay{background:linear-gradient(to top,rgba(10,9,8,.96) 0%,rgba(10,9,8,.55) 45%,rgba(10,9,8,.35) 100%),radial-gradient(ellipse at center,rgba(10,9,8,0) 30%,rgba(10,9,8,.7) 100%)}
+.video-hero.restrained .ai-grid{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:96px 96px}
+.video-hero.restrained .mono-label{color:var(--bone-3)}
+.video-hero.restrained .hero-h1 em{color:var(--bone);font-style:italic;font-weight:400}
+.video-hero.restrained .hero-sub{color:var(--bone-2)}
+/* Hero CTAs: both go neutral. Primary = subtle solid bone, secondary = outline. No orange button. */
+.video-hero.restrained .btn-hero.solid{background:var(--bone);color:var(--ink);border:1px solid var(--bone)}
+.video-hero.restrained .btn-hero.solid:hover{background:transparent;color:var(--bone)}
+.video-hero.restrained .btn-hero.outline{color:var(--bone-2);border-color:var(--hairline-2);background:transparent}
+.video-hero.restrained .btn-hero.outline:hover{color:var(--bone);border-color:var(--bone-3)}
+
+.home-section.restrained{background:var(--ink)!important}
+/* Eyebrow: text in neutral grey, only the small "01" numbering keeps a faint orange tint as the brand accent. */
+.home-section.restrained .slabel{color:var(--bone-3)}
+.home-section.restrained .slabel::after{background:var(--hairline-2)}
+.home-section.restrained .slabel-num{color:rgba(255,145,0,.55)}
+.home-section.restrained .hsection-head h2{color:var(--bone);font-weight:500}
+.home-section.restrained .hsection-head h2 em{color:var(--bone-2);font-style:italic;font-weight:500}
+.home-section.restrained .hsection-head .blurb{color:var(--bone-2)}
+.home-section.restrained .sol-grid{background:var(--hairline)}
+.home-section.restrained .sol-tile{background:var(--ink-2)}
+.home-section.restrained .sol-tile:hover{background:var(--ink-3)}
+.home-section.restrained .sol-overlay{background:linear-gradient(180deg,transparent 35%,rgba(10,9,8,.94) 100%)}
+.home-section.restrained .sol-fpo{background:rgba(0,0,0,.55);border-color:var(--hairline-2);color:var(--bone-3)}
+/* Coming Soon tile: fully neutral. No orange wash, no orange "+", no orange CTA. */
+.home-section.restrained .sol-tile-soon{background:var(--ink-2);border:1px solid var(--hairline)}
+.home-section.restrained .sol-tile-soon::before{background:none}
+.home-section.restrained .sol-tile-soon::after{font-size:28px;font-weight:300;color:var(--bone-3);top:24px;right:28px}
+.home-section.restrained .sol-tile-soon:hover{background:var(--ink-3);border-color:var(--hairline-2)}
+.home-section.restrained .sol-tile-soon:hover::after{color:var(--bone)}
+.home-section.restrained .sol-soon-tag{color:var(--bone-3);letter-spacing:.18em}
+.home-section.restrained .sol-soon-name{color:var(--bone);font-weight:500}
+.home-section.restrained .sol-soon-desc{color:var(--bone-2)}
+.home-section.restrained .sol-soon-cta{color:var(--bone-2);border-bottom-color:var(--hairline-2)}
+.home-section.restrained .sol-soon-cta:hover{color:var(--bone);border-bottom-color:var(--bone-3)}
+
+/* Tabs (Magic + Results) — neutral surfaces, tiny orange progress bar (status indicator) preserved per design intent */
+.home-section.restrained .htab{border-top-color:var(--hairline)}
+.home-section.restrained .htab:hover{background:var(--hairline);border-bottom-color:var(--hairline-2)}
+.home-section.restrained .htab.active{border-bottom-color:var(--hairline-2);background:var(--hairline)}
+.home-section.restrained .htab .htab-num{color:var(--bone-3)}
+.home-section.restrained .htab.active .htab-num,.home-section.restrained .htab:hover .htab-num{color:var(--bone)}
+.home-section.restrained .htab h3{color:var(--bone)}
+.home-section.restrained .htab .htab-arrow{color:var(--bone-2)}
+/* status bar stays orange — kept intentionally as the progress accent */
+.home-section.restrained .htab::after{box-shadow:0 0 8px rgba(255,145,0,.45)}
+
+/* Panels inside the horizontal track */
+.home-section.restrained .hpanel-img{background:var(--ink)}
+.home-section.restrained .hpanel-img .img-cap{color:var(--bone-3)}
+.home-section.restrained .hpanel-text .ptag{color:var(--bone-3)}
+.home-section.restrained .hpanel-text h3{color:var(--bone)}
+.home-section.restrained .hpanel-text p{color:var(--bone-2)}
+.home-section.restrained .hpanel-explore{color:var(--bone-2);border-bottom-color:var(--hairline-2)}
+.home-section.restrained .hpanel-explore:hover{color:var(--bone);border-bottom-color:var(--bone-3)}
+
+/* Stats row (inside Results) */
+.home-section.restrained .statsrow{background:var(--hairline)}
+.home-section.restrained .stcell{background:var(--ink-2)}
+.home-section.restrained .stcell:hover{background:var(--ink-3)}
+.home-section.restrained .stnum{color:var(--bone)}
+.home-section.restrained .stlbl{color:var(--bone-3)}
+
+/* Customer quotes — Stories used to be light. Now neutral dark. */
+.home-section.restrained .quote-text{color:var(--bone)}
+.home-section.restrained .quote-attr{color:var(--bone-3)}
+.home-section.restrained .quote-item{border-left-color:var(--hairline-2)}
+
+/* Magic-section spotlight + particle field stays orange — explicitly kept as the "AI interactive" accent. No overrides needed; the inline rgba(255,145,0,...) on .home-mg-spot and the canvas particles continue to render. */
+
+/* CTA section — was full orange. Now neutral dark with bone CTA. */
+body.restrained #cta{background:var(--ink)}
+body.restrained .cta-ey{color:var(--bone-3)}
+body.restrained .cta-t{color:var(--bone)}
+body.restrained .cta-s{color:var(--bone-2)}
+body.restrained .btn-ctadark{background:var(--bone);color:var(--ink);border:1px solid var(--bone);transition:background .2s,color .2s}
+body.restrained .btn-ctadark:hover{background:transparent;color:var(--bone);opacity:1}
+body.restrained .btn-ctawh{color:var(--bone-2);border:1px solid var(--hairline-2)}
+body.restrained .btn-ctawh:hover{color:var(--bone);border-color:var(--bone-3)}
+body.restrained .cta-c{color:var(--bone-3)}
+body.restrained .cta-c a{color:var(--bone-2)}
+body.restrained .cta-c a:hover{color:var(--bone)}
+@media(max-width:900px){
+  .video-hero.restrained .ai-grid{background-size:56px 56px}
   .ai-hud.tl-hud{top:68px;left:24px}
   .ai-hud.tr-hud{display:none}
   .ai-corner{width:28px;height:28px}
@@ -240,7 +327,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </style>
 
 <!-- HERO — full-screen video with subtle grid + mission overlay -->
-<section class="video-hero">
+<section class="video-hero restrained">
   <video id="heroVid" autoplay muted loop playsinline poster="/Focus-7603.jpg">
     <source src="/RFA_header.mp4" type="video/mp4" />
     <img src="/Focus-7603.jpg" alt="Formic industrial automation" />
@@ -251,8 +338,8 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   </div>
   <div class="hero-content">
     <div class="mono-label">Mission</div>
-    <h1 style="font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,92px);line-height:1.02;letter-spacing:-.025em;color:var(--white);margin-bottom:28px;max-width:960px">Powering American<br>manufacturing for the<br><em style="color:var(--orange);font-style:normal">next 100 years</em>.</h1>
-    <p style="font-size:18px;font-weight:300;color:rgba(240,245,241,.7);max-width:600px;margin-bottom:40px;line-height:1.65">Formic exists so every U.S. manufacturer has access to the automation they need. CPG and metal fab today. Humanoids tomorrow.</p>
+    <h1 class="hero-h1" style="font-family:var(--sans);font-weight:500;font-size:clamp(48px,6.4vw,92px);line-height:1.02;letter-spacing:-.025em;color:var(--bone);margin-bottom:28px;max-width:960px">Powering American<br>manufacturing for the<br><em>next 100 years</em>.</h1>
+    <p class="hero-sub" style="font-size:18px;font-weight:300;max-width:600px;margin-bottom:40px;line-height:1.65">Formic exists so every U.S. manufacturer has access to the automation they need. CPG and metal fab today. Humanoids tomorrow.</p>
     <div style="display:flex;gap:12px">
       <a href="#cta" class="btn-hero solid">Get Started</a>
       <a href="#solutions" class="btn-hero outline">See Solutions</a>
@@ -263,7 +350,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 1 / SOLUTIONS — Anduril-style 4-col tile grid -->
-<section class="home-section dark" id="solutions">
+<section class="home-section dark restrained" id="solutions">
   <div class="hsection-head" style="padding-bottom:36px">
     <div class="slabel" style="color:var(--orange)"><span class="slabel-num">01</span>Solutions</div>
     <h2>Every line. <em>One platform.</em></h2>
@@ -338,7 +425,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 2 / THE MAGIC — AI-first framing with cursor-interactive canvas -->
-<section class="home-section dark home-magic" id="magic">
+<section class="home-section dark home-magic restrained" id="magic">
   <canvas id="home-mg-canvas" aria-hidden="true"></canvas>
   <div class="home-mg-spot" aria-hidden="true"></div>
   <div class="home-magic-inner">
@@ -384,7 +471,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 6 / RESULTS -->
-<section class="home-section dgrey" id="results">
+<section class="home-section dgrey restrained" id="results">
   <div class="hsection-head">
     <div class="slabel" style="color:var(--orange)"><span class="slabel-num">03</span>Results</div>
     <h2>Measurable <em>impact</em>.</h2>
@@ -444,7 +531,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 4 / CUSTOMER STORIES -->
-<section class="home-section white" id="stories">
+<section class="home-section white restrained" id="stories">
   <div class="hsection-head">
     <div class="slabel"><span class="slabel-num">04</span>Customer Stories</div>
     <h2>Proven on <em>real floors</em>.</h2>
@@ -532,7 +619,7 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 </section>
 
 <!-- 5 / LEARN MORE — 4-card row (Anduril-style) -->
-<section class="home-section dark" id="learn-more">
+<section class="home-section dark restrained" id="learn-more">
   <div class="hsection-head" style="padding-bottom:32px">
     <div class="slabel" style="color:var(--orange)"><span class="slabel-num">05</span>Learn More</div>
     <h2>Beyond the product.</h2>
