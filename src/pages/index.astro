@@ -220,37 +220,42 @@ nav.nav-bottom .nav-links a:hover{color:var(--orange)}
   .video-hero{padding:0 24px 64px}
 }
 
-/* RESTRAINED-THEME POC — opt-in via .restrained on a section. Neutral dark surfaces, orange demoted to single accent (CTA only). */
-.video-hero.restrained .vid-overlay{background:linear-gradient(to top,rgba(10,11,12,.96) 0%,rgba(10,11,12,.55) 45%,rgba(10,11,12,.35) 100%),radial-gradient(ellipse at center,rgba(10,11,12,0) 30%,rgba(10,11,12,.7) 100%)}
-.video-hero.restrained .ai-grid{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:88px 88px}
+/* RESTRAINED-THEME POC — opt-in via .restrained on a section. Anduril-leaning: neutral surfaces, monochrome typography, orange used only on the smallest accent indicators (mono eyebrow numbering). */
+.video-hero.restrained .vid-overlay{background:linear-gradient(to top,rgba(10,9,8,.96) 0%,rgba(10,9,8,.55) 45%,rgba(10,9,8,.35) 100%),radial-gradient(ellipse at center,rgba(10,9,8,0) 30%,rgba(10,9,8,.7) 100%)}
+.video-hero.restrained .ai-grid{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:96px 96px}
 .video-hero.restrained .mono-label{color:var(--bone-3)}
 .video-hero.restrained .hero-h1 em{color:var(--bone);font-style:italic;font-weight:400}
 .video-hero.restrained .hero-sub{color:var(--bone-2)}
-.video-hero.restrained .btn-hero.outline{color:var(--bone-2);border-color:var(--hairline-2)}
+/* Hero CTAs: both go neutral. Primary = subtle solid bone, secondary = outline. No orange button. */
+.video-hero.restrained .btn-hero.solid{background:var(--bone);color:var(--ink);border:1px solid var(--bone)}
+.video-hero.restrained .btn-hero.solid:hover{background:transparent;color:var(--bone)}
+.video-hero.restrained .btn-hero.outline{color:var(--bone-2);border-color:var(--hairline-2);background:transparent}
 .video-hero.restrained .btn-hero.outline:hover{color:var(--bone);border-color:var(--bone-3)}
 
 .home-section.restrained{background:var(--ink)!important}
+/* Eyebrow: text in neutral grey, only the small "01" numbering keeps a faint orange tint as the brand accent. */
 .home-section.restrained .slabel{color:var(--bone-3)}
-.home-section.restrained .slabel::after{background:var(--bone-3)}
-.home-section.restrained .slabel-num{color:var(--bone-3)}
-.home-section.restrained .hsection-head h2{color:var(--bone)}
+.home-section.restrained .slabel::after{background:var(--hairline-2)}
+.home-section.restrained .slabel-num{color:rgba(255,145,0,.55)}
+.home-section.restrained .hsection-head h2{color:var(--bone);font-weight:500}
 .home-section.restrained .hsection-head h2 em{color:var(--bone-2);font-style:italic;font-weight:500}
 .home-section.restrained .hsection-head .blurb{color:var(--bone-2)}
 .home-section.restrained .sol-grid{background:var(--hairline)}
 .home-section.restrained .sol-tile{background:var(--ink-2)}
 .home-section.restrained .sol-tile:hover{background:var(--ink-3)}
-.home-section.restrained .sol-overlay{background:linear-gradient(180deg,transparent 35%,rgba(10,11,12,.94) 100%)}
+.home-section.restrained .sol-overlay{background:linear-gradient(180deg,transparent 35%,rgba(10,9,8,.94) 100%)}
 .home-section.restrained .sol-fpo{background:rgba(0,0,0,.55);border-color:var(--hairline-2);color:var(--bone-3)}
-/* Coming Soon tile: drop the orange wash, replace with neutral surface + 1px hairline + small accent */
+/* Coming Soon tile: fully neutral. No orange wash, no orange "+", no orange CTA. */
 .home-section.restrained .sol-tile-soon{background:var(--ink-2);border:1px solid var(--hairline)}
 .home-section.restrained .sol-tile-soon::before{background:none}
-.home-section.restrained .sol-tile-soon::after{font-size:32px;font-weight:300;color:rgba(255,145,0,.55);top:24px;right:28px}
+.home-section.restrained .sol-tile-soon::after{font-size:28px;font-weight:300;color:var(--bone-3);top:24px;right:28px}
 .home-section.restrained .sol-tile-soon:hover{background:var(--ink-3);border-color:var(--hairline-2)}
-.home-section.restrained .sol-tile-soon:hover::after{color:var(--orange)}
+.home-section.restrained .sol-tile-soon:hover::after{color:var(--bone)}
 .home-section.restrained .sol-soon-tag{color:var(--bone-3);letter-spacing:.18em}
-.home-section.restrained .sol-soon-name{color:var(--bone)}
+.home-section.restrained .sol-soon-name{color:var(--bone);font-weight:500}
 .home-section.restrained .sol-soon-desc{color:var(--bone-2)}
-.home-section.restrained .sol-soon-cta{color:var(--orange);border-bottom-color:rgba(255,145,0,.4)}
+.home-section.restrained .sol-soon-cta{color:var(--bone-2);border-bottom-color:var(--hairline-2)}
+.home-section.restrained .sol-soon-cta:hover{color:var(--bone);border-bottom-color:var(--bone-3)}
 @media(max-width:900px){
   .video-hero.restrained .ai-grid{background-size:56px 56px}
   .ai-hud.tl-hud{top:68px;left:24px}
