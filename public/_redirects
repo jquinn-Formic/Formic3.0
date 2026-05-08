@@ -1,4 +1,6 @@
-/platform     /magic        301
-/solutions    /packing      301
-/customers    /stories      301
-/company      /learn-more   301
+/platform     /magic                          301
+/customers    /stories                        301
+/company      /learn-more                     301
+/packing      /solutions/packing              301
+/precision    /solutions/machine-tending      301
+/general      /solutions/humanoids            301

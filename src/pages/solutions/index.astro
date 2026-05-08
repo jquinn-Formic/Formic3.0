@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const sols = [
+  {slug:'palletizing', name:'Palletizing', tag:'Stable stacks, every shift', img:'/Haviland_Products_-_Palletizing.gif', poster:'/Haviland_Products_-_Palletizing_poster.jpg'},
+  {slug:'packing', name:'Case Packing', tag:'Counts that hit, every time', img:'/CasepackerPromoVideo_NoText.gif', poster:'/CasepackerPromoVideo_NoText_poster.jpg'},
+  {slug:'machine-tending', name:'Machine Tending', tag:'Mill, lathe, mold — hands-off', img:'/MachineTending-CNC.jpg'},
+  {slug:'pallet-wrapping', name:'Pallet Wrapping', tag:'Tight wraps, dock-ready', img:'/PalletWrapping-Robopac.webp'},
+  {slug:'humanoids', name:'Humanoids', tag:'Generalist robots, as a service', img:'/Humanoid-factory.jpg'},
+  {slug:'amrs', name:'AMRs', tag:'Pallet movement without forklifts', img:'/AMR-warehouse.jpg'},
+];
+---
+<Layout
+  title="Solutions — Formic"
+  description="Palletizing, case packing, machine tending, pallet wrapping, humanoids, and AMRs — every line, one platform."
+  ogTitle="Formic Solutions"
+  ogDescription="Every line. One platform. The automation American manufacturing actually needs."
+>
+  <link rel="canonical" href="https://formic.co/solutions" slot="head" />
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span>Solutions
+</div>
+
+<section class="detail-hero">
+  <div class="si">
+    <div class="slabel" style="color:var(--orange)">Solutions</div>
+    <h1>Every line.<br><em>One platform.</em></h1>
+    <p class="lede">From end-of-line packing to humanoids — the automation American manufacturing actually needs, deployed under one Formic SLA.</p>
+  </div>
+</section>
+
+<section class="detail-block dark">
+  <div class="detail-video wide">
+    <div class="detail-video-frame">
+      <video autoplay muted loop playsinline poster="/Focus-7603.jpg">
+        <source src="/RFA_header.mp4" type="video/mp4" />
+      </video>
+      <span class="dv-fpo">FPO</span>
+      <span class="dv-cap">Formic on the floor · 24/7</span>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="sol-index-head">
+    <div class="db-tag">All Solutions</div>
+    <h2>Pick a line. <em>We'll run it.</em></h2>
+    <p>Six categories cover the bulk of what mid-market manufacturers actually need automated. Every category runs under the same Full Service model — fixed monthly price, integration risk on us.</p>
+  </div>
+  <div class="sol-index-grid">
+    {sols.map(s => (
+      <a class="sol-card" href={`/solutions/${s.slug}`}>
+        <div class="sol-card-media">
+          {s.poster && <img class="sol-card-static" src={s.poster} alt="" loading="lazy"/>}
+          <img class={s.poster ? 'sol-card-anim' : 'sol-card-still'} src={s.img} alt="" loading="lazy"/>
+          <span class="sol-card-overlay"></span>
+          <span class="sol-card-fpo">FPO</span>
+        </div>
+        <div class="sol-card-body">
+          <div class="sol-card-name">{s.name}</div>
+          <div class="sol-card-tag">{s.tag}</div>
+          <span class="sol-card-arrow">→</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section class="detail-cta">
+  <h2>Not sure where to start?<br><em>We'll scope your line.</em></h2>
+  <div class="btn-row">
+    <a href="/talk-with-an-expert" class="btn-ctadark">Talk with an Expert</a>
+    <a href="/full-service" class="btn-ctawh">How Full Service Works</a>
+  </div>
+</section>
+
+<style>
+.sol-index-head{max-width:1280px;margin:0 auto;padding:80px 80px 24px}
+.sol-index-head .db-tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.sol-index-head h2{font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin-bottom:18px}
+.sol-index-head h2 em{color:var(--orange);font-style:normal}
+.sol-index-head p{font-size:16px;font-weight:300;line-height:1.7;color:var(--mgrey);max-width:680px;margin:0}
+.sol-index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--lgrey);max-width:1280px;margin:0 auto;padding:32px 80px 80px}
+.sol-card{position:relative;display:flex;flex-direction:column;background:var(--white);text-decoration:none;color:var(--black);transition:transform .35s cubic-bezier(.2,.6,.2,1),box-shadow .35s ease}
+.sol-card:hover{transform:translateY(-4px);box-shadow:0 18px 32px -16px rgba(9,21,23,.18)}
+.sol-card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--black)}
+.sol-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1),opacity .25s ease,filter .4s ease;filter:brightness(.85) saturate(.92)}
+.sol-card:hover .sol-card-media img{transform:scale(1.04);filter:brightness(1) saturate(1)}
+.sol-card-anim{opacity:0}
+.sol-card:hover .sol-card-anim{opacity:1}
+.sol-card:hover .sol-card-static{opacity:0}
+.sol-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,21,23,.6) 100%);pointer-events:none;z-index:1}
+.sol-card-fpo{position:absolute;top:12px;right:12px;z-index:2;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:4px 8px;border:1px solid rgba(255,255,255,.18)}
+.sol-card-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:6px;position:relative}
+.sol-card-name{font-family:var(--sans);font-weight:600;font-size:22px;letter-spacing:-.015em;line-height:1.1;color:var(--black)}
+.sol-card-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--mgrey);line-height:1.5}
+.sol-card-arrow{position:absolute;right:24px;bottom:26px;font-family:var(--sans);font-size:22px;color:var(--orange);transition:transform .25s ease}
+.sol-card:hover .sol-card-arrow{transform:translateX(6px)}
+@media (max-width:1024px){.sol-index-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.sol-index-grid{grid-template-columns:1fr;padding:24px}.sol-index-head{padding:48px 24px 8px}}
+</style>
+</Layout>
