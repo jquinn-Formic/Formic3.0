@@ -11,15 +11,24 @@ import Layout from '../layouts/Layout.astro';
 
   <style is:global slot="head">
 .stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--lgrey);max-width:1280px;margin:0 auto}
-.story-card{background:var(--white);padding:48px 44px;display:grid;grid-template-columns:80px 1fr;gap:28px;text-decoration:none;cursor:none;transition:background .25s}
+.story-card{background:var(--white);padding:36px 36px 40px;display:grid;grid-template-columns:200px 1fr;gap:32px;text-decoration:none;cursor:none;transition:background .25s,transform .35s cubic-bezier(.2,.6,.2,1);align-items:center;position:relative}
 .story-card:hover{background:#e8ede9}
-.story-ct{font-family:var(--sans);font-size:54px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
-.story-ctlbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mgrey);margin-top:6px}
-.story-name{font-family:var(--sans);font-size:18px;font-weight:500;letter-spacing:-.01em;color:var(--black);margin-bottom:8px}
-.story-challenge{font-size:14px;color:var(--mgrey);line-height:1.65;margin-bottom:8px}
-.story-win{font-size:14px;font-weight:400;color:var(--black);line-height:1.65}
+.story-photo{position:relative;width:200px;height:200px;overflow:hidden;background:var(--black);flex-shrink:0}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.82) saturate(.92)}
+.story-card:hover .story-photo img{transform:scale(1.05);filter:brightness(.95) saturate(1)}
+.story-fpo{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:3px 7px;border:1px solid rgba(255,255,255,.18);z-index:2}
+.story-photo-overlay{position:absolute;left:14px;bottom:14px;display:flex;align-items:baseline;gap:8px;color:var(--white);z-index:2}
+.story-photo-overlay::before{content:"";position:absolute;left:-14px;right:-14px;bottom:-14px;top:-32px;background:linear-gradient(to top,rgba(9,21,23,.8),transparent);z-index:-1}
+.story-ct{font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
+.story-ctlbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.story-body{display:flex;flex-direction:column;gap:8px}
+.story-name{font-family:var(--sans);font-size:22px;font-weight:600;letter-spacing:-.015em;color:var(--black);margin-bottom:2px}
+.story-challenge{font-size:14px;color:var(--mgrey);line-height:1.65;margin:0}
+.story-win{font-size:14px;font-weight:400;color:var(--black);line-height:1.65;margin:0}
 .story-win::before{content:"→ ";color:var(--orange)}
-@media(max-width:900px){.stories-grid{grid-template-columns:1fr}.story-card{padding:32px 24px;grid-template-columns:60px 1fr;gap:18px}.story-ct{font-size:40px}}
+.story-arrow{position:absolute;right:32px;bottom:32px;font-family:var(--sans);font-size:22px;color:var(--orange);transition:transform .25s ease}
+.story-card:hover .story-arrow{transform:translateX(6px)}
+@media(max-width:900px){.stories-grid{grid-template-columns:1fr}.story-card{padding:24px;grid-template-columns:140px 1fr;gap:20px}.story-photo,.story-photo img{width:140px;height:140px}.story-ct{font-size:36px}.story-name{font-size:18px}.story-arrow{right:24px;bottom:24px}}
   </style>
 
 <div class="detail-bc">
@@ -39,10 +48,58 @@ import Layout from '../layouts/Layout.astro';
     <div class="db-tag">Featured deployments</div>
     <h2 style="font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin:8px 0 32px">Four operators. <em style="color:var(--orange);font-style:normal">Sixteen systems.</em></h2>
     <div class="stories-grid">
-      <a href="#" class="story-card"><div><div class="story-ct">5</div><div class="story-ctlbl">Systems</div></div><div><div class="story-name">Land O'Frost</div><p class="story-challenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p><p class="story-win">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p></div></a>
-      <a href="#" class="story-card"><div><div class="story-ct">9</div><div class="story-ctlbl">Systems</div></div><div><div class="story-name">Mi Rancho</div><p class="story-challenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p><p class="story-win">9 robotic palletizers → eliminated injuries, cut downtime</p></div></a>
-      <a href="#" class="story-card"><div><div class="story-ct">1</div><div class="story-ctlbl">System</div></div><div><div class="story-name">Mariani Family</div><p class="story-challenge">Labor gaps and ergonomic strain limited efficiency amid rising demand.</p><p class="story-win">Boosted efficiency, filled staffing gaps, flexible equipment swaps</p></div></a>
-      <a href="#" class="story-card"><div><div class="story-ct">1</div><div class="story-ctlbl">System</div></div><div><div class="story-name">Taffy Town</div><p class="story-challenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p><p class="story-win">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p></div></a>
+      <a href="/stories/land-o-frost" class="story-card">
+        <div class="story-photo">
+          <span class="story-fpo">FPO</span>
+          <img src="/Haviland_Products_-_Palletizing.gif" alt="Land O'Frost palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">5</span><span class="story-ctlbl">Systems</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Land O'Frost</div>
+          <p class="story-challenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p>
+          <p class="story-win">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/mi-rancho" class="story-card">
+        <div class="story-photo">
+          <span class="story-fpo">FPO</span>
+          <img src="/Talos-0095.jpg" alt="Mi Rancho palletizing line" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">9</span><span class="story-ctlbl">Systems</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Mi Rancho</div>
+          <p class="story-challenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p>
+          <p class="story-win">9 robotic palletizers → eliminated injuries, cut downtime</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/mariani-family" class="story-card">
+        <div class="story-photo">
+          <span class="story-fpo">FPO</span>
+          <img src="/Focus-7603.jpg" alt="Mariani Family production floor" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">1</span><span class="story-ctlbl">System</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Mariani Family</div>
+          <p class="story-challenge">Labor gaps and ergonomic strain limited efficiency amid rising demand.</p>
+          <p class="story-win">Boosted efficiency, filled staffing gaps, flexible equipment swaps</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/taffy-town" class="story-card">
+        <div class="story-photo">
+          <span class="story-fpo">FPO</span>
+          <img src="/Talos-0143.jpg" alt="Taffy Town palletizing cell" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">1</span><span class="story-ctlbl">System</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Taffy Town</div>
+          <p class="story-challenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p>
+          <p class="story-win">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
