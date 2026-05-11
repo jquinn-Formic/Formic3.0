@@ -16,9 +16,9 @@ import Layout from '../layouts/Layout.astro';
 .story-photo{position:relative;width:200px;height:200px;overflow:hidden;background:var(--black);flex-shrink:0}
 .story-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.6,.2,1),filter .4s ease;filter:brightness(.82) saturate(.92)}
 .story-card:hover .story-photo img{transform:scale(1.05);filter:brightness(.95) saturate(1)}
+.story-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(9,21,23,.85) 0%,rgba(9,21,23,.45) 50%,transparent 100%);pointer-events:none;z-index:1}
 .story-fpo{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:3px 7px;border:1px solid rgba(255,255,255,.18);z-index:2}
 .story-photo-overlay{position:absolute;left:14px;bottom:14px;display:flex;align-items:baseline;gap:8px;color:var(--white);z-index:2}
-.story-photo-overlay::before{content:"";position:absolute;left:-14px;right:-14px;bottom:-14px;top:-32px;background:linear-gradient(to top,rgba(9,21,23,.8),transparent);z-index:-1}
 .story-ct{font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1;letter-spacing:-.02em}
 .story-ctlbl{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)}
 .story-body{display:flex;flex-direction:column;gap:8px}
