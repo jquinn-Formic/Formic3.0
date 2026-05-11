@@ -167,6 +167,12 @@ import Layout from '../layouts/Layout.astro';
 .sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
 .sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
 .sol-fpo{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:4px 9px;border:1px solid rgba(255,255,255,.18)}
+/* FPO placeholder tile — solid purple, no photo, big centered FPO label */
+.sol-tile.sol-tile-fpo{background:#7c3aed}
+.sol-tile.sol-tile-fpo img{display:none}
+.sol-tile.sol-tile-fpo .sol-overlay{background:linear-gradient(180deg,transparent 55%,rgba(20,8,45,.55) 100%)}
+.sol-tile.sol-tile-fpo::before{content:"FPO";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-weight:500;font-size:clamp(40px,4.5vw,72px);letter-spacing:.32em;color:rgba(255,255,255,.45);z-index:1;pointer-events:none}
+.sol-tile.sol-tile-fpo .sol-fpo{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.32);color:#fff}
 /* Coming Soon tile — orange-tinted, no image, CTA-style */
 .sol-tile-soon{background:linear-gradient(135deg,rgba(255,145,0,.14) 0%,rgba(255,145,0,.04) 60%,rgba(9,21,23,.85) 100%);display:flex;align-items:flex-end;padding:32px 36px;cursor:none;overflow:hidden}
 .sol-tile-soon::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,145,0,.2) 0%,transparent 55%);opacity:.7;pointer-events:none}
@@ -357,20 +363,16 @@ body.restrained .cta-c a:hover{color:var(--bone)}
     <p class="blurb">From end-of-line packing to humanoids — the automation American manufacturing actually needs, deployed under one Formic SLA.</p>
   </div>
   <div class="sol-grid sol-grid-4">
-    <a class="sol-tile" href="/solutions/palletizing">
-      <span class="sol-fpo">FPO</span>
-      <img class="sol-static" src="/Haviland_Products_-_Palletizing_poster.jpg" alt="" loading="lazy"/>
-      <img class="sol-anim" src="/Haviland_Products_-_Palletizing.gif" alt="" loading="lazy"/>
+    <a class="sol-tile sol-tile-fpo" href="/solutions/palletizing">
+      <span class="sol-fpo">Mariani Focus GIF</span>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Palletizing</div>
         <div class="sol-tag">Stable stacks, every shift</div>
       </div>
     </a>
-    <a class="sol-tile" href="/solutions/packing">
-      <span class="sol-fpo">FPO</span>
-      <img class="sol-static" src="/CasepackerPromoVideo_NoText_poster.jpg" alt="" loading="lazy"/>
-      <img class="sol-anim" src="/CasepackerPromoVideo_NoText.gif" alt="" loading="lazy"/>
+    <a class="sol-tile sol-tile-fpo" href="/solutions/packing">
+      <span class="sol-fpo">CSR Case Packer GIF</span>
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Case Packing</div>
