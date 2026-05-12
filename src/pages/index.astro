@@ -1044,9 +1044,9 @@ function initHeroStats(){
     return hoursSinceMon5;
   }
 
-  // 1) Items produced this week — starts at 1,157 every Monday 5AM Central, +1,326/hour
+  // 1) Items produced this week — starts at 1,157 every Monday 5AM Central, +63/second
   function itemsThisWeek(){
-    return Math.floor(1157+hoursSinceMonday5Central()*1326);
+    return Math.floor(1157+hoursSinceMonday5Central()*3600*63);
   }
 
   // 2) Uptime — base 98.241%, last digits fluctuate within ±10 (98.231–98.251)
