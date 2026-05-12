@@ -215,16 +215,28 @@ nav.nav-bottom .nav-links{gap:48px}
 nav.nav-bottom .nav-links a{color:var(--black);font-size:12px}
 nav.nav-bottom .nav-links a:hover{color:var(--orange)}
 
-/* Hero stats — live "at a glance" panel pinned to bottom of hero */
-.hero-stats{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);max-width:880px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.hstat{background:rgba(10,9,8,.55);padding:18px 22px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.hstat-num{font-family:var(--sans);font-weight:500;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em;color:var(--bone);line-height:1.05;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hstat-num .pct{color:rgba(240,236,228,.55);font-size:.7em;margin-left:1px}
-.hstat-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,236,228,.55);line-height:1.4}
-.hstat-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#3fbe6b;margin-right:8px;vertical-align:middle;box-shadow:0 0 8px rgba(63,190,107,.6);animation:hstat-pulse 2s ease-in-out infinite}
-@keyframes hstat-pulse{0%,100%{opacity:1}50%{opacity:.35}}
-@media(max-width:760px){
-  .hero-stats{grid-template-columns:1fr;max-width:420px}
+/* Live Results — standout micro section between hero and Solutions */
+.results-strip{position:relative;background:var(--ink,#0a0908);color:var(--bone,#f0ece4);padding:38px 80px 44px;border-top:1px solid rgba(255,145,0,.55);border-bottom:1px solid rgba(255,145,0,.18);overflow:hidden}
+.results-strip::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,145,0,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,145,0,.04) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.9) 30%,transparent 85%);mask-image:radial-gradient(ellipse at center,rgba(0,0,0,.9) 30%,transparent 85%);pointer-events:none}
+.rs-eyebrow{position:relative;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange,#ff9100);display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.rs-pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3fbe6b;box-shadow:0 0 12px rgba(63,190,107,.75);animation:rs-pulse 1.8s ease-in-out infinite}
+@keyframes rs-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.85)}}
+.rs-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.rs-cell{padding:14px 32px 6px;border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px;min-width:0}
+.rs-cell:first-child{border-left:none;padding-left:0}
+.rs-num{font-family:var(--sans);font-weight:500;font-size:clamp(34px,4.6vw,64px);letter-spacing:-.025em;color:var(--bone,#f0ece4);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rs-pct{color:rgba(240,236,228,.45);font-size:.55em;margin-left:2px;font-weight:500}
+.rs-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,236,228,.55);line-height:1.4}
+@media(max-width:1100px){
+  .rs-grid{grid-template-columns:repeat(2,1fr);gap:32px 0}
+  .rs-cell{padding:14px 24px 6px}
+  .rs-cell:nth-child(odd){border-left:none;padding-left:0}
+  .rs-cell:nth-child(even){border-left:1px solid rgba(255,255,255,.08)}
+}
+@media(max-width:560px){
+  .results-strip{padding:32px 24px 36px}
+  .rs-grid{grid-template-columns:1fr;gap:24px}
+  .rs-cell,.rs-cell:nth-child(even){border-left:none;padding-left:0;padding-right:0}
 }
 
 /* Mobile */
@@ -356,24 +368,32 @@ body.restrained .cta-c a:hover{color:var(--bone)}
       <a href="#cta" class="btn-hero solid">Get Started</a>
       <a href="#solutions" class="btn-hero outline">See Solutions</a>
     </div>
-    <!-- At-a-glance live stats -->
-    <div class="hero-stats" id="heroStats" aria-label="Formic fleet at a glance">
-      <div class="hstat">
-        <div class="hstat-num" id="hstat-items">—</div>
-        <div class="hstat-lbl"><span class="hstat-dot" aria-hidden="true"></span>Items produced this week</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num" id="hstat-uptime">98.241<span class="pct">%</span></div>
-        <div class="hstat-lbl"><span class="hstat-dot" aria-hidden="true"></span>Uptime · last 12 months</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num" id="hstat-training">645,520</div>
-        <div class="hstat-lbl"><span class="hstat-dot" aria-hidden="true"></span>Hours of training data</div>
-      </div>
-    </div>
   </div>
   <button id="muteBtn" class="video-mute" onclick="toggleMute()">Unmute</button>
   <div class="scroll-hint"><div class="sline"></div><span>Scroll</span></div>
+</section>
+
+<!-- LIVE RESULTS — at-a-glance fleet stats, full-bleed standout strip -->
+<section class="results-strip" id="results-strip" aria-label="Formic fleet live results">
+  <div class="rs-eyebrow"><span class="rs-pulse" aria-hidden="true"></span>Live · updating in real time</div>
+  <div class="rs-grid">
+    <div class="rs-cell">
+      <div class="rs-num" id="hstat-items">—</div>
+      <div class="rs-lbl">Items produced this week</div>
+    </div>
+    <div class="rs-cell">
+      <div class="rs-num" id="hstat-uptime">98.241<span class="rs-pct">%</span></div>
+      <div class="rs-lbl">Uptime · last 12 months</div>
+    </div>
+    <div class="rs-cell">
+      <div class="rs-num" id="hstat-training">645,520</div>
+      <div class="rs-lbl">Hours of training data</div>
+    </div>
+    <div class="rs-cell">
+      <div class="rs-num" id="hstat-injuries">8</div>
+      <div class="rs-lbl">Reportable injuries prevented</div>
+    </div>
+  </div>
 </section>
 
 <!-- 1 / SOLUTIONS — Anduril-style 4-col tile grid -->
@@ -956,16 +976,17 @@ function initLogoMarquees(){
   });
 }
 
-// Hero stats — three live counters at the bottom of the hero
+// Live Results strip — four live counters between the hero and Solutions
 function initHeroStats(){
   const itemsEl=document.getElementById('hstat-items');
   const upEl=document.getElementById('hstat-uptime');
   const trEl=document.getElementById('hstat-training');
-  if(!itemsEl&&!upEl&&!trEl)return;
+  const injEl=document.getElementById('hstat-injuries');
+  if(!itemsEl&&!upEl&&!trEl&&!injEl)return;
 
   const fmt=n=>n.toLocaleString('en-US');
 
-  // 1) Items produced this week — resets every Monday 5:00 AM Central, +1326/hour, starting at 1157
+  // Current time as parts in America/Chicago — shared by the weekly-reset stats
   function getCentralParts(){
     const parts=new Intl.DateTimeFormat('en-US',{
       timeZone:'America/Chicago',
@@ -976,10 +997,11 @@ function initHeroStats(){
     const p={};parts.forEach(x=>p[x.type]=x.value);
     return p;
   }
-  function itemsThisWeek(){
+  // Hours elapsed since the most recent Monday 5:00 AM Central
+  function hoursSinceMonday5Central(){
     const p=getCentralParts();
     const dow={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[p.weekday];
-    let h=parseInt(p.hour,10);if(h===24)h=0; // some locales return "24" for midnight
+    let h=parseInt(p.hour,10);if(h===24)h=0;
     const m=parseInt(p.minute,10),s=parseInt(p.second,10);
     const hod=h+m/60+s/3600;
     let hoursSinceMon5;
@@ -990,30 +1012,42 @@ function initHeroStats(){
       hoursSinceMon5=daysSinceMon*24+hod-5;
       if(hoursSinceMon5<0)hoursSinceMon5+=7*24;
     }
-    return Math.floor(1157+hoursSinceMon5*1326);
+    return hoursSinceMon5;
   }
 
-  // 2) Uptime — base 98.241%, last digits fluctuate within ±10
+  // 1) Items produced this week — starts at 1,157 every Monday 5AM Central, +1,326/hour
+  function itemsThisWeek(){
+    return Math.floor(1157+hoursSinceMonday5Central()*1326);
+  }
+
+  // 2) Uptime — base 98.241%, last digits fluctuate within ±10 (98.231–98.251)
   function uptimeStr(){
-    const v=98241+(Math.floor(Math.random()*21)-10); // 98231–98251
+    const v=98241+(Math.floor(Math.random()*21)-10);
     return (v/1000).toFixed(3);
   }
 
   // 3) Training hours — accumulates from a fixed reference so it always grows between visits
   const TRAINING_BASE=645520;
-  const TRAINING_BASE_AT=Date.UTC(2026,4,12,0,0,0); // 2026-05-12T00:00:00Z (months are 0-indexed)
-  const TRAINING_RATE_PER_SEC=0.42; // ~1,512/hour, ~36k/day — feels live without being silly
+  const TRAINING_BASE_AT=Date.UTC(2026,4,12,0,0,0); // 2026-05-12T00:00:00Z
+  const TRAINING_RATE_PER_SEC=0.42; // ~1,512/hour
   function trainingHours(){
     const elapsedSec=(Date.now()-TRAINING_BASE_AT)/1000;
     return Math.floor(TRAINING_BASE+Math.max(0,elapsedSec)*TRAINING_RATE_PER_SEC);
   }
 
+  // 4) Reportable injuries prevented — starts at 8 every Monday 5AM Central, +3 every 77 minutes
+  function injuriesPrevented(){
+    const minutes=hoursSinceMonday5Central()*60;
+    return 8+Math.floor(minutes/77)*3;
+  }
+
   function tickFast(){
     if(itemsEl)itemsEl.textContent=fmt(itemsThisWeek());
     if(trEl)trEl.textContent=fmt(trainingHours());
+    if(injEl)injEl.textContent=fmt(injuriesPrevented());
   }
   function tickUptime(){
-    if(upEl)upEl.innerHTML=uptimeStr()+'<span class="pct">%</span>';
+    if(upEl)upEl.innerHTML=uptimeStr()+'<span class="rs-pct">%</span>';
   }
 
   tickFast();tickUptime();
