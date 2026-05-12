@@ -38,15 +38,17 @@ import Layout from '../layouts/Layout.astro';
 .mg-meta-key{color:rgba(240,245,241,.4)}
 .mg-meta-val{color:var(--orange);font-size:14px;letter-spacing:.12em}
 
-/* Numbered SECTION pattern — diagonal split, big numeral, narrow text column */
-.mg-section{position:relative;padding:140px 80px;border-top:1px solid rgba(240,245,241,.08);background:var(--black);color:var(--white)}
-.mg-section.alt{background:#0d181a}
-.mg-section .mg-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:140px 1fr 1fr;gap:60px;align-items:start}
-.mg-num{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.22em;color:rgba(240,245,241,.4);position:sticky;top:120px}
-.mg-num strong{color:var(--orange);font-weight:500;font-size:48px;letter-spacing:-.02em;display:block;margin-bottom:16px;font-family:var(--sans)}
-.mg-section h2{font-family:var(--sans);font-weight:500;font-size:clamp(48px,5.5vw,88px);line-height:.96;letter-spacing:-.025em;color:var(--white);margin-bottom:32px}
-.mg-section h2 .em{color:var(--orange);font-style:normal;display:block}
-.mg-section .mg-body{font-size:18px;font-weight:300;line-height:1.7;color:rgba(240,245,241,.7);margin-bottom:24px}
+/* Split-screen section — Core (left) + Cortex (right) side-by-side */
+.mg-split{position:relative;padding:120px 64px;border-top:1px solid rgba(240,245,241,.08);background:var(--black);color:var(--white)}
+.mg-split .mg-inner{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start}
+.mg-split-col{padding:0 56px;border-right:1px solid rgba(240,245,241,.10);position:relative}
+.mg-split-col:first-child{padding-left:0}
+.mg-split-col:last-child{padding-right:0;border-right:none}
+.mg-split-tag{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.mg-split-tag::before{content:"";width:36px;height:1px;background:var(--orange)}
+.mg-split h2{font-family:var(--sans);font-weight:500;font-size:clamp(36px,3.6vw,60px);line-height:.98;letter-spacing:-.025em;color:var(--white);margin-bottom:24px}
+.mg-split h2 .em{color:var(--orange);font-style:normal;display:block}
+.mg-split .mg-body{font-size:16px;font-weight:300;line-height:1.7;color:rgba(240,245,241,.7);margin-bottom:32px}
 
 /* Capability list — interactive hover reveal */
 .mg-caps{display:flex;flex-direction:column;border-top:1px solid rgba(240,245,241,.08)}
@@ -94,12 +96,6 @@ import Layout from '../layouts/Layout.astro';
 .mg-stat-num em{color:var(--orange);font-style:normal;font-size:.6em;font-weight:500;letter-spacing:.01em;margin-left:4px}
 .mg-stat-lbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.5)}
 
-/* Robot brands rotator (Core section) */
-.mg-brands{display:flex;gap:0;border-top:1px solid rgba(240,245,241,.08);border-bottom:1px solid rgba(240,245,241,.08);margin-top:36px;flex-wrap:wrap}
-.mg-brand{flex:1 1 25%;padding:28px 18px;text-align:center;font-family:var(--sans);font-size:18px;font-weight:500;letter-spacing:-.005em;color:rgba(240,245,241,.4);transition:color .25s,background .25s;cursor:none;border-right:1px solid rgba(240,245,241,.08)}
-.mg-brand:last-child{border-right:none}
-.mg-brand:hover{color:var(--orange);background:rgba(255,145,0,.04)}
-
 /* Closing CTA — investor flavor */
 .mg-cta{padding:140px 80px;background:var(--orange);text-align:center}
 .mg-cta h2{font-family:var(--sans);font-size:clamp(48px,6vw,88px);font-weight:500;line-height:1;letter-spacing:-.025em;color:var(--black);margin-bottom:24px}
@@ -109,12 +105,12 @@ import Layout from '../layouts/Layout.astro';
 @media(max-width:900px){
   .mg-bc{padding:80px 24px 0}
   .mg-hero{padding:24px 24px 80px}
-  .mg-section,.mg-stack-section,.mg-stats,.mg-cta{padding:80px 24px}
-  .mg-section .mg-inner{grid-template-columns:1fr;gap:24px}
-  .mg-num{position:static}
+  .mg-split,.mg-stack-section,.mg-stats,.mg-cta{padding:80px 24px}
+  .mg-split .mg-inner{grid-template-columns:1fr;gap:64px}
+  .mg-split-col{padding:0;border-right:none;border-bottom:1px solid rgba(240,245,241,.10);padding-bottom:64px}
+  .mg-split-col:last-child{border-bottom:none;padding-bottom:0}
   .mg-stack-section .mg-inner{grid-template-columns:1fr;gap:32px}
   .mg-stat-grid{grid-template-columns:repeat(2,1fr)}
-  .mg-brand{flex:1 1 50%}
   .mg-meta{gap:24px}
 }
   </style>
@@ -140,54 +136,45 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-<!-- 01 / CORE — AI Inside Every Robot -->
-<section class="mg-section">
+<!-- SECTION 2 — Split screen: Core (left) + Cortex (right) -->
+<section class="mg-split">
   <div class="mg-inner">
-    <div class="mg-num"><strong>01</strong>Core<br>AI inside every robot</div>
-    <div>
+    <!-- LEFT — Core / AI Inside Every Robot -->
+    <div class="mg-split-col">
+      <div class="mg-split-tag">01 — Core / AI Inside Every Robot</div>
       <h2>Physical AI,<span class="em">in every robot.</span></h2>
       <p class="mg-body">Core is the AI that makes a Formic robot smart enough to handle real production variability. Vision-guided perception, learned manipulation policies, and adaptive control — running deterministically on industrial PLC hardware your maintenance team already trusts. AI that thinks like a researcher, runs like a PLC.</p>
-      <div class="mg-brands">
-        <div class="mg-brand">KUKA</div>
-        <div class="mg-brand">ABB</div>
-        <div class="mg-brand">FANUC</div>
-        <div class="mg-brand">Doosan</div>
+      <div class="mg-caps">
+        <div class="mg-cap">
+          <span class="mg-cap-num">001</span>
+          <div class="mg-cap-body"><h3>Vision-guided perception</h3><p>Real-time scene understanding on every cycle. The robot sees what's actually in front of it — products, packaging variability, pallet conditions — and adapts instead of stopping.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">002</span>
+          <div class="mg-cap-body"><h3>Learned manipulation policies</h3><p>Behaviors trained on millions of real production cycles, not lab demos. New SKU, new pack pattern, new edge case — the robot generalizes instead of needing a re-program.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">003</span>
+          <div class="mg-cap-body"><h3>Adaptive, deterministic control</h3><p>AI decisions, executed in hard-real-time PLC motion. Smart enough to handle variability, safe enough to ship under SLA. The honest handoff between AI policy and physical motion.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">004</span>
+          <div class="mg-cap-body"><h3>Multi-vendor robot OS</h3><p>KUKA, ABB, FANUC, and Doosan robots unified under one AI control layer. Pick the arm that fits the application — keep the same intelligence.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">005</span>
+          <div class="mg-cap-body"><h3>Safety-rated by default</h3><p>Stops, light curtains, and area scanners are standard. The AI never gets to override safety — physical AI is only useful if it's safe AI.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">006</span>
+          <div class="mg-cap-body"><h3>Backward compatibility</h3><p>Maintained across every fleet release. Five-year-old Formic systems run the same AI core as the systems we're shipping today — your robots get smarter, never obsolete.</p></div>
+        </div>
       </div>
     </div>
-    <div class="mg-caps">
-      <div class="mg-cap">
-        <span class="mg-cap-num">001</span>
-        <div class="mg-cap-body"><h3>Vision-guided perception</h3><p>Real-time scene understanding on every cycle. The robot sees what's actually in front of it — products, packaging variability, pallet conditions — and adapts instead of stopping.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">002</span>
-        <div class="mg-cap-body"><h3>Learned manipulation policies</h3><p>Behaviors trained on millions of real production cycles, not lab demos. New SKU, new pack pattern, new edge case — the robot generalizes instead of needing a re-program.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">003</span>
-        <div class="mg-cap-body"><h3>Adaptive, deterministic control</h3><p>AI decisions, executed in hard-real-time PLC motion. Smart enough to handle variability, safe enough to ship under SLA. The honest handoff between AI policy and physical motion.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">004</span>
-        <div class="mg-cap-body"><h3>Multi-vendor robot OS</h3><p>KUKA, ABB, FANUC, and Doosan robots unified under one AI control layer. Pick the arm that fits the application — keep the same intelligence.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">005</span>
-        <div class="mg-cap-body"><h3>Safety-rated by default</h3><p>Stops, light curtains, and area scanners are standard. The AI never gets to override safety — physical AI is only useful if it's safe AI.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">006</span>
-        <div class="mg-cap-body"><h3>Backward compatibility</h3><p>Maintained across every fleet release. Five-year-old Formic systems run the same AI core as the systems we're shipping today — your robots get smarter, never obsolete.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 02 / CORTEX — AI Across the Fleet -->
-<section class="mg-section alt">
-  <div class="mg-inner">
-    <div class="mg-num"><strong>02</strong>Cortex<br>AI across the fleet</div>
-    <div>
+    <!-- RIGHT — Cortex / AI Across the Fleet -->
+    <div class="mg-split-col">
+      <div class="mg-split-tag">02 — Cortex / AI Across the Fleet</div>
       <h2>Physical AI,<span class="em">across the fleet.</span></h2>
       <p class="mg-body">Cortex is what makes the Formic fleet smarter than any single robot. AI-powered site evaluation before deployment. Fleet-wide learning, telemetry, and OTA upgrades after. Every robot teaches every other robot — what one line learns at 2 AM, every line knows by morning.</p>
       <div class="mg-specs">
@@ -196,31 +183,31 @@ import Layout from '../layouts/Layout.astro';
         <div class="row"><span class="k">Learning</span><span class="v">Closed-loop, fleet-wide, OTA-delivered</span></div>
         <div class="row"><span class="k">Connectivity</span><span class="v">Encrypted remote diagnostics, MES/ERP APIs</span></div>
       </div>
-    </div>
-    <div class="mg-caps">
-      <div class="mg-cap">
-        <span class="mg-cap-num">001</span>
-        <div class="mg-cap-body"><h3>AI-powered scoping</h3><p>Cortex evaluates your line before a single robot ships. Vision-based product analysis, simulated robot selection, and ROI modeling — all before the contract is signed.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">002</span>
-        <div class="mg-cap-body"><h3>Fleet-wide learning</h3><p>Every cycle on every robot feeds the model. Anomalies, recoveries, edge cases — all surfaced, all trained against. Your first system benefits from everything the hundredth one learns.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">003</span>
-        <div class="mg-cap-body"><h3>Live fleet visibility</h3><p>Real-time OEE, throughput, and cycle-time analytics across every cell, line, and facility — accessible to your team, not gated behind a vendor portal.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">004</span>
-        <div class="mg-cap-body"><h3>AI-assisted remote diagnostics</h3><p>When something goes wrong, Cortex already knows. Encrypted root-cause tooling, AI-flagged anomaly detection, most issues resolved without a site visit — and your maintenance team sees what we see.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">005</span>
-        <div class="mg-cap-body"><h3>Continuous OTA releases</h3><p>New capability, new SKUs, new edge cases — delivered as backward-compatible OTA updates. Your fleet gets sharper every week without a single line going down.</p></div>
-      </div>
-      <div class="mg-cap">
-        <span class="mg-cap-num">006</span>
-        <div class="mg-cap-body"><h3>Integrations</h3><p>Read/write APIs for MES, ERP, SCADA. Production data flows where your team already runs it — no re-tooling required.</p></div>
+      <div class="mg-caps" style="margin-top:36px">
+        <div class="mg-cap">
+          <span class="mg-cap-num">001</span>
+          <div class="mg-cap-body"><h3>AI-powered scoping</h3><p>Cortex evaluates your line before a single robot ships. Vision-based product analysis, simulated robot selection, and ROI modeling — all before the contract is signed.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">002</span>
+          <div class="mg-cap-body"><h3>Fleet-wide learning</h3><p>Every cycle on every robot feeds the model. Anomalies, recoveries, edge cases — all surfaced, all trained against. Your first system benefits from everything the hundredth one learns.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">003</span>
+          <div class="mg-cap-body"><h3>Live fleet visibility</h3><p>Real-time OEE, throughput, and cycle-time analytics across every cell, line, and facility — accessible to your team, not gated behind a vendor portal.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">004</span>
+          <div class="mg-cap-body"><h3>AI-assisted remote diagnostics</h3><p>When something goes wrong, Cortex already knows. Encrypted root-cause tooling, AI-flagged anomaly detection, most issues resolved without a site visit — and your maintenance team sees what we see.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">005</span>
+          <div class="mg-cap-body"><h3>Continuous OTA releases</h3><p>New capability, new SKUs, new edge cases — delivered as backward-compatible OTA updates. Your fleet gets sharper every week without a single line going down.</p></div>
+        </div>
+        <div class="mg-cap">
+          <span class="mg-cap-num">006</span>
+          <div class="mg-cap-body"><h3>Integrations</h3><p>Read/write APIs for MES, ERP, SCADA. Production data flows where your team already runs it — no re-tooling required.</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -232,7 +219,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="mg-stack-text">
       <div class="mg-mono">03 / Architecture</div>
       <h2>Two layers. One system.<span class="em">Physical AI that works.</span></h2>
-      <p>Every other automation platform forces a tradeoff. Industrial-grade with no AI. Or modern AI bolted onto brittle integrations. Formic doesn't make you choose — Core and Cortex were built together, as one system, from day one.</p>
+      <p>Every other automation platform forces a tradeoff. Industrial-grade systems with no AI that don't adapt. Or modern AI bolted onto brittle integrations. Formic doesn't make you choose — Core and Cortex were built together, as one system, from day one.</p>
       <p>Core makes every robot intelligent. Cortex makes every robot intelligent together. The platform gets sharper every cycle — and never goes obsolete.</p>
     </div>
     <div class="mg-stack">
@@ -249,8 +236,8 @@ import Layout from '../layouts/Layout.astro';
         <div class="mg-layer-desc">Vision, learned policies, adaptive control. AI decisions, executed in deterministic, safety-rated motion.</div>
       </div>
       <div class="mg-layer" data-layer="01">
-        <div class="mg-layer-title">Hardware · Robots &amp; PLCs</div>
-        <div class="mg-layer-desc">KUKA, ABB, FANUC, Doosan, Rockwell, Siemens. The proven hardware your maintenance team already knows — now running physical AI.</div>
+        <div class="mg-layer-title">Hardware · Robots, PLCs &amp; Vision Systems</div>
+        <div class="mg-layer-desc">KUKA, ABB, FANUC, Doosan, Rockwell, Siemens. The safety-rated hardware every factory relies on — now running physical AI.</div>
       </div>
     </div>
   </div>
@@ -262,7 +249,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="mg-mono">04 / By the numbers</div>
     <h2>Physical AI,<span class="em">measured.</span></h2>
     <div class="mg-stat-grid">
-      <div class="mg-stat"><span class="mg-stat-num" data-count-to="4" data-suffix="">4</span><span class="mg-stat-lbl">Robot brands unified under one AI OS</span></div>
+      <div class="mg-stat"><span class="mg-stat-num" data-count-to="8" data-suffix="">8</span><span class="mg-stat-lbl">Robot brands unified under one AI OS</span></div>
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="12" data-suffix=" wks">12 wks</span><span class="mg-stat-lbl">Avg. deployment time (industry: 12–18 months)</span></div>
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="645520" data-suffix="+">645,520+</span><span class="mg-stat-lbl">Hours of real production data, and counting</span></div>
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="100" data-suffix="%">100%</span><span class="mg-stat-lbl">OTA, fleet-wide, backward-compatible</span></div>
