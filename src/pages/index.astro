@@ -166,6 +166,11 @@ import Layout from '../layouts/Layout.astro';
 .sol-content{position:absolute;left:28px;bottom:24px;right:28px;z-index:2}
 .sol-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:6px}
 .sol-tag{font-family:var(--sans);font-size:13px;font-weight:300;color:rgba(240,245,241,.78);letter-spacing:.005em;line-height:1.4}
+/* Hover-reveal overlay — slides a fuller description over the tile on hover */
+.sol-hover-overlay{position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(10,9,8,.55) 0%,rgba(10,9,8,.95) 55%);padding:32px 28px 26px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.sol-tile:hover .sol-hover-overlay,.sol-tile:focus-visible .sol-hover-overlay{opacity:1}
+.sol-hover-name{font-family:var(--sans);font-weight:600;font-size:clamp(20px,1.9vw,28px);line-height:1.05;letter-spacing:-.015em;color:var(--white);margin-bottom:12px}
+.sol-hover-text{font-family:var(--sans);font-size:13px;font-weight:300;line-height:1.55;color:rgba(240,236,228,.88)}
 .sol-fpo{position:absolute;top:14px;right:14px;z-index:3;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(0,0,0,.45);backdrop-filter:blur(8px);padding:4px 9px;border:1px solid rgba(255,255,255,.18)}
 /* Coming Soon tile — orange-tinted, no image, CTA-style */
 .sol-tile-soon{background:linear-gradient(135deg,rgba(255,145,0,.14) 0%,rgba(255,145,0,.04) 60%,rgba(9,21,23,.85) 100%);display:flex;align-items:flex-end;padding:32px 36px;cursor:none;overflow:hidden}
@@ -410,8 +415,12 @@ body.restrained .cta-c a:hover{color:var(--bone)}
       <img class="sol-anim" src="/Haviland_Products_-_Palletizing.gif" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
-        <div class="sol-name">Palletizing</div>
+        <div class="sol-name">Any-Product Palletizing</div>
         <div class="sol-tag">Stable stacks, every shift</div>
+      </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">Any-Product Palletizing</div>
+        <div class="sol-hover-text">Vision-guided palletizing that adapts to product, pattern, and pallet on the fly. Varying SKUs, fast changeovers, AI that keeps getting sharper with every cycle.</div>
       </div>
     </a>
     <a class="sol-tile" href="/solutions/packing">
@@ -423,6 +432,10 @@ body.restrained .cta-c a:hover{color:var(--bone)}
         <div class="sol-name">Case Packing</div>
         <div class="sol-tag">Counts that hit, every time</div>
       </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">Case Packing</div>
+        <div class="sol-hover-text">Vision-powered intelligent pick and place — top &amp; side load, rigid &amp; flexible packages. Changes over in minutes.</div>
+      </div>
     </a>
     <a class="sol-tile" href="/solutions/machine-tending">
       <span class="sol-fpo">FPO</span>
@@ -430,7 +443,11 @@ body.restrained .cta-c a:hover{color:var(--bone)}
       <span class="sol-overlay"></span>
       <div class="sol-content">
         <div class="sol-name">Machine Tending</div>
-        <div class="sol-tag">Mill, lathe, mold — hands-off</div>
+        <div class="sol-tag">Mill, lathe, mold — hands off and lights out</div>
+      </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">Machine Tending</div>
+        <div class="sol-hover-text">Robotic part loading and unloading for CNC mills, lathes, and injection molders. Pushes spindle utilization past 80%, runs lights-out shifts, and frees skilled operators for setup and QC.</div>
       </div>
     </a>
     <a class="sol-tile" href="/solutions/pallet-wrapping">
@@ -441,14 +458,22 @@ body.restrained .cta-c a:hover{color:var(--bone)}
         <div class="sol-name">Pallet Wrapping</div>
         <div class="sol-tag">Tight wraps, dock-ready</div>
       </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">Pallet Wrapping</div>
+        <div class="sol-hover-text">Automated stretch wrapping integrated with your palletizer and AMR flow. Consistent wrap tension, no operator walks, no damaged loads on the dock.</div>
+      </div>
     </a>
     <a class="sol-tile" href="/solutions/humanoids">
       <span class="sol-fpo">FPO</span>
       <img src="/Humanoid-factory.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
-        <div class="sol-name">Humanoids</div>
-        <div class="sol-tag">Generalist robots, as a service</div>
+        <div class="sol-name">General Purpose Robots</div>
+        <div class="sol-tag">On-demand intelligent problem solver</div>
+      </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">General Purpose Robots</div>
+        <div class="sol-hover-text">Frontier general-purpose robots deployed under the same Full Service model — fixed monthly price, no integration risk, continuous capability upgrades as the platforms mature. Early access program open now.</div>
       </div>
     </a>
     <a class="sol-tile" href="/solutions/amrs">
@@ -456,8 +481,12 @@ body.restrained .cta-c a:hover{color:var(--bone)}
       <img src="/AMR-warehouse.jpg" alt="" loading="lazy"/>
       <span class="sol-overlay"></span>
       <div class="sol-content">
-        <div class="sol-name">AMRs</div>
+        <div class="sol-name">Material Movement</div>
         <div class="sol-tag">Pallet movement without forklifts</div>
+      </div>
+      <div class="sol-hover-overlay">
+        <div class="sol-hover-name">Material Movement</div>
+        <div class="sol-hover-text">Autonomous mobile robots moving pallets dock-to-staging, line-to-wrap, finished-goods-to-outbound. Scales from 2 to 30+ units, and slows around people automatically.</div>
       </div>
     </a>
     <a class="sol-tile sol-tile-soon sol-tile-wide" href="/talk-with-an-expert">
