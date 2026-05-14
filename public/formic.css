@@ -214,8 +214,14 @@ footer{background:var(--black);padding:0;border-top:1px solid rgba(240,245,241,.
 .footer-col h4::after{content:'';flex:0 0 16px;height:1px;background:rgba(255,145,0,.35)}
 .footer-col a{display:block;font-family:var(--sans);font-size:16px;font-weight:400;color:rgba(240,245,241,.7);text-decoration:none;margin-bottom:12px;transition:color .2s,padding-left .2s;cursor:none;letter-spacing:-.005em}
 .footer-col a:hover{color:var(--orange);padding-left:6px}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:24px 80px 32px;max-width:1700px;margin:0 auto}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:24px 80px 32px;max-width:1700px;margin:0 auto;gap:24px;flex-wrap:wrap}
 .footer-bottom p{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.3)}
+.footer-legal{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.footer-legal a{color:rgba(240,245,241,.45);transition:color .2s}
+.footer-legal a:hover{color:rgba(240,245,241,.85)}
+body.restrained .footer-legal a{color:var(--bone-3)}
+body.restrained .footer-legal a:hover{color:var(--bone)}
+.footer-legal-sep{opacity:.5}
 
 /* RESTRAINED-THEME global overrides — opt-in via body.restrained.
    Strips orange from shared chrome (nav, footer) and converts the page background.
@@ -479,4 +485,42 @@ body.restrained .footer-bottom p{color:var(--bone-3)}
   .detail-block.full{padding:48px 24px}
   .detail-cta{padding:64px 24px}
   .detail-video{padding:48px 24px}
+}
+
+/* LEGAL / POLICY PAGES — long-form prose layout, shared by /privacy-policy, /terms-and-conditions, /formic-ai-hiring-disclosure */
+.legal-page{background:var(--white);color:var(--black);padding:140px 0 96px;min-height:60vh}
+body.restrained .legal-page{background:var(--bone);color:var(--ink)}
+.legal-page .legal-bc{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mgrey);margin:0 auto 48px;max-width:880px;padding:0 24px;display:flex;align-items:center;gap:10px}
+.legal-page .legal-bc a{color:var(--mgrey);transition:color .2s}
+.legal-page .legal-bc a:hover{color:var(--black)}
+body.restrained .legal-page .legal-bc a:hover{color:var(--ink)}
+.legal-page .legal-bc .sep{opacity:.4}
+.legal-hero{max-width:880px;margin:0 auto 56px;padding:0 24px}
+.legal-hero .slabel{margin-bottom:18px}
+.legal-hero h1{font-family:var(--sans);font-weight:500;font-size:clamp(40px,5vw,68px);line-height:1.04;letter-spacing:-.025em;color:var(--black);margin:0 0 18px}
+body.restrained .legal-hero h1{color:var(--ink)}
+.legal-hero .legal-meta{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mgrey)}
+.legal-prose{max-width:720px;margin:0 auto;padding:0 24px;font-size:16px;line-height:1.7;color:var(--dgrey)}
+body.restrained .legal-prose{color:var(--ink-3)}
+.legal-prose h2{font-family:var(--sans);font-weight:600;font-size:22px;line-height:1.3;letter-spacing:-.005em;color:var(--black);margin:48px 0 16px}
+body.restrained .legal-prose h2{color:var(--ink)}
+.legal-prose h3{font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.35;color:var(--black);margin:32px 0 12px}
+body.restrained .legal-prose h3{color:var(--ink)}
+.legal-prose p{margin:0 0 18px;font-weight:300}
+.legal-prose ul{margin:0 0 22px;padding-left:1.25em}
+.legal-prose ul li{margin-bottom:10px;font-weight:300}
+.legal-prose a{color:var(--orange);text-decoration:none;border-bottom:1px solid rgba(255,145,0,.35);transition:border-color .2s}
+.legal-prose a:hover{border-bottom-color:var(--orange)}
+.legal-prose strong{font-weight:600;color:var(--black)}
+body.restrained .legal-prose strong{color:var(--ink)}
+.legal-prose .legal-uppercase{font-family:var(--mono);font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.04em}
+.legal-prose .legal-doc-id{margin-top:64px;padding-top:24px;border-top:1px solid var(--border-l);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mgrey)}
+.legal-contact{margin-top:32px;padding:28px;background:rgba(9,21,23,.03);border:1px solid var(--border-l)}
+body.restrained .legal-contact{background:rgba(255,255,255,.04);border-color:var(--hairline)}
+.legal-contact p{margin:0 0 8px}
+.legal-contact p:last-child{margin:0}
+@media(max-width:720px){
+  .legal-page{padding:112px 0 64px}
+  .legal-hero h1{font-size:clamp(32px,8vw,48px)}
+  .legal-prose h2{font-size:19px}
 }
