@@ -3,9 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 ---
 <Layout
   title="Land O'Frost — Customer Story — Formic"
-  description="Land O'Frost replaced manual palletizing of 128,000 lbs/day with 5 gantry palletizers in 2 weekends, cutting OpEx by 20%."
+  description="Land O'Frost deployed 5 robotic gantry palletizers over two weekends at its Lansing, IL plant — taking on the hardest job and pulling ~20% out of labor OpEx, with Formic handling maintenance."
   ogTitle="Land O'Frost — Formic Customer Story"
-  ogDescription="5 gantry palletizers · 2 weekends · 20% OpEx reduction"
+  ogDescription="5 gantry palletizers · 128,000 lbs/day · ~20% lower labor OpEx"
 >
   <link rel="canonical" href="https://formic.co/stories/land-o-frost" slot="head" />
 
@@ -16,19 +16,29 @@ import Layout from '../../layouts/Layout.astro';
 <section class="detail-hero">
   <div class="si">
     <div class="slabel" style="color:var(--orange)">Customer Story · Land O'Frost</div>
-    <h1>128,000 lbs/day,<br><em>palletized.</em></h1>
-    <p class="lede">Five gantry palletizers, deployed across two weekends, replaced the most physically punishing job on Land O'Frost's floor — and pulled 20% out of OpEx in the process.</p>
+    <h1 style="font-size:clamp(32px,3.8vw,56px)">Land O'Frost Enhances Production with 5 Robotic Gantry Palletizers</h1>
+    <p class="lede">Land O'Frost packs and ships 128,000 pounds of meat a day from its Lansing, Illinois plant. Five gantry palletizers — each fitting in ~9×9 feet and deployed over two weekends — took on the hardest job and pulled ~20% out of labor OpEx.</p>
   </div>
 </section>
 
 <section class="detail-block dark">
   <div class="detail-video wide">
     <div class="detail-video-frame">
-      <video autoplay muted loop playsinline poster="/Haviland_Products_-_Palletizing_poster.jpg">
-        <source src="/Formic-Header.mp4" type="video/mp4" />
-      </video>
-      <span class="dv-fpo">FPO</span>
-      <span class="dv-cap">Land O'Frost · gantry palletizing</span>
+      <img src="/stories/land-o-frost-hero.jpg" alt="Land O'Frost gantry palletizing" />
+      <span class="dv-cap">Land O'Frost · Lansing, Illinois</span>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white" style="padding:64px 0 0">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 80px">
+    <div class="db-tag">At a glance</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--lgrey);border:1px solid var(--lgrey);margin-top:14px">
+      <div style="background:var(--white);padding:18px 20px"><div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:6px">Founded</div><div style="font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--black)">1941</div></div>
+      <div style="background:var(--white);padding:18px 20px"><div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:6px">Location</div><div style="font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--black)">Lansing, Illinois</div></div>
+      <div style="background:var(--white);padding:18px 20px"><div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:6px">Industry</div><div style="font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--black)">Deli meats & sausages</div></div>
+      <div style="background:var(--white);padding:18px 20px"><div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:6px">Employees</div><div style="font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--black)">1,500+</div></div>
+      <div style="background:var(--white);padding:18px 20px"><div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin-bottom:6px">Shipped daily</div><div style="font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:-.01em;color:var(--black)">128,000 lbs</div></div>
     </div>
   </div>
 </section>
@@ -38,29 +48,38 @@ import Layout from '../../layouts/Layout.astro';
     <div class="db-text">
       <div class="db-tag">01 — The Challenge</div>
       <h2>The hardest job <em>on the floor</em>.</h2>
-      <p>Land O'Frost was running 128,000 lbs of product per day across its packing lines, and palletizing was the bottleneck. Manual stacking made changeovers slow, exhausted operators by the end of every shift, and exposed the line to lift-related injuries.</p>
+      <p>Founded in 1941 and now a third-generation, family-owned company with 1,500+ employees, Land O'Frost packs and ships 128,000 pounds of meat a day from its Lansing, Illinois plant. Staff shortages, turnover, and frequent multi-SKU changeovers made palletizing the task to automate — and leadership wanted to improve working conditions on its toughest job.</p>
       <ul class="feats">
-        <li>128,000 lbs/day of finished product</li>
-        <li>Highest-injury task on the floor</li>
-        <li>Slow SKU changeover dragging on throughput</li>
+        <li>128,000 lbs of meat shipped daily from Lansing</li>
+        <li>Staff shortages and turnover on the hardest task</li>
+        <li>Frequent multi-SKU changeovers</li>
       </ul>
     </div>
-    <div class="db-img"><img src="/Haviland_Products_-_Palletizing.gif" alt="Gantry palletizer at Land O'Frost" loading="lazy"/><span class="img-cap">Gantry palletizing · 24/7</span></div>
+    <div class="db-img"><img src="/stories/land-o-frost-2.jpg" alt="Land O'Frost gantry palletizer stacking cases" loading="lazy"/><span class="img-cap">Gantry palletizing · 24/7</span></div>
   </div>
 </section>
 
 <section class="detail-block lgrey">
   <div class="db-grid flip">
-    <div class="db-img"><img src="/Talos-0095.jpg" alt="Land O'Frost end-of-line cell" loading="lazy"/><span class="img-cap">Pack · seal · palletize</span></div>
+    <div class="db-img"><img src="/Haviland_Products_-_Palletizing.gif" alt="Gantry palletizer in motion at Land O'Frost" loading="lazy"/><span class="img-cap">Up to 12 picks / minute</span></div>
     <div class="db-text">
       <div class="db-tag">02 — The Solution</div>
-      <h2>Five palletizers, <em>two weekends</em>.</h2>
-      <p>Formic deployed five gantry palletizers across Land O'Frost's existing lines in two weekends — no major plant retrofit, no shutdowns. Each cell integrated directly with the upstream packers and downstream wrap, under one Full Service agreement.</p>
+      <h2>Five gantry palletizers, <em>two weekends</em>.</h2>
+      <p>Land O'Frost deployed five gantry-style palletizing robots — each doing up to 12 picks per minute, stacking 60,000+ cases, and fitting in roughly 9×9 feet of available space. The fleet went in over two weekends, with Formic handling maintenance, delivering about 20% daily savings on labor-related OpEx.</p>
       <ul class="feats">
-        <li>5 gantry palletizers, deployed in 2 weekends</li>
-        <li>Direct integration with existing packers and conveyors</li>
-        <li>Single Full Service agreement covering all 5 cells</li>
+        <li>5 gantry palletizers, up to 12 picks per minute</li>
+        <li>Each fits ~9×9 ft; deployed over two weekends</li>
+        <li>Formic handles maintenance — minimal downtime</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white" style="padding:88px 80px">
+  <div class="si" style="max-width:900px;margin:0 auto;padding:0">
+    <div class="pull-quote">
+      <blockquote>"Having someone handle the maintenance, it's not something that we're used to, but it's definitely one of the key points for us. We've had very minimal downtime on the units because they're being maintained by Formic."</blockquote>
+      <cite>Frank Mejia · Head of Continuous Improvement, Land O'Frost</cite>
     </div>
   </div>
 </section>
@@ -68,17 +87,17 @@ import Layout from '../../layouts/Layout.astro';
 <section class="detail-block dark">
   <div class="si" style="max-width:1280px;margin:0 auto;padding:80px;text-align:center">
     <div class="db-tag" style="justify-content:center">03 — The Outcome</div>
-    <h2 style="font-family:var(--sans);font-size:clamp(40px,5vw,72px);font-weight:500;letter-spacing:-.02em;line-height:1;color:var(--white);margin:18px 0 56px">20% OpEx reduction. <em style="color:var(--orange);font-style:normal">Zero lift injuries.</em></h2>
+    <h2 style="font-family:var(--sans);font-size:clamp(40px,5vw,72px);font-weight:500;letter-spacing:-.02em;line-height:1;color:var(--white);margin:18px 0 56px">20% lower labor OpEx. <em style="color:var(--orange);font-style:normal">Minimal downtime.</em></h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1)">
       <div style="background:var(--black);padding:36px 24px"><div style="font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1">5</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55);margin-top:12px">Gantry palletizers</div></div>
-      <div style="background:var(--black);padding:36px 24px"><div style="font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1">2</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55);margin-top:12px">Weekends to deploy</div></div>
-      <div style="background:var(--black);padding:36px 24px"><div style="font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1">20%</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55);margin-top:12px">OpEx reduction</div></div>
+      <div style="background:var(--black);padding:36px 24px"><div style="font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1">128k</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55);margin-top:12px">Lbs shipped daily</div></div>
+      <div style="background:var(--black);padding:36px 24px"><div style="font-family:var(--sans);font-size:48px;font-weight:500;color:var(--orange);line-height:1">~20%</div><div style="font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,245,241,.55);margin-top:12px">Lower labor OpEx</div></div>
     </div>
   </div>
 </section>
 
 <section class="detail-cta">
-  <h2>Ready to scope <em>your line?</em></h2>
+  <h2>Enhance your <em>production line</em>.</h2>
   <div class="btn-row">
     <a href="mailto:sales@formic.co" class="btn-ctadark">Get Started</a>
     <a href="/stories" class="btn-ctawh">More Customer Stories</a>

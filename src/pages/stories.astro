@@ -45,38 +45,191 @@ import Layout from '../layouts/Layout.astro';
 
 <section class="detail-block white" style="padding:96px 80px">
   <div class="si" style="max-width:1280px;margin:0 auto;padding:0">
-    <div class="db-tag">Featured deployments</div>
-    <h2 style="font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin:8px 0 32px">Four operators. <em style="color:var(--orange);font-style:normal">Sixteen systems.</em></h2>
+    <div class="db-tag">Every deployment</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin:8px 0 32px">Two dozen floors. <em style="color:var(--orange);font-style:normal">One playbook.</em></h2>
     <div class="stories-grid">
       <a href="/stories/land-o-frost" class="story-card">
         <div class="story-photo">
-          <span class="story-fpo">FPO</span>
-          <img src="/Haviland_Products_-_Palletizing.gif" alt="Land O'Frost palletizing" loading="lazy"/>
-          <div class="story-photo-overlay"><span class="story-ct">5</span><span class="story-ctlbl">Systems</span></div>
+          <img src="/stories/land-o-frost-hero.jpg" alt="Land O'Frost gantry palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">5</span><span class="story-ctlbl">Palletizers</span></div>
         </div>
         <div class="story-body">
           <div class="story-name">Land O'Frost</div>
-          <p class="story-challenge">Manual palletizing of 128,000 lbs/day slowed changeovers and strained workers.</p>
-          <p class="story-win">5 gantry palletizers in 2 weekends → 20% OpEx reduction</p>
+          <p class="story-challenge">Manual palletizing of 128,000 lbs/day was the hardest job on the floor.</p>
+          <p class="story-win">5 gantry palletizers in 2 weekends → ~20% lower labor OpEx</p>
         </div>
         <span class="story-arrow">→</span>
       </a>
       <a href="/stories/mi-rancho" class="story-card">
         <div class="story-photo">
-          <span class="story-fpo">FPO</span>
-          <img src="/Talos-0095.jpg" alt="Mi Rancho palletizing line" loading="lazy"/>
-          <div class="story-photo-overlay"><span class="story-ct">9</span><span class="story-ctlbl">Systems</span></div>
+          <img src="/stories/mi-rancho-hero.jpg" alt="Mi Rancho robotic palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">7</span><span class="story-ctlbl">Palletizers</span></div>
         </div>
         <div class="story-body">
           <div class="story-name">Mi Rancho</div>
-          <p class="story-challenge">40% annual growth strained operations with injuries, fatigue, and tight budgets.</p>
-          <p class="story-win">9 robotic palletizers → eliminated injuries, cut downtime</p>
+          <p class="story-challenge">40%+ annual growth strained a line that was hard to staff safely.</p>
+          <p class="story-win">7 palletizers across tortilla + chip lines → safer, no idle CapEx</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/camerons-coffee" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/camerons-coffee-hero.jpg" alt="Cameron's Coffee cobot palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">5</span><span class="story-ctlbl">Systems</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Cameron's Coffee</div>
+          <p class="story-challenge">Scaling past 50,000 lbs/day with no prior robotics experience.</p>
+          <p class="story-win">0 → 5 systems in 12 months → 1M+ lbs palletized</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/taffy-town" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/taffy-town-hero.jpg" alt="Taffy Town palletizing cell" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">5.5M</span><span class="story-ctlbl">Lbs automated</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Taffy Town</div>
+          <p class="story-challenge">A century of taffy, still stacked by hand at the end of the line.</p>
+          <p class="story-win">5.5M lbs automated → 279k+ cases, ~4,300 pallets</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/kari-out" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/kari-out-hero.jpg" alt="Kari-Out palletizing operation" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">25%</span><span class="story-ctlbl">More output</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Kari-Out</div>
+          <p class="story-challenge">Palletizing drove 130% turnover on the plant's hardest task.</p>
+          <p class="story-win">25% more output, 100% uptime → 6 more robots ordered</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/marquis" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/marquis-hero.jpg" alt="Marquis automated palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">2</span><span class="story-ctlbl">Systems</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Marquis</div>
+          <p class="story-challenge">Premium wages on a job better spent thinking, not lifting.</p>
+          <p class="story-win">2 systems in under 3 days → ~40% lower palletizing labor cost</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/masters-gallery" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/masters-gallery-hero.jpg" alt="Masters Gallery Foods palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">18M+</span><span class="story-ctlbl">Lbs per year</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Masters Gallery Foods</div>
+          <p class="story-challenge">40-lb boxes lifted all shift across an 18M-lb-a-year plant.</p>
+          <p class="story-win">Full Service palletizing → people moved to better roles, $0 CapEx</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/wyandot-snacks" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/wyandot-snacks-hero.jpg" alt="Wyandot Snacks production" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">90</span><span class="story-ctlbl">Years</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Wyandot Snacks</div>
+          <p class="story-challenge">Frequent SKU changes and labor gaps capped a big new contract.</p>
+          <p class="story-win">Full Service palletizing → agility without cutting jobs</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/mattpak" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/mattpak-hero.jpg" alt="MattPak co-manufacturing line" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">3</span><span class="story-ctlbl">Systems</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">MattPak</div>
+          <p class="story-challenge">Hundreds of SKUs and a high-injury manual palletizing job.</p>
+          <p class="story-win">3 systems via AR mapping → no $150k+ upfront per machine</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/sunrise-family-farms" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/sunrise-family-farms-hero.jpg" alt="Sunrise Family Farms creamery" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">250%</span><span class="story-ctlbl">Growth</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Sunrise Family Farms</div>
+          <p class="story-challenge">250% growth in a year made manual palletizing the bottleneck.</p>
+          <p class="story-win">Full Service palletizing → tradition scaled, $0 capital</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/alta-foods" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/alta-foods-hero.jpg" alt="ALTA Foods tortilla line" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">4</span><span class="story-ctlbl">Lines</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">ALTA Foods</div>
+          <p class="story-challenge">Palletizing churned 60 hires a year as the highest-turnover job.</p>
+          <p class="story-win">End-of-line crew cut 4 → 2 per line → 60 annual hires removed</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/boxed-water" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/boxed-water-hero.jpg" alt="Boxed Water carton line" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">96%</span><span class="story-ctlbl">Plant-based</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Boxed Water</div>
+          <p class="story-challenge">28-lb cases stacked by hand, plus a summer temp-labor scramble.</p>
+          <p class="story-win">First end-of-line robot → low cost, low risk</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/venus-wafers" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/venus-wafers-hero.jpg" alt="Venus Wafers cracker production" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">~100</span><span class="story-ctlbl">Years</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Venus Wafers</div>
+          <p class="story-challenge">Repetitive-strain palletizing on fragile, premium crackers.</p>
+          <p class="story-win">Automated stacking → product protected, people upskilled</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/uncle-crumbles" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/uncle-crumbles-hero.jpg" alt="Uncle Crumbles granola production" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">99</span><span class="story-ctlbl">SQF score</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Uncle Crumbles</div>
+          <p class="story-challenge">Hand-stacking 50-lb boxes while reinventing a 30-year-old brand.</p>
+          <p class="story-win">Formic palletizer → SQF 87 → 99, no more 50-lb lifts</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/rumiano-cheese" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/rumiano-cheese-hero.jpg" alt="Rumiano Cheese packaging plant" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">106</span><span class="story-ctlbl">Years</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Rumiano Cheese</div>
+          <p class="story-challenge">Doubling volume in a town of 6,000 — without a robotics team.</p>
+          <p class="story-win">Palletizing on $0-upfront RaaS → invest capital where it matters</p>
         </div>
         <span class="story-arrow">→</span>
       </a>
       <a href="/stories/mariani-family" class="story-card">
         <div class="story-photo">
-          <span class="story-fpo">FPO</span>
           <img src="/Focus-7603.jpg" alt="Mariani Family production floor" loading="lazy"/>
           <div class="story-photo-overlay"><span class="story-ct">1</span><span class="story-ctlbl">System</span></div>
         </div>
@@ -87,16 +240,87 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <span class="story-arrow">→</span>
       </a>
-      <a href="/stories/taffy-town" class="story-card">
+      <a href="/stories/taffy-town-innovation" class="story-card">
         <div class="story-photo">
-          <span class="story-fpo">FPO</span>
-          <img src="/Talos-0143.jpg" alt="Taffy Town palletizing cell" loading="lazy"/>
-          <div class="story-photo-overlay"><span class="story-ct">1</span><span class="story-ctlbl">System</span></div>
+          <img src="/stories/taffy-town-2.jpg" alt="Taffy Town bulk line palletizing" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">1</span><span class="story-ctlbl">Palletizer</span></div>
         </div>
         <div class="story-body">
-          <div class="story-name">Taffy Town</div>
-          <p class="story-challenge">Manual stacking caused injuries and retention risk with heavy CapEx requirement.</p>
-          <p class="story-win">Eliminated lifting injuries, boosted efficiency — zero CapEx risk</p>
+          <div class="story-name">Taffy Town · Innovation</div>
+          <p class="story-challenge">Reinvesting connected-workforce gains into the bulk "workhorse" line.</p>
+          <p class="story-win">Full Service palletizer → muscle work to mind work</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/georgia-nut" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/georgia-nut-hero.jpg" alt="Georgia Nut collaborative palletizer" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">10</span><span class="story-ctlbl">Cases per min</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Georgia Nut</div>
+          <p class="story-challenge">A severe labor shortage and no automation in 75 years of business.</p>
+          <p class="story-win">First robot ever → 10 cases/min, zero line shutdowns</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/compact-industries" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/compact-industries-2.jpg" alt="Compact Industries mobile palletizer" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">720</span><span class="story-ctlbl">Cases per hr</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Compact Industries</div>
+          <p class="story-challenge">Low labor retention against a Fortune 500 quality bar.</p>
+          <p class="story-win">Mobile cobot "Rosie" → 720 cases/hr, 2nd system in a month</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/polysciences" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/polysciences-hero.jpg" alt="Polysciences palletizing cell" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">35%</span><span class="story-ctlbl">Lower OpEx</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Polysciences</div>
+          <p class="story-challenge">Stacking 30-lb boxes on 10-hour shifts — outside a chemist's core.</p>
+          <p class="story-win">Formic Stack cell → 35% lower OpEx day one, 7 reassigned</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/3d-machine" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/3d-machine-hero.jpg" alt="3D Machine CNC tending automation" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">25%</span><span class="story-ctlbl">More capacity</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">3D Machine</div>
+          <p class="story-challenge">A monotonous CNC tending job no operator wanted to run.</p>
+          <p class="story-win">Formic Tend → +25% capacity, ~2,000 hours, zero capital</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/polar-manufacturing" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/polar-manufacturing-hero.jpg" alt="Polar Manufacturing press-tending cell" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">800</span><span class="story-ctlbl">Parts per shift</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">Polar Manufacturing</div>
+          <p class="story-challenge">Automating a 50-year-old press, run by hand since 1915.</p>
+          <p class="story-win">Custom UR5e cell → 800 parts per shift</p>
+        </div>
+        <span class="story-arrow">→</span>
+      </a>
+      <a href="/stories/icon-injection-molding" class="story-card">
+        <div class="story-photo">
+          <img src="/stories/icon-injection-molding-hero.jpg" alt="ICON Injection Molding automation cell" loading="lazy"/>
+          <div class="story-photo-overlay"><span class="story-ct">20%</span><span class="story-ctlbl">More production</span></div>
+        </div>
+        <div class="story-body">
+          <div class="story-name">ICON Injection Molding</div>
+          <p class="story-challenge">Operators handling 300° parts 8–10 hours a day.</p>
+          <p class="story-win">Formic Tend at $10/hr → +20% production, 40% lower OpEx</p>
         </div>
         <span class="story-arrow">→</span>
       </a>
