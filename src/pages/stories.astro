@@ -33,7 +33,7 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1px;background:var(--lgrey);border:1px solid var(--lgrey);margin-top:14px">
         {feat.map((s) => (
           <a data-card href={`/stories/${s.slug}`} style="display:flex;flex-direction:column;background:var(--white);text-decoration:none">
-          <div style="aspect-ratio:16/9;overflow:hidden;background:var(--black)">
+            <div style="aspect-ratio:16/9;overflow:hidden;background:var(--black)">
             {s.hero && s.hero.endsWith('.mp4')
               ? <video src={s.hero} autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
               : (s.hero ? <img src={s.hero} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"/> : <span style="display:block;width:100%;height:100%"></span>)}
@@ -42,7 +42,7 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
             <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{[s.category, s.date_short].filter(Boolean).join(' · ')}</div>
             <div style="font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.28">{s.title}</div>
           </div>
-        </a>
+          </a>
         ))}
       </div>
     </div>
@@ -50,10 +50,10 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
 )}
 
 <section class="detail-block white" style="padding:80px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--lgrey);max-width:1280px;margin:0 auto;border:1px solid var(--lgrey)">
-    {rest.map((s) => (
-      <a data-card href={`/stories/${s.slug}`} style="display:flex;flex-direction:column;background:var(--white);text-decoration:none">
-          <div style="aspect-ratio:16/9;overflow:hidden;background:var(--black)">
+  <div id="rest-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--lgrey);max-width:1280px;margin:0 auto;border:1px solid var(--lgrey)">
+    {rest.map((s, i) => (
+      <a data-card data-i={i} href={`/stories/${s.slug}`} style={"flex-direction:column;background:var(--white);text-decoration:none;display:" + (i < 8 ? "flex" : "none")}>
+        <div style="aspect-ratio:16/9;overflow:hidden;background:var(--black)">
             {s.hero && s.hero.endsWith('.mp4')
               ? <video src={s.hero} autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>
               : (s.hero ? <img src={s.hero} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"/> : <span style="display:block;width:100%;height:100%"></span>)}
@@ -62,9 +62,14 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
             <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{[s.category, s.date_short].filter(Boolean).join(' · ')}</div>
             <div style="font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.28">{s.title}</div>
           </div>
-        </a>
+      </a>
     ))}
   </div>
+  {rest.length > 8 && (
+    <div style="display:flex;justify-content:center;padding:44px 0 0">
+      <button id="load-more" type="button" style="font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--black);background:var(--white);border:1px solid var(--lgrey);padding:14px 28px;cursor:pointer;display:inline-flex;align-items:center;gap:10px">Show more <span aria-hidden="true" style="color:var(--orange);font-size:14px;line-height:1">▾</span></button>
+    </div>
+  )}
 </section>
 
 <section class="detail-cta">
@@ -74,4 +79,19 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
     <a href="/articles" class="btn-ctawh">Read the blog</a>
   </div>
 </section>
+
+<script is:inline>
+(function () {
+  var grid = document.getElementById("rest-grid");
+  var btn = document.getElementById("load-more");
+  if (!grid || !btn) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll("[data-i]"));
+  var shown = 8, step = 8;
+  btn.addEventListener("click", function () {
+    shown += step;
+    cards.forEach(function (c) { if (Number(c.getAttribute("data-i")) < shown) c.style.display = "flex"; });
+    if (shown >= cards.length) btn.style.display = "none";
+  });
+})();
+</script>
 </Layout>
