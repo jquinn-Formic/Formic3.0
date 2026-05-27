@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Careers — Formic"
+  description="Join Team Formic — a people-first robotics company on a mission to bring automation to those who need it most. See our culture, values, and open roles."
+  ogTitle="Join Team Formic — Careers"
+  ogDescription="A people-first robotics company. See our culture, values, and open roles."
+>
+  <link rel="canonical" href="https://formic.co/careers" slot="head" />
+  <style is:global slot="head">
+    .cr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--lgrey);border:1px solid var(--lgrey);max-width:1280px;margin:0 auto}
+    .cr-val{background:var(--white);padding:28px 26px}
+    .cr-val h3{font-family:var(--sans);font-size:19px;font-weight:600;letter-spacing:-.01em;color:var(--black);margin:0 0 8px}
+    .cr-val p{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.6;color:var(--mgrey);margin:0}
+    .cr-tcard{background:var(--white);padding:30px 30px 26px;border:1px solid var(--lgrey);display:flex;flex-direction:column;gap:16px}
+    .cr-tcard blockquote{font-family:var(--sans);font-size:16px;font-weight:300;font-style:italic;line-height:1.6;color:var(--black);margin:0}
+    .cr-tname{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--black)}
+    .cr-trole{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-top:3px}
+    .cr-filters{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
+    .cr-filters select{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--black);background:var(--white);border:1px solid var(--lgrey);padding:10px 14px;cursor:pointer}
+    .cr-job{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--white);border:1px solid var(--lgrey);border-top:none;padding:22px 26px;text-decoration:none;transition:background .2s}
+    .cr-job:first-child{border-top:1px solid var(--lgrey)}
+    .cr-job:hover{background:var(--lgrey)}
+    .cr-job .cr-jtitle{font-family:var(--sans);font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--black)}
+    .cr-job .cr-jmeta{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mgrey);margin-top:6px}
+    .cr-job .cr-jarrow{font-family:var(--sans);font-size:22px;color:var(--orange);flex-shrink:0}
+    .cr-empty{font-size:15px;font-weight:300;color:var(--mgrey);padding:32px 4px}
+  </style>
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span><a href="/learn-more">Our Mission</a><span class="sep">/</span>Careers
+</div>
+
+<section class="detail-hero">
+  <div class="si">
+    <div class="slabel" style="color:var(--orange)">Careers</div>
+    <h1>Join Team <em>Formic</em>.</h1>
+    <p class="lede">Join our diverse team of “Formicans” who are on a mission to help bring automation to those who need it most.</p>
+  </div>
+</section>
+
+<section class="detail-block dark">
+  <div class="detail-video wide">
+    <div class="detail-video-frame">
+      <img src="/careers/team-onsite.jpg" alt="The Formic team on-site" />
+      <span class="dv-cap">Team Formic · on-site</span>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="legal-prose" style="margin:0 auto">
+    <h2 style="font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;color:var(--black);margin:0 0 22px">Our mission is ambitious</h2>
+    <p>We want to fundamentally change the way that automation systems are deployed and drastically increase the adoption of robotics. Essentially, we want to change the way the world makes EVERYTHING. In order to get there, we are creating a world-class organization that will last for generations. The employees of today are the leaders and influences of tomorrow, and that is an incredible place to be.</p>
+    <p>In order for us to do our best work, we need a unified vision — not just of WHAT we do, but more importantly, HOW we do it. We need to be united, we need to raise the bar of how we do every little thing - from turning a bolt, to running a simulation, to sending an email, to building an excel model — we need to pay attention to the WAY we do things.</p>
+  </div>
+</section>
+
+<section class="detail-block lgrey">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div class="db-tag">Our Values</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;color:var(--black);margin:8px 0 26px">Six values, <em style="color:var(--orange);font-style:normal">one Formic</em>.</h2>
+    <div class="cr-grid">
+      <div class="cr-val"><h3>Fearless Optimism</h3><p>Strive forward with confidence.</p></div>
+      <div class="cr-val"><h3>Create the Magic</h3><p>Traditional automation is hard. Formic is easy.</p></div>
+      <div class="cr-val"><h3>TNT — Today, Not Tomorrow</h3><p>Aspire to work efficiently.</p></div>
+      <div class="cr-val"><h3>Seek Truth</h3><p>Know the WHY behind the decision.</p></div>
+      <div class="cr-val"><h3>Made of Rubber</h3><p>Be flexible enough to meet any challenge.</p></div>
+      <div class="cr-val"><h3>One Formic</h3><p>We only win when we win together.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="legal-prose" style="margin:0 auto">
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:0 0 14px">Fearless Optimism</h3>
+    <p>Formic exists to create a world of abundance by outsourcing the drudgery of work to robots so that humans can be unleashed to do the creative, imaginative, collaborative, satisfying, society-advancing work we’re meant to do.</p>
+    <p>Realizing our mission will require us to rethink the status quo, stay on the cusp of today’s innovations, solve really hard technical and operational problems, and most importantly, remain fearlessly optimistic while we do it.</p>
+    <p>We’re in an old space doing new things and aspiring to new heights. Instead of thinking about all the small ways something won’t work, we think about all the big ways something can. We lean on the experience and perspective of our team mates coming from other industries to learn what is possible – this mix of viewpoints is one of our greatest strengths. The path forward might not always be immediately obvious–it’s still early days for Formic–but if we focus on our mission in everything we do, every day, we’ll always be headed in the right direction. We will create a world of abundance with the world’s largest robot workforce.</p>
+
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:40px 0 14px">Create the Magic</h3>
+    <p>We exist to absorb complexity. We communicate with clarity. We are surprisingly, unexpectedly fast. We understand our robots are critical to the customers’ production. That is a responsibility we take seriously.</p>
+    <p>We are partners, not vendors. If the robot stops, we stop getting paid—our incentives are perfectly aligned with our customers’ production. We take on the responsibility of our robots being critical to your operation. We always choose to take the burden rather than make the customer experience worse. We communicate clearly, move with speed, and simplify operational and financial decisions, providing a superior experience to just buying a robot.</p>
+
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:40px 0 14px">TNT — Today, Not Tomorrow</h3>
+    <p>The only way to do the industry-shaping, tide-raising, high-impact work we are here to do is to deliver great work at a steady clip. As Kevin Kelly said, “many backward steps are made by standing still.” We must take decisive steps forward, as often as we can.</p>
+    <p>We’ll get there by taking accountability for our work, staying focused on what matters, and seeing things through to completion no matter what it takes to deliver on our promises. We refuse to be blocked, even when it’s unpleasant. We aspire to work efficiently and we’ll prioritize ruthlessly to get there by constantly asking ourselves if the “juice is worth the squeeze”. There will be times we have to say no to work and people we really, really want to say yes to. Those moments might be painful, but we have to constantly remind ourselves it’s worth the space it opens up for us to execute exceedingly well on the things that matter. We own our own work and our focus.</p>
+    <p>There will be times when the work in front of us feels big and hard to wrangle. So, we’ll break it up into smaller, more manageable pieces, polish them up, and get them out the door. (It’ll help us learn sooner and more often, anyway). We bias towards getting things done. We help our colleagues keep that spirit up, too.</p>
+    <p>We do all this without being asked or told, because that’s the kind of company, product, and reputation we all want to uphold together. This company is ours to build together. We’re still the underdog, but if we keep shipping great stuff and building great habits around urgency and focus, soon, the Formic way will become the most obvious way for a factory to build their workforce.</p>
+
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:40px 0 14px">Seek Truth</h3>
+    <p>To build trust, we must be predictable. Ambiguity is the enemy of scale. Whether architecting Formic Core or managing a deployment, we work from first principles to find the right answer, not the popular one.</p>
+    <p>We champion the best decision, driven by truth and objective data, regardless of who proposes it. We operate without ego: if presented with new evidence, we readily abandon previous opinions. We actively pursue truth, even when it means challenging others. We debate thoroughly to reach the best conclusion. We embrace conflict solely in service of the truth, and never make it personal.</p>
+
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:40px 0 14px">Made of Rubber</h3>
+    <p>Think about the things around you that are made of rubber – tires, the soles of our shoes, pet toys, bouncy balls, brake pads, windshield wipers, medical gloves, balloons, surfaces of playgrounds, hoses. Now think of how reliable these things are across so many different use-cases, whether it’s rain or shine, or whether we’re walking, driving or biking, playing or working. Rubber does the trick because it is simultaneously incredibly durable and incredibly resilient.</p>
+    <p>At Formic, we work like rubber; when we fall we bounce back up. Dropping something shouldn’t necessarily mean breaking it. We are flexible enough to meet all kinds of challenges and are strong enough to get through them without falling apart. We should be able to move over gravel with grace. Everyday pokes and prods and pushes shouldn’t throw us off our game. When they come, we should be able to absorb them and reclaim our shape in no time…or, mold ourselves to the new normal if that’s what’s needed.</p>
+    <p>There’s going to be a lot thrown at us in the days, months, and years to come. We aspire to take it all in stride, with a spring in our step.</p>
+
+    <h3 style="font-family:var(--sans);font-size:24px;font-weight:600;color:var(--black);margin:40px 0 14px">One Formic</h3>
+    <p>At Formic, we always work with a desire to make things easier and better for other team members. In a fast-paced, quickly-scaling organization like ours, a graceful baton pass is an act of kindness.</p>
+    <p>We are judicious with our asks, mindful of the costs of internal requests, and look for opportunities to be proactively helpful. We think about how to make useful information available to our colleagues (ex- in well-curated, discoverable documentation). If it’s buried in a Slack thread, it’s probably not usefully available. We unblock others and are responsive to help them sprint.</p>
+    <p>Before you ask someone else to do something (or even just give them an idea), consider, whether it’s actually important that they hear from you about this, whether now is the right time and whether this is the right forum (and if not, when/how?). When you’re on the receiving end of an idea, relentlessly determine who is the decision-maker, what the action is, and whether you are going to take action on it. Get comfortable with (the good kind of) process - they help us run more smoothly. Respect those others have established and honor the inkling that something you’re working on might require one.</p>
+    <p>Be generous with useful information. Share resources, tools, and tips that are likely to accelerate someone else’s progress. Make teaching and learning a part of your day, every day. Much of our work requires that we “stitch together” disparate areas (mechanical engineering, software, finance, legal, etc.). Helping each other lets us continue to build a better solution as we “connect” and produce seamless solutions using multiple disciplines and knowledge areas.</p>
+  </div>
+</section>
+
+<section class="detail-block lgrey">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 24px">
+    <div class="db-tag">In their words</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;color:var(--black);margin:8px 0 26px">Life as a <em style="color:var(--orange);font-style:normal">Formican</em>.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px;max-width:1280px;margin:0 auto">
+      <div class="cr-tcard"><blockquote>“Automation can be such a black box for manufacturers. At Formic, we shoulder that uncertainty for our customers and work together behind the scenes to make deployments feel like magic. It takes a joint effort - and certainly it takes good baton passes - among a great group of people to make it all happen; I am so happy to be a part of the team doing it all.”</blockquote><div><div class="cr-tname">Arti Brannon</div><div class="cr-trole">Sales Development Representative</div></div></div>
+      <div class="cr-tcard"><blockquote>“I enjoy digging into the technical details to craft the perfect automation solution. It’s all about problem-solving and making sure every system delivers real, lasting impact.”</blockquote><div><div class="cr-tname">Brian Jaworski</div><div class="cr-trole">Solutions Engineer</div></div></div>
+      <div class="cr-tcard"><blockquote>“Every day at Formic is challenging and exciting. We’re constantly learning and working together to create something that has never been done before.”</blockquote><div><div class="cr-tname">Katherine Coco</div><div class="cr-trole">Director of FP&A and Accounting</div></div></div>
+      <div class="cr-tcard"><blockquote>“Bringing automation to life on the factory floor is the best part of my job. I love training teams and seeing their excitement when the robots start running.”</blockquote><div><div class="cr-tname">Josh Huang</div><div class="cr-trole">Robotics Deployment Project Manager</div></div></div>
+      <div class="cr-tcard"><blockquote>“I love helping customers see how easy automation can be. It’s exciting to turn hesitation into confidence and show them a path to real productivity gains.”</blockquote><div><div class="cr-tname">Sylvia Domanico</div><div class="cr-trole">Automation Sales Manager</div></div></div>
+      <div class="cr-tcard"><blockquote>“What makes my role at Formic unique is the speed and direct involvement at which we iterate and execute, allowing us to put advanced robotics directly into production to solve our clients' most pressing operational challenges fast.”</blockquote><div><div class="cr-tname">Danielle Vigent</div><div class="cr-trole">Automation Solutions Engineer</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white" id="openings">
+  <div class="si" style="max-width:1080px;margin:0 auto;padding:0 24px">
+    <div class="db-tag">Current Openings</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;color:var(--black);margin:8px 0 4px">Open roles at Formic.</h2>
+    <div class="cr-filters">
+      <select id="jobs-loc" aria-label="Filter by location"><option value="">All locations</option></select>
+      <select id="jobs-team" aria-label="Filter by team"><option value="">All teams</option></select>
+    </div>
+    <div id="jobs-list"><p class="cr-empty">Loading open roles…</p></div>
+  </div>
+</section>
+
+<section class="detail-block lgrey">
+  <div class="legal-prose" style="margin:0 auto">
+    <h2 style="font-family:var(--sans);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;color:var(--black);margin:0 0 22px">We are a people-first robotics company</h2>
+    <p>We are a stellar team of cross-functional, hand-selected talent, from sales people to engineers, roboticists to finance experts, and everything in between. We’re changing the world of automation with some of the brightest minds of the industry.</p>
+    <p>Formic has a Flexible Time Off (FTO) policy bundling vacation and personal time off. We believe that people are more productive when they practice a healthy work-life balance and we trust our employees to know themselves best and to take the time off they need.</p>
+    <p>While we have an office in Chicago, we are a global and remote-first team. As such, your home may very well be your main office environment. All new employees receive a new computer as well as a generous office supply budget to build out a comfortable home-office space in which to work.</p>
+    <p>We provide for you so that you can provide for your loved ones. This means not only comprehensive health benefits, including medical, dental, vision, and more, but also a generous parental leave policy to enable employees to prepare for, care for, and bond with a newborn or a newly adopted or newly placed child.</p>
+  </div>
+</section>
+
+<section class="detail-cta">
+  <h2>Ready to <em>build with us?</em></h2>
+  <div class="btn-row">
+    <a href="#openings" class="btn-ctadark">See Open Roles</a>
+    <a href="/learn-more" class="btn-ctawh">Our Mission</a>
+  </div>
+</section>
+
+<script is:inline>
+(function () {
+  var board = "formic";
+  var listEl = document.getElementById("jobs-list");
+  var locSel = document.getElementById("jobs-loc");
+  var teamSel = document.getElementById("jobs-team");
+  if (!listEl) return;
+  var all = [];
+  function uniq(a) { return Array.from(new Set(a)).filter(Boolean).sort(); }
+  function esc(s) { return (s || "").replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function render() {
+    var loc = locSel.value, team = teamSel.value;
+    var rows = all.filter(function (j) { return (!loc || j.location === loc) && (!team || j.team === team); });
+    if (!rows.length) { listEl.innerHTML = '<p class="cr-empty">No open roles match these filters right now — check back soon, or reach out at <a href="mailto:careers@formic.co" style="color:var(--orange)">careers@formic.co</a>.</p>'; return; }
+    listEl.innerHTML = rows.map(function (j) {
+      return '<a class="cr-job" href="' + esc(j.url) + '" target="_blank" rel="noopener"><div><div class="cr-jtitle">' + esc(j.title) + '</div><div class="cr-jmeta">' + esc([j.team, j.location].filter(Boolean).join(" · ")) + '</div></div><span class="cr-jarrow">→</span></a>';
+    }).join("");
+  }
+  function add(job, team) { all.push({ title: job.title, url: job.absolute_url, location: (job.location && job.location.name) || "", team: team || "" }); }
+  fetch("https://boards-api.greenhouse.io/v1/boards/" + board + "/departments?render_as=tree")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      (d.departments || []).forEach(function (dep) {
+        (dep.jobs || []).forEach(function (j) { add(j, dep.name); });
+        (dep.children || []).forEach(function (c) { (c.jobs || []).forEach(function (j) { add(j, c.name || dep.name); }); });
+      });
+      uniq(all.map(function (j) { return j.location; })).forEach(function (l) { var o = document.createElement("option"); o.value = l; o.textContent = l; locSel.appendChild(o); });
+      uniq(all.map(function (j) { return j.team; })).forEach(function (t) { var o = document.createElement("option"); o.value = t; o.textContent = t; teamSel.appendChild(o); });
+      render();
+    })
+    .catch(function () { listEl.innerHTML = '<p class="cr-empty">Unable to load open roles right now. Please email <a href="mailto:careers@formic.co" style="color:var(--orange)">careers@formic.co</a>.</p>'; });
+  locSel.addEventListener("change", render);
+  teamSel.addEventListener("change", render);
+})();
+</script>
+</Layout>
