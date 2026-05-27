@@ -47,7 +47,13 @@ const { title, description = '', ogTitle = '', ogDescription = '' } = Astro.prop
     <li><a href="/results">Results</a></li>
     <li><a href="/stories">Customers</a></li>
     <li><a href="/articles">Blog</a></li>
-    <li><a href="/learn-more">Our Mission</a></li>
+    <li class="nav-dd">
+      <a href="/learn-more" class="nav-dd-trigger">Our Mission<span class="nav-dd-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-dd-menu" role="menu">
+        <a href="/learn-more" role="menuitem"><span class="dd-name">Our Mission</span><span class="dd-desc">Why we exist — news &amp; downloads</span></a>
+        <a href="/careers" role="menuitem"><span class="dd-name">Careers</span><span class="dd-desc">Join Team Formic</span></a>
+      </div>
+    </li>
   </ul>
   <div class="nav-cta">
     <a href="/talk-with-an-expert" class="btn-ghost">Talk with an Expert</a>
@@ -88,7 +94,7 @@ const { title, description = '', ogTitle = '', ogDescription = '' } = Astro.prop
       <a href="/learn-more">Mission</a>
       <a href="/stories">Customer Stories</a>
       <a href="/articles">Blog</a>
-      <a href="/learn-more">Careers</a>
+      <a href="/careers">Careers</a>
       <a href="/learn-more">News</a>
       <a href="/learn-more">Downloads</a>
     </div>
