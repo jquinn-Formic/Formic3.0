@@ -5,6 +5,31 @@
 /precision    /solutions/machine-tending      301
 /general      /solutions/humanoids            301
 
+# Legacy customer-story URLs (formic.co/resources/customer-stories/*) → new /stories/*
+/resources/customer-stories/how-kari-out-automated-palletizing-without-capex                                              /stories/kari-out                  301
+/resources/customer-stories/meeting-every-customer-need-how-mattpak-scaled-with-automation                               /stories/mattpak                   301
+/resources/customer-stories/innovation-in-their-dna-marquis-automates-palletizing-to-drive-efficiency-and-sup            /stories/marquis                   301
+/resources/customer-stories/when-leadership-and-employees-align-masters-gallery-automates-palletizing-to-make            /stories/masters-gallery           301
+/resources/customer-stories/taffy-town-scaled-with-formic-full-service-automation                                        /stories/taffy-town                301
+/resources/customer-stories/how-sunrise-family-farms-is-using-automation-to-preserve-tradition-and-scale-smar            /stories/sunrise-family-farms      301
+/resources/customer-stories/charting-the-future-alta-foods-expands-automation-to-strengthen-operations                   /stories/alta-foods                301
+/resources/customer-stories/90-years-of-snacks-now-built-for-agility-wyandot-snacks-automates-to-scale-produc            /stories/wyandot-snacks            301
+/resources/customer-stories/how-boxed-water-is-taking-the-strain-out-of-the-line-with-automation                         /stories/boxed-water               301
+/resources/customer-stories/how-venus-wafers-cracked-the-smart-manufacturing-code                                        /stories/venus-wafers              301
+/resources/customer-stories/how-automation-is-powering-the-next-chapter-at-uncle-crumbles                                /stories/uncle-crumbles            301
+/resources/customer-stories/rumiano-automates-to-drive-community-culture-organic-cheese-dominance                        /stories/rumiano-cheese            301
+/resources/customer-stories/taffy-town-sweetens-employee-satisfaction-safety-with-robotic-palletizing                    /stories/taffy-town-innovation     301
+/resources/customer-stories/land-o-frost-enhances-its-production-with-automation                                         /stories/land-o-frost              301
+/resources/customer-stories/mi-rancho-makes-production-leap-with-automated-stacking-of-70-million-pounds-of-t            /stories/mi-rancho                 301
+/resources/customer-stories/cameron-s-coffee-hits-automation-easy-button-scaling-from-0-to-5-systems-in-12-mo            /stories/camerons-coffee           301
+/resources/customer-stories/georgia-nut-and-formic-deploy-first-robot-in-companys-history                                /stories/georgia-nut               301
+/resources/customer-stories/compact-industries-partners-with-formic-to-combat-labor-shortages-and-accelerate-factory-productivity   /stories/compact-industries   301
+/resources/customer-stories/chemical-manufacturing-leader-polysciences-partners-with-formic-to-introduce-auto            /stories/polysciences              301
+/resources/customer-stories/3d-machine-finds-new-competitive-edge-with-automation-partner-formic                         /stories/3d-machine                301
+/resources/customer-stories/polar-manufacturing-and-formic-partner-to-overcome-legacy-equipment-challenges-and-boost-productivity   /stories/polar-manufacturing  301
+/resources/customer-stories/icon-injection-molding-deploys-formic-tend-to-boost-production-by-20-with-automation-partnership-that-is-too-good-to-be-true   /stories/icon-injection-molding   301
+/resources/customer-stories                                                                                              /stories                           301
+
 # Legacy blog/article URLs (formic.co/resources/articles/*) → new /articles/*
 # Article slugs are unchanged, so a single splat rule covers all of them.
 /resources/articles            /articles            301
