@@ -48,20 +48,30 @@ const testimonials = [
     .cr-slider{position:relative;max-width:1280px;margin:0 auto}
     .cr-bar{height:2px;background:rgba(127,131,121,.22);overflow:hidden;margin-bottom:22px}
     .cr-bar > span{display:block;height:100%;width:0;background:var(--orange);box-shadow:0 0 8px rgba(255,145,0,.55)}
-    .cr-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px;align-items:stretch}
+    .cr-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px;align-items:flex-start}
     .cr-track::-webkit-scrollbar{display:none}
-    .cr-vtile{flex:0 0 clamp(280px,84vw,540px);scroll-snap-align:start;background:var(--white);padding:34px 34px 38px;display:flex;flex-direction:column;gap:14px}
-    .cr-vicon{width:46px;height:46px;color:var(--orange);display:flex;align-items:center;justify-content:center;border:1px solid var(--lgrey);border-radius:0}
+    .cr-vtile{flex:0 0 clamp(260px,80vw,380px);scroll-snap-align:start;background:var(--white);padding:30px 30px 26px;display:flex;flex-direction:column;gap:12px;position:relative;height:264px;overflow:hidden}
+    .cr-vicon{width:44px;height:44px;color:var(--orange);display:flex;align-items:center;justify-content:center;border:1px solid var(--lgrey)}
     .cr-vnum{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.22em;color:var(--mgrey)}
-    .cr-vname{font-family:var(--sans);font-size:23px;font-weight:600;letter-spacing:-.015em;color:var(--black);line-height:1.1}
-    .cr-vtag{font-family:var(--sans);font-size:15px;font-weight:500;font-style:italic;color:var(--orange)}
+    .cr-vname{font-family:var(--sans);font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--black);line-height:1.12}
+    .cr-vtag{font-family:var(--sans);font-size:14px;font-weight:500;font-style:italic;color:var(--orange);margin-bottom:2px}
+    .cr-vtoggle{position:absolute;left:30px;bottom:24px;z-index:3;width:30px;height:30px;border:1px solid var(--lgrey);background:var(--white);color:var(--orange);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .3s ease,background .2s}
+    .cr-vtoggle:hover{background:var(--lgrey)}
+    .cr-vtile.open .cr-vtoggle{transform:rotate(45deg)}
+    .cr-vbody{position:absolute;inset:0;background:var(--white);padding:28px 30px 60px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s ease;z-index:2}
+    .cr-vtile.open .cr-vbody{opacity:1;visibility:visible}
     .cr-vbody p{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.65;color:var(--mgrey);margin:0 0 12px}
-    .cr-qtile{flex:0 0 clamp(290px,86vw,460px);scroll-snap-align:start;background:var(--dgrey);padding:34px 32px 30px;display:flex;flex-direction:column;gap:20px}
-    .cr-qtext{font-family:var(--sans);font-size:16px;font-weight:300;font-style:italic;line-height:1.6;color:var(--white);margin:0;flex:1}
-    .cr-qrow{display:flex;align-items:center;gap:14px}
-    .cr-qrow img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--black)}
-    .cr-qname{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--white)}
+    .cr-qtile{flex:0 0 clamp(280px,78vw,400px);scroll-snap-align:start;background:var(--dgrey);padding:26px 28px 24px;display:flex;flex-direction:column;gap:18px}
+    .cr-qtext{font-family:var(--sans);font-size:15px;font-weight:300;font-style:italic;line-height:1.55;color:var(--white);margin:0}
+    .cr-qrow{display:flex;align-items:center;gap:13px}
+    .cr-qrow img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--black)}
+    .cr-qname{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--white)}
     .cr-qrole{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-top:3px}
+    .cr-jump{display:inline-flex;align-items:center;gap:12px;margin-top:34px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.85);text-decoration:none}
+    .cr-jump:hover{color:var(--white)}
+    .cr-jump .cr-jump-arrow{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(240,245,241,.3);border-radius:50%;color:var(--orange);font-size:15px;animation:cr-bounce 1.8s ease-in-out infinite;transition:border-color .2s}
+    .cr-jump:hover .cr-jump-arrow{border-color:var(--orange)}
+    @keyframes cr-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
     .cr-filters{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 18px}
     .cr-filters select{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--black);background:var(--white);border:1px solid var(--lgrey);padding:10px 14px;cursor:pointer}
     .cr-job{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--white);border:1px solid var(--lgrey);border-top:none;padding:22px 26px;text-decoration:none;transition:background .2s}
@@ -83,18 +93,19 @@ const testimonials = [
     <div class="slabel" style="color:var(--orange)">Careers</div>
     <h1>Join Team <em>Formic</em>.</h1>
     <p class="lede">Join our diverse team of “Formicans” who are on a mission to help bring automation to those who need it most.</p>
+    <a href="#openings" class="cr-jump" aria-label="Jump to open roles"><span>See open roles</span><span class="cr-jump-arrow" aria-hidden="true">↓</span></a>
   </div>
 </section>
 
-<section class="detail-block dark" style="padding:0">
-  <div style="max-width:1280px;margin:0 auto;height:clamp(200px,30vh,330px);overflow:hidden;position:relative">
-    <img src="/careers/team-onsite.jpg" alt="The Formic team on-site" style="width:100%;height:100%;object-fit:cover;display:block"/>
-    <span style="position:absolute;left:24px;bottom:16px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.75)">Team Formic · on-site</span>
-  </div>
+<section class="detail-block dark" style="padding:8px 24px 16px">
+  <figure style="max-width:760px;margin:0 auto;position:relative">
+    <img src="/careers/team-onsite.jpg" alt="The Formic team on-site" style="width:100%;height:auto;display:block"/>
+    <figcaption style="position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.85);text-shadow:0 1px 6px rgba(0,0,0,.6)">Team Formic · on-site</figcaption>
+  </figure>
 </section>
 
 <section class="detail-block dark">
-  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 24px">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:72px 24px">
     <div class="db-tag">Our mission</div>
     <h2 style="font-family:var(--sans);font-size:clamp(32px,4vw,56px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--white);margin:8px 0 26px">Our mission is <em style="color:var(--orange);font-style:normal">ambitious</em>.</h2>
     <div class="cr-prose-d">
@@ -105,7 +116,7 @@ const testimonials = [
 </section>
 
 <section class="detail-block lgrey">
-  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 24px">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:72px 24px">
     <div class="db-tag">Our Values</div>
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--black);margin:8px 0 26px">Six values, <em style="color:var(--orange);font-style:normal">one Formic</em>.</h2>
     <div class="cr-slider" id="values-slider" data-interval="7000">
@@ -117,6 +128,7 @@ const testimonials = [
             <div class="cr-vnum">{v.n}</div>
             <div class="cr-vname">{v.name}</div>
             <div class="cr-vtag">{v.tag}</div>
+            <button class="cr-vtoggle" type="button" aria-expanded="false" aria-label={`Expand ${v.name}`}>+</button>
             <div class="cr-vbody">{v.body.map((p) => (<p>{p}</p>))}</div>
           </article>
         ))}
@@ -126,7 +138,7 @@ const testimonials = [
 </section>
 
 <section class="detail-block dark">
-  <div class="si" style="max-width:1280px;margin:0 auto;padding:0 24px">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:72px 24px">
     <div class="db-tag">In their words</div>
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--white);margin:8px 0 26px">Life as a <em style="color:var(--orange);font-style:normal">Formican</em>.</h2>
     <div class="cr-slider" id="quotes-slider" data-interval="6000">
@@ -147,7 +159,7 @@ const testimonials = [
 </section>
 
 <section class="detail-block white" id="openings">
-  <div class="si" style="max-width:1080px;margin:0 auto;padding:0 24px">
+  <div class="si" style="max-width:1080px;margin:0 auto;padding:72px 24px">
     <div class="db-tag">Current Openings</div>
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--black);margin:8px 0 4px">Open roles at Formic.</h2>
     <div class="cr-filters">
@@ -159,7 +171,7 @@ const testimonials = [
 </section>
 
 <section class="detail-block lgrey">
-  <div class="si" style="max-width:920px;margin:0 auto;padding:0 24px">
+  <div class="si" style="max-width:920px;margin:0 auto;padding:72px 24px">
     <div class="db-tag">Why join</div>
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--black);margin:8px 0 22px">A people-first <em style="color:var(--orange);font-style:normal">robotics company</em>.</h2>
     <p style="font-size:16px;font-weight:300;line-height:1.75;color:var(--mgrey);margin:0 0 18px">We are a stellar team of cross-functional, hand-selected talent, from sales people to engineers, roboticists to finance experts, and everything in between. We’re changing the world of automation with some of the brightest minds of the industry.</p>
@@ -185,13 +197,13 @@ const testimonials = [
     if (!track) return;
     var tiles = track.children;
     var interval = Number(root.getAttribute("data-interval")) || 6000;
-    var idx = 0, start = null, elapsed = 0, paused = false;
+    var idx = 0, start = null, elapsed = 0, paused = false, frozen = false;
     function go(i) {
       idx = (i % tiles.length + tiles.length) % tiles.length;
       track.scrollTo({ left: tiles[idx].offsetLeft - tiles[0].offsetLeft, behavior: "smooth" });
     }
     function frame(ts) {
-      if (paused) { start = ts - elapsed; requestAnimationFrame(frame); return; }
+      if (paused || frozen) { start = ts - elapsed; requestAnimationFrame(frame); return; }
       if (start === null) start = ts;
       elapsed = ts - start;
       var p = Math.min(elapsed / interval, 1);
@@ -201,6 +213,14 @@ const testimonials = [
     }
     root.addEventListener("mouseenter", function () { paused = true; });
     root.addEventListener("mouseleave", function () { paused = false; });
+    root.querySelectorAll(".cr-vtoggle").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var tile = btn.closest(".cr-vtile");
+        var open = tile.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        frozen = !!root.querySelector(".cr-vtile.open");
+      });
+    });
     // keep idx in sync if the user scrolls manually
     var st;
     track.addEventListener("scroll", function () {
