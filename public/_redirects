@@ -29,3 +29,8 @@
 /resources/customer-stories/polar-manufacturing-and-formic-partner-to-overcome-legacy-equipment-challenges-and-boost-productivity   /stories/polar-manufacturing  301
 /resources/customer-stories/icon-injection-molding-deploys-formic-tend-to-boost-production-by-20-with-automation-partnership-that-is-too-good-to-be-true   /stories/icon-injection-molding   301
 /resources/customer-stories                                                                                              /stories                           301
+
+# Legacy blog/article URLs (formic.co/resources/articles/*) → new /articles/*
+# Article slugs are unchanged, so a single splat rule covers all of them.
+/resources/articles            /articles            301
+/resources/articles/*          /articles/:splat     301
