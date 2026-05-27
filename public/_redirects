@@ -4,3 +4,8 @@
 /packing      /solutions/packing              301
 /precision    /solutions/machine-tending      301
 /general      /solutions/humanoids            301
+
+# Legacy blog/article URLs (formic.co/resources/articles/*) → new /articles/*
+# Article slugs are unchanged, so a single splat rule covers all of them.
+/resources/articles            /articles            301
+/resources/articles/*          /articles/:splat     301
