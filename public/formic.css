@@ -513,6 +513,11 @@ body.restrained .legal-prose h3{color:var(--ink)}
 .legal-prose a:hover{border-bottom-color:var(--orange)}
 .legal-prose strong{font-weight:600;color:var(--black)}
 body.restrained .legal-prose strong{color:var(--ink)}
+/* Story / article body images — give photos breathing room from surrounding text */
+.legal-page>figure{margin-bottom:48px!important}
+.legal-prose img{display:block;max-width:100%;height:auto;margin:32px auto}
+.legal-prose figure{margin:32px auto;text-align:center}
+.legal-prose figure img{margin:0 auto}
 .legal-prose .legal-uppercase{font-family:var(--mono);font-size:13px;font-weight:500;line-height:1.5;letter-spacing:.04em}
 .legal-prose .legal-doc-id{margin-top:64px;padding-top:24px;border-top:1px solid var(--border-l);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mgrey)}
 .legal-contact{margin-top:32px;padding:28px;background:rgba(9,21,23,.03);border:1px solid var(--border-l)}

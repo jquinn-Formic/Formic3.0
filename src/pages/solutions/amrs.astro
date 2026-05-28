@@ -2,10 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 <Layout
-  title="AMRs — Formic Automate NOW"
-  description="Fully managed autonomous mobile robot fleets for pallet and tote movement — dock to staging, line to wrap. No CapEx, 24/7 support, one flat monthly rate, under Formic Full Service."
+  title="Autonomous Mobile Robots — Formic Automate NOW"
+  description="AMR fleets that handle pallet and tote movement between dock, staging, line, and outbound, running alongside your team — reducing forklift injuries and product damage without replacing your drivers."
   ogTitle="Autonomous Mobile Robots — Formic"
-  ogDescription="Pallet movement without forklifts. Fully managed AMR fleets under the Formic Full Service model."
+  ogDescription="AMR fleets for pallet handling. Fully managed under the Formic Full Service model."
 >
   <link rel="canonical" href="https://formic.co/solutions/amrs" slot="head" />
 
@@ -16,8 +16,8 @@ import Layout from '../../layouts/Layout.astro';
 <section class="detail-hero">
   <div class="si">
     <div class="slabel" style="color:var(--orange)">AMRs</div>
-    <h1>Pallet movement<br><em>without forklifts.</em></h1>
-    <p class="lede">Fully managed AMR fleets that move pallets and totes between zones — dock to staging, line to wrap, finished goods to outbound. No CapEx, one flat monthly rate, and the fleet scales as your flow grows.</p>
+    <h1>Autonomous Mobile Robots<br><em>for Pallet Handling.</em></h1>
+    <p class="lede">AMR fleets that handle pallet and tote movement between dock, staging, line, and outbound, running alongside your team, reducing forklift injuries and product damage without replacing your drivers.</p>
   </div>
 </section>
 
@@ -35,9 +35,9 @@ import Layout from '../../layouts/Layout.astro';
 <section class="detail-block white">
   <div class="db-grid">
     <div class="db-text">
-      <div class="db-tag">01 — Automate NOW</div>
-      <h2>Take the forklift miles <em>off your floor</em>.</h2>
-      <p>Forklifts run up the highest single-source injury bill on most CPG and warehousing floors — and they damage pallets, racking, and product along the way. Formic AMRs take over the routine, repeating moves under Full Service, so your drivers focus on inbound and exception work.</p>
+      <div class="db-tag">01 — Why It Matters</div>
+      <h2>Forklifts are <em>the silent cost</em>.</h2>
+      <p>Forklifts are the highest single-source injury risk on most CPG and warehousing floors, and they damage pallets, racking, and product on routine moves that don't require a human driver at all. Autonomous mobile robots replace those repeating routes, freeing forklift operators for inbound, staging exceptions, and the work that actually requires judgment.</p>
       <ul class="feats">
         <li>Fewer forklift-related injury claims and less product damage</li>
         <li>Predictable cycle times for line-side replenishment</li>
@@ -55,13 +55,50 @@ import Layout from '../../layouts/Layout.astro';
     <div class="db-text">
       <div class="db-tag">02 — How It Works</div>
       <h2>Routes that <em>adapt</em>.</h2>
-      <p>SLAM-based navigation means no floor tape and no embedded wire — the fleet adapts to pallet placement and floor traffic in real time, and stays synchronized with your WMS and ERP. Start with two AMRs and scale to thirty on the same fleet manager and SLA.</p>
+      <p>SLAM-based navigation means no floor tape, no embedded wires, and no facility modifications required. The fleet maps your floor on deployment and adapts to pallet placement and traffic in real time.</p>
       <ul class="feats">
         <li>Dynamic routing — adapts to changing floor layouts</li>
-        <li>Safe by design — slows and stops around people automatically</li>
-        <li>Scales from 2 to 30+ units on the same software and support</li>
+        <li>Integrated with WMS, ERP, and MES systems for real-time inventory tracking as AMRs move</li>
+        <li>Safe by design — slows and stops around humans automatically</li>
+        <li>Mixed traffic with manual forklifts and pedestrians</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="db-grid">
+    <div class="db-text">
+      <div class="db-tag">03 — Specs</div>
+      <h2>Fleets that <em>scale</em>.</h2>
+      <p>Start with two AMRs, scale to thirty. Add capacity as your pallet flow grows — same software, same fleet manager, same SLA.</p>
+      <ul class="feats">
+        <li>Fleet sizes from 2 to 30+ AMRs</li>
+        <li>Payloads: up to 1,500 kg per unit, larger options available</li>
+        <li>Pallet compatibility: standard GMA 48×40", custom sizes available on request</li>
+        <li>Battery: opportunity charging, no shift-end swaps</li>
+        <li>Integration via REST API or message-bus — compatible with major WMS platforms including SAP, Oracle, and Manhattan Associates</li>
+        <li>Safety: ANSI/RIA R15.08 mobile robot compliant</li>
       </ul>
       <a href="/full-service" class="larr">How Full Service works →</a>
+    </div>
+    <div class="db-img"><img src="/Talos-9787.jpg" alt="AMR fleet operations" loading="lazy"/><span class="img-cap">Fleet · WMS-integrated</span></div>
+  </div>
+</section>
+
+<section class="detail-block dark">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:80px">
+    <div class="db-tag" style="justify-content:flex-start">What's Included</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(32px,4.4vw,64px);font-weight:500;letter-spacing:-.02em;line-height:1.04;color:var(--white);margin:10px 0 14px">One monthly fee. <em style="color:var(--orange);font-style:normal">Everything included.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);margin-top:14px">
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>Fleet scoping and facility mapping</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>AMR hardware and charging infrastructure</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>WMS/ERP integration</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>Installation and commissioning</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>24/7 fleet monitoring and support</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>All maintenance and parts</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>Performance SLAs</div>
+      <div style="background:var(--black);padding:24px 24px;font-family:var(--sans);font-size:15px;font-weight:400;color:rgba(240,245,241,.85)"><span style="color:var(--orange);margin-right:10px">→</span>Fleet expansion under the same agreement</div>
     </div>
   </div>
 </section>
