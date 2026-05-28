@@ -22,7 +22,7 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
   <div class="si">
     <div class="slabel" style="color:var(--orange)">Articles</div>
     <h1>Automation, <em>in practice</em>.</h1>
-    <p class="lede">Insights, customer and event recaps, founder stories, and company news — {stories.length} in total.</p>
+    <p class="lede">Insights, guides, event recaps, and company news from the production floors where automation is actually running.</p>
   </div>
 </section>
 
@@ -39,7 +39,7 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
               : (s.hero ? <img src={s.hero} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"/> : <span style="display:block;width:100%;height:100%"></span>)}
           </div>
           <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{[s.category, s.date_short].filter(Boolean).join(' · ')}</div>
+            <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{s.date_short}</div>
             <div style="font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.28">{s.title}</div>
           </div>
           </a>
@@ -59,7 +59,7 @@ const rest = stories.filter((x) => !featured.includes(x.slug));
               : (s.hero ? <img src={s.hero} alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"/> : <span style="display:block;width:100%;height:100%"></span>)}
           </div>
           <div style="padding:18px 20px 22px;display:flex;flex-direction:column;gap:9px">
-            <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{[s.category, s.date_short].filter(Boolean).join(' · ')}</div>
+            <div style="font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">{s.date_short}</div>
             <div style="font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.28">{s.title}</div>
           </div>
       </a>

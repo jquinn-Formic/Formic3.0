@@ -89,7 +89,7 @@ import Layout from '../layouts/Layout.astro';
 .mg-stats .mg-inner{max-width:1280px;margin:0 auto}
 .mg-stats h2{font-family:var(--sans);font-size:clamp(36px,4vw,60px);font-weight:500;letter-spacing:-.025em;line-height:1;margin-bottom:48px}
 .mg-stats h2 .em{color:var(--orange);font-style:normal}
-.mg-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(240,245,241,.08)}
+.mg-stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(240,245,241,.08)}
 .mg-stat{background:#0d181a;padding:48px 32px;cursor:none;transition:background .3s}
 .mg-stat:hover{background:#15252a}
 .mg-stat-num{font-family:var(--sans);font-size:64px;font-weight:500;color:var(--white);line-height:.95;letter-spacing:-.025em;margin-bottom:14px;display:block}
@@ -129,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="mg-h1">Physical AI,<span class="em">on the floor today.</span></h1>
     <p class="mg-lede">Physical AI only matters when it survives a real shift. Formic Core puts AI inside every robot. Formic Cortex brings intelligence across the whole fleet. Together they make physical AI practical on production lines today — and sharper every cycle.</p>
     <div class="mg-meta">
-      <div class="mg-meta-item"><span class="mg-meta-key">Deployed</span><span class="mg-meta-val">Physical AI in real production today</span></div>
+      <div class="mg-meta-item"><span class="mg-meta-key">Deployed</span><span class="mg-meta-val">Physical AI in real production today; not a pilot or lab</span></div>
       <div class="mg-meta-item"><span class="mg-meta-key">Robots supported</span><span class="mg-meta-val">KUKA · ABB · FANUC · Doosan</span></div>
       <div class="mg-meta-item"><span class="mg-meta-key">Learning loop</span><span class="mg-meta-val">Every cycle, fleet-wide</span></div>
     </div>
@@ -253,6 +253,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="12" data-suffix=" wks">12 wks</span><span class="mg-stat-lbl">Avg. deployment time (industry: 12–18 months)</span></div>
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="645520" data-suffix="+">645,520+</span><span class="mg-stat-lbl">Hours of real production data, and counting</span></div>
       <div class="mg-stat"><span class="mg-stat-num" data-count-to="100" data-suffix="%">100%</span><span class="mg-stat-lbl">OTA, fleet-wide, backward-compatible</span></div>
+      <div class="mg-stat"><span class="mg-stat-num" data-count-to="0" data-prefix="$">$0</span><span class="mg-stat-lbl">CapEx required to deploy</span></div>
     </div>
   </div>
 </section>
