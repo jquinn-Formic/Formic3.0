@@ -43,6 +43,13 @@ import Layout from '../layouts/Layout.astro';
 .tx-formhost .hs-richtext,.tx-formhost .hs-richtext p{font-family:var(--sans);font-size:12px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0 0 12px}
 .tx-formhost .hs-form-checkbox-display,.tx-formhost .hs-form-booleancheckbox-display{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--dgrey);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
 .tx-formhost .submitted-message{font-family:var(--sans);font-size:15px;font-weight:300;color:var(--black);line-height:1.6;padding:24px 0}
+.tx-formhost .submitted-message h1,.tx-formhost .submitted-message h2,.tx-formhost .submitted-message h3,.tx-formhost .submitted-message h4{font-family:var(--sans);font-weight:600;letter-spacing:-.01em;color:var(--black);margin:0 0 12px;line-height:1.25}
+.tx-formhost .submitted-message h1{font-size:24px}
+.tx-formhost .submitted-message h2{font-size:20px}
+.tx-formhost .submitted-message h3,.tx-formhost .submitted-message h4{font-size:16px}
+.tx-formhost .submitted-message p,.tx-formhost .submitted-message li{font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.6;color:var(--dgrey);margin:0 0 10px;letter-spacing:0}
+.tx-formhost .submitted-message a{color:var(--orange);text-decoration:underline}
+.tx-formhost .submitted-message ul,.tx-formhost .submitted-message ol{padding-left:1.2em;margin:0 0 12px}
 
 @media (max-width:880px){
   .tx-wrap{grid-template-columns:1fr;padding:108px 24px 64px;gap:48px}
