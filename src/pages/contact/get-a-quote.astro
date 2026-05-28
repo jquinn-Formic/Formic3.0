@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout
+  title="Get a Quote — Formic"
+  description="Share a few details about your line and a Formic automation engineer will get back to you within one business day. No CapEx, no obligation — just an honest scoping conversation."
+  ogTitle="Get a Quote — Formic"
+  ogDescription="Talk to a Formic automation engineer. One flat monthly rate, no CapEx, no obligation."
+>
+  <link rel="canonical" href="https://formic.co/contact/get-a-quote" slot="head" />
+  <style is:global slot="head">
+    .gq-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;max-width:1280px;margin:0 auto;padding:80px}
+    .gq-side .db-tag{margin-bottom:8px}
+    .gq-side h2{font-family:var(--sans);font-size:clamp(28px,3.4vw,44px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--black);margin:0 0 20px}
+    .gq-side h2 em{color:var(--orange);font-style:normal}
+    .gq-numlist{counter-reset:gqn;list-style:none;padding:0;margin:0 0 28px}
+    .gq-numlist li{position:relative;padding:0 0 18px 44px;counter-increment:gqn;font-family:var(--sans);font-size:15px;font-weight:300;line-height:1.55;color:var(--dgrey)}
+    .gq-numlist li::before{content:counter(gqn,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--orange)}
+    .gq-numlist li strong{color:var(--black);font-weight:500}
+    .gq-side-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--mgrey);margin:24px 0 6px}
+    .gq-side-contact{font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.6;color:var(--dgrey);margin:0}
+    .gq-side-contact a{color:var(--orange);text-decoration:none;font-weight:500}
+    .gq-side-contact a:hover{text-decoration:underline}
+    .gq-formwrap{background:var(--white);padding:40px 36px;border:1px solid var(--lgrey)}
+    .gq-formwrap h3{font-family:var(--sans);font-size:22px;font-weight:600;letter-spacing:-.01em;color:var(--black);margin:0 0 6px}
+    .gq-formwrap .gq-formlede{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--mgrey);margin:0 0 22px}
+    .gq-formhost{min-height:480px}
+    /* HubSpot form restyling */
+    .gq-formhost .hbspt-form,.gq-formhost form{font-family:var(--sans)}
+    .gq-formhost .hs-form-field{margin-bottom:14px}
+    .gq-formhost .hs-form-field>label,.gq-formhost .hs-form-field>label span{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--dgrey);display:block;margin-bottom:6px}
+    .gq-formhost .hs-input{font-family:var(--sans);font-size:14px;font-weight:300;padding:11px 13px;border:1px solid var(--lgrey);border-radius:0;background:var(--white);color:var(--black);width:100%;box-sizing:border-box;line-height:1.4}
+    .gq-formhost textarea.hs-input{min-height:120px;resize:vertical}
+    .gq-formhost .hs-input:focus{border-color:var(--orange);outline:none}
+    .gq-formhost select.hs-input{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mgrey) 50%),linear-gradient(135deg,var(--mgrey) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:36px}
+    .gq-formhost .hs-button,.gq-formhost input[type=submit]{background:var(--orange);color:var(--white);border:0;padding:14px 32px;font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.04em;cursor:pointer;margin-top:6px}
+    .gq-formhost .hs-button:hover,.gq-formhost input[type=submit]:hover{background:var(--black)}
+    .gq-formhost fieldset{max-width:none;border:0;padding:0;margin:0}
+    .gq-formhost fieldset .hs-form-field{padding-right:0!important}
+    .gq-formhost ul.hs-error-msgs,.gq-formhost ul.no-list{list-style:none;padding:0;margin:6px 0 0}
+    .gq-formhost .hs-error-msg,.gq-formhost label.hs-error-msg{font-family:var(--sans);font-size:12px;color:#b8443a;font-weight:400}
+    .gq-formhost .hs-richtext,.gq-formhost .hs-richtext p{font-family:var(--sans);font-size:12px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0 0 12px}
+    .gq-formhost .hs-form-checkbox-display,.gq-formhost .hs-form-booleancheckbox-display{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--dgrey);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+    .gq-formhost .submitted-message{font-family:var(--sans);font-size:15px;font-weight:300;color:var(--black);line-height:1.6;padding:24px 0}
+    @media(max-width:900px){.gq-grid{grid-template-columns:1fr;padding:56px 20px;gap:40px}}
+  </style>
+
+<div class="detail-bc">
+  <a href="/">Home</a><span class="sep">/</span>Contact<span class="sep">/</span>Get a Quote
+</div>
+
+<section class="detail-hero">
+  <div class="si">
+    <div class="slabel" style="color:var(--orange)">Get a Quote</div>
+    <h1>Tell us about<br><em>your line.</em></h1>
+    <p class="lede">Share a few details about your operation and a Formic automation engineer will get back to you within one business day. No CapEx, no obligation, no sales pressure — just an honest scoping conversation.</p>
+  </div>
+</section>
+
+<section class="detail-block white">
+  <div class="gq-grid">
+    <div class="gq-side">
+      <div class="db-tag">What to expect</div>
+      <h2>From form fill to <em>scoped solution</em>.</h2>
+      <ol class="gq-numlist">
+        <li><strong>You submit the form.</strong> An automation engineer reads it within one business day.</li>
+        <li><strong>Discovery call.</strong> Thirty minutes to understand your line, constraints, and goal.</li>
+        <li><strong>Scoped proposal.</strong> A specific system spec, lead time, and one flat monthly rate — in weeks, not months.</li>
+      </ol>
+      <p class="gq-side-tag">Prefer to talk first?</p>
+      <p class="gq-side-contact">
+        Call <a href="tel:8553945464">(855) 394-5464</a>, email <a href="mailto:sales@formic.co">sales@formic.co</a>, or <a href="/talk-with-an-expert">schedule a conversation</a>.
+      </p>
+    </div>
+    <div class="gq-formwrap">
+      <h3>Send us the details</h3>
+      <p class="gq-formlede">We'll get back to you within one business day.</p>
+      <div id="gq-form" class="gq-formhost"></div>
+    </div>
+  </div>
+</section>
+
+<section class="detail-cta">
+  <h2>No CapEx. No Risk.<br><em>No Problems.</em></h2>
+  <div class="btn-row">
+    <a href="/solutions" class="btn-ctadark">All Solutions</a>
+    <a href="/stories" class="btn-ctawh">Customer Stories</a>
+  </div>
+</section>
+
+<script is:inline slot="scripts" src="https://js.hsforms.net/forms/shell.js" charset="utf-8"></script>
+<script is:inline slot="scripts">
+  (function(){
+    function create(){
+      if(!window.hbspt||!window.hbspt.forms){return setTimeout(create,80);}
+      window.hbspt.forms.create({
+        portalId: '8636191',
+        formId: 'b63f6cd7-9148-49ac-b02f-7d3e5afaf625',
+        target: '#gq-form'
+      });
+    }
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',create);
+    } else {
+      create();
+    }
+  })();
+</script>
+</Layout>
