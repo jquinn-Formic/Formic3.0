@@ -4,6 +4,7 @@
 /packing      /solutions/packing              301
 /precision    /solutions/machine-tending      301
 /general      /solutions/humanoids            301
+/what-is-robots-as-a-service-raas    /full-service    301
 
 # Legacy customer-story URLs (formic.co/resources/customer-stories/*) → new /stories/*
 /resources/customer-stories/how-kari-out-automated-palletizing-without-capex                                              /stories/kari-out                  301
