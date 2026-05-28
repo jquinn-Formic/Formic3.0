@@ -8,6 +8,14 @@ import Layout from '../layouts/Layout.astro';
   ogDescription="Mission, news, careers, downloads — Formic beyond the product."
 >
   <link rel="canonical" href="https://formic.co/learn-more" slot="head" />
+  <style is:global slot="head">
+    .lm-rlist{list-style:none;padding:0;margin:18px 0 0}
+    .lm-rlist li{margin:0;padding:0;border-top:1px solid var(--lgrey)}
+    .lm-rlist li:last-child{border-bottom:1px solid var(--lgrey)}
+    .lm-rlist a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;text-decoration:none;color:var(--black);font-family:var(--sans);font-size:15px;font-weight:400;line-height:1.4}
+    .lm-rlist a::after{content:'→';color:var(--orange);font-family:var(--mono);font-size:13px;flex-shrink:0}
+    .lm-rlist a:hover{color:var(--orange)}
+  </style>
 
 <div class="detail-bc">
   <a href="/">Home</a><span class="sep">/</span>Learn More
@@ -55,18 +63,18 @@ import Layout from '../layouts/Layout.astro';
 <section class="detail-block lgrey">
   <div class="db-grid">
     <div class="db-text">
-      <div class="db-tag">Downloads</div>
-      <h2>Datasheets, case studies, <em>and brochures</em>.</h2>
-      <p>The resources your team needs to scope a project, build a business case, or share Formic internally — datasheets per solution, case studies per customer, and the full Full Service brochure.</p>
-      <ul class="feats">
-        <li>Solution datasheets — Palletizing, Case Packing, AMRs, Tending</li>
-        <li>Customer case studies — Land O'Frost, Mi Rancho, Mariani, Taffy Town</li>
-        <li>Full Service Automation brochure (PDF)</li>
-        <li>Technical white papers on hybrid architecture</li>
+      <div class="db-tag">Resources</div>
+      <h2>The book, the checklists, <em>and the guides</em>.</h2>
+      <p>Scope a project, build the business case, or share Formic internally — the gated resources we use most when manufacturers are evaluating automation.</p>
+      <ul class="lm-rlist">
+        <li><a href="https://land.formic.co/automate-now-1">Automate NOW — Saman Farid's book</a></li>
+        <li><a href="https://land.formic.co/automations-roi-vs-tco-know-the-full-story-before-you-invest">ROI vs TCO — the full story before you invest</a></li>
+        <li><a href="https://land.formic.co/palletizer-scoping-checklist">Palletizer scoping checklist</a></li>
+        <li><a href="https://land.formic.co/case-packing-quick-start-checklist">Case packing quick-start checklist</a></li>
+        <li><a href="https://land.formic.co/5-steps-to-getting-your-team-on-board-with-automation">Five steps to getting your team on board with automation</a></li>
       </ul>
-      <a href="/#cta" class="larr">Request the resource pack →</a>
     </div>
-    <div class="db-img"><img src="/Talos-9787.jpg" alt="Formic downloadable resources" loading="lazy"/><span class="img-cap">Datasheets · Case studies · Brochures</span></div>
+    <div class="db-img"><img src="/Talos-9787.jpg" alt="Formic downloadable resources" loading="lazy"/><span class="img-cap">Book · Guides · Checklists</span></div>
   </div>
 </section>
 
