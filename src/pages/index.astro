@@ -387,7 +387,7 @@ body.restrained .cta-c a:hover{color:var(--bone)}
       <div class="rs-lbl">Items produced this week</div>
     </div>
     <div class="rs-cell">
-      <div class="rs-num" id="hstat-uptime">98.241<span class="rs-pct">%</span></div>
+      <div class="rs-num" id="hstat-uptime">98.24<span class="rs-pct">%</span></div>
       <div class="rs-lbl">Uptime · last 12 months</div>
     </div>
     <div class="rs-cell">
@@ -396,7 +396,7 @@ body.restrained .cta-c a:hover{color:var(--bone)}
     </div>
     <div class="rs-cell">
       <div class="rs-num" id="hstat-injuries">8</div>
-      <div class="rs-lbl">Worker injuries prevented</div>
+      <div class="rs-lbl">Worker injuries prevented · this year</div>
     </div>
   </div>
 </section>
@@ -731,7 +731,7 @@ body.restrained .cta-c a:hover{color:var(--bone)}
 <section id="cta">
   <div class="ctai">
     <p class="cta-ey">Ready to automate?</p>
-    <h2 class="cta-t">No CapEx.<br>No Risk.<br>No Problems.</h2>
+    <h2 class="cta-t">Powering the next 100 years<br>of <em>American manufacturing</em>.</h2>
     <p class="cta-s">Talk to a Formic engineer about your production line. We'll scope the right system — no internal resources needed.</p>
     <div class="cta-bs">
       <a href="/contact/get-a-quote" class="btn-ctadark">Get Started</a>
@@ -1047,10 +1047,13 @@ function initHeroStats(){
     return Math.floor(1157+hoursSinceMonday5Central()*3600*63);
   }
 
-  // 2) Uptime — base 98.241%, last digits fluctuate within ±10 (98.231–98.251)
+  // 2) Uptime — 2 decimal places, drifting slowly within 98.22–98.27
+  let _uptimeVal=9824;
   function uptimeStr(){
-    const v=98241+(Math.floor(Math.random()*21)-10);
-    return (v/1000).toFixed(3);
+    // Random walk: ±1 (in hundredths) per tick, clamped to 9822–9827. Keeps the
+    // last digit moving slowly instead of flickering every couple seconds.
+    _uptimeVal=Math.max(9822,Math.min(9827,_uptimeVal+(Math.floor(Math.random()*3)-1)));
+    return (_uptimeVal/100).toFixed(2);
   }
 
   // 3) Training hours — accumulates from a fixed reference so it always grows between visits
@@ -1062,10 +1065,12 @@ function initHeroStats(){
     return Math.floor(TRAINING_BASE+Math.max(0,elapsedSec)*TRAINING_RATE_PER_SEC);
   }
 
-  // 4) Reportable injuries prevented — starts at 8 every Monday 5AM Central, +3 every 77 minutes
+  // 4) Worker injuries prevented this year — accumulates from Jan 1, ~1 every 18.7 hours
   function injuriesPrevented(){
-    const minutes=hoursSinceMonday5Central()*60;
-    return 8+Math.floor(minutes/77)*3;
+    const now=new Date();
+    const yearStart=Date.UTC(now.getUTCFullYear(),0,1);
+    const elapsedHours=Math.max(0,(Date.now()-yearStart)/(1000*60*60));
+    return Math.floor(elapsedHours/18.7);
   }
 
   function tickFast(){
@@ -1079,7 +1084,7 @@ function initHeroStats(){
 
   tickFast();tickUptime();
   setInterval(tickFast,1000);
-  setInterval(tickUptime,2500);
+  setInterval(tickUptime,8000);
 }
 
 function initAll(){initCounters();initNavBottom();initHomeSections();initLogoMarquees();initHomeMagic();initHeroStats();}
