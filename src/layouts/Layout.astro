@@ -4,8 +4,9 @@ interface Props {
   description?: string;
   ogTitle?: string;
   ogDescription?: string;
+  hideFooterStatement?: boolean;
 }
-const { title, description = '', ogTitle = '', ogDescription = '' } = Astro.props;
+const { title, description = '', ogTitle = '', ogDescription = '', hideFooterStatement = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -64,9 +65,11 @@ const { title, description = '', ogTitle = '', ogDescription = '' } = Astro.prop
 <slot />
 
 <footer>
-  <div class="footer-statement">
-    <p>The next 100 years<br>of <em>American manufacturing</em>.</p>
-  </div>
+  {!hideFooterStatement && (
+    <div class="footer-statement">
+      <p>Powering the next 100 years<br>of <em>American manufacturing</em>.</p>
+    </div>
+  )}
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
