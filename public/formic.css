@@ -495,10 +495,27 @@ body.restrained .footer-bottom p{color:var(--bone-3)}
 @media(max-width:900px){
   .detail-bc{padding:80px 24px 0}
   .detail-hero{padding:24px 24px 64px}
-  .db-grid{grid-template-columns:1fr;gap:0}
+  .db-grid,.db-grid.flip{grid-template-columns:1fr;gap:0;padding:0}
   .db-grid.flip{direction:ltr}
   .db-text{padding:48px 24px}
   .db-img{width:100%;max-width:100%;height:auto;aspect-ratio:1/1;justify-self:stretch !important;margin:0 !important}
+  /* Inline 80px-side section padding (used on full-service quote band, results industries grid, stories/articles featured band) should shrink at mobile */
+  section.detail-block[style*="80px"]{padding-left:24px !important;padding-right:24px !important}
+  /* Quote-card / customer-card grids min 320px won't fit on a phone — collapse */
+  .fs-qgrid{grid-template-columns:1fr}
+  /* Inline 2/3/4/5-column equal grids (used on /solutions/palletizing "No CapEx" cards, /full-service Why Choose cards, /results proof band, etc.) collapse on mobile */
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  /* Long single words (e.g. "manufacturers", "manufacturing") shouldn't push the layout past the viewport */
+  h1,h2,h3,.lede,p{overflow-wrap:break-word;word-wrap:break-word}
+  .detail-hero h1{font-size:clamp(32px,5vw,68px)}
+  /* Auto-fit grids whose minmax > viewport-content (320px+) can't shrink — force 1fr on mobile */
+  [style*="minmax(380px"],
+  [style*="minmax(360px"],
+  [style*="minmax(340px"],
+  [style*="minmax(320px"]{grid-template-columns:1fr !important}
   .db-img img,.db-img video{aspect-ratio:1/1;height:auto}
   .detail-block.full{padding:48px 24px}
   .detail-cta{padding:64px 24px}
