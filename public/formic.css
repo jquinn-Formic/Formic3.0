@@ -287,7 +287,16 @@ body.restrained .footer-bottom p{color:var(--bone-3)}
   .fullbleed-caption{padding:24px}
   footer{padding:40px 24px 24px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  /* Hide secondary header CTA and tighten the primary so the nav doesn't crush at mobile */
+  .nav-cta .btn-ghost{display:none}
+  .nav-cta .btn-orange{padding:10px 14px;font-size:11px;white-space:nowrap}
 }
+@media(max-width:560px){
+  /* On the smallest screens, hide the header CTA entirely — the page body always has its own conversion path */
+  .nav-cta{display:none}
+}
+/* Hero CTA buttons should never wrap mid-label at narrow widths */
+.btn-hero,.btn-ctadark,.btn-ctawh,.btn-orange,.btn-ghost{white-space:nowrap}
 
 /* ── VIDEO SPLIT ── */
 .video-split {
