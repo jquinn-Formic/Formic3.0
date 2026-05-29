@@ -82,6 +82,15 @@ const testimonials = [
     .cr-job .cr-jarrow{font-family:var(--sans);font-size:22px;color:var(--orange);flex-shrink:0}
     .cr-empty{font-size:15px;font-weight:300;color:var(--mgrey);padding:32px 4px}
     .cr-prose-d p{font-size:17px;font-weight:300;line-height:1.75;color:rgba(240,245,241,.72);margin:0 0 18px;max-width:820px}
+    /* Slider prev/next nav — clickable advance through values + quotes */
+    .cr-nav{position:absolute;top:calc(50% + 12px);transform:translateY(-50%);z-index:5;width:42px;height:42px;border:1px solid var(--lgrey);background:var(--white);color:var(--black);font-family:var(--sans);font-size:22px;font-weight:400;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;border-radius:0;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:background .2s,border-color .2s,color .2s}
+    .cr-nav:hover{background:var(--orange);border-color:var(--orange);color:var(--white)}
+    .cr-nav:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+    .cr-nav-prev{left:-14px}
+    .cr-nav-next{right:-14px}
+    .detail-block.dark .cr-nav{background:rgba(13,24,26,.88);border-color:rgba(240,245,241,.2);color:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.35)}
+    .detail-block.dark .cr-nav:hover{background:var(--orange);border-color:var(--orange);color:var(--white)}
+    @media (max-width:880px){.cr-nav-prev{left:0}.cr-nav-next{right:0}}
   </style>
 
 <div class="detail-bc">
@@ -120,6 +129,8 @@ const testimonials = [
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--black);margin:8px 0 26px">Six values, <em style="color:var(--orange);font-style:normal">one Formic</em>.</h2>
     <div class="cr-slider" id="values-slider" data-interval="7000">
       <div class="cr-bar"><span></span></div>
+      <button type="button" class="cr-nav cr-nav-prev" aria-label="Previous value">‹</button>
+      <button type="button" class="cr-nav cr-nav-next" aria-label="Next value">›</button>
       <div class="cr-track">
         {values.map((v) => (
           <article class="cr-vtile">
@@ -142,6 +153,8 @@ const testimonials = [
     <h2 style="font-family:var(--sans);font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.06;color:var(--white);margin:8px 0 26px">Life as a <em style="color:var(--orange);font-style:normal">Formican</em>.</h2>
     <div class="cr-slider" id="quotes-slider" data-interval="6000">
       <div class="cr-bar"><span></span></div>
+      <button type="button" class="cr-nav cr-nav-prev" aria-label="Previous quote">‹</button>
+      <button type="button" class="cr-nav cr-nav-next" aria-label="Next quote">›</button>
       <div class="cr-track">
         {testimonials.map((t) => (
           <article class="cr-qtile">
@@ -220,6 +233,10 @@ const testimonials = [
         frozen = !!root.querySelector(".cr-vtile.open");
       });
     });
+    // Prev/next nav buttons — advance one tile and reset the auto-advance timer.
+    function nav(delta) { go(idx + delta); start = null; elapsed = 0; if (bar) bar.style.width = "0%"; }
+    root.querySelectorAll(".cr-nav-prev").forEach(function (b) { b.addEventListener("click", function () { nav(-1); }); });
+    root.querySelectorAll(".cr-nav-next").forEach(function (b) { b.addEventListener("click", function () { nav(1); }); });
     // keep idx in sync if the user scrolls manually
     var st;
     track.addEventListener("scroll", function () {
