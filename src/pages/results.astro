@@ -15,6 +15,19 @@ import Layout from '../layouts/Layout.astro';
 .res-statsrow .stnum{font-family:var(--sans);font-size:64px;font-weight:500;color:var(--white);line-height:1;display:block;margin-bottom:8px;letter-spacing:-.02em}
 .res-statsrow .stlbl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(240,245,241,.55)}
 @media(max-width:900px){.res-statsrow{grid-template-columns:repeat(2,1fr)}}
+
+/* Industries grid — cinematic image-overlay tiles */
+.ind-tilegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:32px}
+.ind-tile{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--black);text-decoration:none;display:block;border:1px solid rgba(240,245,241,.06)}
+.ind-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .3s ease;filter:brightness(.78)}
+.ind-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,21,23,.92) 0%,rgba(9,21,23,.55) 38%,rgba(9,21,23,.18) 70%,rgba(9,21,23,.02) 100%);pointer-events:none}
+.ind-tile:hover img{transform:scale(1.06);filter:brightness(.88)}
+.ind-tile .ind-tile-eyebrow{position:absolute;top:18px;left:20px;z-index:2;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.ind-tile .ind-tile-name{position:absolute;left:20px;right:20px;bottom:56px;z-index:2;font-family:var(--sans);font-size:clamp(20px,1.7vw,26px);font-weight:600;letter-spacing:-.01em;color:var(--white);line-height:1.1;margin:0}
+.ind-tile .ind-tile-cta{position:absolute;left:20px;bottom:22px;z-index:2;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,245,241,.85);display:inline-flex;align-items:center;gap:10px}
+.ind-tile .ind-tile-cta::after{content:"→";color:var(--orange);transition:transform .25s ease;font-family:var(--sans);font-size:13px}
+.ind-tile:hover .ind-tile-cta::after{transform:translateX(6px)}
+@media(max-width:560px){.ind-tile{aspect-ratio:4/3}}
   </style>
 
 <div class="detail-bc">
@@ -31,6 +44,46 @@ import Layout from '../layouts/Layout.astro';
       <div class="stcell"><span class="stnum" data-count-to="24" data-suffix="/7">0/7</span><span class="stlbl">Bilingual support and monitoring</span></div>
       <div class="stcell"><span class="stnum" data-count-to="0" data-prefix="$">$0</span><span class="stlbl">CapEx Required</span></div>
       <div class="stcell"><span class="stnum" data-count-to="2" data-suffix=" wks">0 wks</span><span class="stlbl">Avg. Deployment</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="detail-block dark" style="padding:72px 80px">
+  <div class="si" style="max-width:1280px;margin:0 auto;padding:0">
+    <div class="db-tag">Industries we serve</div>
+    <h2 style="font-family:var(--sans);font-size:clamp(32px,4vw,56px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--white);margin:8px 0 12px">Real results, <em style="color:var(--orange);font-style:normal">your industry</em>.</h2>
+    <p style="font-family:var(--sans);font-size:16px;font-weight:300;color:rgba(240,245,241,.65);max-width:720px;margin:0;line-height:1.6">Snack food, candy, dairy and cheese, nuts and dried fruit, commercial baking — see how operators in your industry put Formic to work.</p>
+    <div class="ind-tilegrid">
+      <a class="ind-tile" href="/results/snack-food">
+        <img src="/Wyandot-Palletizing.jpg" alt="Wyandot Snacks Formic palletizing cell" loading="lazy"/>
+        <div class="ind-tile-eyebrow">Industry</div>
+        <h3 class="ind-tile-name">Snack food</h3>
+        <span class="ind-tile-cta">See industry</span>
+      </a>
+      <a class="ind-tile" href="/results/candy">
+        <img src="/stories/taffy-town/1763757449-taffytown-0219.jpg" alt="Taffy Town production floor" loading="lazy"/>
+        <div class="ind-tile-eyebrow">Industry</div>
+        <h3 class="ind-tile-name">Candy</h3>
+        <span class="ind-tile-cta">See industry</span>
+      </a>
+      <a class="ind-tile" href="/results/dairy-and-cheese">
+        <img src="/stories/rumiano-cheese/1745598936-rumiano-1.jpg" alt="Rumiano Cheese palletizing cell" loading="lazy"/>
+        <div class="ind-tile-eyebrow">Industry</div>
+        <h3 class="ind-tile-name">Dairy &amp; cheese</h3>
+        <span class="ind-tile-cta">See industry</span>
+      </a>
+      <a class="ind-tile" href="/results/nuts-and-dried-fruit">
+        <img src="/stories/georgia-nut/1642517481-screen-shot-2022-01-14-at-2-49-19-pm.png" alt="Georgia Nut palletizing cell" loading="lazy"/>
+        <div class="ind-tile-eyebrow">Industry</div>
+        <h3 class="ind-tile-name">Nuts &amp; dried fruit</h3>
+        <span class="ind-tile-cta">See industry</span>
+      </a>
+      <a class="ind-tile" href="/results/commercial-baking">
+        <img src="/stories/uncle-crumbles/1749483799-screenshot-2025-06-09-at-8-43-04-am.png" alt="Uncle Crumbles bakery automation" loading="lazy"/>
+        <div class="ind-tile-eyebrow">Industry</div>
+        <h3 class="ind-tile-name">Commercial baking</h3>
+        <span class="ind-tile-cta">See industry</span>
+      </a>
     </div>
   </div>
 </section>
@@ -100,61 +153,6 @@ import Layout from '../layouts/Layout.astro';
         <li>Equipment swaps and upgrades included in the agreement</li>
       </ul>
       <a href="/stories" class="larr">See customer stories →</a>
-    </div>
-  </div>
-</section>
-
-<section class="detail-block white" style="padding:96px 80px">
-  <div class="si" style="max-width:1280px;margin:0 auto;padding:0">
-    <div class="db-tag">Industries we serve</div>
-    <h2 style="font-family:var(--sans);font-size:clamp(32px,4vw,56px);font-weight:500;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin:8px 0 14px">Real results, <em style="color:var(--orange);font-style:normal">your industry</em>.</h2>
-    <p style="font-family:var(--sans);font-size:16px;font-weight:300;color:var(--dgrey);max-width:720px;margin:0 0 32px;line-height:1.6">Snack food, candy, dairy and cheese, nuts and dried fruit, commercial baking — see how operators in your industry put Formic to work.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--lgrey);border:1px solid var(--lgrey)">
-      <a href="/results/snack-food" style="background:var(--white);text-decoration:none;display:flex;flex-direction:column;transition:background .2s" onmouseover="this.style.background='var(--lgrey)'" onmouseout="this.style.background='var(--white)'">
-        <div style="aspect-ratio:16/10;overflow:hidden;background:var(--black)"><img src="/Wyandot-Palletizing.jpg" alt="Wyandot Snacks Formic palletizing cell" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">Industry</div>
-          <h3 style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.2;margin:0">Snack food</h3>
-          <p style="font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0">Wyandot Snacks scales shipments without hiring up.</p>
-          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px">See industry →</span>
-        </div>
-      </a>
-      <a href="/results/candy" style="background:var(--white);text-decoration:none;display:flex;flex-direction:column;transition:background .2s" onmouseover="this.style.background='var(--lgrey)'" onmouseout="this.style.background='var(--white)'">
-        <div style="aspect-ratio:16/10;overflow:hidden;background:var(--black)"><img src="/stories/taffy-town/1763757449-taffytown-0219.jpg" alt="Taffy Town production floor" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">Industry</div>
-          <h3 style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.2;margin:0">Candy</h3>
-          <p style="font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0">Taffy Town: 5.5M lbs of taffy palletized with Formic.</p>
-          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px">See industry →</span>
-        </div>
-      </a>
-      <a href="/results/dairy-and-cheese" style="background:var(--white);text-decoration:none;display:flex;flex-direction:column;transition:background .2s" onmouseover="this.style.background='var(--lgrey)'" onmouseout="this.style.background='var(--white)'">
-        <div style="aspect-ratio:16/10;overflow:hidden;background:var(--black)"><img src="/stories/rumiano-cheese/1745598936-rumiano-1.jpg" alt="Rumiano Cheese palletizing cell" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">Industry</div>
-          <h3 style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.2;margin:0">Dairy &amp; cheese</h3>
-          <p style="font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0">Rumiano, Masters Gallery, and Sunrise Family Farms.</p>
-          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px">See industry →</span>
-        </div>
-      </a>
-      <a href="/results/nuts-and-dried-fruit" style="background:var(--white);text-decoration:none;display:flex;flex-direction:column;transition:background .2s" onmouseover="this.style.background='var(--lgrey)'" onmouseout="this.style.background='var(--white)'">
-        <div style="aspect-ratio:16/10;overflow:hidden;background:var(--black)"><img src="/stories/georgia-nut/1642517481-screen-shot-2022-01-14-at-2-49-19-pm.png" alt="Georgia Nut palletizing cell" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">Industry</div>
-          <h3 style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.2;margin:0">Nuts &amp; dried fruit</h3>
-          <p style="font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0">Georgia Nut and Mariani Packing drive throughput.</p>
-          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px">See industry →</span>
-        </div>
-      </a>
-      <a href="/results/commercial-baking" style="background:var(--white);text-decoration:none;display:flex;flex-direction:column;transition:background .2s" onmouseover="this.style.background='var(--lgrey)'" onmouseout="this.style.background='var(--white)'">
-        <div style="aspect-ratio:16/10;overflow:hidden;background:var(--black)"><img src="/stories/uncle-crumbles/1749483799-screenshot-2025-06-09-at-8-43-04-am.png" alt="Uncle Crumbles bakery automation" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-        <div style="padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px">
-          <div style="font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)">Industry</div>
-          <h3 style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--black);line-height:1.2;margin:0">Commercial baking</h3>
-          <p style="font-family:var(--sans);font-size:14px;font-weight:300;line-height:1.55;color:var(--mgrey);margin:0">Uncle Crumbles, Mi Rancho, and the ABA partnership.</p>
-          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:6px">See industry →</span>
-        </div>
-      </a>
     </div>
   </div>
 </section>
